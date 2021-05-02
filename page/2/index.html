@@ -169,7 +169,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -225,7 +225,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/29/CORS/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -238,7 +238,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/29/CORS/" class="post-title-link" itemprop="url">CORS</a>
+          <a href="/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/" class="post-title-link" itemprop="url">学习springboot过程中的心得</a>
         </h2>
 
         <div class="post-meta-container">
@@ -249,14 +249,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-04-29 14:52:47" itemprop="dateCreated datePublished" datetime="2021-04-29T14:52:47+08:00">2021-04-29</time>
+      <time title="创建时间：2021-04-10 16:14:03" itemprop="dateCreated datePublished" datetime="2021-04-10T16:14:03+08:00">2021-04-10</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-01 11:03:36" itemprop="dateModified" datetime="2021-05-01T11:03:36+08:00">2021-05-01</time>
+        <time title="修改时间：2021-04-24 15:43:58" itemprop="dateModified" datetime="2021-04-24T15:43:58+08:00">2021-04-24</time>
       </span>
 
   
@@ -269,33 +269,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://ieftimov.com/post/deep-dive-cors-history-how-it-works-best-practices/#cross-origin-reads">原文链接</a></p>
-<h1 id="在F12中的console模式下看CORS"><a href="#在F12中的console模式下看CORS" class="headerlink" title="在F12中的console模式下看CORS"></a>在F12中的console模式下看CORS</h1><ul>
-<li><p>后端springboot代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@PostMapping(&quot;greet/&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>+name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&#123;&quot;greet&quot;,&quot;/&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>Console中代码  </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:8080/greet/yawen&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span> &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">).then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text()).then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/CORS/localhost.png" alt="图片1"><br><img src="/images/CORS/goole.png" alt="图片2"></p>
-</li>
-</ul>
-<h1 id="preflight-request"><a href="#preflight-request" class="headerlink" title="preflight request"></a>preflight request</h1><p><img src="/images/CORS/preflight.png" alt="图片3"><br><img src="/images/CORS/prefilght2.png" alt="图片4"></p>
-<blockquote>
-<p>跨域请求中，浏览器会发出两个请求，一个是OPTION请求，另一个是POST请求。在OPTIONS请求中，状态码为200，但是请求依然不成功（报红)说明，浏览器没有拦截request请求，拦截的是response响应。</p>
-</blockquote>
-<h2 id="这是浏览器的预检请求"><a href="#这是浏览器的预检请求" class="headerlink" title="这是浏览器的预检请求"></a>这是浏览器的预检请求</h2><p>浏览器会对CORS认为复杂的请求执行预检请求，有如下标准:</p>
-<ol>
-<li>除了GET,POST,HEAD方法</li>
-<li>除了headers中的Accept,Accept-Language,Content-Language</li>
-<li>除了Content-Type: text/plain,multipart/form-data (application/json会执行OPTION预检)</li>
-</ol>
-<h2 id="如何避免预检"><a href="#如何避免预检" class="headerlink" title="如何避免预检"></a>如何避免预检</h2><ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:4000/greet&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="string">&#x27;Ilija&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line">.then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text())</span><br><span class="line">.then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
-此方法可以不执行预检，但是依然避免不了post请求.通过如下操作可以继续避免post请求，从而实现跨域请求.</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">options <span class="string">&quot;/greet&quot;</span> <span class="keyword">do</span> |env|</span><br><span class="line">  # Allow `POST /greet`...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>] = <span class="string">&quot;POST&quot;</span></span><br><span class="line">  # ...with `Content-type` header in the request...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>] = <span class="string">&quot;Content-type&quot;</span></span><br><span class="line">  # ...from https://www.google.com origin.</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>] = <span class="string">&quot;https://www.google.com&quot;</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-
-<h1 id="Best-Practice"><a href="#Best-Practice" class="headerlink" title="Best Practice"></a>Best Practice</h1><h2 id="仅仅只允许yourwebsite-com发送request"><a href="#仅仅只允许yourwebsite-com发送request" class="headerlink" title="仅仅只允许yourwebsite.com发送request"></a>仅仅只允许yourwebsite.com发送request</h2><p><img src="/images%5CCORS%5C1.png" alt="图片"><br><img src="/images/CORS/2.png" alt="图片"><br>在某些情况下，需要对网站进行分析，这时，就需要浏览器发送有关用户在该网站上的体验的数据给后台，但是，却又不希望所有的站点都能够通过该后台的API来发送无关的数据，此时，后台中的代码,<code>Access-Control-Allow-Origin:yourwebsite.com</code>，通过该设置就可以只获取该网站发送来的数据了.</p>
-
+          <h1 id="springboot与servlet两者封装对象的方式"><a href="#springboot与servlet两者封装对象的方式" class="headerlink" title="springboot与servlet两者封装对象的方式"></a>springboot与servlet两者封装对象的方式</h1><h2 id="springboot的Controller层当中"><a href="#springboot的Controller层当中" class="headerlink" title="springboot的Controller层当中"></a>springboot的Controller层当中</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addSuccess</span><span class="params">(Employee employee)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;add--&gt;&quot;</span>+employee);</span><br><span class="line">    employeeDao.addNewEmployee(employee);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/emp&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>addSuccess方法中使用Employee对象作为入参,在前端html代码的form表单中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/add&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>名字<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入名字&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>邮箱<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入邮箱&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span>&gt;</span>部门<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 因为department是一个对象，传参的时候不能传一个对象，故先传对象的id值，然后后端接受了id值后，通过id值来查询department，并将查询到的department赋值给employee --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">name</span>=<span class="string">&quot;department.id&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;department.getDepartmentName()&#125;&quot;</span> <span class="attr">th:each</span>=<span class="string">&quot;department:$&#123;departments&#125;&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;department.getId()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>日期<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入日期&quot;</span> <span class="attr">name</span>=<span class="string">&quot;birth&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-offset-2 col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default&quot;</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -321,7 +305,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/30/springboot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -334,7 +318,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/" class="post-title-link" itemprop="url">尚硅谷</a>
+          <a href="/2021/03/30/springboot/" class="post-title-link" itemprop="url">springboot</a>
         </h2>
 
         <div class="post-meta-container">
@@ -345,14 +329,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-04-20 18:41:07" itemprop="dateCreated datePublished" datetime="2021-04-20T18:41:07+08:00">2021-04-20</time>
+      <time title="创建时间：2021-03-30 16:43:05" itemprop="dateCreated datePublished" datetime="2021-03-30T16:43:05+08:00">2021-03-30</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-24 20:20:13" itemprop="dateModified" datetime="2021-04-24T20:20:13+08:00">2021-04-24</time>
+        <time title="修改时间：2021-04-10 16:47:02" itemprop="dateModified" datetime="2021-04-10T16:47:02+08:00">2021-04-10</time>
       </span>
 
   
@@ -365,55 +349,43 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <ol>
-<li>乐观锁 (防止多人同时抢一门课发生丢失更新)   P13节</li>
-<li>逻辑删除、物理删除</li>
-</ol>
-<ul>
-<li>逻辑删除：添加一个deleted字段 用来标志该元数据是否被删除  但是不是真的被删除  </li>
-<li>物理删除：从数据库中真正的被删除</li>
-</ul>
-<ol start="3">
-<li><p>QueryWrapper.eq();  用来实现人员登录之后展示其信息</p>
-</li>
-<li><p>删除parent的src，创建service子模块和service_edu子子模块，将codegenerator.java导入test文件夹下</p>
-</li>
-<li><p>codegenerator 改动</p>
-</li>
-</ol>
-<ul>
-<li>项目生成位置</li>
-<li>策略</li>
-<li>数据库</li>
-<li>包</li>
-<li>数据库表名称</li>
-</ul>
-<ol start="8">
-<li>因为mapper文件夹下只有mapper的接口，而没有mapper的实现类（例如：service层中有@Service注解），所以需要@MapperScan</li>
-</ol>
-<hr>
-<ol start="9">
-<li><p>不同的modules之间的相互引用，<code>一定要注意</code>:<br>在引用的包的pom.xml文件中配置<code>&lt;dependency&gt;</code></p>
-</li>
-<li><p>逻辑删除的两种方式：</p>
-</li>
-</ol>
-<ul>
-<li>创建字段时：设置default 0,不要@TableField(fill=),在properties文件中配置<code>global-config</code></li>
-<li>不设置default 0,在mp自动填充中@TableFiled,并且在MetaHandler中setFiledname</li>
-</ul>
-<ol start="11">
-<li></li>
-</ol>
-<ul>
-<li>@RequestBody的作用：将前端的数据封装成json数据，然后传值给后端,但是请求方式必须是 @PostMapping</li>
-<li>@ResponseBody 返回数据，返回json数据</li>
-<li>@RequestBody(required=false) 表示该对象可以没有值</li>
-<li>测试restful  查询-get   添加-post  修改 delete    删除</li>
-</ul>
-<ol start="12">
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(<span class="meta">@RequestBody</span> EduTeacher eduteacher)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
+          <h1 id="springboot的两个注解形式给属性赋值"><a href="#springboot的两个注解形式给属性赋值" class="headerlink" title="springboot的两个注解形式给属性赋值"></a>springboot的两个注解形式给属性赋值</h1><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="center">@ConfigurationProperties</th>
+<th align="center">@Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">注值方式</td>
+<td align="center">批量注入</td>
+<td align="center">单个</td>
+</tr>
+<tr>
+<td align="left">松散语法</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="left">SpEL</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="left">JSR303数据校验</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="left">注入复杂类型</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>松散语法即将驼峰式命名的属性拆解为-:  <code>public int HomeAddress</code>-&gt;<code>home-address</code><br>SpEL即： <code>@Value(&quot;$&#123;student.username&#125;)</code><br>JSR303即： 特殊的属性例如 <code>电子邮件</code>有专门的注解形式，若违反了该规定，则报错 <code>@Email</code><br>复杂类型：例如对象类型</p>
+</blockquote>
 
       
     </div>
@@ -433,7 +405,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
