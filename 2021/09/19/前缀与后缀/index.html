@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"pvtwen.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="259周赛第二题 prefix-array  suffix-array 前缀数组保存当前下标之前的最大值  后缀数组保存当前下标之后的最小值 答案12345678910111213141516171819202122232425public int sumOfBeauties(int[] nums) &amp;#123;    int n&#x3D;nums.length;    int[] l_max&#x3D;new i">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前缀与后缀">
+<meta property="og:url" content="https://pvtwen.github.io/2021/09/19/%E5%89%8D%E7%BC%80%E4%B8%8E%E5%90%8E%E7%BC%80/index.html">
+<meta property="og:site_name" content="PrivateWen">
+<meta property="og:description" content="259周赛第二题 prefix-array  suffix-array 前缀数组保存当前下标之前的最大值  后缀数组保存当前下标之后的最小值 答案12345678910111213141516171819202122232425public int sumOfBeauties(int[] nums) &amp;#123;    int n&#x3D;nums.length;    int[] l_max&#x3D;new i">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-19T08:13:28.000Z">
+<meta property="article:modified_time" content="2021-09-26T12:15:31.766Z">
+<meta property="article:author" content="Pvtwen">
+<meta property="article:tag" content="前缀后缀数组">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://pvtwen.github.io/2021/09/19/%E5%89%8D%E7%BC%80%E4%B8%8E%E5%90%8E%E7%BC%80/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>前缀与后缀 | PrivateWen</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">PrivateWen</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#259%E5%91%A8%E8%B5%9B"><span class="nav-number">1.</span> <span class="nav-text">259周赛</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">第二题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Question1-amp-amp-Question560"><span class="nav-number">2.</span> <span class="nav-text">Question1 &amp;&amp; Question560</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Question1"><span class="nav-number">2.1.</span> <span class="nav-text">Question1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Question560"><span class="nav-number">2.2.</span> <span class="nav-text">Question560</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Question974"><span class="nav-number">2.3.</span> <span class="nav-text">Question974</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Question525"><span class="nav-number">2.4.</span> <span class="nav-text">Question525</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E5%92%8C-%E7%AB%9E%E8%B5%9B%E9%A2%985882"><span class="nav-number">3.</span> <span class="nav-text">前缀和 竞赛题5882</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pvtwen"
+      src="/images/apple-touch-icon-next.png">
+  <p class="site-author-name" itemprop="name">Pvtwen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Pvtwen" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Pvtwen" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/09/19/%E5%89%8D%E7%BC%80%E4%B8%8E%E5%90%8E%E7%BC%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/apple-touch-icon-next.png">
+      <meta itemprop="name" content="Pvtwen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          前缀与后缀
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-19 16:13:28" itemprop="dateCreated datePublished" datetime="2021-09-19T16:13:28+08:00">2021-09-19</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-26 20:15:31" itemprop="dateModified" datetime="2021-09-26T20:15:31+08:00">2021-09-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="259周赛"><a href="#259周赛" class="headerlink" title="259周赛"></a>259周赛</h1><h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><ul>
+<li>prefix-array  suffix-array 前缀数组保存当前下标之前的最大值  后缀数组保存当前下标之后的最小值</li>
+<li>答案<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfBeauties</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=nums.length;</span><br><span class="line">    <span class="keyword">int</span>[] l_max=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    <span class="keyword">int</span>[] r_min=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    <span class="keyword">int</span> Lmax=nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> Rmin=nums[n-<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> beauty=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n-<span class="number">2</span>;i++)&#123;</span><br><span class="line">        Lmax=Math.max(nums[i-<span class="number">1</span>],Lmax);</span><br><span class="line">        l_max[i]=Lmax;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n-<span class="number">2</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        Rmin=Math.min(Rmin,nums[i+<span class="number">1</span>]);</span><br><span class="line">        r_min[i]=Rmin;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n-<span class="number">2</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i]&gt;l_max[i] &amp;&amp; nums[i]&lt;r_min[i]) beauty+=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>] &amp;&amp; nums[i]&lt;nums[i+<span class="number">1</span>]) beauty+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> beauty;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>超时<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfBeauties</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> tempF=<span class="number">0</span>,maxF=<span class="number">0</span>,minB=<span class="number">2</span>,tempB=<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> beauty=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> n=nums.length;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n-<span class="number">1</span>;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i-<span class="number">1</span>]&gt;nums[maxF]) maxF=i-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(minB==i)&#123;</span><br><span class="line">                    minB=i+<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=i+<span class="number">1</span>;k&lt;n;k++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(nums[minB]&gt;nums[k]) minB=k;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=tempB;k&lt;n;k++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(nums[minB]&gt;nums[k]) minB=k;</span><br><span class="line">                        tempB++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]&gt;nums[maxF] &amp;&amp; nums[i]&lt;nums[minB]) beauty+=<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>] &amp;&amp; nums[i]&lt;nums[i+<span class="number">1</span>]) beauty+=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> beauty;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>反思: </p>
+<blockquote>
+<p>代码中定义的变量过多，容易引起混淆<br>for循环的堆叠增加了时间复杂度<br>对前缀和的应用还不是很灵活，前缀数组既可以保存之和，也可以保存最大最小值<br>通过这道题，明白了有时候需要对数据进行预处理,用最少的变量，先理清思路再code.</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h1 id="Question1-amp-amp-Question560"><a href="#Question1-amp-amp-Question560" class="headerlink" title="Question1 &amp;&amp; Question560"></a>Question1 &amp;&amp; Question560</h1><ul>
+<li>对于求子数组和的问题，先找关系式.Question1中的关系式为nums[i]+nums[j]=target</li>
+<li>Question560中的关系式为subArraySum[i]-subArraySum[j]=k</li>
+<li>基于关系式，定义关系变量diff.<h2 id="Question1"><a href="#Question1" class="headerlink" title="Question1"></a>Question1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="comment">// 此处也可以写成 int diff=target-nums[i];  map.put(nums[i],i);</span></span><br><span class="line">            <span class="keyword">int</span> diff=nums[i]-target;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(diff)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;map.get(diff),i&#125;;</span><br><span class="line">            map.put(-nums[i],i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Question560"><a href="#Question560" class="headerlink" title="Question560"></a>Question560</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n=nums.length;</span><br><span class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">        map.put(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="keyword">int</span> diff=sum-k;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(diff)) res+=map.get(diff);</span><br><span class="line">            map.put(sum,map.getOrDefault(sum,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Question974"><a href="#Question974" class="headerlink" title="Question974"></a>Question974</h2><ul>
+<li>思路：同余定理,(a-b)%k==0,则a%k=b%k. 特例，-1和9对5取余数。-1余数是-1，9的余数是4.但是(9+1)%5=0.</li>
+<li>所以本题需要避免为负数的情况 (sum%k+k)%k<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraysDivByK</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n=nums.length;</span><br><span class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">        map.put(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="keyword">int</span> prefix=(sum%k+k)%k; <span class="comment">// 避免之和为负数的情况</span></span><br><span class="line">            res+=map.getOrDefault(prefix,<span class="number">0</span>);</span><br><span class="line">            map.put(prefix,map.getOrDefault(prefix,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Question525"><a href="#Question525" class="headerlink" title="Question525"></a>Question525</h2></li>
+<li>思路：0和1的数量相同转换为 1的数量减去0的数量为0  可以将数组中的0视为-1. 问题转换为求和为0的最长子数组、</li>
+<li>出发点：1的数量减去0的数量为0. 1的数量即为所有1之和. 0之和由于没有意义 将0转化为-1之和</li>
+<li>延申1：求1的数量比0的数量多n的问题。 也就是求和为n的问题。</li>
+<li>延申2：求1的数量比0的数量多n倍的问题？<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxLength</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=nums.length;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxLen=Integer.MIN_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==<span class="number">0</span>) nums[i]=-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> nums[i]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(sum)) maxLen=Math.max(maxLen,i+<span class="number">1</span>-map.get(sum));</span><br><span class="line">            <span class="keyword">else</span> map.put(sum,i+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxLen==Integer.MIN_VALUE?<span class="number">0</span>:maxLen;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="前缀和-竞赛题5882"><a href="#前缀和-竞赛题5882" class="headerlink" title="前缀和 竞赛题5882"></a>前缀和 竞赛题5882</h1><ul>
+<li>我的思路：先找出机器A的最大值的所有路径，分别遍历所有路径，求出每个路径下的最大值，再求出所有最大值中的最小值</li>
+<li>反思点：</li>
+</ul>
+<ol>
+<li>不要以为机器A拿到了最大值，就可以限制B拿到最大值</li>
+<li>数据格式限制 long型</li>
+<li>在遍历过程中，每次遍历求出B两条路的最大值，最后再将res与该最大值进行比较，res取其中的最小值。而不是res=Math.max(max,res);<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">gridGame</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">long</span>[] prefixArr1=<span class="keyword">new</span> <span class="keyword">long</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">long</span>[] prefixArr2=<span class="keyword">new</span> <span class="keyword">long</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">long</span> res=Long.MAX_VALUE;</span><br><span class="line">        <span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> sum1=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">            sum+=grid[<span class="number">0</span>][i-<span class="number">1</span>];</span><br><span class="line">            sum1+=grid[<span class="number">1</span>][i-<span class="number">1</span>];</span><br><span class="line">            prefixArr1[i]=sum;</span><br><span class="line">            prefixArr2[i]=sum1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">long</span> sub1=prefixArr1[n]-prefixArr1[i];</span><br><span class="line">            <span class="keyword">long</span> sub2=prefixArr2[i-<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">long</span> max=Math.max(sub1,sub2);</span><br><span class="line">            res=Math.min(max,res);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%BC%80%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" rel="tag"># 前缀后缀数组</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/16/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="prev" title="状态压缩">
+                  <i class="fa fa-chevron-left"></i> 状态压缩
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/" rel="next" title="动态规划新">
+                  动态规划新 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pvtwen</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

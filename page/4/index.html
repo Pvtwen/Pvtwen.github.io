@@ -169,20 +169,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -225,7 +225,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/16/Linux/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/05/18/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%9E%E6%8E%A5%E7%9A%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -238,7 +238,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/Linux/" class="post-title-link" itemprop="url">Linux</a>
+          <a href="/2021/05/18/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%9E%E6%8E%A5%E7%9A%84/" class="post-title-link" itemprop="url">网络是怎么连接的</a>
         </h2>
 
         <div class="post-meta-container">
@@ -249,8 +249,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-16 18:03:04" itemprop="dateCreated datePublished" datetime="2021-03-16T18:03:04+08:00">2021-03-16</time>
+      <time title="创建时间：2021-05-18 21:04:04" itemprop="dateCreated datePublished" datetime="2021-05-18T21:04:04+08:00">2021-05-18</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-05-29 20:40:57" itemprop="dateModified" datetime="2021-05-29T20:40:57+08:00">2021-05-29</time>
+      </span>
 
   
 </div>
@@ -262,7 +269,48 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h1 id="DNS服务器之顺藤摸瓜"><a href="#DNS服务器之顺藤摸瓜" class="headerlink" title="DNS服务器之顺藤摸瓜"></a>DNS服务器之顺藤摸瓜</h1><p>拿 <a target="_blank" rel="noopener" href="http://www.google.com.来举例.其实可以类比为找朋友./">www.google.com.来举例。其实可以类比为找朋友。</a></p>
+<ol>
+<li>首先本机通过自己设置的最近的DNS服务器去找寻根域名，本机问道根域名服务器，你认不认识<a target="_blank" rel="noopener" href="http://www.google.com,跟服务器答道我不认识,但是我认识com域名服务器/">www.google.com,跟服务器答道我不认识，但是我认识com域名服务器</a>.</li>
+<li>同理，问com域名服务器，你是否认识<a target="_blank" rel="noopener" href="http://www.google,com域名解析器答道,我认识存放google的域名解析器/">www.google,com域名解析器答道，我认识存放google的域名解析器</a>.</li>
+</ol>
+<h1 id="第一章和第二章的总结"><a href="#第一章和第二章的总结" class="headerlink" title="第一章和第二章的总结"></a>第一章和第二章的总结</h1><p><code>注意，双引号内的部分即还不确定的部分，待完善</code></p>
+<ul>
+<li>解析域名：从第一章节的浏览器解析url开始，浏览器将输入的url交由DNS服务器解析域名，拿到域名背后的ip地址。</li>
+<li>与服务器建立通信：分为connection,write,read,close四个阶段，建立通信的过程需要三次握手，以及通过查找服务器的对应端口号建立套接字。建立好了通信之后就可以进行下一个阶段-发数据包了。住：建立通信的阶段也在发包，只不过主要有IP头部，MAC头部等，但是发的包中没有数据。其实发包的种类也有很多，ACK包等。</li>
+<li>生成包，发包过程中各个硬件的相互协调：涉及到的软硬件有网卡，网卡驱动，协议栈。其中协议栈可以认为是操作系统的一个部分，<code>它掌管着TCP/IP/UDP</code>，发送的数据包需要经过他所掌管的这几个协议进行加工，也就是给数据包加入头部信息（数据信息、控制信息）。网卡有ROM，MAC，ROM中存放着网卡出场时设置的全世界唯一的MAC地址，MAC作为一种控制层。</li>
+<li>协议栈中的TCP/IP：IP只管发送包，IP头部信息含有接送方的IP地址。<h2 id="第一章和第二章中待回顾的问题"><a href="#第一章和第二章中待回顾的问题" class="headerlink" title="第一章和第二章中待回顾的问题"></a>第一章和第二章中待回顾的问题</h2></li>
+</ul>
+<ol>
+<li><p>表示网络包收件人的接收方IP地址是位于IP头部还是TCP头部？</p>
+</li>
+<li><p>端口号用来指定服务器程序的种类，他是位于TCP头部还是IP头部？</p>
+</li>
+<li><p>会对包是否正确送达进行确认的时TCP还是IP？</p>
+</li>
+<li><p>根据IP地址查询MAC地址的机制叫什么？</p>
+</li>
+<li><p>在收到ACK号之前继续发送下一个包的方式叫什么?</p>
+</li>
+<li><p>协议栈与操作系统的关系？以及协议栈与TCP/IP/UDP的关系?</p>
+</li>
+<li><p>表示网络包收件人的接收方IP地址位于IP头部，但是该信息并不是由IP产生，而是由应用程序生成，然后，应用程序交给TCP层，再由TCP层交给IP层，IP层再给数据包封装头部。</p>
+</li>
+<li><p>TCP头部</p>
+</li>
+<li><p><code>书2.3.3</code></p>
+</li>
+<li><p>ARP机制，拿一个子网来说，发送方在查询MAC地址时，首先通过广播的方式，向子网内的所有设备问：“谁的ip地址是xxxxx”,符合条件的设备答道:”我的ip地址符合，我的mac地址是xxxx”,不符合条件的设备即使收到了该条信息也不做回复。</p>
+</li>
+<li><p>滑动窗口方式，该方式是指接收方在没有收到发送方返回的ACK包之前，继续发送下一个数据包，这样可以提升通信的效率，但是发送两个数据包之间的间隔需要按规则来设定，不能过大也不能过小。</p>
+</li>
+</ol>
+<h1 id="自主探索ip"><a href="#自主探索ip" class="headerlink" title="自主探索ip"></a>自主探索ip</h1><ol>
+<li>当启用了代理服务器的时候去访问url，remote adrress:127.0.0.1：1080 代表的是本地代理端口，也就是本机从代理服务器获取数据的端口。</li>
+<li>若不启用代理服务器，那么客户端会去访问真实的url</li>
+<li>无论是否使用了代理服务器，浏览器在加载一次页面之后，会将部分数据存入内存缓存，下次访问的时候会从内存中获取。</li>
+</ol>
+
       
     </div>
 
@@ -288,7 +336,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/29/CORS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -301,7 +349,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">计算机操作系统</a>
+          <a href="/2021/04/29/CORS/" class="post-title-link" itemprop="url">CORS</a>
         </h2>
 
         <div class="post-meta-container">
@@ -312,14 +360,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-16 18:02:58" itemprop="dateCreated datePublished" datetime="2021-03-16T18:02:58+08:00">2021-03-16</time>
+      <time title="创建时间：2021-04-29 14:52:47" itemprop="dateCreated datePublished" datetime="2021-04-29T14:52:47+08:00">2021-04-29</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-06-07 09:52:38" itemprop="dateModified" datetime="2021-06-07T09:52:38+08:00">2021-06-07</time>
+        <time title="修改时间：2021-05-01 11:03:36" itemprop="dateModified" datetime="2021-05-01T11:03:36+08:00">2021-05-01</time>
       </span>
 
   
@@ -332,51 +380,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h1><ul>
-<li>教学资源</li>
+          <p><a target="_blank" rel="noopener" href="https://ieftimov.com/post/deep-dive-cors-history-how-it-works-best-practices/#cross-origin-reads">原文链接</a></p>
+<h1 id="在F12中的console模式下看CORS"><a href="#在F12中的console模式下看CORS" class="headerlink" title="在F12中的console模式下看CORS"></a>在F12中的console模式下看CORS</h1><ul>
+<li><p>后端springboot代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@PostMapping(&quot;greet/&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>+name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&#123;&quot;greet&quot;,&quot;/&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Console中代码  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:8080/greet/yawen&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span> &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">).then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text()).then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/CORS/localhost.png" alt="图片1"><br><img src="/images/CORS/goole.png" alt="图片2"></p>
+</li>
 </ul>
-<ol>
-<li>网易云课堂–哈工大李志军老师的os。<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/115">配套的实验环境</a></li>
-<li>学堂在线清华OS课程练习题</li>
-<li>国内的xv6 lab-清华大学ucore OS <a target="_blank" rel="noopener" href="https://www.xuetangx.com/course/THU08091000267/5883104">链接</a></li>
-</ol>
-<ul>
-<li>书籍</li>
-</ul>
-<ol>
-<li>&lt;操作系统真相还原&gt;</li>
-</ol>
-<h1 id="疑难问题"><a href="#疑难问题" class="headerlink" title="疑难问题"></a>疑难问题</h1><ol>
-<li>进程互斥与同步的问题</li>
-</ol>
-<ul>
-<li>读者-写者问题：可以多个进程同时读文件，但只能一个进程写文件。并且读文件的操作不会改变资源的值。</li>
-<li>火车进站出站问题：可以多个火车同向运行，但是不允许火车相向运行。<blockquote>
-<p>两个问题的区别在于写文件只能允许一个进程，而火车不管是同向还是相向，都可以多个进程同时运行.</p>
+<h1 id="preflight-request"><a href="#preflight-request" class="headerlink" title="preflight request"></a>preflight request</h1><p><img src="/images/CORS/preflight.png" alt="图片3"><br><img src="/images/CORS/prefilght2.png" alt="图片4"></p>
+<blockquote>
+<p>跨域请求中，浏览器会发出两个请求，一个是OPTION请求，另一个是POST请求。在OPTIONS请求中，状态码为200，但是请求依然不成功（报红)说明，浏览器没有拦截request请求，拦截的是response响应。</p>
 </blockquote>
-</li>
-</ul>
-<ol start="2">
-<li>读者写者问题和多人过桥问题<br>对比读者写者问题，尽管可能同时运行在<code>wait(s)</code>，但由于两者本来就互斥，故有以下逻辑<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count1==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure></li>
+<h2 id="这是浏览器的预检请求"><a href="#这是浏览器的预检请求" class="headerlink" title="这是浏览器的预检请求"></a>这是浏览器的预检请求</h2><p>浏览器会对CORS认为复杂的请求执行预检请求，有如下标准:</p>
+<ol>
+<li>除了GET,POST,HEAD方法</li>
+<li>除了headers中的Accept,Accept-Language,Content-Language</li>
+<li>除了Content-Type: text/plain,multipart/form-data (application/json会执行OPTION预检)</li>
 </ol>
-<p><img src="/images/%E4%BD%9C%E4%B8%9A1.jpg" alt="图片"></p>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><ol>
-<li>GCC编译器</li>
-<li>GDB调试器</li>
+<h2 id="如何避免预检"><a href="#如何避免预检" class="headerlink" title="如何避免预检"></a>如何避免预检</h2><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:4000/greet&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="string">&#x27;Ilija&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line">.then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text())</span><br><span class="line">.then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+此方法可以不执行预检，但是依然避免不了post请求.通过如下操作可以继续避免post请求，从而实现跨域请求.</li>
 </ol>
-<h1 id="复习"><a href="#复习" class="headerlink" title="复习"></a>复习</h1><ol>
-<li><p>单道批处理系统和多道批处理系统的区别：单道批处理程序一次只能允许一个程序进入内存，并且，在这个程序进行io操作的时候，cpu处于空闲状态。因此，单道批处理程序的缺点就是，cpu利用率较低，对内存的利用率也较低。多道批处理系统能够一次让多个程序进入内存，显著提高了内存的利用率，在程序进行io的时候，cpu也处于运行状态。</p>
-</li>
-<li><p>分页: 地址分为页号和页内地址，总共为32位，页内地址位20位，页号为12位。页内地址在逻辑地址映射为物理地址的过程中不会改变，也就是说，逻辑地址的页内地址会最终映射为物理地址的页内地址。</p>
-</li>
-</ol>
-<ul>
-<li>过程：页内寄存器中包含有页长度和xxx，首先比较页内寄存器的页长度和页号，如果页号大于页长度，那么则超过了取值范围。如果小于页长度，则根据页号在页表中进行查找，找到对应的内存对应的物理块。</li>
-</ul>
-<ol start="3">
-<li>虚拟存储器：将磁盘存储器划分为文件区和对换区，将内存中暂时不用的页块调用到对换区。此过程涉及到一系列的页面置换算法。</li>
-</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">options <span class="string">&quot;/greet&quot;</span> <span class="keyword">do</span> |env|</span><br><span class="line">  # Allow `POST /greet`...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>] = <span class="string">&quot;POST&quot;</span></span><br><span class="line">  # ...with `Content-type` header in the request...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>] = <span class="string">&quot;Content-type&quot;</span></span><br><span class="line">  # ...from https://www.google.com origin.</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>] = <span class="string">&quot;https://www.google.com&quot;</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h1 id="Best-Practice"><a href="#Best-Practice" class="headerlink" title="Best Practice"></a>Best Practice</h1><h2 id="仅仅只允许yourwebsite-com发送request"><a href="#仅仅只允许yourwebsite-com发送request" class="headerlink" title="仅仅只允许yourwebsite.com发送request"></a>仅仅只允许yourwebsite.com发送request</h2><p><img src="/images%5CCORS%5C1.png" alt="图片"><br><img src="/images/CORS/2.png" alt="图片"><br>在某些情况下，需要对网站进行分析，这时，就需要浏览器发送有关用户在该网站上的体验的数据给后台，但是，却又不希望所有的站点都能够通过该后台的API来发送无关的数据，此时，后台中的代码,<code>Access-Control-Allow-Origin:yourwebsite.com</code>，通过该设置就可以只获取该网站发送来的数据了.</p>
 
       
     </div>
@@ -396,7 +425,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
