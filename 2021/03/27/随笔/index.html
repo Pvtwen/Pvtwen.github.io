@@ -31,7 +31,7 @@
 <meta property="og:description" content="MyBatis-plus中@Table(type&#x3D;IdType.AUTO)使用时，数据库对应的主键必须设置auto_increment，否则会报Field &#39;id&#39; doesn&#39;t have a default value。可能是版本bug  进程与线程的区别  期货(2021.5.1)原文链接三郎是一个卖饭团的人，察觉到国家即将开战，米价到时候必将上涨，于是，和米商签订">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-27T11:41:09.000Z">
-<meta property="article:modified_time" content="2021-11-19T11:20:54.492Z">
+<meta property="article:modified_time" content="2021-12-21T04:07:35.373Z">
 <meta property="article:author" content="Pvtwen">
 <meta name="twitter:card" content="summary">
 
@@ -173,14 +173,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -261,7 +261,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-19 19:20:54" itemprop="dateModified" datetime="2021-11-19T19:20:54+08:00">2021-11-19</time>
+        <time title="修改时间：2021-12-21 12:07:35" itemprop="dateModified" datetime="2021-12-21T12:07:35+08:00">2021-12-21</time>
       </span>
 
   
@@ -341,6 +341,98 @@
 <li>其次，对于bfs和dfs的哈希表来说，功能大致相似，bfs中的哈希表有两个作用，一是用于存储步数，二是用判断该值有没有被访问过，后续只要碰到该值，跳过。dfs中的哈希表只有一个作用，用于存储该步数的最优解(因为是从结果开始逆推，所以哈希表存储的一定是最优解)。后续只要碰到该值，就返回哈希表中存储的值。</li>
 <li>最后，这道题的边权为1，所以可以用bfs，但是638大礼包题目中边权不为1，因为每个礼包的价格不一样.</li>
 </ul>
+<ol start="26">
+<li></li>
+</ol>
+<ul>
+<li>观点：高考如果分数不理想，最好是优先专业。因为选好一个专业，大学就有了动力和方向，如果硬要去碰一个稍微好一点的学校，但是专业不感兴趣，大学四年相当于荒废，即使能够花业余时间去学感兴趣的东西，也会被专业课程压的脱不开身。</li>
+<li>再谈转专业的事情，转专业的想法其实就是在找退路。那么考研呢？为了去更好一点的院校，去读冷门专业？这也算找退路吗？有两个截然不同的看法。</li>
+</ul>
+<ol>
+<li><p>好的院校就是一个好的平台，和刚步入大学不同，那时有了方向，读研期间也能为了自己的方向而努力。所以不叫找退路。</p>
+</li>
+<li><p>冷门专业很可能是一个未知的领域，和大学一样，面对自己不感兴趣的专业，即使学有余力，也会被专业课程和论文压的脱不开身。</p>
+</li>
+<li><p><code>2021.11.28</code> 对于经常出现的对于知识的焦虑感，今天突然能够克制自己不再去过多纠结于知识本身，而是抓住主线。不再盲目地去google。比如，今天突然写到关于如何自定义一个循环双向链表的泛型类。跳出知识本身，涉及到的方面主要有三点：</p>
+</li>
+</ol>
+<ul>
+<li>Java程序设计突然卡壳(双向循环链表翻了书才知道应该先自定义一个节点类，再编写链表类).</li>
+<li>目前学过的Java基础还没有遇到过如何设计泛型类(class<T>),又或者说<code>class&lt;Player&gt;</code>，Player类中的变量为何不能使用等等。这都说明了Java没有学通，只是学了一点皮毛和如何使用罢了。要真正弄明白其中的原理，还得系统地针对性学习才行。此时千万别去google，越google思绪越乱。</li>
+<li>整体的架构(对于一个项目的整体设计),对于目前来说，还没有实操经验，所以刚上手一个项目会过于着急写完，而不是先确定一个架构，对于之前的一本书&lt;&lt;设计模式&gt;&gt;或许能够解决这个问题。</li>
+</ul>
+<ol start="28">
+<li>Java进阶回顾</li>
+</ol>
+<ul>
+<li>泛型的定义与使用<br><code>定义</code>:ArrayList&lt;E,T,K,V&gt;做类名<br><code>使用</code>:ArrayList&lt;? extends Car&gt;做形参</li>
+</ul>
+<ol start="29">
+<li></li>
+</ol>
+<ul>
+<li>倒排索引的数据结构：</li>
+</ul>
+<ul>
+<li>关键词的查询哈希表</li>
+<li>文档列表组织采用二叉搜索树</li>
+</ul>
+<ul>
+<li>对应leet 2080题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据结构 这里的TreeNode对应的节点应该是已经够造好二叉搜索树的根节点  方便后续查找</span></span><br><span class="line">    HashMap&lt;String, TreeNode&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">// 给定word需要查找的单词  fileId是单词是否在该文档当中出现过</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findEle</span><span class="params">(<span class="keyword">int</span> fileId,String word)</span></span>&#123;</span><br><span class="line">        TreeNode root = map.get(word);</span><br><span class="line">        <span class="keyword">while</span>(root!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> val = root.val;</span><br><span class="line">            <span class="keyword">if</span>(val==fileId) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(val&gt;fileId) root=root.left;</span><br><span class="line">            <span class="keyword">else</span> root=root.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li>通过上述案例 回顾了二叉搜索树的插入。12.3日看二叉搜索树的删除与构造!</li>
+</ul>
+<ol start="30">
+<li>对一个文本构建01向量模型的两个方法</li>
+</ol>
+<ul>
+<li>对文本中的分词遍历，构建set集合，对词袋遍历，判断词袋中的词是否在set中出现过。</li>
+<li>通过倒排索引构建向量模型，如果倒排索引Hasmap&lt;Integer,TreeNode&gt;中的二叉排序树是按照文本名称的某种规则排序，例如，词语 来华人为d2,d3唯独没有在p1中出现过。当要求p1的向量模型时，遍历倒排索引表，对每一个词的二叉排序树查找。时间复杂度为O(nlog(n));</li>
+<li>最后一个方法与第二个方法类似，但是数据结构为HashMap&lt;Integer,List<Integer>&gt;的规则是0和1.例如词语 来华人为0，1，1，意思是唯独没有在文档1中出现过。那么此时外层遍历倒排索引表，内层直接添加res+=list.get(0)，时间复杂度为O(n);</li>
+</ul>
+<ol start="31">
+<li><p>leet1005题新思路，设置计数数组cnt,对于数组中元素的符号反转，其实对应着值域映射，比如，-100翻转为100，相当于-100的个数减一，100的个数加一。</p>
+</li>
+<li><p>idea显示uml快捷键 ctrl+alt+shift+u</p>
+</li>
+<li><p>真正模拟用栈实现函数调用的递归(拿斐波那契举例)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FiboNode</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    <span class="keyword">boolean</span> visited;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FiboNode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FiboNode</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">boolean</span> visited)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.val = val;</span><br><span class="line">        <span class="keyword">this</span>.visited = visited;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">FibonacciByRealStack</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">        Stack&lt;FiboNode[]&gt; stack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        FiboNode f1 = <span class="keyword">new</span> FiboNode(n - <span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">        FiboNode f2 = <span class="keyword">new</span> FiboNode(n - <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">        FiboNode[] arr=<span class="keyword">new</span> FiboNode[<span class="number">2</span>];</span><br><span class="line">        arr[<span class="number">0</span>]=f1;arr[<span class="number">1</span>]=f2;</span><br><span class="line">        stack.push(arr);</span><br><span class="line">        <span class="keyword">int</span> base=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            FiboNode[] pop = stack.pop();</span><br><span class="line">            FiboNode n1 = pop[<span class="number">0</span>];</span><br><span class="line">            FiboNode n2 = pop[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> val = n1.val;</span><br><span class="line">            <span class="keyword">if</span>(!n1.visited)&#123;</span><br><span class="line">                stack.push(pop);</span><br><span class="line">                <span class="keyword">if</span> (val == <span class="number">0</span>) &#123;</span><br><span class="line">                    base += <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val == <span class="number">1</span>) base += <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 入栈</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    FiboNode[] array=<span class="keyword">new</span> FiboNode[<span class="number">2</span>];</span><br><span class="line">                    FiboNode fiboNode = <span class="keyword">new</span> FiboNode(val - <span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">                    FiboNode fiboNode1 = <span class="keyword">new</span> FiboNode(val - <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">                    array[<span class="number">0</span>]=fiboNode;</span><br><span class="line">                    array[<span class="number">1</span>]=fiboNode1;</span><br><span class="line">                    stack.push(array);</span><br><span class="line">                &#125;</span><br><span class="line">                n1.visited=<span class="keyword">true</span>;</span><br><span class="line"><span class="comment">//                System.out.println(base);</span></span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!n2.visited)&#123;</span><br><span class="line">                <span class="keyword">int</span> val1 = n2.val;</span><br><span class="line">                <span class="keyword">if</span> (val1 == <span class="number">0</span>) &#123;</span><br><span class="line">                    base += <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val1 == <span class="number">1</span>) base += <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 入栈</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    FiboNode[] array=<span class="keyword">new</span> FiboNode[<span class="number">2</span>];</span><br><span class="line">                    FiboNode fiboNode = <span class="keyword">new</span> FiboNode(val1 - <span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">                    FiboNode fiboNode1 = <span class="keyword">new</span> FiboNode(val1 - <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">                    array[<span class="number">0</span>]=fiboNode;</span><br><span class="line">                    array[<span class="number">1</span>]=fiboNode1;</span><br><span class="line">                    stack.push(array);</span><br><span class="line">                &#125;</span><br><span class="line"><span class="comment">//                System.out.println(base);</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> base;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>2021年12月7日留:</p>
+</li>
+</ol>
+<ul>
+<li>用echarts做一个代码量的图表</li>
+</ul>
+<ol start="35">
+<li><p>对于力扣的困难题，不用过多地纠结于细枝末节，抓住主干思路，理解为什么这么做效率会更高。等之后对各个方法对熟悉了之后，再去抓细节也不迟。</p>
+</li>
+<li><p>2021年12月10日：</p>
+</li>
+</ol>
+<ul>
+<li>对于之前的一个想法，做一个信息公告更新提醒小程序。要用到linux操作系统的知识，但是由于很少用到该操作系统，导致每遇到一个问题就要查一次，效率很低，具体的做法是，如果浪费太多时间还解决不了，就说明需要系统地学习linux，其他问题类似，就是因为基础太弱才导致很多问题解决不了而且效率太低。</li>
+<li>对于操作性的问题(例如重装系统，安装双系统)，用空闲时间去折腾，主要的时间还是得花时间系统学习知识</li>
+</ul>
+<ol start="37">
+<li>周赛题2002题再总结：</li>
+</ol>
+<ul>
+<li>当看到字符串长度&lt;=12这个条件时，考虑暴力，由此想到状压枚举.</li>
+<li>特别注意,记录表中存放的不是回文字符串的长度，二是回文字符串对应的二进制子序列。因为如果存放的回文字符串的长度，后续就不能够判断两个回文字符串是否相交(record[i]&amp;record[j]==0)</li>
+</ul>
+<ol start="38">
+<li>模7同步复位计数器于异步复位计数器的区别：</li>
+</ol>
+<ul>
+<li>同步复位计数器的复位信号给0110，异步复位器的复位信号给0111.</li>
+<li>因为同步计数器是当时钟信号到来时才复位，异步复位只要是到达复位信号立即复位，如果0110就复位，就看不到6.但是如果是0111，是看得到7的，只不过时延太快。(对应视频48节).</li>
+<li>异步复位的复位信号与时钟无关，但是计数的过程与时钟有关 <code>51节开头</code></li>
+</ul>
+<ol start="39">
+<li><p>学习应当系统性学习，零散式地学习可以，但是需要一个正确的引导方式，视频是一个很好地零散式学习方法。至少可以少走很多弯路，如果只用通过一个简单的搜寻就可以找的答案的问题，可以搜搜，但是如果搜索到地很多答案都解决不了问题，应当立即停止搜寻。日后再解决。提高效率！</p>
+</li>
+<li><p>runtime error :可能是数组下标越界</p>
+</li>
+</ol>
 <!-- flag of hidden posts -->
     </div>
 

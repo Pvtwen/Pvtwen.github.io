@@ -169,14 +169,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -225,7 +225,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -238,7 +238,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">计算机操作系统</a>
+          <a href="/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/" class="post-title-link" itemprop="url">尚硅谷</a>
         </h2>
 
         <div class="post-meta-container">
@@ -249,14 +249,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-16 18:02:58" itemprop="dateCreated datePublished" datetime="2021-03-16T18:02:58+08:00">2021-03-16</time>
+      <time title="创建时间：2021-04-20 18:41:07" itemprop="dateCreated datePublished" datetime="2021-04-20T18:41:07+08:00">2021-04-20</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-07 16:14:39" itemprop="dateModified" datetime="2021-11-07T16:14:39+08:00">2021-11-07</time>
+        <time title="修改时间：2021-06-17 17:40:26" itemprop="dateModified" datetime="2021-06-17T17:40:26+08:00">2021-06-17</time>
       </span>
 
   
@@ -269,38 +269,118 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h1><ul>
-<li>教学资源</li>
-</ul>
-<ol>
-<li>网易云课堂–哈工大李志军老师的os。<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/115">配套的实验环境</a></li>
-<li>学堂在线清华OS课程练习题</li>
-<li>国内的xv6 lab-清华大学ucore OS <a target="_blank" rel="noopener" href="https://www.xuetangx.com/course/THU08091000267/5883104">链接</a></li>
-</ol>
-<ul>
-<li>书籍</li>
-</ul>
-<ol>
-<li>&lt;操作系统真相还原&gt;</li>
-</ol>
-<h1 id="疑难问题"><a href="#疑难问题" class="headerlink" title="疑难问题"></a>疑难问题</h1><ol>
-<li>进程互斥与同步的问题</li>
-</ol>
-<ul>
-<li>读者-写者问题：可以多个进程同时读文件，但只能一个进程写文件。并且读文件的操作不会改变资源的值。</li>
-<li>火车进站出站问题：可以多个火车同向运行，但是不允许火车相向运行。<blockquote>
-<p>两个问题的区别在于写文件只能允许一个进程，而火车不管是同向还是相向，都可以多个进程同时运行.</p>
-</blockquote>
+          <ol>
+<li><p>乐观锁 (防止多人同时抢一门课发生丢失更新)   P13节</p>
 </li>
-</ul>
-<ol start="2">
-<li>读者写者问题和多人过桥问题<br>对比读者写者问题，尽管可能同时运行在<code>wait(s)</code>，但由于两者本来就互斥，故有以下逻辑<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count1==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure></li>
+<li><p>codegenerator 改动</p>
+</li>
 </ol>
-<p><img src="/images/%E4%BD%9C%E4%B8%9A1.jpg" alt="图片"></p>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><ol>
-<li>GCC编译器</li>
-<li>GDB调试器</li>
+<ul>
+<li>项目生成位置</li>
+<li>策略</li>
+<li>数据库</li>
+<li>包</li>
+<li>数据库表名称</li>
+</ul>
+<ol start="8">
+<li>因为mapper文件夹下只有mapper的接口，而没有mapper的实现类（例如：service层中有@Service注解），所以需要@MapperScan</li>
+</ol>
+<hr>
+<ol start="10">
+<li>逻辑删除的两种方式：</li>
+</ol>
+<ul>
+<li>创建字段时：设置default 0,不要@TableField(fill=),在properties文件中配置<code>global-config</code></li>
+<li>不设置default 0,在mp自动填充中@TableFiled,并且在MetaHandler中setFiledname</li>
+</ul>
+<ol start="11">
+<li></li>
+</ol>
+<ul>
+<li>@RequestBody的作用：将前端的数据封装成json数据，然后传值给后端,但是请求方式必须是 @PostMapping</li>
+<li>@ResponseBody 返回数据，返回json数据</li>
+<li>@RequestBody(required=false) 表示该对象可以没有值</li>
+<li>测试restful  查询-get   添加-post  修改 delete    删除</li>
+</ul>
+<ol start="12">
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(<span class="meta">@RequestBody</span> EduTeacher eduteacher)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>npm下载依赖</p>
+</li>
+</ol>
+<ul>
+<li>通过 npm install jquery下载jquery依赖  可以@version</li>
+<li>通过 npm install 根据package.json下载文件</li>
+</ul>
+<ol start="14">
+<li>node.js无法实现es6的模块化代码 <code>module.exports</code></li>
+</ol>
+<ul>
+<li>es5实现模块化:</li>
+</ul>
+<p>01.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(a)+<span class="built_in">parseInt</span>(b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置方法可以被调用</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>02.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m=<span class="built_in">require</span>(<span class="string">&#x27;./01&#x27;</span>) <span class="comment">//引入js</span></span><br><span class="line"><span class="keyword">let</span> sum1=m.sum(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum1)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>es6实现模块化 需要用babel转码</li>
+</ul>
+<ol start="15">
+<li>webpack-admin-template</li>
+</ol>
+<ul>
+<li>前端框架的入口:<br>index.html、src/main.js</li>
+<li>该框架主要基于两个模板做成 vue、element-ui</li>
+<li>config/index.js中修改useEslint:false省去检查严格</li>
+<li>主要修改 src下的/api,/router,/views 即 接口，路由，视图</li>
+</ul>
+<ol start="16">
+<li><p>先点修改再点击左侧导航栏的添加按钮<br>多次路由跳转到同一个页面，在页面中created方法只会执行第一次，后面再进行跳转不会再次执行</p>
+</li>
+<li><p>nginx、阿里云oss、eazyexcel处理批量数据</p>
+</li>
+<li><p>上传excel表</p>
+</li>
+</ol>
+<ul>
+<li>axios不能上传文件  上传文件的代码:<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;讲师头像&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!-- 头衔缩略图 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">pan-thumb</span> <span class="attr">:image</span>=<span class="string">&quot;teacher.avatar&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 文件上传按钮 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-upload&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;imagecropperShow=true&quot;</span>&gt;</span>更换头像</span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">      v-show：是否显示上传组件</span></span><br><span class="line"><span class="comment">      :key：类似于id，如果一个页面多个图片上传控件，可以做区分</span></span><br><span class="line"><span class="comment">      :url：后台上传的url地址</span></span><br><span class="line"><span class="comment">      @close：关闭上传组件</span></span><br><span class="line"><span class="comment">      @crop-upload-success：上传成功后的回调 </span></span><br><span class="line"><span class="comment">        &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">          &lt;image-cropper</span><br><span class="line">                        v-show=&quot;imagecropperShow&quot;</span><br><span class="line">                        :width=&quot;300&quot;</span><br><span class="line">                        :height=&quot;300&quot;</span><br><span class="line">                        :key=&quot;imagecropperKey&quot;</span><br><span class="line">                        :url=&quot;BASE_API+&#x27;/eduoss/fileoss&#x27;&quot;</span><br><span class="line">                        field=&quot;file&quot;</span><br><span class="line">                        @close=&quot;close&quot;</span><br><span class="line">                        @crop-upload-success=&quot;cropSuccess&quot;/&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="19">
+<li>EasyExcel</li>
+</ol>
+<ul>
+<li>首先引入依赖<dependencies></dependencies></li>
+<li>其次看父工程中的pom.xml中&lt;poi.version&gt;&lt;/poi.version&gt;版本号为3.17</li>
+</ul>
+<ol start="20">
+<li>单一服务器模式 登录<br>(1) 使用session对象实现  一台服务器适用</li>
+</ol>
+<ul>
+<li>登录成功之后，把用户数据放到session</li>
+<li>判断是否登录，从session获取数据，可以获取到登录信息<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.setAttribute</span><br><span class="line">session.getAttribute</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="21">
+<li>登录：如果配置了多台服务器，将一个项目中不同的子功能分摊到不同的服务器中去，但是此时session不能共享，也就是说，有多少服务器就要登陆多少次。解决这个问题的办法就是设置单点登录。单点登录的三种实现方法。</li>
+</ol>
+<ul>
+<li>session广播</li>
+<li>使用cookie+redis实现</li>
+<li>使用token实现</li>
+</ul>
+<hr>
+<blockquote>
+<p>redis:在key中生成唯一随机值(ip,用户id等等),在value存用户数据<br>cookie: 把redis里面生成地key放到cookie里面</p>
+</blockquote>
+<blockquote>
+<p>token： 在某个模块进行登陆之后，按照规则生成字符串，把登录之后用户包含到生成字符串里面，把字符串返回</p>
+<blockquote>
+<p>可以把字符串通过cookie返回<br>把字符串通过地址栏返回</p>
+</blockquote>
+</blockquote>
+<ol start="22">
+<li><p>认证与授权springsecurity的底层用到了许多拦截器（防止未登陆的用户直接访问后台数据信息</p>
+</li>
+<li><p><code>(有待考证）</code>：如果主键的字段类型为string，后台设置idtype=id_worker_str,创建数据库的时候不需要设置auto_increment；如果逐渐的字段类型为integer,后台设置idtype=id_worker_int,创建数据库的时候就需要设置auto_increment</p>
+</li>
 </ol>
 
       
@@ -328,7 +408,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/14/MyBatis/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -341,7 +421,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/14/MyBatis/" class="post-title-link" itemprop="url">MyBatis</a>
+          <a href="/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/" class="post-title-link" itemprop="url">学习springboot过程中的心得</a>
         </h2>
 
         <div class="post-meta-container">
@@ -352,14 +432,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-14 20:54:02" itemprop="dateCreated datePublished" datetime="2021-03-14T20:54:02+08:00">2021-03-14</time>
+      <time title="创建时间：2021-04-10 16:14:03" itemprop="dateCreated datePublished" datetime="2021-04-10T16:14:03+08:00">2021-04-10</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-02 20:06:42" itemprop="dateModified" datetime="2021-04-02T20:06:42+08:00">2021-04-02</time>
+        <time title="修改时间：2021-04-24 15:43:58" itemprop="dateModified" datetime="2021-04-24T15:43:58+08:00">2021-04-24</time>
       </span>
 
   
@@ -372,59 +452,12 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="MyBatis的作用"><a href="#MyBatis的作用" class="headerlink" title="MyBatis的作用"></a>MyBatis的作用</h1><p>可以简化JDBC操作，实现数据的持久化</p>
-<ul>
-<li>ORM: Object Relational Mapping</li>
-<li>MyBatis: 是ORM的一个实现（与之相同的还有Hibernate)</li>
-<li>ORM使得开发人员像操作对象一样操作数据库。<h1 id="MyBatis程序的步骤"><a href="#MyBatis程序的步骤" class="headerlink" title="MyBatis程序的步骤"></a>MyBatis程序的步骤</h1></li>
-<li>引入mybatis.jar 和 jdbc.jar</li>
-<li>配置: conf.xml文件配置数据库的信息和需要加载的映射文件<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta"> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta"> <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line"> 		<span class="comment">&lt;!-- 开发环境（自己的计算机） --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/football?serverTimezone=UTC&quot;</span>/&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;MyNewPass&quot;</span>/&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 放映射文件 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/pvtwen/entity/personMapper.xml&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>映射文件 xxMapper.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span></span></span><br><span class="line"><span class="meta"> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta"> <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;org.pvtwen.entity.personMapper&quot;</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryPersonById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">	 	select * from Person where id = #&#123;id&#125;</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>测试类:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Reader reader = Resources.getResourceAsReader(<span class="string">&quot;conf.xml&quot;</span>);</span><br><span class="line">		SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">	</span><br><span class="line">		SqlSession session = sessionFactory.openSession();</span><br><span class="line">	    String statement = <span class="string">&quot;org.pvtwen.entity.personMapper.queryPersonById&quot;</span>;</span><br><span class="line">	    </span><br><span class="line">	    <span class="comment">//MyBatis底层通过动态代理将Object对象变成一个Person对象</span></span><br><span class="line">	    Person person = session.selectOne(statement, <span class="number">1</span>);</span><br><span class="line">		session.commit();</span><br><span class="line">		session.close();</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><font color="red" size="5">注意:</font> 因为transaction的代理模式为JDBC，所以在执行完毕后应该commit和close.</p>
-</blockquote>
-<h1 id="conf-xml文件中各种参数"><a href="#conf-xml文件中各种参数" class="headerlink" title="conf.xml文件中各种参数"></a>conf.xml文件中各种参数</h1></li>
-<li>dataSource数据源类型 ：</li>
-<li>POOLED：使用数据库连接池</li>
-<li>UNPOOLED：传统的JDBC模式</li>
-<li>JNDI：从tomcat中获取一个内置的数据库连接池（数据库连接池-数据源）</li>
-<li>transactionManager事务提交的方式</li>
-<li>type=”JDBC”: 利用JDBC方式处理事务（commit rollback close）</li>
-<li>type=”MANAGED”: 将事务交给其他组件去托管(Spring, jobss)</li>
-</ul>
-<h1 id="xxMapper-xml文件中各种参数"><a href="#xxMapper-xml文件中各种参数" class="headerlink" title="xxMapper.xml文件中各种参数"></a>xxMapper.xml文件中各种参数</h1><ul>
-<li>Namespace: 该mapper.xml映射文件的唯一标识符</li>
-<li>增删改查等标签当中 各参数的含义:<br>  parameterType: 输入参数的类型<br>  resultType: 查询返回结果的类型</li>
-<li>如果输入参数: 是简单类型 (8个基本类型+String) 可以使用任何占位符, #{xx}</li>
-<li>如果是对象类型（例如Student）,则必须是对象的属性#{属性名}</li>
-</ul>
-<h1 id="多个参数的SQL语句"><a href="#多个参数的SQL语句" class="headerlink" title="多个参数的SQL语句"></a>多个参数的SQL语句</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">”addStudent”</span> <span class="attr">parameter</span>=<span class="string">”org.pvtwen.entity.Student”</span>&gt;</span></span><br><span class="line">		Insert into student(stuno,sname,sage) values(#&#123;stuNo&#125;,#&#123;stuName&#125;,#&#123;&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>mapper动态代理方式的crud(也叫mybatis开发)<br>原则: <code>约定优于配置</code></p>
-</blockquote>
-<ul>
-<li>动态代理的几种配置方式</li>
-</ul>
-<ol>
-<li>配置方式(abc.xml)<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>myProject<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>硬编码方式(abc.java)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Configuration conf=<span class="keyword">new</span> Configuration();</span><br><span class="line">Con.setName(“myProject”);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>约定方式(默认值就是myProject)<br>具体实现步骤<br>一:基础环境：mybatis.jar/connector.jar、conf.xml、mapper.xml<br>二：不同之处：约定的目标：省略掉statement,根据定位,可以直接定位sql语句<br>三：定义接口：<br> (a)    方法名和mapper.xml中sql标签的id值相同<br> (b) 方法的输入参数和mapper.xml文件中标签的parameterType类型一致<br> (c) 方法的返回值和mapper.xml文件中标签的resultType类型一致 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;org.pvtwen.mapper.StudentMapper&quot;</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryPersonById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">	 	select * from Person where id = #&#123;id&#125;</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">select</span>&gt;</span> </span><br><span class="line">	 </span><br><span class="line">	 <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updatePersonById&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span>&gt;</span></span><br><span class="line">	 	update Person set pname=#&#123;pname&#125;,age=#&#123;age&#125; where id=#&#123;id&#125;</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line">	 </span><br><span class="line">	 <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addPerson&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span>&gt;</span></span><br><span class="line">	 	insert into Person values(#&#123;id&#125;,#&#123;pname&#125;,#&#123;age&#125;)</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line">	 </span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryAllPerson&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span>&gt;</span></span><br><span class="line">	 	select * from Person</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentMapper</span> </span>&#123;</span><br><span class="line">	<span class="function">Person <span class="title">queryPersonById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">	<span class="function">List&lt;Person&gt; <span class="title">queryAllPerson</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">updatePersonById</span><span class="params">(Person person)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">addPerson</span><span class="params">(Person person)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
- (d)    Mapper.xml文件中的namespace的值，就是接口的全类名(接口-mapper)<br> 一般将mapper配置文件和接口放在同一个包中</li>
-</ol>
-<h1 id="优化配置"><a href="#优化配置" class="headerlink" title="优化配置"></a>优化配置</h1><ul>
-<li>步骤</li>
-</ul>
-<ol>
-<li>创建属性文件：db.properties,用于保存数据库的信息</li>
-</ol>
-<h1 id="mybatis的全局参数"><a href="#mybatis的全局参数" class="headerlink" title="mybatis的全局参数"></a>mybatis的全局参数</h1><p>conf.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 开启日志，并指定使用的具体日志 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;LOG4J&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 开启延迟加载 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;lazyLoadingEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 关闭立即加载 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;aggressiveLazyLoading&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 开启二级缓存 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;cacheEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <h1 id="springboot与servlet两者封装对象的方式"><a href="#springboot与servlet两者封装对象的方式" class="headerlink" title="springboot与servlet两者封装对象的方式"></a>springboot与servlet两者封装对象的方式</h1><h2 id="springboot的Controller层当中"><a href="#springboot的Controller层当中" class="headerlink" title="springboot的Controller层当中"></a>springboot的Controller层当中</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addSuccess</span><span class="params">(Employee employee)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;add--&gt;&quot;</span>+employee);</span><br><span class="line">    employeeDao.addNewEmployee(employee);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/emp&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>addSuccess方法中使用Employee对象作为入参,在前端html代码的form表单中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/add&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>名字<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入名字&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>邮箱<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入邮箱&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span>&gt;</span>部门<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 因为department是一个对象，传参的时候不能传一个对象，故先传对象的id值，然后后端接受了id值后，通过id值来查询department，并将查询到的department赋值给employee --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">name</span>=<span class="string">&quot;department.id&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;department.getDepartmentName()&#125;&quot;</span> <span class="attr">th:each</span>=<span class="string">&quot;department:$&#123;departments&#125;&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;department.getId()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>日期<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入日期&quot;</span> <span class="attr">name</span>=<span class="string">&quot;birth&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-offset-2 col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default&quot;</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/03/14/MyBatis/#more" rel="contents">
+              <a class="btn" href="/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -448,7 +481,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
