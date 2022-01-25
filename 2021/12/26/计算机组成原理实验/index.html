@@ -23,17 +23,22 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"pvtwen.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.2.2","exturl":false,"sidebar":{"display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="汉字编码实验 遇到的问题   ansi与gbk的关系 utf-8.为什么gb2312的文本格式要以ansi存盘 -A0A0的补码dfe0 hexToString文档   以上问题有一个综合答案，为什么要半角转全角？因为国标转区位码电路是针对中文字符的电路，如果用半角的电路，在字库中找不到对应的字符，自然就显示不了当前字符。其他的细枝末节就不用关心了。例如，逗号句号的全角半角，这些都不重要。  海明">
+<meta name="description" content="汉字编码实验 遇到的问题   ansi与gbk的关系 utf-8.为什么gb2312的文本格式要以ansi存盘 -A0A0的补码dfe0 gbk转十六进制代码 hexString   以上问题有一个综合答案，为什么要半角转全角？因为国标转区位码电路是针对中文字符的电路，如果用半角的电路，在字库中找不到对应的字符，自然就显示不了当前字符。其他的细枝末节就不用关心了。例如，逗号句号的全角半角，这些都不">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机组成原理实验">
 <meta property="og:url" content="https://pvtwen.github.io/2021/12/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/index.html">
 <meta property="og:site_name" content="PrivateWen">
-<meta property="og:description" content="汉字编码实验 遇到的问题   ansi与gbk的关系 utf-8.为什么gb2312的文本格式要以ansi存盘 -A0A0的补码dfe0 hexToString文档   以上问题有一个综合答案，为什么要半角转全角？因为国标转区位码电路是针对中文字符的电路，如果用半角的电路，在字库中找不到对应的字符，自然就显示不了当前字符。其他的细枝末节就不用关心了。例如，逗号句号的全角半角，这些都不重要。  海明">
+<meta property="og:description" content="汉字编码实验 遇到的问题   ansi与gbk的关系 utf-8.为什么gb2312的文本格式要以ansi存盘 -A0A0的补码dfe0 gbk转十六进制代码 hexString   以上问题有一个综合答案，为什么要半角转全角？因为国标转区位码电路是针对中文字符的电路，如果用半角的电路，在字库中找不到对应的字符，自然就显示不了当前字符。其他的细枝末节就不用关心了。例如，逗号句号的全角半角，这些都不">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pvtwen.github.io/images/ComputerComponents/1.png">
+<meta property="og:image" content="https://pvtwen.github.io/images/ComputerComponents/2.png">
+<meta property="og:image" content="https://pvtwen.github.io/images/ComputerComponents/3.png">
+<meta property="og:image" content="https://pvtwen.github.io/images/ComputerComponents/4.png">
 <meta property="article:published_time" content="2021-12-26T13:03:56.000Z">
-<meta property="article:modified_time" content="2021-12-29T04:47:13.376Z">
+<meta property="article:modified_time" content="2022-01-16T15:08:28.413Z">
 <meta property="article:author" content="Pvtwen">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pvtwen.github.io/images/ComputerComponents/1.png">
 
 
 <link rel="canonical" href="https://pvtwen.github.io/2021/12/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/">
@@ -158,7 +163,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%89%E5%AD%97%E7%BC%96%E7%A0%81%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.</span> <span class="nav-text">汉字编码实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%BC%96%E7%A0%81%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.</span> <span class="nav-text">海明编码实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">3.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%89%E5%AD%97%E7%BC%96%E7%A0%81%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.</span> <span class="nav-text">汉字编码实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%BC%96%E7%A0%81%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.</span> <span class="nav-text">海明编码实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crc%E7%BC%96%E7%A0%81%E5%AE%9E%E9%AA%8C"><span class="nav-number">3.</span> <span class="nav-text">crc编码实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E5%8A%A0%E6%B3%95%E5%99%A8"><span class="nav-number">4.</span> <span class="nav-text">快速加法器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E4%BD%8D%E5%BF%AB%E9%80%9F%E5%8A%A0%E6%B3%95%E5%99%A8-gt-%E5%8D%81%E5%85%AD%E4%BD%8D%E5%BF%AB%E9%80%9F%E5%8A%A0%E6%B3%95%E5%99%A8-gt-%E4%B8%89%E5%8D%81%E4%BA%8C%E4%BD%8D%E5%BF%AB%E9%80%9F%E5%8A%A0%E6%B3%95%E5%99%A8"><span class="nav-number">5.</span> <span class="nav-text">四位快速加法器-&gt;十六位快速加法器-&gt;三十二位快速加法器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A0%E6%AD%A3%E4%B9%8B%E5%89%8D%E5%AF%B9%E7%94%A8%E5%8A%A0%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B9%98%E6%B3%95%E7%9A%84%E9%94%99%E8%AF%AF"><span class="nav-number">5.1.</span> <span class="nav-text">纠正之前对用加法设计乘法的错误</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RAM%E5%AE%9E%E9%AA%8C"><span class="nav-number">6.</span> <span class="nav-text">RAM实验</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E5%BA%93%E7%94%B5%E8%B7%AF-%E5%AD%97%E6%89%A9%E5%B1%95"><span class="nav-number">6.1.</span> <span class="nav-text">字库电路 字扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MIP-RAM%E5%AE%9E%E9%AA%8C"><span class="nav-number">6.2.</span> <span class="nav-text">MIP RAM实验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">7.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -174,7 +179,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -187,7 +192,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -262,7 +267,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-29 12:47:13" itemprop="dateModified" datetime="2021-12-29T12:47:13+08:00">2021-12-29</time>
+        <time title="修改时间：2022-01-16 23:08:28" itemprop="dateModified" datetime="2022-01-16T23:08:28+08:00">2022-01-16</time>
       </span>
 
   
@@ -281,7 +286,7 @@
 <ol start="3">
 <li>ansi与gbk的关系 utf-8.为什么gb2312的文本格式要以ansi存盘</li>
 <li>-A0A0的补码dfe0</li>
-<li>hexToString文档</li>
+<li>gbk转十六进制代码 hexString</li>
 </ol>
 <ul>
 <li>以上问题有一个综合答案，为什么要半角转全角？因为国标转区位码电路是针对中文字符的电路，如果用半角的电路，在字库中找不到对应的字符，自然就显示不了当前字符。其他的细枝末节就不用关心了。例如，逗号句号的全角半角，这些都不重要。</li>
@@ -301,7 +306,54 @@
 <li>回顾了一下解码器，通过真值表的最小项相或画电路图。</li>
 <li>想了一下，无论任何电路，增加一位总的奇/偶校验位，就可以验证总的编码是否出错.(该实验一是将偶校验用在了海明编码电路中p6,而是将偶校验用在了海明解码电路中G6)</li>
 </ol>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ol>
+<h1 id="crc编码实验"><a href="#crc编码实验" class="headerlink" title="crc编码实验"></a>crc编码实验</h1><p><img src="/images/ComputerComponents/1.png" alt="电路"></p>
+<ul>
+<li>思路：<a target="_blank" rel="noopener" href="http://www.noobyard.com/article/p-mwkmdagq-ss.html">链接</a></li>
+<li>公式:</li>
+</ul>
+<ol>
+<li>模二运算的的异或取余公式</li>
+<li>校验公式：先不看电路，刚开始，传过来的crc编码按位取反(也就是异或),和生成多项式G(x)模2除，如果生成的余数为0(首先保证只有一位错的情况)，那么对应位一定有错，因此将余数取反，此时的余数为1，在与该数据位异或，即可纠正该数据位。</li>
+<li>通俗点讲，第一步，将crc编码按位取反与Gx模2运算，根据公式1该公式可以化简为(crc%gx)^(该数据位取1%gx)，接下来，对应位会生成1位余数，如果该余数位0，说明该位有错，然后将该位取反。如果为1，说明该数据位没有错误。(x^0=x,x^1=-x)</li>
+</ol>
+<ul>
+<li>遇到的问题</li>
+</ul>
+<ol>
+<li>模2运算是什么 √</li>
+<li>回顾补码</li>
+</ol>
+<h1 id="快速加法器"><a href="#快速加法器" class="headerlink" title="快速加法器"></a>快速加法器</h1><ul>
+<li>看法:</li>
+</ul>
+<ol>
+<li>对G*,P*的解读，在四位先行进位电路中，其输入引脚Gi和Pi分别是一位相加后生成的先行进位信号。同理，G星和P星就是四位一组的先行进位信号.</li>
+<li>对第一点的进一步解读，G和P的推导是由公式Ci=XiYi+(Xi^Yi)Ci-1得来的，其中G看成是XiYi,P看成是Xi^Yi,也就是说，就算要推导，也应当从进位公式得出。那么，再看C4=G4+P4G3…..,这就是四位一组的先行进位公式，将G※看作是….,P※看作是….</li>
+<li>对8位可控加减法的无符号加法和减法的溢出的检测。加法很明显，就是最高位进位，如果为1，那就是溢出。无符号减法的溢出在最高位进位加一个非门。因为无符号减法同样是对减数y(表达式x-y)取反再加一，可以随便找两个二进制数试一下，切记，y取反再加一之后，就变成了x+y^，这里的y^是改变过后的y.</li>
+</ol>
+<h1 id="四位快速加法器-gt-十六位快速加法器-gt-三十二位快速加法器"><a href="#四位快速加法器-gt-十六位快速加法器-gt-三十二位快速加法器" class="headerlink" title="四位快速加法器-&gt;十六位快速加法器-&gt;三十二位快速加法器"></a>四位快速加法器-&gt;十六位快速加法器-&gt;三十二位快速加法器</h1><blockquote>
+<p>四位<br><img src="/images/ComputerComponents/2.png" alt="电路"><br>十六位<br><img src="/images/ComputerComponents/3.png" alt="电路"><br>三十二位<br><img src="/images/ComputerComponents/4.png" alt="电路"></p>
+</blockquote>
+<ul>
+<li>其中的CLA74182是先行进位电路，多次复用</li>
+<li>关于加法器还剩下移位乘和移位除，之后有时间再看。直接进入RAM设计<h2 id="纠正之前对用加法设计乘法的错误"><a href="#纠正之前对用加法设计乘法的错误" class="headerlink" title="纠正之前对用加法设计乘法的错误"></a>纠正之前对用加法设计乘法的错误</h2></li>
+<li>例如，1000*1000，一开始以为计算机是作1000次加法，让1000个1000相加。学了乘法器的主要两种设计方法的其中一种——阵列乘法器之后，发现其实是用手算的思路去实现的，首先根据输入的多位数，列乘法算式，可以提前计算出每一位，再将每一位用全加器相加(行位进位慢，斜位进位快)。</li>
+<li>其实反过来想，1000个1000相加，开销很大，利用阵列乘法器降低了存储开销。</li>
+</ul>
+<h1 id="RAM实验"><a href="#RAM实验" class="headerlink" title="RAM实验"></a>RAM实验</h1><blockquote>
+<p>记录</p>
+</blockquote>
+<h2 id="字库电路-字扩展"><a href="#字库电路-字扩展" class="headerlink" title="字库电路 字扩展"></a>字库电路 字扩展</h2><ul>
+<li>字扩展(容量扩展),地址线的高两位用来片选。</li>
+<li>下面七个ROM相当于是位扩展，各自提供各自的数据位，全部选通。上面的四个ROM相当于字扩展，同一时刻，只有一个ROM被选通。</li>
+<li>这里再解释一下。四个12*4B的ROM相当于是由一个16x4B的ROM分裂而来，顺过来想，总的存储容量没有发生改变，相当于把存储容量除以了4.那么字扩展为什么能扩大容量呢。这里逆过来想就行了，如果手中有四个独立的12x4B的ROM，想要组成一个容量更大的ROM，只有通过字扩展来实现，12根地址线，10根拿来做地址选通，后两根拿来做片选信号。</li>
+<li>最后片选功能的实现可以用译码器实现，也可以用多路选择器实现，原理一样。<h2 id="MIP-RAM实验"><a href="#MIP-RAM实验" class="headerlink" title="MIP RAM实验"></a>MIP RAM实验</h2></li>
+<li>本质上的位扩展实验。</li>
+<li>其中字节选通功能和字库电路中的字扩展功能相同，该实验中，因为有12根地址线，四个10*1B的ROM，还剩下两根地址线，恰好做片选。</li>
+<li>字节选通功能和位扩展又不大相似，位扩展是每一个ROM都提供各自的位，最后组成总的数据位。字节选通相当于又回到了字扩展，因为单位时间内只有一个ROM提供数据，至于是哪个ROM，经过片选决定。</li>
+<li>待解决问题:为什么RAM测试电路中没有时钟信号。<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1></li>
+</ul>
+<ol>
 <li>隧道tunnel只能用在同一个电路中 不能跨电路使用</li>
 <li>异或门的属性，缺省是错误的?</li>
 </ol>
@@ -368,7 +420,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

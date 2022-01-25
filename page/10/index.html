@@ -169,7 +169,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -182,7 +182,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -225,7 +225,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/29/CORS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -238,7 +238,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="post-title-link" itemprop="url">二叉树</a>
+          <a href="/2021/04/29/CORS/" class="post-title-link" itemprop="url">CORS</a>
         </h2>
 
         <div class="post-meta-container">
@@ -249,24 +249,15 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-18 19:40:18" itemprop="dateCreated datePublished" datetime="2021-03-18T19:40:18+08:00">2021-03-18</time>
+      <time title="创建时间：2021-04-29 14:52:47" itemprop="dateCreated datePublished" datetime="2021-04-29T14:52:47+08:00">2021-04-29</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-05 16:22:00" itemprop="dateModified" datetime="2021-12-05T16:22:00+08:00">2021-12-05</time>
+        <time title="修改时间：2021-12-22 15:51:11" itemprop="dateModified" datetime="2021-12-22T15:51:11+08:00">2021-12-22</time>
       </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-        </span>
-    </span>
 
   
 </div>
@@ -278,7 +269,33 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <p><a target="_blank" rel="noopener" href="https://ieftimov.com/post/deep-dive-cors-history-how-it-works-best-practices/#cross-origin-reads">原文链接</a></p>
+<h1 id="在F12中的console模式下看CORS"><a href="#在F12中的console模式下看CORS" class="headerlink" title="在F12中的console模式下看CORS"></a>在F12中的console模式下看CORS</h1><ul>
+<li><p>后端springboot代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@PostMapping(&quot;greet/&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>+name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&#123;&quot;greet&quot;,&quot;/&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Console中代码  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:8080/greet/yawen&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span> &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">).then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text()).then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/CORS/localhost.png" alt="图片1"><br><img src="/images/CORS/goole.png" alt="图片2"></p>
+</li>
+</ul>
+<h1 id="preflight-request"><a href="#preflight-request" class="headerlink" title="preflight request"></a>preflight request</h1><p><img src="/images/CORS/preflight.png" alt="图片3"><br><img src="/images/CORS/prefilght2.png" alt="图片4"></p>
+<blockquote>
+<p>跨域请求中，浏览器会发出两个请求，一个是OPTION请求，另一个是POST请求。在OPTIONS请求中，状态码为200，但是请求依然不成功（报红)说明，浏览器没有拦截request请求，拦截的是response响应。</p>
+</blockquote>
+<h2 id="这是浏览器的预检请求"><a href="#这是浏览器的预检请求" class="headerlink" title="这是浏览器的预检请求"></a>这是浏览器的预检请求</h2><p>浏览器会对CORS认为复杂的请求执行预检请求，有如下标准:</p>
+<ol>
+<li>除了GET,POST,HEAD方法</li>
+<li>除了headers中的Accept,Accept-Language,Content-Language</li>
+<li>除了Content-Type: text/plain,multipart/form-data (application/json会执行OPTION预检)</li>
+</ol>
+<h2 id="如何避免预检"><a href="#如何避免预检" class="headerlink" title="如何避免预检"></a>如何避免预检</h2><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:4000/greet&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="string">&#x27;Ilija&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line">.then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text())</span><br><span class="line">.then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+此方法可以不执行预检，但是依然避免不了post请求.通过如下操作可以继续避免post请求，从而实现跨域请求.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">options <span class="string">&quot;/greet&quot;</span> <span class="keyword">do</span> |env|</span><br><span class="line">  # Allow `POST /greet`...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>] = <span class="string">&quot;POST&quot;</span></span><br><span class="line">  # ...with `Content-type` header in the request...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>] = <span class="string">&quot;Content-type&quot;</span></span><br><span class="line">  # ...from https://www.google.com origin.</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>] = <span class="string">&quot;https://www.google.com&quot;</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h1 id="Best-Practice"><a href="#Best-Practice" class="headerlink" title="Best Practice"></a>Best Practice</h1><h2 id="仅仅只允许yourwebsite-com发送request"><a href="#仅仅只允许yourwebsite-com发送request" class="headerlink" title="仅仅只允许yourwebsite.com发送request"></a>仅仅只允许yourwebsite.com发送request</h2><p><img src="/images/CORS/1.png" alt="图片"><br><img src="/images/CORS/2.png" alt="图片"><br>在某些情况下，需要对网站进行分析，这时，就需要浏览器发送有关用户在该网站上的体验的数据给后台，但是，却又不希望所有的站点都能够通过该后台的API来发送无关的数据，此时，后台中的代码,<code>Access-Control-Allow-Origin:yourwebsite.com</code>，通过该设置就可以只获取该网站发送来的数据了.</p>
+
       
     </div>
 
@@ -304,7 +321,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -317,7 +334,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">计算机操作系统</a>
+          <a href="/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/" class="post-title-link" itemprop="url">尚硅谷</a>
         </h2>
 
         <div class="post-meta-container">
@@ -328,14 +345,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-16 18:02:58" itemprop="dateCreated datePublished" datetime="2021-03-16T18:02:58+08:00">2021-03-16</time>
+      <time title="创建时间：2021-04-20 18:41:07" itemprop="dateCreated datePublished" datetime="2021-04-20T18:41:07+08:00">2021-04-20</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-11-07 16:14:39" itemprop="dateModified" datetime="2021-11-07T16:14:39+08:00">2021-11-07</time>
+        <time title="修改时间：2021-06-17 17:40:26" itemprop="dateModified" datetime="2021-06-17T17:40:26+08:00">2021-06-17</time>
       </span>
 
   
@@ -348,38 +365,118 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h1><ul>
-<li>教学资源</li>
-</ul>
-<ol>
-<li>网易云课堂–哈工大李志军老师的os。<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/115">配套的实验环境</a></li>
-<li>学堂在线清华OS课程练习题</li>
-<li>国内的xv6 lab-清华大学ucore OS <a target="_blank" rel="noopener" href="https://www.xuetangx.com/course/THU08091000267/5883104">链接</a></li>
-</ol>
-<ul>
-<li>书籍</li>
-</ul>
-<ol>
-<li>&lt;操作系统真相还原&gt;</li>
-</ol>
-<h1 id="疑难问题"><a href="#疑难问题" class="headerlink" title="疑难问题"></a>疑难问题</h1><ol>
-<li>进程互斥与同步的问题</li>
-</ol>
-<ul>
-<li>读者-写者问题：可以多个进程同时读文件，但只能一个进程写文件。并且读文件的操作不会改变资源的值。</li>
-<li>火车进站出站问题：可以多个火车同向运行，但是不允许火车相向运行。<blockquote>
-<p>两个问题的区别在于写文件只能允许一个进程，而火车不管是同向还是相向，都可以多个进程同时运行.</p>
-</blockquote>
+          <ol>
+<li><p>乐观锁 (防止多人同时抢一门课发生丢失更新)   P13节</p>
 </li>
-</ul>
-<ol start="2">
-<li>读者写者问题和多人过桥问题<br>对比读者写者问题，尽管可能同时运行在<code>wait(s)</code>，但由于两者本来就互斥，故有以下逻辑<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count1==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure></li>
+<li><p>codegenerator 改动</p>
+</li>
 </ol>
-<p><img src="/images/%E4%BD%9C%E4%B8%9A1.jpg" alt="图片"></p>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><ol>
-<li>GCC编译器</li>
-<li>GDB调试器</li>
+<ul>
+<li>项目生成位置</li>
+<li>策略</li>
+<li>数据库</li>
+<li>包</li>
+<li>数据库表名称</li>
+</ul>
+<ol start="8">
+<li>因为mapper文件夹下只有mapper的接口，而没有mapper的实现类（例如：service层中有@Service注解），所以需要@MapperScan</li>
+</ol>
+<hr>
+<ol start="10">
+<li>逻辑删除的两种方式：</li>
+</ol>
+<ul>
+<li>创建字段时：设置default 0,不要@TableField(fill=),在properties文件中配置<code>global-config</code></li>
+<li>不设置default 0,在mp自动填充中@TableFiled,并且在MetaHandler中setFiledname</li>
+</ul>
+<ol start="11">
+<li></li>
+</ol>
+<ul>
+<li>@RequestBody的作用：将前端的数据封装成json数据，然后传值给后端,但是请求方式必须是 @PostMapping</li>
+<li>@ResponseBody 返回数据，返回json数据</li>
+<li>@RequestBody(required=false) 表示该对象可以没有值</li>
+<li>测试restful  查询-get   添加-post  修改 delete    删除</li>
+</ul>
+<ol start="12">
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(<span class="meta">@RequestBody</span> EduTeacher eduteacher)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>npm下载依赖</p>
+</li>
+</ol>
+<ul>
+<li>通过 npm install jquery下载jquery依赖  可以@version</li>
+<li>通过 npm install 根据package.json下载文件</li>
+</ul>
+<ol start="14">
+<li>node.js无法实现es6的模块化代码 <code>module.exports</code></li>
+</ol>
+<ul>
+<li>es5实现模块化:</li>
+</ul>
+<p>01.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(a)+<span class="built_in">parseInt</span>(b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置方法可以被调用</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>02.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m=<span class="built_in">require</span>(<span class="string">&#x27;./01&#x27;</span>) <span class="comment">//引入js</span></span><br><span class="line"><span class="keyword">let</span> sum1=m.sum(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum1)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>es6实现模块化 需要用babel转码</li>
+</ul>
+<ol start="15">
+<li>webpack-admin-template</li>
+</ol>
+<ul>
+<li>前端框架的入口:<br>index.html、src/main.js</li>
+<li>该框架主要基于两个模板做成 vue、element-ui</li>
+<li>config/index.js中修改useEslint:false省去检查严格</li>
+<li>主要修改 src下的/api,/router,/views 即 接口，路由，视图</li>
+</ul>
+<ol start="16">
+<li><p>先点修改再点击左侧导航栏的添加按钮<br>多次路由跳转到同一个页面，在页面中created方法只会执行第一次，后面再进行跳转不会再次执行</p>
+</li>
+<li><p>nginx、阿里云oss、eazyexcel处理批量数据</p>
+</li>
+<li><p>上传excel表</p>
+</li>
+</ol>
+<ul>
+<li>axios不能上传文件  上传文件的代码:<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;讲师头像&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!-- 头衔缩略图 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">pan-thumb</span> <span class="attr">:image</span>=<span class="string">&quot;teacher.avatar&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 文件上传按钮 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-upload&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;imagecropperShow=true&quot;</span>&gt;</span>更换头像</span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">      v-show：是否显示上传组件</span></span><br><span class="line"><span class="comment">      :key：类似于id，如果一个页面多个图片上传控件，可以做区分</span></span><br><span class="line"><span class="comment">      :url：后台上传的url地址</span></span><br><span class="line"><span class="comment">      @close：关闭上传组件</span></span><br><span class="line"><span class="comment">      @crop-upload-success：上传成功后的回调 </span></span><br><span class="line"><span class="comment">        &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">          &lt;image-cropper</span><br><span class="line">                        v-show=&quot;imagecropperShow&quot;</span><br><span class="line">                        :width=&quot;300&quot;</span><br><span class="line">                        :height=&quot;300&quot;</span><br><span class="line">                        :key=&quot;imagecropperKey&quot;</span><br><span class="line">                        :url=&quot;BASE_API+&#x27;/eduoss/fileoss&#x27;&quot;</span><br><span class="line">                        field=&quot;file&quot;</span><br><span class="line">                        @close=&quot;close&quot;</span><br><span class="line">                        @crop-upload-success=&quot;cropSuccess&quot;/&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="19">
+<li>EasyExcel</li>
+</ol>
+<ul>
+<li>首先引入依赖<dependencies></dependencies></li>
+<li>其次看父工程中的pom.xml中&lt;poi.version&gt;&lt;/poi.version&gt;版本号为3.17</li>
+</ul>
+<ol start="20">
+<li>单一服务器模式 登录<br>(1) 使用session对象实现  一台服务器适用</li>
+</ol>
+<ul>
+<li>登录成功之后，把用户数据放到session</li>
+<li>判断是否登录，从session获取数据，可以获取到登录信息<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.setAttribute</span><br><span class="line">session.getAttribute</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="21">
+<li>登录：如果配置了多台服务器，将一个项目中不同的子功能分摊到不同的服务器中去，但是此时session不能共享，也就是说，有多少服务器就要登陆多少次。解决这个问题的办法就是设置单点登录。单点登录的三种实现方法。</li>
+</ol>
+<ul>
+<li>session广播</li>
+<li>使用cookie+redis实现</li>
+<li>使用token实现</li>
+</ul>
+<hr>
+<blockquote>
+<p>redis:在key中生成唯一随机值(ip,用户id等等),在value存用户数据<br>cookie: 把redis里面生成地key放到cookie里面</p>
+</blockquote>
+<blockquote>
+<p>token： 在某个模块进行登陆之后，按照规则生成字符串，把登录之后用户包含到生成字符串里面，把字符串返回</p>
+<blockquote>
+<p>可以把字符串通过cookie返回<br>把字符串通过地址栏返回</p>
+</blockquote>
+</blockquote>
+<ol start="22">
+<li><p>认证与授权springsecurity的底层用到了许多拦截器（防止未登陆的用户直接访问后台数据信息</p>
+</li>
+<li><p><code>(有待考证）</code>：如果主键的字段类型为string，后台设置idtype=id_worker_str,创建数据库的时候不需要设置auto_increment；如果逐渐的字段类型为integer,后台设置idtype=id_worker_int,创建数据库的时候就需要设置auto_increment</p>
+</li>
 </ol>
 
       
@@ -400,7 +497,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -434,7 +531,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

@@ -30,10 +30,14 @@
 <meta property="og:site_name" content="PrivateWen">
 <meta property="og:description" content="期货(2021.5.1)原文链接三郎是一个卖饭团的人，察觉到国家即将开战，米价到时候必将上涨，于是，和米商签订一张契约，以1000元&#x2F;吨的价格购买三个月之后的米。   保证金 为了米商和三郎都不毁约，双方都需要交一定的保证金，到期时，毁约的一方则没收保证金 保证金即日结算  为了保证交易的公平性，米价一旦降价（例如降价为900元&#x2F;吨），自动将三郎的保证金没收，同时契约上1000元&#x2F;吨的价格改为9">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pvtwen.github.io/images/MechanialRelay.png">
+<meta property="og:image" content="https://pvtwen.github.io/images/diode.png">
+<meta property="og:image" content="https://pvtwen.github.io/images/transistor.png">
 <meta property="article:published_time" content="2021-03-27T11:41:09.000Z">
-<meta property="article:modified_time" content="2021-12-27T14:27:43.030Z">
+<meta property="article:modified_time" content="2022-01-17T11:22:46.878Z">
 <meta property="article:author" content="Pvtwen">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pvtwen.github.io/images/MechanialRelay.png">
 
 
 <link rel="canonical" href="https://pvtwen.github.io/2021/03/27/%E9%9A%8F%E7%AC%94/">
@@ -48,7 +52,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>随笔 | PrivateWen</title><meta name="robots" content="noindex">
+<title>随笔 | PrivateWen</title>
   
 
 
@@ -173,7 +177,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -186,7 +190,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -261,7 +265,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-12-27 22:27:43" itemprop="dateModified" datetime="2021-12-27T22:27:43+08:00">2021-12-27</time>
+        <time title="修改时间：2022-01-17 19:22:46" itemprop="dateModified" datetime="2022-01-17T19:22:46+08:00">2022-01-17</time>
       </span>
 
   
@@ -310,11 +314,6 @@
 <li><p>实践：第一点是通过url栏去请求服务器的。但是通过ajax去请求服务器的话，<strong>每一次请求都相当于是一个新的通过url请求服务器</strong>，那么就会像第一点所说的一样，每次请求都不会有JESSIONID</p>
 </li>
 <li><p>理解：关闭浏览器之后，相当于断开了socket连接，其中的会话信息全部随之消失。</p>
-</li>
-<li><ul>
-<li>根据阿里巴巴Java开发手册：<br>[强制】所有整型包装类对象之间值的比较，全部使用equals方法比较。<br>说明:对于 Integer var = ? 在-128 至 127 之间的赋值，Integer 对象是在 IntegerCache.cache 产生， 会复用已有对象，这个区间内的 Integer 值可以直接使用==进行判断，但是这个区间之外的所有数据，都 会在堆上产生，并不会复用已有对象，这是一个大坑，推荐使用 equals 方法进行判断。<br>所以这里，当cnt.get(word1) 的值超过127，即同一个单词出现次数超过127次之后就会出现异常值:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Integer&gt; cnt = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">cnt.put(<span class="string">&quot;a&quot;</span>, <span class="number">128</span>);</span><br><span class="line">cnt.put(<span class="string">&quot;b&quot;</span>,<span class="number">128</span>);</span><br><span class="line">System.out.println(cnt.get(<span class="string">&quot;a&quot;</span>) == (cnt.get(<span class="string">&quot;b&quot;</span>)));</span><br></pre></td></tr></table></figure>
-结果为false</li>
-</ul>
 </li>
 <li><p>一篇外国小哥写的破解tplink路由器linux shell的博客<br><a target="_blank" rel="noopener" href="https://jalalsela.com/hacking-tp-link-tl-wr740n-backdoor/">原文链接</a></p>
 </li>
@@ -465,9 +464,32 @@
 <li>你不应该想着毕业第一年能做什么项目拿多少工资，你应该想想你觉得什么有兴趣，然后去憋十年，在十年间哪里学会了就写一段打包封装起来变成你自己的东西，然后十年之后憋出来了一点什么结果。你们现在这样想着几个月就要有成果马上就要发论文不是做科研的态度。”因为有前期的积累，才有可能“三到五天”实现想做的项目啊</li>
 </ul>
 <ol start="45">
-<li>从viterbi算法看数塔问题</li>
+<li><p>从viterbi算法看数塔问题</p>
+</li>
+<li><p>argmax(c∈(yes,no))P(sunny|c)P(cool|c)P(high|c)P(strong|c) =&gt; Math.max(P(sunny|yes)P(cool|yes)…,P(sunny|no)P(cool|no))</p>
+</li>
+<li><p>周赛275 5978题总结</p>
+</li>
 </ol>
-<!-- flag of hidden posts -->
+<ul>
+<li>方法一，哈希表中存startword,那么就循环targetword，并判断hash表中是否存在targetword的截取字符串</li>
+<li>方法二，哈希表中存targetword,那么就循环startword，并给startword添加字符，判断hash表中是否存在添加字符过后的startword字符串</li>
+</ul>
+<ol start="48">
+<li><p><code>2022.1.11</code>最近突然发现学习真的是一件很幸福的事，至少让你在感觉很多琐事在困扰你自己的时候，你发现生活还是有很多目标，还有很多新的东西等待你去发现。</p>
+</li>
+<li><p>学了数电再回过头看Crash Course第二节，计算机的零部件从机械继电器relay-&gt;真空管(英国一个物理学家发明了二极管diode)-&gt;晶体管(贝尔实验室的人发明半导体transistor)</p>
+</li>
+</ol>
+<ul>
+<li>机械继电器<br><img src="/images/MechanialRelay.png" alt="Relay"></li>
+<li>真空管<br><img src="/images/diode.png" alt="diode"></li>
+<li>晶体管<br><img src="/images/transistor.png" alt="transistor"></li>
+</ul>
+<ol start="50">
+<li>[疑问] 276周赛5982题 超时记忆化递归和不超时记忆化递归的区别？状态数一致，为什么复杂度不一致?</li>
+</ol>
+
     </div>
 
     
@@ -478,6 +500,18 @@
 
         
 
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="prev" title="二叉树">
+                  <i class="fa fa-chevron-left"></i> 二叉树
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/03/30/springboot/" rel="next" title="springboot">
+                  springboot <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -518,7 +552,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

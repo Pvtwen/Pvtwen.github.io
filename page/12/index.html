@@ -169,7 +169,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -182,7 +182,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -225,7 +225,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/06/Spring/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/27/%E9%9A%8F%E7%AC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -238,7 +238,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/06/Spring/" class="post-title-link" itemprop="url">Spring</a>
+          <a href="/2021/03/27/%E9%9A%8F%E7%AC%94/" class="post-title-link" itemprop="url">随笔</a>
         </h2>
 
         <div class="post-meta-container">
@@ -249,14 +249,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-06 16:45:24" itemprop="dateCreated datePublished" datetime="2021-03-06T16:45:24+08:00">2021-03-06</time>
+      <time title="创建时间：2021-03-27 19:41:09" itemprop="dateCreated datePublished" datetime="2021-03-27T19:41:09+08:00">2021-03-27</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-03-26 11:52:00" itemprop="dateModified" datetime="2021-03-26T11:52:00+08:00">2021-03-26</time>
+        <time title="修改时间：2022-01-17 19:22:46" itemprop="dateModified" datetime="2022-01-17T19:22:46+08:00">2022-01-17</time>
       </span>
 
   
@@ -269,20 +269,217 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1592029">Spring和XML注解的区别</a></p>
-<h1 id="通过property给bean对象赋值的两种方法"><a href="#通过property给bean对象赋值的两种方法" class="headerlink" title="通过property给bean对象赋值的两种方法"></a>通过property给bean对象赋值的两种方法</h1><ul>
-<li>通过set方法赋值</li>
-<li>通过构造器赋值 <constructor-arg value=""></constructor></li>
-<li>通过p命名空间注入 引入p命名空间.先再namespace中配置xmlns.其次，<bean p:></bean></li>
-<li>自动装配: byname条件:Course类的属性名=bean的id值</li>
+          <ol start="11">
+<li>期货(2021.5.1)<br><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19903936">原文链接</a><br>三郎是一个卖饭团的人，察觉到国家即将开战，米价到时候必将上涨，于是，和米商签订一张契约，以1000元/吨的价格购买三个月之后的米。</li>
+</ol>
+<ul>
+<li>保证金 为了米商和三郎都不毁约，双方都需要交一定的保证金，到期时，毁约的一方则没收保证金</li>
+<li>保证金即日结算  为了保证交易的公平性，米价一旦降价（例如降价为900元/吨），自动将三郎的保证金没收，同时契约上1000元/吨的价格改为900元/吨。这就是<code>保证金即日结算</code>。</li>
+<li>到期后通常不用实物交割  到期后，假如三郎的饭团店倒闭,三郎可以将契约转卖给开饭店的二郎. </li>
+<li>各类名词：建仓，持仓，交割，平仓</li>
 </ul>
-<h1 id="利用spring注解的形式依赖注入"><a href="#利用spring注解的形式依赖注入" class="headerlink" title="利用spring注解的形式依赖注入"></a>利用spring注解的形式依赖注入</h1><ul>
-<li>Dao层：respository 相当于创建了一个对象<bean id=""></li>
-<li>Service层：service相当于创建了要给对象</li>
+<ul>
+<li>建仓 三郎买米期货</li>
+<li>持仓 三郎持有期货直到到期</li>
+<li>交割 三郎期货到期时，以钱交货</li>
+<li>平仓 三郎期货到期之前，将期货转手卖给他人</li>
 </ul>
-<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>依赖注入中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;sqlSessionFactory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>name的值是根据属性的setter方法来进行命名的，例如，类中的属性为<code>public String who</code>,但是<code>setter</code>方法名为<code>public void setSomebody()</code>,那么,<code>&lt;property name=&quot;somebody&quot;&gt;&lt;/property&gt;</code>.应当根据JavaBean的命名规范来命名</p>
+<ol start="15">
+<li>Lithon-iron手机如何充放电 </li>
+</ol>
+<ul>
+<li>放电过程：石墨层间隙中的Li容易失去电子，失去的电子经过PCB的电子元件形成电路，Li离子通过电解质流向钴板，化合反应生成钴酸锂</li>
+<li>充电过程：Charger Force从钴板中扯出电子，让其返回原先的石墨层，从而迫使锂离子通过电解质返回石墨层</li>
+<li>电池容量越用越少的原因：在充放电的过程中，锂离子和电子与电解液和有机溶剂反应生成SEI的化合物，SEI会不可逆地消耗电解质和锂离子。造成锂离子地总量减少.</li>
+</ul>
+<ol start="18">
+<li>为什么关闭浏览器后，session随之消失：  </li>
+</ol>
+<ul>
+<li>网络上的解释：session存在于会话cookie中，会话cookie是存在于浏览器进程中的，也就是说，关闭了浏览器之后，会话cookie随之消失</li>
+<li>我的理解：</li>
+</ul>
+<ol>
+<li><p>实践：关闭浏览器之后，再去请求服务器，第一次请求的时候，Cookie中没有JESSIONID这一属性；只有第二次请求时，才带有JESSIONID这一属性，也就是说，第一次请求的时候，服务器将赋予该次请求一个新的session</p>
+</li>
+<li><p>实践：第一点是通过url栏去请求服务器的。但是通过ajax去请求服务器的话，<strong>每一次请求都相当于是一个新的通过url请求服务器</strong>，那么就会像第一点所说的一样，每次请求都不会有JESSIONID</p>
+</li>
+<li><p>理解：关闭浏览器之后，相当于断开了socket连接，其中的会话信息全部随之消失。</p>
+</li>
+<li><p>一篇外国小哥写的破解tplink路由器linux shell的博客<br><a target="_blank" rel="noopener" href="https://jalalsela.com/hacking-tp-link-tl-wr740n-backdoor/">原文链接</a></p>
+</li>
+<li></li>
+</ol>
+<ul>
+<li>离散数学中的许多理论可以应用于简单的数据结构模型中，卡特兰数，斐波那契等。</li>
+<li>工程导论学：工程上的很多东西是实践先于理论出现。也就是说对于工程师来说，很多情况下是在不知道理论前提的情况下去解决一个问题。综上来看，leetcode上面的很多问题都是很简单的离散数学理论的应用。</li>
+<li>对于数字电路来说也是如此，其中应用了很多离散数学的理论。</li>
+</ul>
+<ol start="24">
+<li><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/water-and-jug-problem/solution/guan-fang-ti-jie-de-javaban-ben-bfsshi-xian-fei-sh/">https://leetcode-cn.com/problems/water-and-jug-problem/solution/guan-fang-ti-jie-de-javaban-ben-bfsshi-xian-fei-sh/</a></p>
+</li>
+<li><p>Question397题 DFS，BFS，动态规划心得：</p>
+</li>
+</ol>
+<ul>
+<li>对于这一类起点终点确定的有向无环图的题目，如果用dfs，相当于是从结果逆推得到每一步的最优解。如果用bfs，相当于是从起点往终点推，因为保证每一步都是平等的(因为bfs是从步数低往步数高走)，所以只要一遇到终点1,立马返回结果。</li>
+<li>其次，对于bfs和dfs的哈希表来说，功能大致相似，bfs中的哈希表有两个作用，一是用于存储步数，二是用判断该值有没有被访问过，后续只要碰到该值，跳过。dfs中的哈希表只有一个作用，用于存储该步数的最优解(因为是从结果开始逆推，所以哈希表存储的一定是最优解)。后续只要碰到该值，就返回哈希表中存储的值。</li>
+<li>最后，这道题的边权为1，所以可以用bfs，但是638大礼包题目中边权不为1，因为每个礼包的价格不一样.</li>
+</ul>
+<ol start="26">
+<li></li>
+</ol>
+<ul>
+<li>观点：高考如果分数不理想，最好是优先专业。因为选好一个专业，大学就有了动力和方向，如果硬要去碰一个稍微好一点的学校，但是专业不感兴趣，大学四年相当于荒废，即使能够花业余时间去学感兴趣的东西，也会被专业课程压的脱不开身。</li>
+<li>再谈转专业的事情，转专业的想法其实就是在找退路。那么考研呢？为了去更好一点的院校，去读冷门专业？这也算找退路吗？有两个截然不同的看法。</li>
+</ul>
+<ol>
+<li><p>好的院校就是一个好的平台，和刚步入大学不同，那时有了方向，读研期间也能为了自己的方向而努力。所以不叫找退路。</p>
+</li>
+<li><p>冷门专业很可能是一个未知的领域，和大学一样，面对自己不感兴趣的专业，即使学有余力，也会被专业课程和论文压的脱不开身。</p>
+</li>
+<li><p><code>2021.11.28</code> 对于经常出现的对于知识的焦虑感，今天突然能够克制自己不再去过多纠结于知识本身，而是抓住主线。不再盲目地去google。比如，今天突然写到关于如何自定义一个循环双向链表的泛型类。跳出知识本身，涉及到的方面主要有三点：</p>
+</li>
+</ol>
+<ul>
+<li>Java程序设计突然卡壳(双向循环链表翻了书才知道应该先自定义一个节点类，再编写链表类).</li>
+<li>目前学过的Java基础还没有遇到过如何设计泛型类(class<T>),又或者说<code>class&lt;Player&gt;</code>，Player类中的变量为何不能使用等等。这都说明了Java没有学通，只是学了一点皮毛和如何使用罢了。要真正弄明白其中的原理，还得系统地针对性学习才行。此时千万别去google，越google思绪越乱。</li>
+<li>整体的架构(对于一个项目的整体设计),对于目前来说，还没有实操经验，所以刚上手一个项目会过于着急写完，而不是先确定一个架构，对于之前的一本书&lt;&lt;设计模式&gt;&gt;或许能够解决这个问题。</li>
+</ul>
+<ol start="28">
+<li>Java进阶回顾</li>
+</ol>
+<ul>
+<li>泛型的定义与使用<br><code>定义</code>:ArrayList&lt;E,T,K,V&gt;做类名<br><code>使用</code>:ArrayList&lt;? extends Car&gt;做形参</li>
+</ul>
+<ol start="29">
+<li></li>
+</ol>
+<ul>
+<li>倒排索引的数据结构：</li>
+</ul>
+<ul>
+<li>关键词的查询哈希表</li>
+<li>文档列表组织采用二叉搜索树</li>
+</ul>
+<ul>
+<li>对应leet 2080题<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据结构 这里的TreeNode对应的节点应该是已经够造好二叉搜索树的根节点  方便后续查找</span></span><br><span class="line">    HashMap&lt;String, TreeNode&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">// 给定word需要查找的单词  fileId是单词是否在该文档当中出现过</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">findEle</span><span class="params">(<span class="keyword">int</span> fileId,String word)</span></span>&#123;</span><br><span class="line">        TreeNode root = map.get(word);</span><br><span class="line">        <span class="keyword">while</span>(root!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> val = root.val;</span><br><span class="line">            <span class="keyword">if</span>(val==fileId) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(val&gt;fileId) root=root.left;</span><br><span class="line">            <span class="keyword">else</span> root=root.right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li>通过上述案例 回顾了二叉搜索树的插入。12.3日看二叉搜索树的删除与构造!</li>
+</ul>
+<ol start="30">
+<li>对一个文本构建01向量模型的两个方法</li>
+</ol>
+<ul>
+<li>对文本中的分词遍历，构建set集合，对词袋遍历，判断词袋中的词是否在set中出现过。</li>
+<li>通过倒排索引构建向量模型，如果倒排索引Hasmap&lt;Integer,TreeNode&gt;中的二叉排序树是按照文本名称的某种规则排序，例如，词语 来华人为d2,d3唯独没有在p1中出现过。当要求p1的向量模型时，遍历倒排索引表，对每一个词的二叉排序树查找。时间复杂度为O(nlog(n));</li>
+<li>最后一个方法与第二个方法类似，但是数据结构为HashMap&lt;Integer,List<Integer>&gt;的规则是0和1.例如词语 来华人为0，1，1，意思是唯独没有在文档1中出现过。那么此时外层遍历倒排索引表，内层直接添加res+=list.get(0)，时间复杂度为O(n);</li>
+</ul>
+<ol start="31">
+<li><p>leet1005题新思路，设置计数数组cnt,对于数组中元素的符号反转，其实对应着值域映射，比如，-100翻转为100，相当于-100的个数减一，100的个数加一。</p>
+</li>
+<li><p>idea显示uml快捷键 ctrl+alt+shift+u</p>
+</li>
+<li><p>2021年12月7日留:</p>
+</li>
+</ol>
+<ul>
+<li>用echarts做一个代码量的图表</li>
+</ul>
+<ol start="35">
+<li><p>对于力扣的困难题，不用过多地纠结于细枝末节，抓住主干思路，理解为什么这么做效率会更高。等之后对各个方法对熟悉了之后，再去抓细节也不迟。</p>
+</li>
+<li><p>2021年12月10日：</p>
+</li>
+</ol>
+<ul>
+<li>对于之前的一个想法，做一个信息公告更新提醒小程序。要用到linux操作系统的知识，但是由于很少用到该操作系统，导致每遇到一个问题就要查一次，效率很低，具体的做法是，如果浪费太多时间还解决不了，就说明需要系统地学习linux，其他问题类似，就是因为基础太弱才导致很多问题解决不了而且效率太低。</li>
+<li>对于操作性的问题(例如重装系统，安装双系统)，用空闲时间去折腾，主要的时间还是得花时间系统学习知识</li>
+</ul>
+<ol start="37">
+<li>周赛题2002题再总结：</li>
+</ol>
+<ul>
+<li>当看到字符串长度&lt;=12这个条件时，考虑暴力，由此想到状压枚举.</li>
+<li>特别注意,记录表中存放的不是回文字符串的长度，二是回文字符串对应的二进制子序列。因为如果存放的回文字符串的长度，后续就不能够判断两个回文字符串是否相交(record[i]&amp;record[j]==0)</li>
+</ul>
+<ol start="38">
+<li>模7同步复位计数器于异步复位计数器的区别：</li>
+</ol>
+<ul>
+<li>同步复位计数器的复位信号给0110，异步复位器的复位信号给0111.</li>
+<li>因为同步计数器是当时钟信号到来时才复位，异步复位只要是到达复位信号立即复位，如果0110就复位，就看不到6.但是如果是0111，是看得到7的，只不过时延太快。(对应视频48节).</li>
+<li>异步复位的复位信号与时钟无关，但是计数的过程与时钟有关 <code>51节开头</code></li>
+</ul>
+<ol start="39">
+<li><p>学习应当系统性学习，零散式地学习可以，但是需要一个正确的引导方式，视频是一个很好地零散式学习方法。至少可以少走很多弯路，如果只用通过一个简单的搜寻就可以找的答案的问题，可以搜搜，但是如果搜索到地很多答案都解决不了问题，应当立即停止搜寻。日后再解决。提高效率！</p>
+</li>
+<li><p>runtime error :可能是数组下标越界</p>
+</li>
+<li><p>KMP算法的巧妙之处：</p>
+</li>
+</ol>
+<ul>
+<li>首先，两处地方同时运用了kmp算法的思想，一处是在求主模式串和匹配模式串时，另一处是在求匹配模式串的next数组时。</li>
+<li>再来谈谈求next数组时的优化思想。我刚开始简单看了下next的实现方法，用自己的理解去优化，想到了<code>boolean dp[i][j]</code>去存储子模式串i到j是否构成重叠字符串。也想到了状态转移方程<code>dp[i][j]=dp[i][j-1]&amp;&amp;(c==find.charAt(j-i+1))</code>.代码如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;n;j++)&#123;</span><br><span class="line">        <span class="keyword">char</span> c = find.charAt(j);</span><br><span class="line">        <span class="keyword">if</span>(j==i) dp[i][i]=(c==find.charAt(<span class="number">1</span>));</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            dp[i][j]=dp[i][j-<span class="number">1</span>]&amp;&amp;(c==find.charAt(j-i+<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果dp[i][j]不能构成重叠 那么之后的字符也不能构成重叠了</span></span><br><span class="line">        <span class="keyword">if</span>(dp[i][j]==<span class="keyword">false</span>) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>外层循环i从下标2到n，内层循环从i到n。但是这个做法时间复杂度为O(n^2)，因为只需要求i=1也就是dp[1]的所有值就可以了。</li>
+<li>后面看了一下kmp算法中的求next数组的方式，时间复杂度为O(n),用到的也是kmp的思想。方法快慢指针ij.</li>
+<li>然后，谈一下kmp算法的另一个方便之处。当主模式串的开始匹配位置在k时，一旦<code>str.charAt(i)!=str.charAt(j)</code>时(主模式串的指针为i，子模式串的指针为j,且i&gt;&gt;k),主模式串的下标可以立即跳到i+1，而不是k+1,之前我写的实现方法就是跳到k+1。这样做的话过于冗杂。</li>
+<li>最后，再说一下next优化问题，这里的优化思想其实用到了动态规划的思想，如果<code>str.charAt(i)!=str.charAt(j)</code>,则状态转移方程<code>dp[i]=dp[j]</code>.</li>
+</ul>
+<ol start="42">
+<li><blockquote>
+<p>1705题反思1：模拟题为什么每次自己写的都过于冗杂。如题，我的思路是：</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>先判断当天有没有苹果长出来，分两种情况。此处导致代码增多。<code>其实这里只需要一个if判断苹果有没有长出，不需要else没有长出的情况</code></li>
+<li>其次，如果还有苹果长出，比较堆顶苹果和当天长出的苹果的保质期。此处导致代码增多，<code>其实这里只需要先入栈，利用优先队列的特点，然后筛选过期的苹果就可以了</code>.</li>
+<li>最后，吃掉苹果.</li>
+<li>简练的思路是，先将当日的苹果入队列，然后筛选过期苹果，吃苹果。三步。<blockquote>
+<p>1705题反思2：关于证明贪心是否是最优解之一. <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-number-of-eaten-apples/solution/gong-shui-san-xie-noxiang-xin-ke-xue-xi-hfdy0/">参考链接</a></p>
+</blockquote>
+</li>
+</ul>
+<ol start="43">
+<li><p>周赛273第三题总结：前缀和和后缀和的定义方式不同导致数据溢出。溢出的定义方式：直接定义下标之和。不溢出的定义方式：定义该下标之前/之后的元素下标到该元素距离的总和.</p>
+</li>
+<li><p>视频摘要</p>
+</li>
+</ol>
+<ul>
+<li>自然科学学好</li>
+<li>保持自己的好奇心，坚持</li>
+<li>成功源于多年的热爱与坚持（acm空信）</li>
+<li>善于弄脏自己的双手，多动手，多做一些事情</li>
+<li>你不应该想着毕业第一年能做什么项目拿多少工资，你应该想想你觉得什么有兴趣，然后去憋十年，在十年间哪里学会了就写一段打包封装起来变成你自己的东西，然后十年之后憋出来了一点什么结果。你们现在这样想着几个月就要有成果马上就要发论文不是做科研的态度。”因为有前期的积累，才有可能“三到五天”实现想做的项目啊</li>
+</ul>
+<ol start="45">
+<li><p>从viterbi算法看数塔问题</p>
+</li>
+<li><p>argmax(c∈(yes,no))P(sunny|c)P(cool|c)P(high|c)P(strong|c) =&gt; Math.max(P(sunny|yes)P(cool|yes)…,P(sunny|no)P(cool|no))</p>
+</li>
+<li><p>周赛275 5978题总结</p>
+</li>
+</ol>
+<ul>
+<li>方法一，哈希表中存startword,那么就循环targetword，并判断hash表中是否存在targetword的截取字符串</li>
+<li>方法二，哈希表中存targetword,那么就循环startword，并给startword添加字符，判断hash表中是否存在添加字符过后的startword字符串</li>
+</ul>
+<ol start="48">
+<li><p><code>2022.1.11</code>最近突然发现学习真的是一件很幸福的事，至少让你在感觉很多琐事在困扰你自己的时候，你发现生活还是有很多目标，还有很多新的东西等待你去发现。</p>
+</li>
+<li><p>学了数电再回过头看Crash Course第二节，计算机的零部件从机械继电器relay-&gt;真空管(英国一个物理学家发明了二极管diode)-&gt;晶体管(贝尔实验室的人发明半导体transistor)</p>
+</li>
+</ol>
+<ul>
+<li>机械继电器<br><img src="/images/MechanialRelay.png" alt="Relay"></li>
+<li>真空管<br><img src="/images/diode.png" alt="diode"></li>
+<li>晶体管<br><img src="/images/transistor.png" alt="transistor"></li>
+</ul>
+<ol start="50">
+<li>[疑问] 276周赛5982题 超时记忆化递归和不超时记忆化递归的区别？状态数一致，为什么复杂度不一致?</li>
+</ol>
 
       
     </div>
@@ -309,7 +506,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/05/Maven/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/apple-touch-icon-next.png">
@@ -322,7 +519,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/05/Maven/" class="post-title-link" itemprop="url">Maven</a>
+          <a href="/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/" class="post-title-link" itemprop="url">二叉树</a>
         </h2>
 
         <div class="post-meta-container">
@@ -333,15 +530,24 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-03-05 11:21:38" itemprop="dateCreated datePublished" datetime="2021-03-05T11:21:38+08:00">2021-03-05</time>
+      <time title="创建时间：2021-03-18 19:40:18" itemprop="dateCreated datePublished" datetime="2021-03-18T19:40:18+08:00">2021-03-18</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-02 19:51:29" itemprop="dateModified" datetime="2021-04-02T19:51:29+08:00">2021-04-02</time>
+        <time title="修改时间：2021-12-05 16:22:00" itemprop="dateModified" datetime="2021-12-05T16:22:00+08:00">2021-12-05</time>
       </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -353,26 +559,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="为什么要学习Maven"><a href="#为什么要学习Maven" class="headerlink" title="为什么要学习Maven"></a>为什么要学习Maven</h1><ul>
-<li>项目中的jar包杂乱，若要手动jar包，只能依靠jar命令去打包。</li>
-<li>jar包的版本管理困难<h1 id="Maven的作用"><a href="#Maven的作用" class="headerlink" title="Maven的作用"></a>Maven的作用</h1>Maven可以将一个大工程拆分成若干个子工程(子模块),并通过聚合将拆分的多个子工程结合起来,在总工程的pom.xml文件中配置如下:<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 一定要配置子工程pom.xml的相对路径 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">module</span>&gt;</span></span><br><span class="line">		../Maven1</span><br><span class="line">	<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">module</span>&gt;</span></span><br><span class="line">		../Maven2</span><br><span class="line">	<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="Maven常见的命令"><a href="#Maven常见的命令" class="headerlink" title="Maven常见的命令"></a>Maven常见的命令</h1></li>
-<li>mvn -compile 只编译main目录中的Java文件 </li>
-<li>mvn -test 编译test目录中的Java文件</li>
-<li>mvn -package 将项目打包成 jar/war包，存入target目录</li>
-<li>mvn -install 将开发的模块放入本地仓库，供其他模块使用</li>
-<li>mvn -clean 删除target目录（不删除仓库的目录)<br>PS: 运行mvn命令，需要在pom.xml文件所在的目录运行</li>
-</ul>
-<h1 id="Maven-Dependency-修改便捷方式"><a href="#Maven-Dependency-修改便捷方式" class="headerlink" title="Maven Dependency 修改便捷方式"></a>Maven Dependency 修改便捷方式</h1><p>先在properties中设置变量以及变量所对应的版本号,再在dependency的version中应用变量(类似于jstl表达式)</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">x</span>&gt;</span>4.0<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groundId</span>&gt;</span><span class="tag">&lt;/<span class="name">groundId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;x&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/05/Maven/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          
       
     </div>
 
@@ -391,7 +578,7 @@
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/11/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/13/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -425,7 +612,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
