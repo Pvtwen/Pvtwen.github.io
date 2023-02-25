@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="动态规划," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="心得:对于动态规划的题，最核心的思想就是找状态转移方程。 例题：322,638两道题是硬币问题的典型例题  可以用递推，也可以用递归，但是638由于needs的可能性太多 递推方式首先舍去。递归递推具体区别详见:&lt;&lt;算法入门 经典&gt;&gt; P267 例题：第266场leetcode周赛 第二题 统计字符串中的元音子字符串  由于dp[i]只依赖于dp[i-1],可将dp化成0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动态规划新">
+<meta property="og:url" content="https://pvtwen.gitee.io/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/index.html">
+<meta property="og:site_name" content="PrivateWen">
+<meta property="og:description" content="心得:对于动态规划的题，最核心的思想就是找状态转移方程。 例题：322,638两道题是硬币问题的典型例题  可以用递推，也可以用递归，但是638由于needs的可能性太多 递推方式首先舍去。递归递推具体区别详见:&lt;&lt;算法入门 经典&gt;&gt; P267 例题：第266场leetcode周赛 第二题 统计字符串中的元音子字符串  由于dp[i]只依赖于dp[i-1],可将dp化成0">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-11-07T09:16:51.000Z">
+<meta property="article:modified_time" content="2023-02-06T06:19:26.000Z">
+<meta property="article:author" content="Pvtwen">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://pvtwen.gitee.io/2021/11/07/动态规划新/"/>
+
+
+
+
+
+  <title>动态规划新 | PrivateWen</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">PrivateWen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">动态规划新</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-07T17:16:51+08:00">
+                2021-11-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>心得:对于动态规划的题，最核心的思想就是找状态转移方程。</li>
+<li>例题：322,638两道题是硬币问题的典型例题  可以用递推，也可以用递归，但是638由于needs的可能性太多 递推方式首先舍去。递归递推具体区别详见:&lt;&lt;算法入门 经典&gt;&gt; P267</li>
+<li>例题：第266场leetcode周赛 第二题 统计字符串中的元音子字符串  由于dp[i]只依赖于dp[i-1],可将dp化成0维</li>
+</ul>
+<h1 id="递归模板"><a href="#递归模板" class="headerlink" title="递归模板"></a>递归模板</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 首先需要设置状态变量 可以是哈希表 也可以是 一维数组 。目的就是存储递归过程中访问过的状态。方便剪枝</span></span><br><span class="line">HashMap&lt;Integer,Integer&gt; map=xxxxx;</span><br><span class="line"><span class="type">int</span>[] visit=<span class="keyword">new</span> <span class="title class_">int</span>[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">quesiton</span><span class="params">(<span class="type">int</span>[],<span class="type">int</span> amount)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 写递归函数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(xxx)</span>&#123;</span><br><span class="line">    <span class="comment">// 剪枝  注意:map可以放list，但是不能放数组。数组可以利用Map.entry&lt;&gt;,详见水壶问题dfs</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// hashmap</span></span><br><span class="line">    <span class="keyword">if</span>(map.contains(x)) <span class="keyword">return</span> map.get(x);</span><br><span class="line">    <span class="comment">// visit</span></span><br><span class="line">    <span class="keyword">if</span>(visit[amount]&gt;=<span class="number">0</span>) <span class="keyword">return</span> dp[amount];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// map 设置返回值</span></span><br><span class="line">    <span class="type">int</span> ans=<span class="number">1</span>&gt;&gt;<span class="number">20</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> x:coins)&#123;</span><br><span class="line">        <span class="comment">// 条件限制 拿硬币问题举例</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// visit</span></span><br><span class="line">        <span class="keyword">if</span>(amount&gt;=x) dp[amount]=Math.min(dp[amount],dfs(xxx))</span><br><span class="line"></span><br><span class="line">        <span class="comment">// hashmap</span></span><br><span class="line">        <span class="keyword">if</span>(amount&gt;=x) ans=Math.min(ans,dfs+<span class="number">1</span>)</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="comment">//hashmap</span></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">    <span class="comment">//visit</span></span><br><span class="line">    <span class="keyword">return</span> dp[amount]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h1 id="递推心得"><a href="#递推心得" class="headerlink" title="递推心得"></a>递推心得</h1><ul>
+<li>类似Question5这类题,一共有4种写法。外层循环i的顺序不影响内层循环的顺序（也就是j既可以顺序也可以逆序).其中，有两种写法可以用滚动数组实现(也就是将数组降维).dp[i][j]&#x3D;dp[i-1][任意]; 因为i层只和i-1层有关系。</li>
+<li>但是类似于Question64这类题，只有两种（不包括滚动数组），因为dp[i][j]&#x3D;dp[i-1][j]+dp[i][j-1];如果内层循环j逆序，则无法计算<blockquote>
+<blockquote>
+<p>2021年11月19日更新</p>
+</blockquote>
+</blockquote>
+</li>
+<li>Question397题 DFS，BFS，动态规划心得：</li>
+<li>对于这一类起点终点确定的有向无环图的题目，如果用dfs，相当于是从结果逆推得到每一步的最优解。如果用bfs，相当于是从起点往终点推，因为保证每一步都是平等的(因为bfs是从步数低往步数高走)，所以只要一遇到终点1,立马返回结果。</li>
+<li>其次，对于bfs和dfs的哈希表来说，功能大致相似，bfs中的哈希表有两个作用，一是用于存储步数，二是用判断该值有没有被访问过，后续只要碰到该值，跳过。dfs中的哈希表只有一个作用，用于存储该步数的最优解(因为是从结果开始逆推，所以哈希表存储的一定是最优解)。后续只要碰到该值，就返回哈希表中存储的值。</li>
+<li>最后，这道题的边权为1，所以可以用bfs，但是638大礼包题目中边权不为1，因为每个礼包的价格不一样.<blockquote>
+<blockquote>
+<p>2021年11月20日更新</p>
+</blockquote>
+</blockquote>
+</li>
+<li>Question2045题，bfs，边权为一，可以用一个统一的变量distance来进行步数的管理。如果用<code>Deque&lt;Integer&gt; queue</code>和<code>HashMap&lt;Integer,Integer&gt; map</code>，反而行不通。</li>
+<li>Question638题，bfs，边权不为1，就可以用一个<code>Deque&lt;List&lt;Integer&gt;&gt; queue</code>和<code>HashMap&lt;List&lt;Integer&gt;,Integer&gt;</code>，因为不需要像2045题做步数统一.</li>
+</ul>
+<h1 id="递推-记忆化搜索心得"><a href="#递推-记忆化搜索心得" class="headerlink" title="递推+记忆化搜索心得"></a>递推+记忆化搜索心得</h1><ol>
+<li>397题整数替换和375题猜数字大小Ⅱ 充分利用模板解题</li>
+<li>先遍历到底层，再由栈逐层返回</li>
+<li><code>2021年12月18日更新</code>: 494题目标和，记忆化递归的新想法。一开始没有想到记忆化递归，是觉得每一个状态都是唯一的，不可能第二次碰到。看了看题解，说一说自己的想法。其实朴素递归相当于是后序遍历一颗二叉树，当画出了这棵二叉树之后，写出二叉树的每个节点，可以发现，该题的二叉树还是存在很多重复状态的(因为是自底向上),那么就可以自己定义一个map的key，key&#x3D;idx+”_”+sum,这样一构造，就不会出现重复了，例如，都是同一个idx但是sum不同，或者，都是同一个sum，但是idx不同。这可能就是动态规划的阶段。</li>
+</ol>
+<ul>
+<li>再看大礼包这题的map的key的定义，可以很容易发现直接定义还有多少东西没买的list的就行，但由于这道题是数组中的每个元素都得遍历一遍，且每个元素都有+-两个状态，相当于是一颗边权为1二叉树，大礼包相当于是一个边权不为1的多叉树.</li>
+</ul>
+<h2 id="375"><a href="#375" class="headerlink" title="375"></a>375</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="type">int</span>[][] cache=<span class="keyword">new</span> <span class="title class_">int</span>[][];</span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">// 遍历到最后一层条件，剪枝返回</span></span><br><span class="line">    <span class="keyword">if</span>() <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(!cache) <span class="keyword">return</span> cache;</span><br><span class="line">    <span class="type">int</span> ans=Integer.MAX_VALUE</span><br><span class="line">    <span class="title function_">for</span><span class="params">(<span class="type">int</span> i;i;i)</span>&#123;</span><br><span class="line">        <span class="type">int</span> ret=Math.max()+i;</span><br><span class="line">        ans=Math.min(ans,ret);</span><br><span class="line">    &#125;</span><br><span class="line">    cache[][]=ans;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="多重背包问题心得"><a href="#多重背包问题心得" class="headerlink" title="多重背包问题心得"></a>多重背包问题心得</h1><ol>
+<li>多重背包其实可以拆分成完全背包和01背包问题，朴素的讲，就是如果一个物品如果全部装进背包会超载，那么就相当于一个完全背包问题，如果装不完，那就通过二进制优化将物品拆分成一个一个物品，从而转化为01背包问题。</li>
+<li>对于有11个的物品，将其拆分成1，2，4，4四个pack，疑问是会不会漏掉3个这种情况？其实动态规划的本质是求解所有阶段的所有路线的最优解(可以参考数塔问题).那么多重背包问题的本质就是在每个阶段去决策拿与不拿。</li>
+<li>拆分成了1，2，4，4四个物品之后，第一步，有两种选择，拿与不拿，拿就是1个物品的情况，不拿就是0.第二阶段，有1，2两个物品，有四种情况，全不拿，拿1不拿2，拿2不拿1，全拿。分别对应着0，1，2，3.以此类推，从而将时间复杂度从O(n^3)降低到了O(n^2*logn).</li>
+</ol>
+<h1 id="动态规划中的对于连续的总结"><a href="#动态规划中的对于连续的总结" class="headerlink" title="动态规划中的对于连续的总结"></a>动态规划中的对于<code>连续</code>的总结</h1><ul>
+<li>对于这类连续的题，dp[i]基本只与dp[i-1]有关，一次遍历可解</li>
+</ul>
+<h2 id="413题-等差数列的划分"><a href="#413题-等差数列的划分" class="headerlink" title="413题 等差数列的划分"></a>413题 等差数列的划分</h2><ul>
+<li>该题目中只是计算连续子数组属于等差数列的个数，因此状态转移方程为dp[i]&#x3D;(condition)?:dp[i-1]+1:0<blockquote>
+<p>意思即为如果满足状态转移方程的条件，则是以上一个元素结尾的等差数列的个数加一.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="2063题-所有子字符串中的元音"><a href="#2063题-所有子字符串中的元音" class="headerlink" title="2063题 所有子字符串中的元音"></a>2063题 所有子字符串中的元音</h2><ul>
+<li>该题目中计算连续子序列中元音的个数，状态转移方程为dp[i]&#x3D;(conditon)?dp[i-1]+i+1:dp[i-1]</li>
+<li>如果是要求计算含有元音的子序列的个数，则状态转移方程为dp[i]&#x3D;(condition)?i+1:dp[i-1]<blockquote>
+<blockquote>
+<p>两题分别是连续子数组，连续子序列</p>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<h2 id="设置状态变量-152题-122题"><a href="#设置状态变量-152题-122题" class="headerlink" title="设置状态变量 152题 122题"></a>设置状态变量 152题 122题</h2><h3 id="152题-乘积最大"><a href="#152题-乘积最大" class="headerlink" title="152题 乘积最大"></a>152题 乘积最大</h3><ul>
+<li>设置两个状态变量，一个是0，一个是1，负数最小值，正数最大值</li>
+</ul>
+<h3 id="122题-买股票"><a href="#122题-买股票" class="headerlink" title="122题 买股票"></a>122题 买股票</h3><ul>
+<li>设置两个状态变量，一个是0，一个是1，0代表不持股，1代表持股</li>
+</ul>
+<h1 id="动态规划中对于非连续的总结"><a href="#动态规划中对于非连续的总结" class="headerlink" title="动态规划中对于非连续的总结"></a>动态规划中对于<code>非连续</code>的总结</h1><ul>
+<li>对于这类非连续的题目，dp[i]需要两层遍历递推，如果是区间dp，则三层递推。</li>
+</ul>
+<h2 id="368题-最大整除子集-Arraylist-dp"><a href="#368题-最大整除子集-Arraylist-dp" class="headerlink" title="368题 最大整除子集 Arraylist[] dp"></a>368题 最大整除子集 Arraylist[] dp</h2><h2 id="300题-最长递增子序列-int-dp"><a href="#300题-最长递增子序列-int-dp" class="headerlink" title="300题 最长递增子序列 int[] dp"></a>300题 最长递增子序列 int[] dp</h2><h1 id="亟待总结的题目-279题和322题-零钱兑换和完全平方数-背包问题-有向无环图-有明确的起点和终点"><a href="#亟待总结的题目-279题和322题-零钱兑换和完全平方数-背包问题-有向无环图-有明确的起点和终点" class="headerlink" title="亟待总结的题目 279题和322题 零钱兑换和完全平方数 (背包问题,有向无环图,有明确的起点和终点)"></a>亟待总结的题目 279题和322题 零钱兑换和完全平方数 (背包问题,有向无环图,有明确的起点和终点)</h1><h1 id="目前遇到过的动态规划的类型"><a href="#目前遇到过的动态规划的类型" class="headerlink" title="目前遇到过的动态规划的类型"></a>目前遇到过的动态规划的类型</h1><ol>
+<li>背包问题</li>
+<li>区间动态规划</li>
+<li>连续型数组(递推)</li>
+<li>非连续型子序列</li>
+<li>硬币问题(完全平方和)，有向无环图</li>
+<li>设置两个状态变量(选与不选，看是否可以转化为01背包问题，416题)</li>
+<li>每个状态有两个抉择，每个抉择分别对下一个状态或者是之后的状态有影响</li>
+</ol>
+<ul>
+<li>对应的方法</li>
+</ul>
+<ol>
+<li>递推</li>
+<li>区间dp，三重for循环</li>
+<li>递推，dp[i]只跟dp[i-1]有关</li>
+<li>递推双重for循环</li>
+<li>递推or记忆化递归,完全背包问题</li>
+<li>dp[i][2]:两个状态</li>
+<li>正向dp(正推)，反向dp(反推)</li>
+</ol>
+<h1 id="BFS暴搜问题"><a href="#BFS暴搜问题" class="headerlink" title="BFS暴搜问题"></a>BFS暴搜问题</h1><ul>
+<li>如果是大礼包这种有向无环图问题， 因为图的边权不为1(每个大礼包的加各不相同),所以此时的bfs相当于是暴搜</li>
+<li>如果是类似于找迷宫出口或者是硬币问题，图的边权为1，一旦找到出口，立即返回，那么bfs的效率非常高</li>
+</ul>
+<h1 id="2021-x2F-12-x2F-21-记忆化递归心得"><a href="#2021-x2F-12-x2F-21-记忆化递归心得" class="headerlink" title="2021&#x2F;12&#x2F;21 记忆化递归心得"></a>2021&#x2F;12&#x2F;21 记忆化递归心得</h1><ul>
+<li>比较了一下526题优美排列和大礼包和494目标和。都用到了记忆化递归的方法，但是区别很大，其中大礼包这道题的记忆化递归用<code>HashMap&lt;List&lt;Integer&gt;,Integer&gt;</code>存储状态，因为题干中说每个大礼包可用无限次，所以状态的定义很简单，可以只定义一个剩余的需求。优美排列这道题中每个数字只能使用一次，故定义一个状态需要两个变量(一个是数组的位置i，另一个是visited),其中visited在其中的作用相当于保证了每个数字只使用一次。其次，目标和这道题中记忆化递归的状态也使用了两个变量。</li>
+<li>大礼包状态变量:List<Integer> needs,状态对应的价格以及题干要求的money，优美排列状态变量:下标idx，访问状态压缩变量visited(代表之前哪些元素访问过),ans题干要求的方案总数，目标和：下标idx，之前元素的总和sum，题干要求的搭配总数map.value</li>
+<li>最后，这三道使用记忆化递归的题都用到了回溯的思想。回顾<code>回溯</code>?</li>
+</ul>
+<h1 id="记忆化递归和动态规划的关系"><a href="#记忆化递归和动态规划的关系" class="headerlink" title="记忆化递归和动态规划的关系"></a>记忆化递归和动态规划的关系</h1><ul>
+<li>通过576.题，动态规划从矩阵边缘(也就是终点)开始往起点推，也就是逆推，记忆化递归也是逆推。恰好，这道题dp和记忆化递归都是逆推。但是，回顾<code>零钱兑换</code>，动态规划既可以逆推，也可以顺推，记忆化递归只能逆推.</li>
+</ul>
+<h1 id="2021-x2F-12-x2F-31-记忆化递归心得"><a href="#2021-x2F-12-x2F-31-记忆化递归心得" class="headerlink" title="2021&#x2F;12&#x2F;31 记忆化递归心得"></a>2021&#x2F;12&#x2F;31 记忆化递归心得</h1><ul>
+<li>650题记忆化递归，之后凡是看到dfs的参数有两个在变动，那么就说明一个状态至少需要两个变量来决定，就不能单纯的用HashMap&lt;Integer,Integer&gt;类似于这种只能表达一种参数的变量来存储状态</li>
+</ul>
+<h1 id="2022-x2F-1-x2F-17-正向动态规划横向比较"><a href="#2022-x2F-1-x2F-17-正向动态规划横向比较" class="headerlink" title="2022&#x2F;1&#x2F;17 正向动态规划横向比较"></a>2022&#x2F;1&#x2F;17 正向动态规划横向比较</h1><h2 id="Acm校赛问题G"><a href="#Acm校赛问题G" class="headerlink" title="Acm校赛问题G"></a>Acm校赛问题G</h2><ul>
+<li>抉择1，当前节点不走捷径，对下一个节点产生影响，<code>dp[i+1]=math.min(dp[i]+1,dp[i+1])</code></li>
+<li>抉择2，当前节点走捷径，对捷径对应的节点产生影响，<code>dp[arr[i]]=math.min(dp[i]+1,dp[arr[i]]);</code></li>
+</ul>
+<h2 id="276周赛5982题"><a href="#276周赛5982题" class="headerlink" title="276周赛5982题"></a>276周赛5982题</h2><ul>
+<li>抉择1，跳过，对下一个节点产生影响，<code>dp[i+1]=Math.max(dp[i+1],dp[i])</code></li>
+<li>抉择2，不跳过，对s及之后的节点产生影响，<code>dp[s]=Math.max(dp[s],q[0]+dp[i])</code></li>
+</ul>
+<h1 id="记忆化搜索心得-2022-2-8"><a href="#记忆化搜索心得-2022-2-8" class="headerlink" title="记忆化搜索心得 2022.2.8"></a>记忆化搜索心得 2022.2.8</h1><ul>
+<li>记忆化搜索是递归到底层，再回溯。类比dp[i][j]的定义方式，拿Uva437来说，相当于是<code>立方体序号为i,第j条边作为高</code>这个状态到不能继续堆立方体的最大高度。</li>
+<li>需要满足某种<code>序</code>的条件下，才能递推求出每种状态的<code>值</code>，LC354中由于矩形本身乱序(也可以说是起点终点没有确定)，所以不能利用递归求出每种状态(也就是矩形的序号)的<code>值</code>.</li>
+</ul>
+<h1 id="对于递推的几种遍历方式"><a href="#对于递推的几种遍历方式" class="headerlink" title="对于递推的几种遍历方式"></a>对于递推的几种遍历方式</h1><ul>
+<li>正序递推，刷表法，但是刷表和正序递推也没有明确的界限，Uva1025的正序(因为刷表递推本该是已知去确定未知，但是该题中如果用刷表递推是未知确定已知),这里可以联系01背包问题的四种递推方式(正序逆序各两种)以及滚动数组.</li>
+<li>倒序递推，填表法。</li>
+</ul>
+<h1 id="2022-x2F-2-x2F-22-动态规划中线性结构上的经典模型"><a href="#2022-x2F-2-x2F-22-动态规划中线性结构上的经典模型" class="headerlink" title="2022&#x2F;2&#x2F;22 动态规划中线性结构上的经典模型"></a>2022&#x2F;2&#x2F;22 动态规划中线性结构上的经典模型</h1><h2 id="最长上升子序列问题"><a href="#最长上升子序列问题" class="headerlink" title="最长上升子序列问题"></a>最长上升子序列问题</h2><h2 id="最长公共子序列问题-朴素解法容易被卡-通过二分-一维dp降低时间和空间复杂度2022-2-22"><a href="#最长公共子序列问题-朴素解法容易被卡-通过二分-一维dp降低时间和空间复杂度2022-2-22" class="headerlink" title="最长公共子序列问题 (朴素解法容易被卡 通过二分+一维dp降低时间和空间复杂度2022/2/22)"></a>最长公共子序列问题 (朴素解法容易被卡 通过二分+一维dp降低时间和空间复杂度<code>2022/2/22</code>)</h2><h1 id="2022-x2F-2-x2F-23-动态规划中的最优矩阵链相乘问题和最优三角剖分问题"><a href="#2022-x2F-2-x2F-23-动态规划中的最优矩阵链相乘问题和最优三角剖分问题" class="headerlink" title="2022&#x2F;2&#x2F;23 动态规划中的最优矩阵链相乘问题和最优三角剖分问题"></a>2022&#x2F;2&#x2F;23 动态规划中的最优矩阵链相乘问题和最优三角剖分问题</h1><ul>
+<li>思路都是将一个问题划分为一个最优子结构问题。对于最优矩阵链相乘问题来说，下标范围为i~j的矩阵相乘的最优解依赖于更小区间的子结构的最优解(动态规划的本质).</li>
+<li>Uva10003题，刚开始想的是将状态定义为d[i][j]:先切i，最后切j。这样定义状态导致后续状态转移困难。其次，最开始认为切三刀的最优解依赖于切两刀的最优解，这样看也能转化为最优子结构问题，但是如果这样做就会产生书上所说的一个问题，没有顺序规范化。即便是像参考代码一样考虑到了顺序规范化，将dp[i][j]定义为i~j的最优解，也会产生很多细节问题(边界处理).</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/09/19/%E5%89%8D%E7%BC%80%E4%B8%8E%E5%90%8E%E7%BC%80/" rel="next" title="前缀与后缀">
+                <i class="fa fa-chevron-left"></i> 前缀与后缀
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/11/23/%E8%AE%A1%E5%88%92/" rel="prev" title="计划">
+                计划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/pvtwen" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/pvtwen" target="_blank" title="Gitee">
+                    
+                      <i class="fa fa-fw fa-vk"></i>Gitee</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://leetcode.cn/u/pvtwen" target="_blank" title="LeetCode">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>LeetCode</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%92%E5%BD%92%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">递归模板</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%92%E6%8E%A8%E5%BF%83%E5%BE%97"><span class="nav-number">2.</span> <span class="nav-text">递推心得</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%80%92%E6%8E%A8-%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2%E5%BF%83%E5%BE%97"><span class="nav-number">3.</span> <span class="nav-text">递推+记忆化搜索心得</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#375"><span class="nav-number">3.1.</span> <span class="nav-text">375</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%E5%BF%83%E5%BE%97"><span class="nav-number">4.</span> <span class="nav-text">多重背包问题心得</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%AD%E7%9A%84%E5%AF%B9%E4%BA%8E%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">动态规划中的对于连续的总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#413%E9%A2%98-%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%E7%9A%84%E5%88%92%E5%88%86"><span class="nav-number">5.1.</span> <span class="nav-text">413题 等差数列的划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2063%E9%A2%98-%E6%89%80%E6%9C%89%E5%AD%90%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3"><span class="nav-number">5.2.</span> <span class="nav-text">2063题 所有子字符串中的元音</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F-152%E9%A2%98-122%E9%A2%98"><span class="nav-number">5.3.</span> <span class="nav-text">设置状态变量 152题 122题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#152%E9%A2%98-%E4%B9%98%E7%A7%AF%E6%9C%80%E5%A4%A7"><span class="nav-number">5.3.1.</span> <span class="nav-text">152题 乘积最大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#122%E9%A2%98-%E4%B9%B0%E8%82%A1%E7%A5%A8"><span class="nav-number">5.3.2.</span> <span class="nav-text">122题 买股票</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%AD%E5%AF%B9%E4%BA%8E%E9%9D%9E%E8%BF%9E%E7%BB%AD%E7%9A%84%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">动态规划中对于非连续的总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#368%E9%A2%98-%E6%9C%80%E5%A4%A7%E6%95%B4%E9%99%A4%E5%AD%90%E9%9B%86-Arraylist-dp"><span class="nav-number">6.1.</span> <span class="nav-text">368题 最大整除子集 Arraylist[] dp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#300%E9%A2%98-%E6%9C%80%E9%95%BF%E9%80%92%E5%A2%9E%E5%AD%90%E5%BA%8F%E5%88%97-int-dp"><span class="nav-number">6.2.</span> <span class="nav-text">300题 最长递增子序列 int[] dp</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%9F%E5%BE%85%E6%80%BB%E7%BB%93%E7%9A%84%E9%A2%98%E7%9B%AE-279%E9%A2%98%E5%92%8C322%E9%A2%98-%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2%E5%92%8C%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0-%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98-%E6%9C%89%E5%90%91%E6%97%A0%E7%8E%AF%E5%9B%BE-%E6%9C%89%E6%98%8E%E7%A1%AE%E7%9A%84%E8%B5%B7%E7%82%B9%E5%92%8C%E7%BB%88%E7%82%B9"><span class="nav-number">7.</span> <span class="nav-text">亟待总结的题目 279题和322题 零钱兑换和完全平方数 (背包问题,有向无环图,有明确的起点和终点)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E5%89%8D%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">8.</span> <span class="nav-text">目前遇到过的动态规划的类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BFS%E6%9A%B4%E6%90%9C%E9%97%AE%E9%A2%98"><span class="nav-number">9.</span> <span class="nav-text">BFS暴搜问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2021-x2F-12-x2F-21-%E8%AE%B0%E5%BF%86%E5%8C%96%E9%80%92%E5%BD%92%E5%BF%83%E5%BE%97"><span class="nav-number">10.</span> <span class="nav-text">2021&#x2F;12&#x2F;21 记忆化递归心得</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BF%86%E5%8C%96%E9%80%92%E5%BD%92%E5%92%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">11.</span> <span class="nav-text">记忆化递归和动态规划的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2021-x2F-12-x2F-31-%E8%AE%B0%E5%BF%86%E5%8C%96%E9%80%92%E5%BD%92%E5%BF%83%E5%BE%97"><span class="nav-number">12.</span> <span class="nav-text">2021&#x2F;12&#x2F;31 记忆化递归心得</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2022-x2F-1-x2F-17-%E6%AD%A3%E5%90%91%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%A8%AA%E5%90%91%E6%AF%94%E8%BE%83"><span class="nav-number">13.</span> <span class="nav-text">2022&#x2F;1&#x2F;17 正向动态规划横向比较</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Acm%E6%A0%A1%E8%B5%9B%E9%97%AE%E9%A2%98G"><span class="nav-number">13.1.</span> <span class="nav-text">Acm校赛问题G</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#276%E5%91%A8%E8%B5%9B5982%E9%A2%98"><span class="nav-number">13.2.</span> <span class="nav-text">276周赛5982题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2%E5%BF%83%E5%BE%97-2022-2-8"><span class="nav-number">14.</span> <span class="nav-text">记忆化搜索心得 2022.2.8</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E%E9%80%92%E6%8E%A8%E7%9A%84%E5%87%A0%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="nav-number">15.</span> <span class="nav-text">对于递推的几种遍历方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2022-x2F-2-x2F-22-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%AD%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84%E4%B8%8A%E7%9A%84%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B"><span class="nav-number">16.</span> <span class="nav-text">2022&#x2F;2&#x2F;22 动态规划中线性结构上的经典模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E4%B8%8A%E5%8D%87%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98"><span class="nav-number">16.1.</span> <span class="nav-text">最长上升子序列问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98-%E6%9C%B4%E7%B4%A0%E8%A7%A3%E6%B3%95%E5%AE%B9%E6%98%93%E8%A2%AB%E5%8D%A1-%E9%80%9A%E8%BF%87%E4%BA%8C%E5%88%86-%E4%B8%80%E7%BB%B4dp%E9%99%8D%E4%BD%8E%E6%97%B6%E9%97%B4%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A62022-2-22"><span class="nav-number">16.2.</span> <span class="nav-text">最长公共子序列问题 (朴素解法容易被卡 通过二分+一维dp降低时间和空间复杂度2022&#x2F;2&#x2F;22)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2022-x2F-2-x2F-23-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%AD%E7%9A%84%E6%9C%80%E4%BC%98%E7%9F%A9%E9%98%B5%E9%93%BE%E7%9B%B8%E4%B9%98%E9%97%AE%E9%A2%98%E5%92%8C%E6%9C%80%E4%BC%98%E4%B8%89%E8%A7%92%E5%89%96%E5%88%86%E9%97%AE%E9%A2%98"><span class="nav-number">17.</span> <span class="nav-text">2022&#x2F;2&#x2F;23 动态规划中的最优矩阵链相乘问题和最优三角剖分问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pvtwen</span>
+
+  
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

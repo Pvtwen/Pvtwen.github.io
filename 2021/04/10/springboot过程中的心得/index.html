@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="springboot与servlet两者封装对象的方式springboot的Controller层当中123456@PostMapping(&quot;&#x2F;add&quot;)public String addSuccess(Employee employee)&amp;#123;    System.out.println(&quot;add--&gt;&quot;+employee);    emplo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习springboot过程中的心得">
+<meta property="og:url" content="https://pvtwen.gitee.io/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/index.html">
+<meta property="og:site_name" content="PrivateWen">
+<meta property="og:description" content="springboot与servlet两者封装对象的方式springboot的Controller层当中123456@PostMapping(&quot;&#x2F;add&quot;)public String addSuccess(Employee employee)&amp;#123;    System.out.println(&quot;add--&gt;&quot;+employee);    emplo">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-10T08:14:03.000Z">
+<meta property="article:modified_time" content="2023-02-06T06:19:26.000Z">
+<meta property="article:author" content="Pvtwen">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://pvtwen.gitee.io/2021/04/10/springboot过程中的心得/"/>
+
+
+
+
+
+  <title>学习springboot过程中的心得 | PrivateWen</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">PrivateWen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">学习springboot过程中的心得</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-10T16:14:03+08:00">
+                2021-04-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="springboot与servlet两者封装对象的方式"><a href="#springboot与servlet两者封装对象的方式" class="headerlink" title="springboot与servlet两者封装对象的方式"></a>springboot与servlet两者封装对象的方式</h1><h2 id="springboot的Controller层当中"><a href="#springboot的Controller层当中" class="headerlink" title="springboot的Controller层当中"></a>springboot的Controller层当中</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">addSuccess</span><span class="params">(Employee employee)</span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;add--&gt;&quot;</span>+employee);</span><br><span class="line">    employeeDao.addNewEmployee(employee);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/emp&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>addSuccess方法中使用Employee对象作为入参,在前端html代码的form表单中</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/add&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>名字<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入名字&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>邮箱<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入邮箱&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span>&gt;</span>部门<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 因为department是一个对象，传参的时候不能传一个对象，故先传对象的id值，然后后端接受了id值后，通过id值来查询department，并将查询到的department赋值给employee --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">name</span>=<span class="string">&quot;department.id&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;department.getDepartmentName()&#125;&quot;</span> <span class="attr">th:each</span>=<span class="string">&quot;department:$&#123;departments&#125;&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;department.getId()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>日期<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入日期&quot;</span> <span class="attr">name</span>=<span class="string">&quot;birth&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-offset-2 col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default&quot;</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<p>每一个input标签的name属性都与对象的属性名相对应,通过form表单提交后，后端将所有的name属性封装程一个employee对象作为入参</p>
+<h2 id="Servlet中"><a href="#Servlet中" class="headerlink" title="Servlet中"></a>Servlet中</h2><p>同样，通过前端jsp代码的from表单向后端传值<br>在servlet代码中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebServlet( value=&quot;/LoginServlet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginServlet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">LoginServlet</span><span class="params">()</span> &#123;</span><br><span class="line">    	</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">		request.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">		</span><br><span class="line">		String name=request.getParameter(<span class="string">&quot;uname&quot;</span>);</span><br><span class="line">		String password=request.getParameter(<span class="string">&quot;upwd&quot;</span>);</span><br><span class="line">		</span><br><span class="line">		Login login=<span class="keyword">new</span> <span class="title class_">Login</span>(name,password);</span><br><span class="line">		<span class="type">int</span> count=LoginDao.Login(login);</span><br><span class="line">		<span class="keyword">if</span>(count&gt;<span class="number">0</span>) &#123;</span><br><span class="line">			response.sendRedirect(<span class="string">&quot;welcome.jsp&quot;</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			response.sendRedirect(<span class="string">&quot;login.jsp&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过request.getParameter()方法接受前端传来的值，并赋值给对应的变量，然后将手动将变量封装成Login对象</p>
+<h1 id="三层架构的组成"><a href="#三层架构的组成" class="headerlink" title="三层架构的组成"></a>三层架构的组成</h1><ol>
+<li>表示层（USL：user show layer  ；视图层）<br> -前台：对应于mvc中的view，用于和用户交互、界面的显示<br> -后台：servlet controller  用于控制跳转</li>
+<li>业务逻辑层（BLL：business logic layer  ； service层）<br> –组装数据访问层，逻辑性的操作（增删改查，进行操作之前先查找<br> –用于接收表示层的请求 调用</li>
+<li>数据访问层（DAL：Data access Layer  ； dao层）<br> –直接访问数据库的操作，原子性的操作</li>
+</ol>
+<h1 id="get请求和post请求"><a href="#get请求和post请求" class="headerlink" title="get请求和post请求"></a>get请求和post请求</h1><ol>
+<li>get请求包括<code>&lt;form method=&quot;get&quot;&gt;</code>，地址栏，超链接<code>&lt;a href=&quot;&quot;&gt;&lt;/a&gt;</code></li>
+<li>get请求在地址栏显示请求信息（但是地址栏能够容纳的信息有限4-5kb,如果请求数据存在大文件，图片，会报错)</li>
+<li>文件上传操作必须是post</li>
+</ol>
+<h1 id="请求转发和重定向redirect的区别"><a href="#请求转发和重定向redirect的区别" class="headerlink" title="请求转发和重定向redirect的区别"></a>请求转发和重定向redirect的区别</h1><ol>
+<li>图标格式的区分<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="center">请求转发</th>
+<th align="center">重定向</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">地址栏是否改变</td>
+<td align="center">不变</td>
+<td align="center">改变</td>
+</tr>
+<tr>
+<td align="left">是否保留第一次请求的数据</td>
+<td align="center">保留</td>
+<td align="center">不保留</td>
+</tr>
+<tr>
+<td align="left">请求的次数</td>
+<td align="center">1</td>
+<td align="center">2</td>
+</tr>
+</tbody></table>
+</li>
+<li>举例说明<br>请求转发:<br>张三(客户端) -&gt; 服务窗口A -&gt; 服务窗口A去找服务窗口B<br>重定向:<br>张三(客户端) -&gt; 服务窗口A -&gt; 叫张三(客户端)自己去找服务窗口B<br>张三(客户端)-&gt; 服务窗口B</li>
+<li>springboot中<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/delete/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Integer id)</span>&#123;</span><br><span class="line">        employeeDao.deleteEmployeeById(id);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;redirect:/emp&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">@RequestMapping(&quot;/emp&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">list</span><span class="params">(Model model)</span>&#123;</span><br><span class="line">        Collection&lt;Employee&gt; employees = employeeDao.getAllEmployee();</span><br><span class="line"></span><br><span class="line">        model.addAttribute(<span class="string">&quot;employees&quot;</span>,employees);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;employee/list&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+delete函数中重定向到了list函数，实际上是通过list的model参数传值给前端。也就是说，也可以将list函数中的相关代码写入delete函数，然后在delete函数 <code>return &quot;employee/list&quot;</code></li>
+</ol>
+<h1 id="springboot中Dao层与springMybatis"><a href="#springboot中Dao层与springMybatis" class="headerlink" title="springboot中Dao层与springMybatis"></a>springboot中Dao层与springMybatis</h1><ol>
+<li>springboot中Dao层中(省略了数据库，直接在Java代码中创建数据库)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Collection&lt;Employee&gt; <span class="title function_">getAllEmployee</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Employees.values();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取一个员工的信息</span></span><br><span class="line">    <span class="keyword">public</span> Employee <span class="title function_">getEmployeeById</span><span class="params">(Integer id)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Employees.get(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除一个员工的信息</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">deleteEmployeeById</span><span class="params">(Integer id)</span>&#123;</span><br><span class="line">        Employees.remove(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//修改一个员工的信息</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateEmployee</span><span class="params">(Integer id,Employee employee)</span>&#123;</span><br><span class="line">        <span class="type">Department</span> <span class="variable">department</span> <span class="operator">=</span> employee.getDepartment();</span><br><span class="line">        employee.setDepartment(departmentDao.getDepartmentById(department.getId()));</span><br><span class="line">        Employees.replace(id,employee);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li>springMybatis中的<code>xxmapper.java</code>文件<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">StudentMapper</span> &#123;</span><br><span class="line">	Person <span class="title function_">queryPersonById</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">	List&lt;Person&gt; <span class="title function_">queryAllPerson</span><span class="params">()</span>;</span><br><span class="line">	<span class="keyword">void</span> <span class="title function_">updatePersonById</span><span class="params">(Person person)</span>;</span><br><span class="line">	<span class="keyword">void</span> <span class="title function_">addPerson</span><span class="params">(Person person)</span>;</span><br><span class="line">	</span><br><span class="line">	studentBusiness <span class="title function_">queryStudentByBusiness</span><span class="params">(<span class="type">int</span> sno)</span>;</span><br><span class="line">	</span><br><span class="line">	student <span class="title function_">queryStudentByOO</span><span class="params">(<span class="type">int</span> sno)</span>;</span><br><span class="line"><span class="comment">//	studentClass queryStudentByO2M(int classid);</span></span><br><span class="line">	student <span class="title function_">queryStudentByO2M</span><span class="params">(<span class="type">int</span> sno)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>只不过<code>xxmapper.java</code>中有专门的<code>xxmapper.xml</code>配置文件来写底层的增删改查语句</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="Mybatis与springbootJDBC与JDBC与SpringMybatis"><a href="#Mybatis与springbootJDBC与JDBC与SpringMybatis" class="headerlink" title="Mybatis与springbootJDBC与JDBC与SpringMybatis"></a>Mybatis与springbootJDBC与JDBC与SpringMybatis</h1><h2 id="Mybatis中"><a href="#Mybatis中" class="headerlink" title="Mybatis中"></a>Mybatis中</h2><ol>
+<li>conf.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line"> 		<span class="comment">&lt;!-- 开发环境（自己的计算机） --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/football?serverTimezone=UTC&quot;</span>/&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;MyNewPass&quot;</span>/&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br></pre></td></tr></table></figure>
+在environment下配置dataSource</li>
+<li>test.java<br>省略了pojo、mapper包<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">addStudent</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">		<span class="comment">//加载mybatis配置文件conf.xml(为了访问数据库)</span></span><br><span class="line">				<span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> Resources.getResourceAsReader(<span class="string">&quot;conf.xml&quot;</span>);</span><br><span class="line">				<span class="type">SqlSessionFactory</span> <span class="variable">sessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(reader);</span><br><span class="line">			</span><br><span class="line">				<span class="type">SqlSession</span> <span class="variable">session</span> <span class="operator">=</span> sessionFactory.openSession();</span><br><span class="line">			    <span class="type">StudentMapper</span> <span class="variable">studentMapper</span> <span class="operator">=</span> session.getMapper(StudentMapper.class);</span><br><span class="line">			    Person person=<span class="keyword">new</span> <span class="title class_">Person</span>(<span class="number">2</span>,<span class="string">&quot;yuqun&quot;</span>,<span class="number">123</span>);</span><br><span class="line">			    studentMapper.addPerson(person);</span><br><span class="line">			    </span><br><span class="line">			    session.commit();</span><br><span class="line">			    session.close();</span><br><span class="line">			    System.out.println(<span class="string">&quot;成功&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">queryPersonById</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">				<span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> Resources.getResourceAsReader(<span class="string">&quot;conf.xml&quot;</span>);</span><br><span class="line">				<span class="type">SqlSessionFactory</span> <span class="variable">sessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBuilder</span>().build(reader);</span><br><span class="line">			</span><br><span class="line">				<span class="type">SqlSession</span> <span class="variable">session</span> <span class="operator">=</span> sessionFactory.openSession();</span><br><span class="line">				<span class="type">StudentMapper</span> <span class="variable">studentMapper</span> <span class="operator">=</span> session.getMapper(StudentMapper.class);</span><br><span class="line">				</span><br><span class="line">			    <span class="comment">//MyBatis底层通过动态代理将Object对象变成一个Person对象</span></span><br><span class="line">			    <span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> studentMapper.queryPersonById(<span class="number">1</span>);</span><br><span class="line">			    session.commit();</span><br><span class="line">			    session.close();</span><br><span class="line">			    System.out.println(person);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="SpringMybatis"><a href="#SpringMybatis" class="headerlink" title="SpringMybatis"></a>SpringMybatis</h2><ol>
+<li>db.properties<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">driver=com.mysql.jdbc.Driver</span><br><span class="line">url=jdbc:mysql://localhost:3306/football?serverTimezone=UTC</span><br><span class="line">username=root</span><br><span class="line">password=MyNewPass</span><br></pre></td></tr></table></figure></li>
+<li>ApplicationContext.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 加载db.properties文件 需要特定的类才能加载 preferencesPlaceHolderConfigurer--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;config&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;locations&quot;</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 数组类型可以用array来赋值 --&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 配置了  配置文件的位置之后  就可以用 EL表达式来赋值 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>classpath:db.properties<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 替代mybatis配置文件conf.xml  配置数据库信息--&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置数据库相关  BasicDataSource类会自动提交事务 jdbc需要手动提交--&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.apache.commons.dbcp.BasicDataSource&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;driver&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;url&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;username&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;maxActive&quot;</span> <span class="attr">value</span>=<span class="string">&quot;10&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;maxIdle&quot;</span> <span class="attr">value</span>=<span class="string">&quot;6&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">                                </span><br><span class="line">  	<span class="comment">&lt;!-- 在springioc容器中 创建mybatis的核心类  sqlsessionfactory --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;sqlSessionFactory&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 加载mybatis配置文件 将applicationContext.xml配置文件设置为主配置文件 </span></span><br><span class="line"><span class="comment">		&lt;property name=&quot;configLocation&quot; value=&quot;classpath:conf.xml&quot;&gt;&lt;/property&gt;</span></span><br><span class="line"><span class="comment">		--&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 加载mapper.xml文件 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;mapperLocations&quot;</span> <span class="attr">value</span>=<span class="string">&quot;org/pvtwen/mapper/*.xml&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub	</span></span><br><span class="line">	<span class="keyword">final</span> String URL=<span class="string">&quot;jdbc:mysql://localhost:3306/football?serverTimezone=UTC&quot;</span>;</span><br><span class="line">	<span class="keyword">final</span> String USERNAME=<span class="string">&quot;root&quot;</span>;</span><br><span class="line">	<span class="keyword">final</span> String PWD=<span class="string">&quot;MyNewPass&quot;</span>;</span><br><span class="line">	ResultSet set=<span class="literal">null</span>;</span><br><span class="line">		<span class="comment">//a.导入驱动  加载具体的驱动类</span></span><br><span class="line">			<span class="comment">//通过反射直接加载  class文件</span></span><br><span class="line">				Class.forName(<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>);</span><br><span class="line">				<span class="comment">//b.与数据库建立连接</span></span><br><span class="line">				<span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> DriverManager.getConnection(URL, USERNAME, PWD);</span><br><span class="line">				<span class="comment">//c.发送sql，执行增删改</span></span><br><span class="line">				Statement stmt=connection.createStatement();</span><br><span class="line">				<span class="comment">//String sql=&quot;insert into game values(&#x27;1&#x27;,&#x27;2&#x27;,&#x27;2022-03-23&#x27;)&quot;;</span></span><br><span class="line">				String sql=<span class="string">&quot;select * from game order by Tno1&quot;</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//int res=stmt.executeUpdate(sql);</span></span><br><span class="line">				set=stmt.executeQuery(sql);</span><br><span class="line">				</span><br><span class="line">				<span class="keyword">while</span>(set.next()) &#123;</span><br><span class="line">					String team1=set.getString(<span class="number">1</span>);</span><br><span class="line">					String team2=set.getString(<span class="number">2</span>);</span><br><span class="line">					Date date=set.getDate(<span class="number">3</span>);</span><br><span class="line">					System.out.println(team1+<span class="string">&quot;----&quot;</span>+team2+<span class="string">&quot;-----&quot;</span>+date);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">//if(res&gt;0) &#123;</span></span><br><span class="line">					<span class="comment">//System.out.println(&quot;插入成功!&quot;);</span></span><br><span class="line">				<span class="comment">//&#125;</span></span><br><span class="line">				<span class="keyword">if</span>(stmt!=<span class="literal">null</span>) &#123;</span><br><span class="line">					stmt.close();</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(connection!=<span class="literal">null</span>) &#123;</span><br><span class="line">					connection.close();</span><br><span class="line">				&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/30/springboot/" rel="next" title="springboot">
+                <i class="fa fa-chevron-left"></i> springboot
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/" rel="prev" title="尚硅谷">
+                尚硅谷 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/pvtwen" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/pvtwen" target="_blank" title="Gitee">
+                    
+                      <i class="fa fa-fw fa-vk"></i>Gitee</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://leetcode.cn/u/pvtwen" target="_blank" title="LeetCode">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>LeetCode</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#springboot%E4%B8%8Eservlet%E4%B8%A4%E8%80%85%E5%B0%81%E8%A3%85%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">springboot与servlet两者封装对象的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot%E7%9A%84Controller%E5%B1%82%E5%BD%93%E4%B8%AD"><span class="nav-number">1.1.</span> <span class="nav-text">springboot的Controller层当中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Servlet%E4%B8%AD"><span class="nav-number">1.2.</span> <span class="nav-text">Servlet中</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">2.</span> <span class="nav-text">三层架构的组成</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#get%E8%AF%B7%E6%B1%82%E5%92%8Cpost%E8%AF%B7%E6%B1%82"><span class="nav-number">3.</span> <span class="nav-text">get请求和post请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E9%87%8D%E5%AE%9A%E5%90%91redirect%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">请求转发和重定向redirect的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#springboot%E4%B8%ADDao%E5%B1%82%E4%B8%8EspringMybatis"><span class="nav-number">5.</span> <span class="nav-text">springboot中Dao层与springMybatis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mybatis%E4%B8%8EspringbootJDBC%E4%B8%8EJDBC%E4%B8%8ESpringMybatis"><span class="nav-number">6.</span> <span class="nav-text">Mybatis与springbootJDBC与JDBC与SpringMybatis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mybatis%E4%B8%AD"><span class="nav-number">6.1.</span> <span class="nav-text">Mybatis中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SpringMybatis"><span class="nav-number">6.2.</span> <span class="nav-text">SpringMybatis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC"><span class="nav-number">6.3.</span> <span class="nav-text">JDBC</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pvtwen</span>
+
+  
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

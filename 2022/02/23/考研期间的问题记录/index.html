@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这期间无论如何，都要保持自己的好奇心   2022.2.24 傅里叶级数,微积分，线性代数,概率论统计&#x3D;&gt;洛谷 每天6-7点收集考研信息. 近期想另写一篇博客记录考研数学的总结题型(类似于算法题的题型总结)    2022.2.27   选择学校，好开始专业课的复习(历年收分，报录比，复录比)?什么时候开始确定学校? 数据结构基本上是所有学校共有的专业课？如何复习数据结构？(co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考研期间的问题记录">
+<meta property="og:url" content="https://pvtwen.gitee.io/2022/02/23/%E8%80%83%E7%A0%94%E6%9C%9F%E9%97%B4%E7%9A%84%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="PrivateWen">
+<meta property="og:description" content="这期间无论如何，都要保持自己的好奇心   2022.2.24 傅里叶级数,微积分，线性代数,概率论统计&#x3D;&gt;洛谷 每天6-7点收集考研信息. 近期想另写一篇博客记录考研数学的总结题型(类似于算法题的题型总结)    2022.2.27   选择学校，好开始专业课的复习(历年收分，报录比，复录比)?什么时候开始确定学校? 数据结构基本上是所有学校共有的专业课？如何复习数据结构？(co">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-02-23T11:46:54.000Z">
+<meta property="article:modified_time" content="2023-02-06T06:19:26.000Z">
+<meta property="article:author" content="Pvtwen">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://pvtwen.gitee.io/2022/02/23/考研期间的问题记录/"/>
+
+
+
+
+
+  <title>考研期间的问题记录 | PrivateWen</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">PrivateWen</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2022/02/23/%E8%80%83%E7%A0%94%E6%9C%9F%E9%97%B4%E7%9A%84%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">考研期间的问题记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-23T19:46:54+08:00">
+                2022-02-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>这期间无论如何，都要保持自己的好奇心</p>
+</blockquote>
+<ol>
+<li><code>2022.2.24</code> 傅里叶级数,微积分，线性代数,概率论统计&#x3D;&gt;洛谷</li>
+<li>每天6-7点收集考研信息.</li>
+<li>近期想另写一篇博客记录考研数学的总结题型(类似于算法题的题型总结)</li>
+</ol>
+<hr>
+<blockquote>
+<p>2022.2.27</p>
+</blockquote>
+<ul>
+<li>选择学校，好开始专业课的复习(历年收分，报录比，复录比)?什么时候开始确定学校?</li>
+<li>数据结构基本上是所有学校共有的专业课？如何复习数据结构？(code网站算法题？code书上的算法？做纸质真题？还是先做一遍数据结构习题集上面的coding题和纸质题？)</li>
+</ul>
+<hr>
+<blockquote>
+<p>2022.3.2</p>
+</blockquote>
+<ul>
+<li><code>待解决的问题</code>:牛客网KY11题，先序输入建树，递归方法已实现，用栈去实现？</li>
+</ul>
+<hr>
+<blockquote>
+<p>2022.3.4</p>
+</blockquote>
+<h1 id="3-4-1"><a href="#3-4-1" class="headerlink" title="3.4.1"></a>3.4.1</h1><ul>
+<li>记录一下对于<code>实践</code>二字的新理解</li>
+<li>首先是受到&lt;&lt;Orange’s&gt;&gt;一书引言部分提出的学习方法启发。再回顾以往的学习方法，让我重新认识了应该如何学习，因为学会如何学习这个问题应该是一辈子都该探索的目标，所以在这里也不敢说完全理解了如何学习，但至少让我站在一个新的层面去学习新东西。下面举几个例子来证实书中关于学习方法的观点,第一个观点是用到什么再学什么，实践,遇到问题，解决问题，再实践.第二个观点是学习方法是从感性到理性的过程。</li>
+<li>首先那应试教育来说，本身是面向考试来筛选人才，而且是笔试，所以我们完全可以直接面向题目(<code>实践</code>),不会做的题(<code>遇到问题</code>),各种解决问题的办法(<code>解决问题</code>),再做题(<code>再实践</code>).这下再来阐述第二个观点，有了做题形成的感性的经验时，再去翻看书上的枯燥的理论，突然感觉理论一下子生动了起来,尽管这个时候也没有了看书看懂带来的成就感了。</li>
+<li>再举一个亲身体会过的例子，紫书中动态规划一章中习惯性地给读者先灌输晦涩难懂的理论知识，刚拿到书时，也完全没有头绪，毕竟理论在没有自己亲身体会过之前是不会产生更多的想法的。好比说书中对于滚动数组的阐述，作者已经很尽力地用一张表格来解释这个问题，但是愚钝的我并没有理解书上的意思。于是，我立马改变我的学习方法，先去做动态规划的题目，从各种背包问题的二维到一维的优化，在形成了对滚动数组地感性认识后，再看书本，也不觉得有那么难懂了，反倒是多了自己新的理解，从图论的dij，bellford，floyd算法到dfs，bfs，所有的内容都可以联系起来了。可能这也像书中提到的，书是写给看得懂的人看的。站在此刻这个角度思考这个问题，这么说或许对，但是尽信书不如无书，这也是之后我要解释的一个观点。</li>
+<li>再举几个生活中的例子，考驾照，先就理论考试而言，按照书中的思路，直接做题，这点没错，因为相当于是将理论考试理解为了实践。但是，再往上套一层，假设做题这件事类比是看晦涩难懂的书籍，那么这时的实践就变成了没拿驾照开车上路，我相信，没拿驾照开车上路的人和从来没有摸过车的人，做起同样的题来，前者因为有更深的感性认识，能够从题中获得更多的感性认识，理解也够透彻。看来，哲学确实是从什么角度来说都对，从什么角度来说又都不对。</li>
+<li>尽管上面的阐述确实很绕，但是作者终归是想说明一个问题，学习是一个从感性到理性的过程，若是从理性到感性，比如去啃那些枯燥的理论，效率肯定不高。教导我们要先实践。实践中遇到了问题，再解决。亦即是，纸上得来终觉浅，绝知此事要躬行。尤其是应用性极强的学课，绝不能纸上谈兵，要从实际出发。所以总结下来就一个字，’行’.</li>
+<li>应用在考研中也是一样，英语绝不能停留于纸面，虽然没有语言环境，但是还有听力环境，从听中去学习，总比死记硬背单词效率要高。数学也是一样，用一道题能够解释书上长篇大论的定义(感性到理性)。这里再说明一下遇到问题的解决办法，听讲或者看网课或者直接看解题思路亦或者看书上的理论均可。</li>
+<li>最后，再将几个层面的理解分层次。理论-&gt;题目(较弱的感性,毕竟还是停留在纸面)-&gt;应用于生活(最高层次的感性)</li>
+<li>最后再补充一点，因为自己还没有对如何高效学习有多深的理解，所以难免有时候会产生一些低效率的行为，比如经常对一些无关大局的细节问题钻研过久，这部分细节问题可能是工具使用的问题，也可能是对自然公理的一些疑问。但随着慢慢学习，会变得越来越会学习。总结一点，花时间过久的问题想不出来，暂时跳过。</li>
+</ul>
+<h1 id="3-4-2"><a href="#3-4-2" class="headerlink" title="3.4.2"></a>3.4.2</h1><ul>
+<li>根据西安电子科技大学近两年的拟录取名单确定的最高最低以及平均分，再结合当年的报录比进行2022的预测。其他学校一样。</li>
+</ul>
+<h1 id="3-5-1"><a href="#3-5-1" class="headerlink" title="3.5.1"></a>3.5.1</h1><ul>
+<li>数学前期多练题才有提高，后期通过总结题目来巩固理论。但是前期很容易在一个题目上耽搁太久的时间。这一点需要注意.</li>
+</ul>
+<h1 id="3-8-1"><a href="#3-8-1" class="headerlink" title="3.8.1"></a>3.8.1</h1><ul>
+<li>关于实践在看高数网课的应用.网课分为预备基础知识和精讲。以用到什么再学什么这个方针来讲，应当先看精讲，有了知识体系之后，再回过头来看预备基础，亦即是先实践。但从某方面来讲，也可以先做预备基础的练习，再看对应的网课，这样看也符合方针，相当于在实践之前做了一次预实践。毕竟事情没有绝对的黑白之分，也有中间的灰色地带，所以我觉得方法无所谓，适合自己的，让自己感觉最舒服的才最重要。</li>
+</ul>
+<h1 id="3-10-1"><a href="#3-10-1" class="headerlink" title="3.10.1"></a>3.10.1</h1><ul>
+<li>KY26 10^999数字的运算 大数乘法</li>
+</ul>
+<h1 id="3-17"><a href="#3-17" class="headerlink" title="3.17"></a>3.17</h1><ul>
+<li>截至目前，已经听到过两种关于如何学习的方法了。</li>
+<li>一种是面向自学，因为是自学，不需要面面俱到，因为知道自己想学的是什么，所以才会有针对性地学习。这里采取一本书所提出的方法，用到什么再学什么，什么都不说，先实践。</li>
+<li>一种是面向应试，把书先读厚再读薄，因为考试是面面俱到。所列考纲必须全部掌握。但是又不想摒弃之前学到的自学方法。所以这里我想和之前自学的学习方法结合起来。总的来说就是，理论-》实践-》巩固理论，实践的比例较之高考更多一些，因为吸取了之前过多地在一个问题上纠结太久，所以这里想通过实践来解决实践遇到的问题。</li>
+<li>最后，也想对之前高中那段极度精神内耗，也不知道如何高效学习的那个阶段划上一个句号了，但不得不肯定的是之前的那股牛劲，钻研问题的那种狠劲，这点我不会完全摒弃，会加以利用。</li>
+</ul>
+<h1 id="4-2"><a href="#4-2" class="headerlink" title="4.2"></a>4.2</h1><ul>
+<li>想做一个能根据给定函数画曲线的工具</li>
+<li>“java的BigDecimal类做过一个可以达到很高精度的计算器，math库的函数满足不了要求，所以对数指数三角函数这些运算都要重新实现，我是使用的泰勒展开式逼近，但泰勒展开式只是在某一点的逼近”   “<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/333371020/answer/1687706029%22,%60%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E5%88%86%E6%9E%90%E7%9A%84%E6%8C%BA%E9%80%8F%E5%BD%BB%EF%BC%8C%E6%9C%89%E6%97%B6%E9%97%B4%E5%8F%AF%E4%BB%A5%E7%A0%94%E7%A9%B6%E7%A0%94%E7%A9%B6%60">https://www.zhihu.com/question/333371020/answer/1687706029&quot;,`这篇文章分析的挺透彻，有时间可以研究研究`</a></li>
+<li>大数除法 看一下当前博客的3.10.1，之所以跑一个大数除法的小程序，是因为java直接用double相除会牺牲精度，但是BigDecimal可以解决这一个问题。这里遇到的问题是，例如高等数学极限中，想实现1除以一个很小的数.</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/02/19/%E5%B0%8F%E7%99%BD%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%B7%AF%E7%94%B1%E5%99%A8%E5%88%B7%E6%9C%BA%E4%BD%93%E9%AA%8C/" rel="next" title="小白第一次路由器刷机体验">
+                <i class="fa fa-chevron-left"></i> 小白第一次路由器刷机体验
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/02/27/%E8%80%83%E7%A0%94%E9%87%8C%E7%A8%8B%E8%A1%A8/" rel="prev" title="考研里程表">
+                考研里程表 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/pvtwen" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/pvtwen" target="_blank" title="Gitee">
+                    
+                      <i class="fa fa-fw fa-vk"></i>Gitee</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://leetcode.cn/u/pvtwen" target="_blank" title="LeetCode">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>LeetCode</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-1"><span class="nav-number">1.</span> <span class="nav-text">3.4.1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-4-2"><span class="nav-number">2.</span> <span class="nav-text">3.4.2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-5-1"><span class="nav-number">3.</span> <span class="nav-text">3.5.1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-8-1"><span class="nav-number">4.</span> <span class="nav-text">3.8.1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-10-1"><span class="nav-number">5.</span> <span class="nav-text">3.10.1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-17"><span class="nav-number">6.</span> <span class="nav-text">3.17</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-2"><span class="nav-number">7.</span> <span class="nav-text">4.2</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pvtwen</span>
+
+  
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
