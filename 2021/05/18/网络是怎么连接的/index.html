@@ -135,7 +135,7 @@
 
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -356,9 +356,9 @@
 <li>解析域名：从第一章节的浏览器解析url开始，浏览器将输入的url交由DNS服务器解析域名，拿到域名背后的ip地址。</li>
 <li>与服务器建立通信：分为connection,write,read,close四个阶段，建立通信的过程需要三次握手，以及通过查找服务器的对应端口号建立套接字。建立好了通信之后就可以进行下一个阶段-发数据包了。住：建立通信的阶段也在发包，只不过主要有IP头部，MAC头部等，但是发的包中没有数据。其实发包的种类也有很多，ACK包等。</li>
 <li>生成包，发包过程中各个硬件的相互协调：涉及到的软硬件有网卡，网卡驱动，协议栈。其中协议栈可以认为是操作系统的一个部分，<code>它掌管着TCP/IP/UDP</code>，发送的数据包需要经过他所掌管的这几个协议进行加工，也就是给数据包加入头部信息（数据信息、控制信息）。网卡有ROM，MAC，ROM中存放着网卡出场时设置的全世界唯一的MAC地址，MAC作为一种控制层。</li>
-<li>协议栈中的TCP&#x2F;IP：IP只管发送包，IP头部信息含有接送方的IP地址。</li>
+<li>协议栈中的TCP/IP：IP只管发送包，IP头部信息含有接送方的IP地址。<h2 id="第一章和第二章中待回顾的问题"><a href="#第一章和第二章中待回顾的问题" class="headerlink" title="第一章和第二章中待回顾的问题"></a>第一章和第二章中待回顾的问题</h2></li>
 </ul>
-<h2 id="第一章和第二章中待回顾的问题"><a href="#第一章和第二章中待回顾的问题" class="headerlink" title="第一章和第二章中待回顾的问题"></a>第一章和第二章中待回顾的问题</h2><ol>
+<ol>
 <li><p>表示网络包收件人的接收方IP地址是位于IP头部还是TCP头部？</p>
 </li>
 <li><p>端口号用来指定服务器程序的种类，他是位于TCP头部还是IP头部？</p>
@@ -369,7 +369,7 @@
 </li>
 <li><p>在收到ACK号之前继续发送下一个包的方式叫什么?</p>
 </li>
-<li><p>协议栈与操作系统的关系？以及协议栈与TCP&#x2F;IP&#x2F;UDP的关系?</p>
+<li><p>协议栈与操作系统的关系？以及协议栈与TCP/IP/UDP的关系?</p>
 </li>
 <li><p>表示网络包收件人的接收方IP地址位于IP头部，但是该信息并不是由IP产生，而是由应用程序生成，然后，应用程序交给TCP层，再由TCP层交给IP层，IP层再给数据包封装头部。</p>
 </li>
@@ -499,7 +499,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

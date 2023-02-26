@@ -86,17 +86,17 @@
 <meta property="og:site_name" content="PrivateWen">
 <meta property="og:description" content="原文链接 在F12中的console模式下看CORS 后端springboot代码 123456789 @PostMapping(&quot;greet&#x2F;&amp;#123;name&amp;#125;&quot;)    public String delete(@PathVariable(&quot;name&quot;) String name) &amp;#123;        return &quot;hel">
 <meta property="og:locale">
-<meta property="og:image" content="https://pvtwen.gitee.io/localhost.png">
-<meta property="og:image" content="https://pvtwen.gitee.io/goole.png">
-<meta property="og:image" content="https://pvtwen.gitee.io/preflight.png">
-<meta property="og:image" content="https://pvtwen.gitee.io/prefilght2.png">
-<meta property="og:image" content="https://pvtwen.gitee.io/1.png">
-<meta property="og:image" content="https://pvtwen.gitee.io/2.png">
+<meta property="og:image" content="https://pvtwen.gitee.io/2021/04/29/CORS/localhost.png">
+<meta property="og:image" content="https://pvtwen.gitee.io/2021/04/29/CORS/goole.png">
+<meta property="og:image" content="https://pvtwen.gitee.io/2021/04/29/CORS/preflight.png">
+<meta property="og:image" content="https://pvtwen.gitee.io/2021/04/29/CORS/prefilght2.png">
+<meta property="og:image" content="https://pvtwen.gitee.io/2021/04/29/CORS/1.png">
+<meta property="og:image" content="https://pvtwen.gitee.io/2021/04/29/CORS/2.png">
 <meta property="article:published_time" content="2021-04-29T06:52:47.000Z">
 <meta property="article:modified_time" content="2023-02-06T06:19:26.000Z">
 <meta property="article:author" content="Pvtwen">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pvtwen.gitee.io/localhost.png">
+<meta name="twitter:image" content="https://pvtwen.gitee.io/2021/04/29/CORS/localhost.png">
 
 
 
@@ -142,7 +142,7 @@
 
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -356,14 +356,13 @@
         <p><a target="_blank" rel="noopener" href="https://ieftimov.com/post/deep-dive-cors-history-how-it-works-best-practices/#cross-origin-reads">原文链接</a></p>
 <h1 id="在F12中的console模式下看CORS"><a href="#在F12中的console模式下看CORS" class="headerlink" title="在F12中的console模式下看CORS"></a>在F12中的console模式下看CORS</h1><ul>
 <li><p>后端springboot代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@PostMapping(&quot;greet/&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>+name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&#123;&quot;greet&quot;,&quot;/&quot;&#125;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">delete</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@PostMapping(&quot;greet/&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>+name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&#123;&quot;greet&quot;,&quot;/&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>Console中代码  </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(</span><br><span class="line">  <span class="string">&#x27;http://localhost:8080/greet/yawen&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">headers</span>: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span> &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">).<span class="title function_">then</span>(<span class="function"><span class="params">resp</span> =&gt;</span> resp.<span class="title function_">text</span>()).<span class="title function_">then</span>(<span class="variable language_">console</span>.<span class="property">log</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/localhost.png" alt="图片1"><br><img src="/goole.png" alt="图片2"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:8080/greet/yawen&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span> &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">).then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text()).then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+<p><img src="localhost.png" alt="图片1"><br><img src="goole.png" alt="图片2"></p>
 </li>
 </ul>
-<h1 id="preflight-request"><a href="#preflight-request" class="headerlink" title="preflight request"></a>preflight request</h1><p><img src="/preflight.png" alt="图片3"><br><img src="/prefilght2.png" alt="图片4"></p>
+<h1 id="preflight-request"><a href="#preflight-request" class="headerlink" title="preflight request"></a>preflight request</h1><p><img src="preflight.png" alt="图片3"><br><img src="prefilght2.png" alt="图片4"></p>
 <blockquote>
 <p>跨域请求中，浏览器会发出两个请求，一个是OPTION请求，另一个是POST请求。在OPTIONS请求中，状态码为200，但是请求依然不成功（报红)说明，浏览器没有拦截request请求，拦截的是response响应。</p>
 </blockquote>
@@ -371,14 +370,15 @@
 <ol>
 <li>除了GET,POST,HEAD方法</li>
 <li>除了headers中的Accept,Accept-Language,Content-Language</li>
-<li>除了Content-Type: text&#x2F;plain,multipart&#x2F;form-data (application&#x2F;json会执行OPTION预检)</li>
+<li>除了Content-Type: text/plain,multipart/form-data (application/json会执行OPTION预检)</li>
 </ol>
-<h2 id="如何避免预检"><a href="#如何避免预检" class="headerlink" title="如何避免预检"></a>如何避免预检</h2><p>1. </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(</span><br><span class="line">  <span class="string">&#x27;http://localhost:4000/greet&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">headers</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">body</span>: <span class="string">&#x27;Ilija&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">resp</span> =&gt;</span> resp.<span class="title function_">text</span>())</span><br><span class="line">.<span class="title function_">then</span>(<span class="variable language_">console</span>.<span class="property">log</span>)</span><br></pre></td></tr></table></figure>
-<p>此方法可以不执行预检，但是依然避免不了post请求.通过如下操作可以继续避免post请求，从而实现跨域请求.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">options <span class="string">&quot;/greet&quot;</span> <span class="keyword">do</span> |env|</span><br><span class="line">  # Allow `POST /greet`...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>] = <span class="string">&quot;POST&quot;</span></span><br><span class="line">  # ...with `Content-type` header in the request...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>] = <span class="string">&quot;Content-type&quot;</span></span><br><span class="line">  # ...from https:<span class="comment">//www.google.com origin.</span></span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>] = <span class="string">&quot;https://www.google.com&quot;</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h2 id="如何避免预检"><a href="#如何避免预检" class="headerlink" title="如何避免预检"></a>如何避免预检</h2><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:4000/greet&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="string">&#x27;Ilija&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line">.then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text())</span><br><span class="line">.then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+此方法可以不执行预检，但是依然避免不了post请求.通过如下操作可以继续避免post请求，从而实现跨域请求.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">options <span class="string">&quot;/greet&quot;</span> <span class="keyword">do</span> |env|</span><br><span class="line">  # Allow `POST /greet`...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>] = <span class="string">&quot;POST&quot;</span></span><br><span class="line">  # ...with `Content-type` header in the request...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>] = <span class="string">&quot;Content-type&quot;</span></span><br><span class="line">  # ...from https://www.google.com origin.</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>] = <span class="string">&quot;https://www.google.com&quot;</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
-<h1 id="Best-Practice"><a href="#Best-Practice" class="headerlink" title="Best Practice"></a>Best Practice</h1><h2 id="仅仅只允许yourwebsite-com发送request"><a href="#仅仅只允许yourwebsite-com发送request" class="headerlink" title="仅仅只允许yourwebsite.com发送request"></a>仅仅只允许yourwebsite.com发送request</h2><p><img src="/1.png" alt="图片"><br><img src="/2.png" alt="图片"><br>在某些情况下，需要对网站进行分析，这时，就需要浏览器发送有关用户在该网站上的体验的数据给后台，但是，却又不希望所有的站点都能够通过该后台的API来发送无关的数据，此时，后台中的代码,<code>Access-Control-Allow-Origin:yourwebsite.com</code>，通过该设置就可以只获取该网站发送来的数据了.</p>
+<h1 id="Best-Practice"><a href="#Best-Practice" class="headerlink" title="Best Practice"></a>Best Practice</h1><h2 id="仅仅只允许yourwebsite-com发送request"><a href="#仅仅只允许yourwebsite-com发送request" class="headerlink" title="仅仅只允许yourwebsite.com发送request"></a>仅仅只允许yourwebsite.com发送request</h2><p><img src="1.png" alt="图片"><br><img src="2.png" alt="图片"><br>在某些情况下，需要对网站进行分析，这时，就需要浏览器发送有关用户在该网站上的体验的数据给后台，但是，却又不希望所有的站点都能够通过该后台的API来发送无关的数据，此时，后台中的代码,<code>Access-Control-Allow-Origin:yourwebsite.com</code>，通过该设置就可以只获取该网站发送来的数据了.</p>
 
       
     </div>
@@ -491,7 +491,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

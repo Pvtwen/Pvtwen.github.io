@@ -131,7 +131,7 @@
 
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/03/27/%E9%9A%8F%E7%AC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/" itemprop="url">动态规划新</a></h1>
+                <a class="post-title-link" href="/2021/03/27/%E9%9A%8F%E7%AC%94/" itemprop="url">随笔</a></h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-07T17:16:51+08:00">
-                2021-11-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-27T19:41:09+08:00">
+                2021-03-27
               </time>
             
 
@@ -306,34 +306,12 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-25T12:00:04+08:00">
+                2023-02-25
               </time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -363,19 +341,37 @@
 
       
         
-          <ul>
-<li>心得:对于动态规划的题，最核心的思想就是找状态转移方程。</li>
-<li>例题：322,638两道题是硬币问题的典型例题  可以用递推，也可以用递归，但是638由于needs的可能性太多 递推方式首先舍去。递归递推具体区别详见:&lt;&lt;算法入门 经典&gt;&gt; P267</li>
-<li>例题：第266场leetcode周赛 第二题 统计字符串中的元音子字符串  由于dp[i]只依赖于dp[i-1],可将dp化成0维</li>
+          
+            <h1 id="记录一些操作手册性质的东西"><a href="#记录一些操作手册性质的东西" class="headerlink" title="记录一些操作手册性质的东西"></a>记录一些操作手册性质的东西</h1><ol start="53">
+<li>如何条件调试断点 例如停在循环的某一步 如何回到上一步? <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1869271">参考链接</a> </li>
+</ol>
+<ul>
+<li>调试中的drop frame作用：丢掉当前函数的栈帧，也就是回到上一步的调用，但是并不能回到本次循环的调用</li>
 </ul>
-<h1 id="递归模板"><a href="#递归模板" class="headerlink" title="递归模板"></a>递归模板</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 首先需要设置状态变量 可以是哈希表 也可以是 一维数组 。目的就是存储递归过程中访问过的状态。方便剪枝</span></span><br><span class="line">HashMap&lt;Integer,Integer&gt; map=xxxxx;</span><br><span class="line"><span class="type">int</span>[] visit=<span class="keyword">new</span> <span class="title class_">int</span>[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">quesiton</span><span class="params">(<span class="type">int</span>[],<span class="type">int</span> amount)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 写递归函数</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(xxx)</span>&#123;</span><br><span class="line">    <span class="comment">// 剪枝  注意:map可以放list，但是不能放数组。数组可以利用Map.entry&lt;&gt;,详见水壶问题dfs</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// hashmap</span></span><br><span class="line">    <span class="keyword">if</span>(map.contains(x)) <span class="keyword">return</span> map.get(x);</span><br><span class="line">    <span class="comment">// visit</span></span><br><span class="line">    <span class="keyword">if</span>(visit[amount]&gt;=<span class="number">0</span>) <span class="keyword">return</span> dp[amount];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// map 设置返回值</span></span><br><span class="line">    <span class="type">int</span> ans=<span class="number">1</span>&gt;&gt;<span class="number">20</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> x:coins)&#123;</span><br><span class="line">        <span class="comment">// 条件限制 拿硬币问题举例</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// visit</span></span><br><span class="line">        <span class="keyword">if</span>(amount&gt;=x) dp[amount]=Math.min(dp[amount],dfs(xxx))</span><br><span class="line"></span><br><span class="line">        <span class="comment">// hashmap</span></span><br><span class="line">        <span class="keyword">if</span>(amount&gt;=x) ans=Math.min(ans,dfs+<span class="number">1</span>)</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="comment">//hashmap</span></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">    <span class="comment">//visit</span></span><br><span class="line">    <span class="keyword">return</span> dp[amount]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<ol start="61">
+<li>电脑作主机，让手机连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  找到电脑热点主机ip 四 手机连接热点 手动代理，主机号和端口号分别设置为以上主机的ip和7890</li>
+<li></li>
+</ol>
+<ul>
+<li><code>1.17日git操作回忆</code>,gitee为例，.git文件中保存着本地仓库与remote仓库的连接，所以这个文件是关键，如果想要把自建工程上传到远程仓库，.git文件一定要处理好，可以用以下办法处理，git clone httpsx到本地,.git文件必须复制,其余的选择性复制.最后git commit -m “”,git push origin master.</li>
+<li>github中git clone https无法使用，可能是本地的权限更改，google解决不了。但是可以使用ssh git clone.</li>
+<li>无论是gitee还是github上传项目，都应该遵从第一点的办法，用官网提供的方法会报错。</li>
+<li>git pull的操作只会把远程分支最近的更新pull到本地，而不是像clone那样将全部项目的内容clone到本地。</li>
+</ul>
+<ol start="63">
+<li></li>
+</ol>
+<ul>
+<li>更改social link图标，next/config.yml中social links，查阅font awesome手册添加</li>
+<li><code>2.7日</code> 重装系统之后的博客更新，步骤如下<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.1 新建目录，安装hexo(之前先安装node和git,node版本号很重要,这里用的19.0.0,npm版本号用的是8.19.2), npm install -g hexo-cli,npm install -g hexo,git clone备份，进入博客目录，npm install.</span></span><br><span class="line"><span class="comment">// 1. 由于在备份之前的博客时，next主题样式是子模块，应当单独备份(最简单的方法),导致git clone下来的时候内容丢失，所以next主题的config.xml配置丢失</span></span><br><span class="line"><span class="comment">// 2. next版本号:5.1.3,不要更改这个版本号.</span></span><br><span class="line"><span class="comment">// 3. 更改config.xml中的scheme:pisces</span></span><br><span class="line"><span class="comment">// 4. 更改config.xml中的menu，注意去掉空格，否则会将空格编译为%20</span></span><br><span class="line"><span class="comment">// 5. 更改config.xml中的social</span></span><br><span class="line"><span class="comment">// 6. 备份博客一定要给next文件夹单独备份</span></span><br><span class="line"><span class="comment">// 7. 翻页箭头themes\next\layout\_partials\pagination.swig,</span></span><br><span class="line"><span class="comment">// 8. hexo在5.0之后删除了swig，需要自己安装 npm i hexo-renderer-swig</span></span><br><span class="line"><span class="comment">// 9. hexo d之后Deployer not found: ，安装deployer插件,npm install hexo-deployer-git --save</span></span><br></pre></td></tr></table></figure></li>
+<li>最终解决办法：npm install hexo-cli -g, hexo init blog, cd blog, npm install, hexo s,git clone之前的备份，node_module,.git文件可以不要，其他的原样复制.因为hexo deploy并不会完全覆盖之前的仓库，css会混淆，所以删除gitee对应的仓库，重建，若仓库名有变化，在hexo-config.yml中更改repo和url.若报错，查阅上述debug</li>
+<li>若首页中的日志按钮无法使用，在 Next 主题中，归档页面的默认 URL 地址为 /archives/，而不是 /archives||archive。更改即可。</li>
+<li>若直接使用备份的blog，可能出现以下报错，hexo g，hexo s之后<code>ERROR Database load failed. Deleting database.</code>,这时，回到上述最终解决办法中，重新hexo init blog新建立一个博客，之后将备份文件中的除了node_modules,.github,.delopy_git文件夹的其他文件夹拷贝，但是themes主题下的next主题最好只拷贝config.xml文件，因为有可能之前的next文件夹缺少相关依赖.</li>
+<li>更改next的config文件中的updatedtime设置文章更新日期.</li>
+<li>node:19.0.0  hexo:5.4.0(更改hexo版本号 npm i <a href="mailto:&#x68;&#101;&#x78;&#111;&#x40;&#53;&#x2e;&#x34;&#x2e;&#x30;">&#x68;&#101;&#x78;&#111;&#x40;&#53;&#x2e;&#x34;&#x2e;&#x30;</a>)  npm:8.19.2</li>
+</ul>
+
+          
         
       
     </div>
@@ -423,7 +419,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/09/19/%E5%89%8D%E7%BC%80%E4%B8%8E%E5%90%8E%E7%BC%80/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -442,7 +438,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/09/19/%E5%89%8D%E7%BC%80%E4%B8%8E%E5%90%8E%E7%BC%80/" itemprop="url">前缀与后缀</a></h1>
+                <a class="post-title-link" href="/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/" itemprop="url">二叉树</a></h1>
         
 
         <div class="post-meta">
@@ -454,8 +450,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-19T16:13:28+08:00">
-                2021-09-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-18T19:40:18+08:00">
+                2021-03-18
               </time>
             
 
@@ -528,46 +524,7 @@
       
         
           
-            <h1 id="259周赛"><a href="#259周赛" class="headerlink" title="259周赛"></a>259周赛</h1><h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><ul>
-<li>prefix-array  suffix-array 前缀数组保存当前下标之前的最大值  后缀数组保存当前下标之后的最小值</li>
-<li>答案<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sumOfBeauties</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">    <span class="type">int</span> n=nums.length;</span><br><span class="line">    <span class="type">int</span>[] l_max=<span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">    <span class="type">int</span>[] r_min=<span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">    <span class="type">int</span> Lmax=nums[<span class="number">0</span>];</span><br><span class="line">    <span class="type">int</span> Rmin=nums[n-<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> beauty=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n-<span class="number">2</span>;i++)&#123;</span><br><span class="line">        Lmax=Math.max(nums[i-<span class="number">1</span>],Lmax);</span><br><span class="line">        l_max[i]=Lmax;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=n-<span class="number">2</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        Rmin=Math.min(Rmin,nums[i+<span class="number">1</span>]);</span><br><span class="line">        r_min[i]=Rmin;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n-<span class="number">2</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i]&gt;l_max[i] &amp;&amp; nums[i]&lt;r_min[i]) beauty+=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>] &amp;&amp; nums[i]&lt;nums[i+<span class="number">1</span>]) beauty+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> beauty;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>超时<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">sumOfBeauties</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">            <span class="type">int</span> tempF=<span class="number">0</span>,maxF=<span class="number">0</span>,minB=<span class="number">2</span>,tempB=<span class="number">2</span>;</span><br><span class="line">            <span class="type">int</span> beauty=<span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> n=nums.length;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n-<span class="number">1</span>;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i-<span class="number">1</span>]&gt;nums[maxF]) maxF=i-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(minB==i)&#123;</span><br><span class="line">                    minB=i+<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="type">int</span> k=i+<span class="number">1</span>;k&lt;n;k++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(nums[minB]&gt;nums[k]) minB=k;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="type">int</span> k=tempB;k&lt;n;k++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(nums[minB]&gt;nums[k]) minB=k;</span><br><span class="line">                        tempB++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]&gt;nums[maxF] &amp;&amp; nums[i]&lt;nums[minB]) beauty+=<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>] &amp;&amp; nums[i]&lt;nums[i+<span class="number">1</span>]) beauty+=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> beauty;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>反思: </p>
-<blockquote>
-<p>代码中定义的变量过多，容易引起混淆<br>for循环的堆叠增加了时间复杂度<br>对前缀和的应用还不是很灵活，前缀数组既可以保存之和，也可以保存最大最小值<br>通过这道题，明白了有时候需要对数据进行预处理,用最少的变量，先理清思路再code.</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<h1 id="Question1-amp-amp-Question560"><a href="#Question1-amp-amp-Question560" class="headerlink" title="Question1 &amp;&amp; Question560"></a>Question1 &amp;&amp; Question560</h1><ul>
-<li>对于求子数组和的问题，先找关系式.Question1中的关系式为nums[i]+nums[j]&#x3D;target</li>
-<li>Question560中的关系式为subArraySum[i]-subArraySum[j]&#x3D;k</li>
-<li>基于关系式，定义关系变量diff.</li>
-</ul>
-<h2 id="Question1"><a href="#Question1" class="headerlink" title="Question1"></a>Question1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="comment">// 此处也可以写成 int diff=target-nums[i];  map.put(nums[i],i);</span></span><br><span class="line">            <span class="type">int</span> diff=nums[i]-target;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(diff)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;map.get(diff),i&#125;;</span><br><span class="line">            map.put(-nums[i],i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Question560"><a href="#Question560" class="headerlink" title="Question560"></a>Question560</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">subarraySum</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> n=nums.length;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        map.put(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="type">int</span> diff=sum-k;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(diff)) res+=map.get(diff);</span><br><span class="line">            map.put(sum,map.getOrDefault(sum,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Question974"><a href="#Question974" class="headerlink" title="Question974"></a>Question974</h2><ul>
-<li>思路：同余定理,(a-b)%k&#x3D;&#x3D;0,则a%k&#x3D;b%k. 特例，-1和9对5取余数。-1余数是-1，9的余数是4.但是(9+1)%5&#x3D;0.</li>
-<li>所以本题需要避免为负数的情况 (sum%k+k)%k<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">subarraysDivByK</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> n=nums.length;</span><br><span class="line">        <span class="type">int</span> res=<span class="number">0</span>;</span><br><span class="line">        map.put(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="type">int</span> prefix=(sum%k+k)%k; <span class="comment">// 避免之和为负数的情况</span></span><br><span class="line">            res+=map.getOrDefault(prefix,<span class="number">0</span>);</span><br><span class="line">            map.put(prefix,map.getOrDefault(prefix,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Question525"><a href="#Question525" class="headerlink" title="Question525"></a>Question525</h2><ul>
-<li>思路：0和1的数量相同转换为 1的数量减去0的数量为0  可以将数组中的0视为-1. 问题转换为求和为0的最长子数组、</li>
-<li>出发点：1的数量减去0的数量为0. 1的数量即为所有1之和. 0之和由于没有意义 将0转化为-1之和</li>
-<li>延申1：求1的数量比0的数量多n的问题。 也就是求和为n的问题。</li>
-<li>延申2：求1的数量比0的数量多n倍的问题？<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">findMaxLength</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> n=nums.length;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> maxLen=Integer.MIN_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==<span class="number">0</span>) nums[i]=-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> nums[i]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(sum)) maxLen=Math.max(maxLen,i+<span class="number">1</span>-map.get(sum));</span><br><span class="line">            <span class="keyword">else</span> map.put(sum,i+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxLen==Integer.MIN_VALUE?<span class="number">0</span>:maxLen;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h1 id="前缀和-竞赛题5882"><a href="#前缀和-竞赛题5882" class="headerlink" title="前缀和 竞赛题5882"></a>前缀和 竞赛题5882</h1><ul>
-<li>我的思路：先找出机器A的最大值的所有路径，分别遍历所有路径，求出每个路径下的最大值，再求出所有最大值中的最小值</li>
-<li>反思点：</li>
-</ul>
-<ol>
-<li>不要以为机器A拿到了最大值，就可以限制B拿到最大值</li>
-<li>数据格式限制 long型</li>
-<li>在遍历过程中，每次遍历求出B两条路的最大值，最后再将res与该最大值进行比较，res取其中的最小值。而不是res&#x3D;Math.max(max,res);<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">long</span> <span class="title function_">gridGame</span><span class="params">(<span class="type">int</span>[][] grid)</span> &#123;</span><br><span class="line">        <span class="type">int</span> n=grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">long</span>[] prefixArr1=<span class="keyword">new</span> <span class="title class_">long</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="type">long</span>[] prefixArr2=<span class="keyword">new</span> <span class="title class_">long</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="type">long</span> res=Long.MAX_VALUE;</span><br><span class="line">        <span class="type">long</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="type">long</span> sum1=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">            sum+=grid[<span class="number">0</span>][i-<span class="number">1</span>];</span><br><span class="line">            sum1+=grid[<span class="number">1</span>][i-<span class="number">1</span>];</span><br><span class="line">            prefixArr1[i]=sum;</span><br><span class="line">            prefixArr2[i]=sum1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="type">long</span> sub1=prefixArr1[n]-prefixArr1[i];</span><br><span class="line">            <span class="type">long</span> sub2=prefixArr2[i-<span class="number">1</span>];</span><br><span class="line">            <span class="type">long</span> max=Math.max(sub1,sub2);</span><br><span class="line">            res=Math.min(max,res);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+            
           
         
       
@@ -607,7 +564,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/14/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/">&gt;</a>
   </nav>
 
 
@@ -653,7 +610,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

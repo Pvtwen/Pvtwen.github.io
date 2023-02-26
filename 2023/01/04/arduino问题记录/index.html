@@ -125,7 +125,7 @@
 
 
 
-  <title>arduino问题记录 | PrivateWen</title>
+  <title>arduino问题记录 | PrivateWen</title><meta name="robots" content="noindex">
   
 
 
@@ -135,7 +135,7 @@
 
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -347,9 +347,9 @@
 
       
         <ol>
-<li>8x8点阵：如何输出滚动效果<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引脚定义</span></span><br><span class="line"><span class="comment">// 定义数字0</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">char</span> Text[] = &#123; <span class="number">0x00</span>, <span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span> &#125;;</span><br><span class="line"><span class="comment">//描点 行高电平 列低电平 点亮灯</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">Draw_point</span><span class="params">(<span class="type">unsigned</span> <span class="type">char</span> x, <span class="type">unsigned</span> <span class="type">char</span> y)</span> &#123;</span><br><span class="line">  clear_();</span><br><span class="line">  digitalWrite(x + <span class="number">2</span>, HIGH);</span><br><span class="line">  digitalWrite(y + <span class="number">10</span>, LOW);</span><br><span class="line">  delay(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">show_num</span><span class="params">(<span class="type">int</span> copy[])</span> &#123;</span><br><span class="line">  <span class="type">unsigned</span> <span class="type">char</span> i, j, data;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">    data = copy[i];</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (data &amp; <span class="number">0x01</span>) Draw_point(<span class="number">7</span>-i,<span class="number">7</span>-j);</span><br><span class="line">      data &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">loop</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> copy[] = &#123; <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span> &#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">      copy[i] = (Text[i] &gt;&gt; j);</span><br><span class="line">    &#125;</span><br><span class="line">    show_num(copy);</span><br><span class="line">    delay(<span class="number">1000</span>);    <span class="comment">// 每次输出完该轮次的0，停一秒 但是最后只会出现一个点</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 清空8x8点阵</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">clear_</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    digitalWrite(i, LOW);</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++)</span><br><span class="line">    digitalWrite(i + <span class="number">10</span>, HIGH);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>8x8点阵：如何输出滚动效果<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引脚定义</span></span><br><span class="line"><span class="comment">// 定义数字0</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span> Text[] = &#123; <span class="number">0x00</span>, <span class="number">0x1c</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x22</span>, <span class="number">0x1c</span> &#125;;</span><br><span class="line"><span class="comment">//描点 行高电平 列低电平 点亮灯</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Draw_point</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">char</span> x, <span class="keyword">unsigned</span> <span class="keyword">char</span> y)</span> </span>&#123;</span><br><span class="line">  clear_();</span><br><span class="line">  digitalWrite(x + <span class="number">2</span>, HIGH);</span><br><span class="line">  digitalWrite(y + <span class="number">10</span>, LOW);</span><br><span class="line">  delay(<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show_num</span><span class="params">(<span class="keyword">int</span> copy[])</span> </span>&#123;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">char</span> i, j, data;</span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">    data = copy[i];</span><br><span class="line">    <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (data &amp; <span class="number">0x01</span>) Draw_point(<span class="number">7</span>-i,<span class="number">7</span>-j);</span><br><span class="line">      data &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> copy[] = &#123; <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span>, <span class="number">0x00</span> &#125;;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">      copy[i] = (Text[i] &gt;&gt; j);</span><br><span class="line">    &#125;</span><br><span class="line">    show_num(copy);</span><br><span class="line">    delay(<span class="number">1000</span>);    <span class="comment">// 每次输出完该轮次的0，停一秒 但是最后只会出现一个点</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 清空8x8点阵</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear_</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    digitalWrite(i, LOW);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++)</span><br><span class="line">    digitalWrite(i + <span class="number">10</span>, HIGH);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ol>
-
+<!-- flag of hidden posts -->
       
     </div>
     
@@ -369,26 +369,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2022/06/16/3dmaxQuestion/" rel="next" title="3dmaxQuestion">
-                <i class="fa fa-chevron-left"></i> 3dmaxQuestion
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2023/01/06/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" rel="prev" title="毕业设计">
-                毕业设计 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
 
       
@@ -452,7 +432,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

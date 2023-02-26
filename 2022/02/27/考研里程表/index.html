@@ -125,7 +125,7 @@
 
 
 
-  <title>考研里程表 | PrivateWen</title>
+  <title>考研里程表 | PrivateWen</title><meta name="robots" content="noindex">
   
 
 
@@ -135,7 +135,7 @@
 
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -351,31 +351,23 @@
 <li>有时候真的感觉工科学习方法真的是相通的，以练代学，用实践带动理论的学习，这一点跟考研很像，考研需要抓住老师的命题点，抓住重点来学，过程可以囫囵吞枣，结果不是就行，最终会发现这样学其实和死啃理论学的东西差不多，但是所花的时间更少了，效率更高了。</li>
 </ul>
 <h1 id="2022-3-3日"><a href="#2022-3-3日" class="headerlink" title="2022.3.3日"></a>2022.3.3日</h1><ul>
-<li>一道01背包问题的题目，回顾了一下01背包和完全背包的转移方程。为什么01转移方程是f[i][j]&#x3D;Math.min(f[i-1][j],f[i-1][j-arr[i]]+1).而不是Math.min(f[i-1][j],f[i][j-arr[i]]+1).如果是后者，后者有可能是拿i物品之后的最优值，由于每个物品只有一个，所以只能从f[i-1][j-arr[i]]转移而来.</li>
+<li>一道01背包问题的题目，回顾了一下01背包和完全背包的转移方程。为什么01转移方程是f[i][j]=Math.min(f[i-1][j],f[i-1][j-arr[i]]+1).而不是Math.min(f[i-1][j],f[i][j-arr[i]]+1).如果是后者，后者有可能是拿i物品之后的最优值，由于每个物品只有一个，所以只能从f[i-1][j-arr[i]]转移而来.</li>
 </ul>
 <h1 id="2022-3-6日"><a href="#2022-3-6日" class="headerlink" title="2022.3.6日"></a>2022.3.6日</h1><ul>
 <li>283周赛 Q4，数论的东西又忘了.</li>
 <li>牛客网KY139题，只是粗略地看了题解，但是没有细究为什么要对bg进行endtime的排序。有时间再看.</li>
 </ul>
 <h1 id="2022-3-7日"><a href="#2022-3-7日" class="headerlink" title="2022.3.7日"></a>2022.3.7日</h1><ul>
-<li><code>下午</code>牛客网KY43题，复习紫书全排列.</li>
-</ul>
-<h1 id="2022-3-19"><a href="#2022-3-19" class="headerlink" title="2022.3.19"></a>2022.3.19</h1><ul>
-<li>下午 GPLT 程序设计天梯赛.手感欠佳 将近十天没有coding</li>
-</ul>
-<h1 id="2022-3-20日"><a href="#2022-3-20日" class="headerlink" title="2022.3.20日"></a>2022.3.20日</h1><ul>
+<li><code>下午</code>牛客网KY43题，复习紫书全排列.<h1 id="2022-3-19"><a href="#2022-3-19" class="headerlink" title="2022.3.19"></a>2022.3.19</h1></li>
+<li>下午 GPLT 程序设计天梯赛.手感欠佳 将近十天没有coding<h1 id="2022-3-20日"><a href="#2022-3-20日" class="headerlink" title="2022.3.20日"></a>2022.3.20日</h1></li>
 <li>补题，L2-1题，并查集dfs bfs全部超时 不知道原因。</li>
 <li>L2-2 走马，比赛时的思路是对的，记忆化递归，但是结果是错的。重新补了一下本题，记忆化递归相当于dp[i][j]定义为:从ij开始到终点至少还需要多少步，也可以理解为从终点开始bfs，然后遇到起点就返回。如果直接从起点开始用bfs相当于dp[i][j]定义为：从起点走到ij至少需要多少步。</li>
 <li>但是L22本题的ij不是线性的，所以个人理解为不能用动态规划</li>
-<li>调用一次dfs不能同时求多个终点的最短路径(可以这么理解，一次记忆化递归相当于一次dp，而dp的定义只能指定一个终点).而调用一次dfs之后就可以求出所有的点到达终点的最短距离.</li>
-</ul>
-<h1 id="2022-4-4日"><a href="#2022-4-4日" class="headerlink" title="2022.4.4日"></a>2022.4.4日</h1><ul>
-<li>计划用Java写一个求泰勒公式和定积分的小程序</li>
-</ul>
-<h1 id="2022-5-5日"><a href="#2022-5-5日" class="headerlink" title="2022.5.5日"></a>2022.5.5日</h1><ul>
+<li>调用一次dfs不能同时求多个终点的最短路径(可以这么理解，一次记忆化递归相当于一次dp，而dp的定义只能指定一个终点).而调用一次dfs之后就可以求出所有的点到达终点的最短距离.<h1 id="2022-4-4日"><a href="#2022-4-4日" class="headerlink" title="2022.4.4日"></a>2022.4.4日</h1></li>
+<li>计划用Java写一个求泰勒公式和定积分的小程序<h1 id="2022-5-5日"><a href="#2022-5-5日" class="headerlink" title="2022.5.5日"></a>2022.5.5日</h1></li>
 <li>数学进度：线性代数到了第三章，对矩阵的秩和向量组的秩有点迷糊。还需要理清思路。</li>
 </ul>
-
+<!-- flag of hidden posts -->
       
     </div>
     
@@ -395,26 +387,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2022/02/23/%E8%80%83%E7%A0%94%E6%9C%9F%E9%97%B4%E7%9A%84%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="next" title="考研期间的问题记录">
-                <i class="fa fa-chevron-left"></i> 考研期间的问题记录
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2022/03/04/%E9%99%A2%E6%A0%A1%E4%BF%A1%E6%81%AF/" rel="prev" title="院校信息">
-                院校信息 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
 
       
@@ -487,7 +459,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -131,7 +131,7 @@
 
 
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/12/09/%E7%88%AC%E8%99%AB%E6%9D%BF%E5%AD%90/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/04/29/CORS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/12/09/%E7%88%AC%E8%99%AB%E6%9D%BF%E5%AD%90/" itemprop="url">爬虫板子</a></h1>
+                <a class="post-title-link" href="/2021/04/29/CORS/" itemprop="url">CORS</a></h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-09T21:33:33+08:00">
-                2021-12-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-29T14:52:47+08:00">
+                2021-04-29
               </time>
             
 
@@ -342,7 +342,33 @@
       
         
           
-            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">askURL</span>(<span class="params">url</span>):</span><br><span class="line">    head=&#123;</span><br><span class="line">        <span class="string">&quot;User-Agent&quot;</span>:<span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    request=urllib.request.Request(url,headers=head)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        response=urllib.request.urlopen(request)</span><br><span class="line">        html=response.read().decode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">        <span class="keyword">return</span> html</span><br><span class="line">    <span class="keyword">except</span> urllib.error.URLError <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">hasattr</span>(e,<span class="string">&quot;code&quot;</span>):</span><br><span class="line">            <span class="built_in">print</span>(e.code)</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">hasattr</span>(e,<span class="string">&quot;reason&quot;</span>):</span><br><span class="line">            <span class="built_in">print</span>(e.reason)</span><br><span class="line"></span><br><span class="line">url=<span class="string">&quot;http://12345.chengdu.gov.cn/searchTelDeal?telID=21221096&amp;class=100&amp;WorkFPkId=6951786&quot;</span></span><br><span class="line">html=askURL(url)</span><br><span class="line"><span class="built_in">print</span>(html)</span><br><span class="line">f=<span class="built_in">open</span>(<span class="string">&#x27;output1.html&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">f.write(html)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;成功&#x27;</span>)</span><br></pre></td></tr></table></figure>
+            <p><a target="_blank" rel="noopener" href="https://ieftimov.com/post/deep-dive-cors-history-how-it-works-best-practices/#cross-origin-reads">原文链接</a></p>
+<h1 id="在F12中的console模式下看CORS"><a href="#在F12中的console模式下看CORS" class="headerlink" title="在F12中的console模式下看CORS"></a>在F12中的console模式下看CORS</h1><ul>
+<li><p>后端springboot代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@PostMapping(&quot;greet/&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>+name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&#123;&quot;greet&quot;,&quot;/&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Console中代码  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:8080/greet/yawen&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span> &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">).then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text()).then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+<p><img src="localhost.png" alt="图片1"><br><img src="goole.png" alt="图片2"></p>
+</li>
+</ul>
+<h1 id="preflight-request"><a href="#preflight-request" class="headerlink" title="preflight request"></a>preflight request</h1><p><img src="preflight.png" alt="图片3"><br><img src="prefilght2.png" alt="图片4"></p>
+<blockquote>
+<p>跨域请求中，浏览器会发出两个请求，一个是OPTION请求，另一个是POST请求。在OPTIONS请求中，状态码为200，但是请求依然不成功（报红)说明，浏览器没有拦截request请求，拦截的是response响应。</p>
+</blockquote>
+<h2 id="这是浏览器的预检请求"><a href="#这是浏览器的预检请求" class="headerlink" title="这是浏览器的预检请求"></a>这是浏览器的预检请求</h2><p>浏览器会对CORS认为复杂的请求执行预检请求，有如下标准:</p>
+<ol>
+<li>除了GET,POST,HEAD方法</li>
+<li>除了headers中的Accept,Accept-Language,Content-Language</li>
+<li>除了Content-Type: text/plain,multipart/form-data (application/json会执行OPTION预检)</li>
+</ol>
+<h2 id="如何避免预检"><a href="#如何避免预检" class="headerlink" title="如何避免预检"></a>如何避免预检</h2><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:4000/greet&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="string">&#x27;Ilija&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line">.then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text())</span><br><span class="line">.then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+此方法可以不执行预检，但是依然避免不了post请求.通过如下操作可以继续避免post请求，从而实现跨域请求.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">options <span class="string">&quot;/greet&quot;</span> <span class="keyword">do</span> |env|</span><br><span class="line">  # Allow `POST /greet`...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>] = <span class="string">&quot;POST&quot;</span></span><br><span class="line">  # ...with `Content-type` header in the request...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>] = <span class="string">&quot;Content-type&quot;</span></span><br><span class="line">  # ...from https://www.google.com origin.</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>] = <span class="string">&quot;https://www.google.com&quot;</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h1 id="Best-Practice"><a href="#Best-Practice" class="headerlink" title="Best Practice"></a>Best Practice</h1><h2 id="仅仅只允许yourwebsite-com发送request"><a href="#仅仅只允许yourwebsite-com发送request" class="headerlink" title="仅仅只允许yourwebsite.com发送request"></a>仅仅只允许yourwebsite.com发送request</h2><p><img src="1.png" alt="图片"><br><img src="2.png" alt="图片"><br>在某些情况下，需要对网站进行分析，这时，就需要浏览器发送有关用户在该网站上的体验的数据给后台，但是，却又不希望所有的站点都能够通过该后台的API来发送无关的数据，此时，后台中的代码,<code>Access-Control-Allow-Origin:yourwebsite.com</code>，通过该设置就可以只获取该网站发送来的数据了.</p>
+
           
         
       
@@ -391,7 +417,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/12/05/%E6%A0%88%E4%B8%8E%E9%80%92%E5%BD%92/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -410,7 +436,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/12/05/%E6%A0%88%E4%B8%8E%E9%80%92%E5%BD%92/" itemprop="url">栈与递归</a></h1>
+                <a class="post-title-link" href="/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/" itemprop="url">尚硅谷</a></h1>
         
 
         <div class="post-meta">
@@ -422,8 +448,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-05T16:23:11+08:00">
-                2021-12-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-20T18:41:07+08:00">
+                2021-04-20
               </time>
             
 
@@ -444,28 +470,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -496,23 +500,119 @@
       
         
           
-            <h1 id="栈与递归的关系"><a href="#栈与递归的关系" class="headerlink" title="栈与递归的关系"></a>栈与递归的关系</h1><ul>
-<li>递归的本质其实就是栈，这点没错。之前一直认为可以用递归解的题，那么一定存在一个循环的方法，从而降低存储开销。而且递归和循环这两种方法可以画等号。但是并不是这样。递归和循环有时可以近似地看作等同(斐波那契数列)，有时不能(372超级次方)。</li>
-<li>递归其实是操作系统已经做好了栈的封装，每一次递归的时候，将当时的运行环境备份入栈，也就是说，这些都是操作系统已经帮我们做好的了。</li>
-</ul>
-<h2 id="372题-超级次方"><a href="#372题-超级次方" class="headerlink" title="372题 超级次方"></a>372题 超级次方</h2><ul>
-<li>毫无疑问，这道题无论是递归还是循环都能做。但是两者的思路截然不同，递归是从顶层n深入到底层，直到指数为0，才从栈顶返回。</li>
-<li>循环的思路是，利用位运算(二进制),只有当二进制的末尾为1时，才需要更新结果。其余时刻，只需要计算当前的乘法的结果就行了。</li>
-<li>其次，斐波那契的递归同样是从顶层n深入到底层，当n&#x3D;1||n&#x3D;&#x3D;0返回。斐波那契的递推方法用到的思路是动态规划。</li>
-</ul>
-<h1 id="真正用栈去模拟实现递归"><a href="#真正用栈去模拟实现递归" class="headerlink" title="真正用栈去模拟实现递归"></a>真正用栈去模拟实现递归</h1><blockquote>
-<p>拿超级次方这道题来说。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">pow</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b)</span>&#123;</span><br><span class="line">    Stack&lt;Long&gt; stack=<span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//b为偶数</span></span><br><span class="line">        <span class="keyword">if</span> (b % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            stack.push(<span class="number">1L</span>);</span><br><span class="line">            b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(b%<span class="number">2</span>==<span class="number">1</span>)&#123;</span><br><span class="line">            stack.push(a*<span class="number">1L</span>%MOD);</span><br><span class="line">            b-=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="variable">base</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">        <span class="type">Long</span> <span class="variable">pop</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">        <span class="keyword">if</span>(pop==<span class="number">1</span>)&#123;</span><br><span class="line">            base=base*base%MOD;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            base=base*a%MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (<span class="type">int</span>) base;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <ol>
+<li><p>乐观锁 (防止多人同时抢一门课发生丢失更新)   P13节</p>
+</li>
+<li><p>codegenerator 改动</p>
+</li>
+</ol>
 <ul>
-<li>以上代码模拟了真实栈的出栈与入栈。虽然入栈的规则是自己定义的(真实环境中可能还会保存段基址和指令地址).</li>
-<li>同样，斐波那契数列的栈实现如下.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fib</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        Stack&lt;FiboNode[]&gt; stack=<span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        <span class="type">FiboNode</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FiboNode</span>(n - <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">        <span class="type">FiboNode</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FiboNode</span>(n - <span class="number">2</span>, <span class="literal">false</span>);</span><br><span class="line">        FiboNode[] arr=<span class="keyword">new</span> <span class="title class_">FiboNode</span>[<span class="number">2</span>];</span><br><span class="line">        arr[<span class="number">0</span>]=f1;arr[<span class="number">1</span>]=f2;</span><br><span class="line">        stack.push(arr);</span><br><span class="line">        <span class="type">int</span> base=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            FiboNode[] pop = stack.pop();</span><br><span class="line">            <span class="type">FiboNode</span> <span class="variable">n1</span> <span class="operator">=</span> pop[<span class="number">0</span>];</span><br><span class="line">            <span class="type">FiboNode</span> <span class="variable">n2</span> <span class="operator">=</span> pop[<span class="number">1</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">val</span> <span class="operator">=</span> n1.val;</span><br><span class="line">            <span class="keyword">if</span>(!n1.visited)&#123;</span><br><span class="line">                stack.push(pop);</span><br><span class="line">                <span class="keyword">if</span> (val == <span class="number">0</span>) &#123;</span><br><span class="line">                    base += <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val == <span class="number">1</span>) base += <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 入栈</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    FiboNode[] array=<span class="keyword">new</span> <span class="title class_">FiboNode</span>[<span class="number">2</span>];</span><br><span class="line">                    <span class="type">FiboNode</span> <span class="variable">fiboNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FiboNode</span>(val - <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">                    <span class="type">FiboNode</span> <span class="variable">fiboNode1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FiboNode</span>(val - <span class="number">2</span>, <span class="literal">false</span>);</span><br><span class="line">                    array[<span class="number">0</span>]=fiboNode;</span><br><span class="line">                    array[<span class="number">1</span>]=fiboNode1;</span><br><span class="line">                    stack.push(array);</span><br><span class="line">                &#125;</span><br><span class="line">                n1.visited=<span class="literal">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!n2.visited)&#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">val1</span> <span class="operator">=</span> n2.val;</span><br><span class="line">                <span class="keyword">if</span> (val1 == <span class="number">0</span>) &#123;</span><br><span class="line">                    base += <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val1 == <span class="number">1</span>) base += <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 入栈</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    FiboNode[] array=<span class="keyword">new</span> <span class="title class_">FiboNode</span>[<span class="number">2</span>];</span><br><span class="line">                    <span class="type">FiboNode</span> <span class="variable">fiboNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FiboNode</span>(val1 - <span class="number">1</span>, <span class="literal">false</span>);</span><br><span class="line">                    <span class="type">FiboNode</span> <span class="variable">fiboNode1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FiboNode</span>(val1 - <span class="number">2</span>, <span class="literal">false</span>);</span><br><span class="line">                    array[<span class="number">0</span>]=fiboNode;</span><br><span class="line">                    array[<span class="number">1</span>]=fiboNode1;</span><br><span class="line">                    stack.push(array);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> base;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FiboNode</span>&#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    <span class="type">boolean</span> visited;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>项目生成位置</li>
+<li>策略</li>
+<li>数据库</li>
+<li>包</li>
+<li>数据库表名称</li>
 </ul>
+<ol start="8">
+<li>因为mapper文件夹下只有mapper的接口，而没有mapper的实现类（例如：service层中有@Service注解），所以需要@MapperScan</li>
+</ol>
+<hr>
+<ol start="10">
+<li>逻辑删除的两种方式：</li>
+</ol>
+<ul>
+<li>创建字段时：设置default 0,不要@TableField(fill=),在properties文件中配置<code>global-config</code></li>
+<li>不设置default 0,在mp自动填充中@TableFiled,并且在MetaHandler中setFiledname</li>
+</ul>
+<ol start="11">
+<li></li>
+</ol>
+<ul>
+<li>@RequestBody的作用：将前端的数据封装成json数据，然后传值给后端,但是请求方式必须是 @PostMapping</li>
+<li>@ResponseBody 返回数据，返回json数据</li>
+<li>@RequestBody(required=false) 表示该对象可以没有值</li>
+<li>测试restful  查询-get   添加-post  修改 delete    删除</li>
+</ul>
+<ol start="12">
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(<span class="meta">@RequestBody</span> EduTeacher eduteacher)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>npm下载依赖</p>
+</li>
+</ol>
+<ul>
+<li>通过 npm install jquery下载jquery依赖  可以@version</li>
+<li>通过 npm install 根据package.json下载文件</li>
+</ul>
+<ol start="14">
+<li>node.js无法实现es6的模块化代码 <code>module.exports</code></li>
+</ol>
+<ul>
+<li>es5实现模块化:</li>
+</ul>
+<p>01.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(a)+<span class="built_in">parseInt</span>(b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置方法可以被调用</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>02.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m=<span class="built_in">require</span>(<span class="string">&#x27;./01&#x27;</span>) <span class="comment">//引入js</span></span><br><span class="line"><span class="keyword">let</span> sum1=m.sum(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum1)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>es6实现模块化 需要用babel转码</li>
+</ul>
+<ol start="15">
+<li>webpack-admin-template</li>
+</ol>
+<ul>
+<li>前端框架的入口:<br>index.html、src/main.js</li>
+<li>该框架主要基于两个模板做成 vue、element-ui</li>
+<li>config/index.js中修改useEslint:false省去检查严格</li>
+<li>主要修改 src下的/api,/router,/views 即 接口，路由，视图</li>
+</ul>
+<ol start="16">
+<li><p>先点修改再点击左侧导航栏的添加按钮<br>多次路由跳转到同一个页面，在页面中created方法只会执行第一次，后面再进行跳转不会再次执行</p>
+</li>
+<li><p>nginx、阿里云oss、eazyexcel处理批量数据</p>
+</li>
+<li><p>上传excel表</p>
+</li>
+</ol>
+<ul>
+<li>axios不能上传文件  上传文件的代码:<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;讲师头像&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!-- 头衔缩略图 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">pan-thumb</span> <span class="attr">:image</span>=<span class="string">&quot;teacher.avatar&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 文件上传按钮 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-upload&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;imagecropperShow=true&quot;</span>&gt;</span>更换头像</span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">      v-show：是否显示上传组件</span></span><br><span class="line"><span class="comment">      :key：类似于id，如果一个页面多个图片上传控件，可以做区分</span></span><br><span class="line"><span class="comment">      :url：后台上传的url地址</span></span><br><span class="line"><span class="comment">      @close：关闭上传组件</span></span><br><span class="line"><span class="comment">      @crop-upload-success：上传成功后的回调 </span></span><br><span class="line"><span class="comment">        &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">          &lt;image-cropper</span><br><span class="line">                        v-show=&quot;imagecropperShow&quot;</span><br><span class="line">                        :width=&quot;300&quot;</span><br><span class="line">                        :height=&quot;300&quot;</span><br><span class="line">                        :key=&quot;imagecropperKey&quot;</span><br><span class="line">                        :url=&quot;BASE_API+&#x27;/eduoss/fileoss&#x27;&quot;</span><br><span class="line">                        field=&quot;file&quot;</span><br><span class="line">                        @close=&quot;close&quot;</span><br><span class="line">                        @crop-upload-success=&quot;cropSuccess&quot;/&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="19">
+<li>EasyExcel</li>
+</ol>
+<ul>
+<li>首先引入依赖<dependencies></dependencies></li>
+<li>其次看父工程中的pom.xml中&lt;poi.version&gt;&lt;/poi.version&gt;版本号为3.17</li>
+</ul>
+<ol start="20">
+<li>单一服务器模式 登录<br>(1) 使用session对象实现  一台服务器适用</li>
+</ol>
+<ul>
+<li>登录成功之后，把用户数据放到session</li>
+<li>判断是否登录，从session获取数据，可以获取到登录信息<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.setAttribute</span><br><span class="line">session.getAttribute</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="21">
+<li>登录：如果配置了多台服务器，将一个项目中不同的子功能分摊到不同的服务器中去，但是此时session不能共享，也就是说，有多少服务器就要登陆多少次。解决这个问题的办法就是设置单点登录。单点登录的三种实现方法。</li>
+</ol>
+<ul>
+<li>session广播</li>
+<li>使用cookie+redis实现</li>
+<li>使用token实现</li>
+</ul>
+<hr>
+<blockquote>
+<p>redis:在key中生成唯一随机值(ip,用户id等等),在value存用户数据<br>cookie: 把redis里面生成地key放到cookie里面</p>
+</blockquote>
+<blockquote>
+<p>token： 在某个模块进行登陆之后，按照规则生成字符串，把登录之后用户包含到生成字符串里面，把字符串返回</p>
+<blockquote>
+<p>可以把字符串通过cookie返回<br>把字符串通过地址栏返回</p>
+</blockquote>
+</blockquote>
+<ol start="22">
+<li><p>认证与授权springsecurity的底层用到了许多拦截器（防止未登陆的用户直接访问后台数据信息</p>
+</li>
+<li><p><code>(有待考证）</code>：如果主键的字段类型为string，后台设置idtype=id_worker_str,创建数据库的时候不需要设置auto_increment；如果逐渐的字段类型为integer,后台设置idtype=id_worker_int,创建数据库的时候就需要设置auto_increment</p>
+</li>
+</ol>
 
           
         
@@ -553,7 +653,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/12/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/10/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/">&gt;</a>
   </nav>
 
 
@@ -599,7 +699,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
