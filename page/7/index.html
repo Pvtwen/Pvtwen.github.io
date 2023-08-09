@@ -259,6 +259,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/12/05/%E6%A0%88%E4%B8%8E%E9%80%92%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/12/05/%E6%A0%88%E4%B8%8E%E9%80%92%E5%BD%92/" itemprop="url">栈与递归</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-05T16:23:11+08:00">
+                2021-12-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="栈与递归的关系"><a href="#栈与递归的关系" class="headerlink" title="栈与递归的关系"></a>栈与递归的关系</h1><ul>
+<li>递归的本质其实就是栈，这点没错。之前一直认为可以用递归解的题，那么一定存在一个循环的方法，从而降低存储开销。而且递归和循环这两种方法可以画等号。但是并不是这样。递归和循环有时可以近似地看作等同(斐波那契数列)，有时不能(372超级次方)。</li>
+<li>递归其实是操作系统已经做好了栈的封装，每一次递归的时候，将当时的运行环境备份入栈，也就是说，这些都是操作系统已经帮我们做好的了。<h2 id="372题-超级次方"><a href="#372题-超级次方" class="headerlink" title="372题 超级次方"></a>372题 超级次方</h2></li>
+<li>毫无疑问，这道题无论是递归还是循环都能做。但是两者的思路截然不同，递归是从顶层n深入到底层，直到指数为0，才从栈顶返回。</li>
+<li>循环的思路是，利用位运算(二进制),只有当二进制的末尾为1时，才需要更新结果。其余时刻，只需要计算当前的乘法的结果就行了。</li>
+<li>其次，斐波那契的递归同样是从顶层n深入到底层，当n=1||n==0返回。斐波那契的递推方法用到的思路是动态规划。</li>
+</ul>
+<h1 id="真正用栈去模拟实现递归"><a href="#真正用栈去模拟实现递归" class="headerlink" title="真正用栈去模拟实现递归"></a>真正用栈去模拟实现递归</h1><blockquote>
+<p>拿超级次方这道题来说。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">pow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    Stack&lt;Long&gt; stack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//b为偶数</span></span><br><span class="line">        <span class="keyword">if</span> (b % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            stack.push(<span class="number">1L</span>);</span><br><span class="line">            b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(b%<span class="number">2</span>==<span class="number">1</span>)&#123;</span><br><span class="line">            stack.push(a*<span class="number">1L</span>%MOD);</span><br><span class="line">            b-=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> base = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">        Long pop = stack.pop();</span><br><span class="line">        <span class="keyword">if</span>(pop==<span class="number">1</span>)&#123;</span><br><span class="line">            base=base*base%MOD;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            base=base*a%MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>) base;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>以上代码模拟了真实栈的出栈与入栈。虽然入栈的规则是自己定义的(真实环境中可能还会保存段基址和指令地址).</li>
+<li>同样，斐波那契数列的栈实现如下.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        Stack&lt;FiboNode[]&gt; stack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        FiboNode f1 = <span class="keyword">new</span> FiboNode(n - <span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">        FiboNode f2 = <span class="keyword">new</span> FiboNode(n - <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">        FiboNode[] arr=<span class="keyword">new</span> FiboNode[<span class="number">2</span>];</span><br><span class="line">        arr[<span class="number">0</span>]=f1;arr[<span class="number">1</span>]=f2;</span><br><span class="line">        stack.push(arr);</span><br><span class="line">        <span class="keyword">int</span> base=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            FiboNode[] pop = stack.pop();</span><br><span class="line">            FiboNode n1 = pop[<span class="number">0</span>];</span><br><span class="line">            FiboNode n2 = pop[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> val = n1.val;</span><br><span class="line">            <span class="keyword">if</span>(!n1.visited)&#123;</span><br><span class="line">                stack.push(pop);</span><br><span class="line">                <span class="keyword">if</span> (val == <span class="number">0</span>) &#123;</span><br><span class="line">                    base += <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val == <span class="number">1</span>) base += <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 入栈</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    FiboNode[] array=<span class="keyword">new</span> FiboNode[<span class="number">2</span>];</span><br><span class="line">                    FiboNode fiboNode = <span class="keyword">new</span> FiboNode(val - <span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">                    FiboNode fiboNode1 = <span class="keyword">new</span> FiboNode(val - <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">                    array[<span class="number">0</span>]=fiboNode;</span><br><span class="line">                    array[<span class="number">1</span>]=fiboNode1;</span><br><span class="line">                    stack.push(array);</span><br><span class="line">                &#125;</span><br><span class="line">                n1.visited=<span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!n2.visited)&#123;</span><br><span class="line">                <span class="keyword">int</span> val1 = n2.val;</span><br><span class="line">                <span class="keyword">if</span> (val1 == <span class="number">0</span>) &#123;</span><br><span class="line">                    base += <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val1 == <span class="number">1</span>) base += <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 入栈</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    FiboNode[] array=<span class="keyword">new</span> FiboNode[<span class="number">2</span>];</span><br><span class="line">                    FiboNode fiboNode = <span class="keyword">new</span> FiboNode(val1 - <span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">                    FiboNode fiboNode1 = <span class="keyword">new</span> FiboNode(val1 - <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">                    array[<span class="number">0</span>]=fiboNode;</span><br><span class="line">                    array[<span class="number">1</span>]=fiboNode1;</span><br><span class="line">                    stack.push(array);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> base;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FiboNode</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    <span class="keyword">boolean</span> visited;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/12/05/%E4%BA%8C%E5%88%86%E4%B8%8E%E4%BA%8C%E8%BF%9B%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -414,340 +583,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/11/23/%E8%AE%A1%E5%88%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/11/23/%E8%AE%A1%E5%88%92/" itemprop="url">计划</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-23T22:08:33+08:00">
-                2021-11-23
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-26T20:38:43+08:00">
-                2023-02-26
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E5%88%92/" itemprop="url" rel="index">
-                    <span itemprop="name">计划</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>已学</li>
-</ol>
-<ul>
-<li>背包问题(01，完全，多重)</li>
-<li>汇编语言的基础+一些简单实验</li>
-<li>Java数据结构 BST</li>
-<li>做一个小的学校官网消息更新程序（视频九节，十节），√</li>
-<li>12.之前结束汇编语言的学习(课程设计先不做) √</li>
-<li>acm校赛</li>
-<li>数字逻辑电路基础知识完结.</li>
-<li>KMP算法(12月24日)<code>还差具体细节，为什么可以直接跳到k+1?</code></li>
-<li>海明编码实验，汉字编码实验</li>
-<li>2022.1.13日,Dijtsra算法(堆优化)</li>
-<li>1.13 穿越计算机的迷雾，二极管，电子管，mos管，三极管到底是什么？ √</li>
-<li>BellManFord队列优化,Floyd</li>
-<li>链式存图存节点，存边</li>
-<li><code>1.23</code>素数筛,扩展欧几里得</li>
-<li><code>1.29</code>&lt;&lt;算法入门&gt;&gt;数论过了一遍</li>
-<li><code>2.2</code>贪心算法三种区间相关问题的区间覆盖问题(一遍扫描for循环嵌套while循环不能ac，但是不用while循环能ac).</li>
-<li><code>2.4</code>哈夫曼树</li>
-</ul>
-<ol start="2">
-<li><blockquote>
-<p>春节后-开学</p>
-</blockquote>
-</li>
-</ol>
-<ul>
-<li>确定考研，买资料，看学校</li>
-<li>大体的方向：后期结合数据结构来刷题，《算法竞赛》再看看贪心+动态规划。《汇编》实操，能看多少是多少<blockquote>
-<p>1月24-春节前后计划</p>
-</blockquote>
-</li>
-<li>计组实验大致浏览一遍678章 √</li>
-<li>《实模式-保护模式》</li>
-<li>《算法》结束第十章数论+(<a target="_blank" rel="noopener" href="https://github.com/CurryWOE/CUIT_XCPC/tree/main/number%20theory">github</a>)<blockquote>
-<p>1月-寒假的计划</p>
-</blockquote>
-</li>
-<li>给电脑装双系统/ 重装win10系统，win10系统的备份去哪里找,(重装完之后开启3389远程桌面连接，用云服务器远程连接，以及开启ftp服务器),安装完之后看google收藏的debain远程连接以及b站陈锋nas，算是一个小的计网实验吧。</li>
-<li>单片机</li>
-<li>计算机组成原理实验</li>
-<li>微机接口技术</li>
-<li>计算机操作系统实验(配合指导书)</li>
-<li>计算机操作系统李治军32节视频，偶尔看，目前水平还没达到</li>
-<li>andorid爬虫抓包，将可可英语的打卡记录可视化</li>
-<li>完善学校的消息更新</li>
-</ul>
-<ol start="3">
-<li>未完成事项<blockquote>
-<p>2.16</p>
-<blockquote>
-<p>树形dp刷表法 LC动态规划打家劫舍III试验</p>
-</blockquote>
-</blockquote>
-</li>
-</ol>
-<hr>
-<blockquote>
-<p>2.11</p>
-</blockquote>
-<ul>
-<li><p>爬楼梯。填表刷表</p>
-<blockquote>
-<p>2.10事项</p>
-</blockquote>
-</li>
-<li><p>关于背包问题的输出方案和一维滚动数组dp的定义方法(01背包问题两种dp定义方法，代码的逻辑是一样的，就是相当于一维二维换顺序。递推的方法很多，其实还是看dp的定义。)</p>
-</li>
-<li><p>关于dp例题的刷表法(目前的理解是:如果方便写出当前状态所影响的状态时，刷表。不方便，或者说方便写出影响当前状态的决策时，用填表).. </p>
-<blockquote>
-<p>2.6事项 </p>
-</blockquote>
-</li>
-<li><p>bitset的学习，与埃氏筛，树分块相结合.</p>
-<blockquote>
-<p>2.4事项</p>
-</blockquote>
-</li>
-<li><p>前中后序遍历二叉树 非递归。 TreeUtils.java</p>
-</li>
-<li><p>N皇后回溯</p>
-<blockquote>
-<p>1.29事项</p>
-</blockquote>
-</li>
-<li><p>leetcode300题 单调栈解法</p>
-</li>
-<li><p>由数学归纳法,替换法，递归树法证明数据结构的时间复杂度问题(面试经) <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_22771739/article/details/104171665">连接1</a>,<a target="_blank" rel="noopener" href="https://www.cnblogs.com/blknemo/p/11365724.html">连接2</a></p>
-<blockquote>
-<p>1.28事项</p>
-</blockquote>
-</li>
-<li><p>可重构硬件：单片机(可重构),电冰箱/洗衣机等家用电器的微处理器不是可重构的</p>
-</li>
-<li><p>《程序如何运行起来的》汇编一章</p>
-</li>
-<li><p>benblue淘宝店+b站搬运beneater视频</p>
-</li>
-<li><p>b站”自制cpu群主”，logisim文件</p>
-<blockquote>
-<p>1.19事项</p>
-</blockquote>
-</li>
-<li><p>用链式存图存节点 Uva1601 √</p>
-<blockquote>
-<p>1.16事项</p>
-</blockquote>
-</li>
-<li><p>5194题，之前一个记事本的问题，用Dijtsra来做。 √</p>
-</li>
-<li><p>5982题，记忆化递归的状态如何定义，动态规划   √</p>
-<blockquote>
-<p>1.14日事项</p>
-</blockquote>
-</li>
-<li><p>三态门P119 Computer Combination</p>
-<blockquote>
-<p>1.13日事项</p>
-</blockquote>
-</li>
-<li><p>通过743题，学习BellmanFord/SFPS/稠密图 √</p>
-</li>
-<li><p>稀疏图建图方式. √</p>
-</li>
-<li><p>通过Dijtsra算法优化Uva10603. √</p>
-</li>
-<li><p>通过Dijtsra算法优化大礼包. √</p>
-</li>
-<li><p>Java删文件</p>
-<blockquote>
-<p>1.7日事项</p>
-</blockquote>
-</li>
-<li><p>素数筛 √</p>
-<blockquote>
-<p>12.30日事项</p>
-</blockquote>
-</li>
-<li><p>回顾dijkstra算法，并解决542题的单源最短路径，1368题</p>
-<blockquote>
-<p>12.24事项</p>
-</blockquote>
-</li>
-<li><p>数据结构哈希章节</p>
-<blockquote>
-<p>12.22日事项</p>
-</blockquote>
-</li>
-<li><p>dikstra算法求有向有权图的最短路径(用记忆化递归是否可以解决？逆着递归)。朴素解法.dp √</p>
-</li>
-<li><p>floyd算法 √</p>
-</li>
-<li><p>背包问题的剩余几讲 <a target="_blank" rel="noopener" href="https://www.kancloud.cn/kancloud/pack/70134">https://www.kancloud.cn/kancloud/pack/70134</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU4NDE3MTEyMA==&mid=2247488007&idx=1&sn=9d0dcfdf475168d26a5a4bd6fcd3505d&chksm=fd9cb918caeb300e1c8844583db5c5318a89e60d8d552747ff8c2256910d32acd9013c93058f&token=126965152&lang=zh_CN#rd">朴素的存图方式(邻接矩阵和邻接表),图论算法</a></p>
-</li>
-</ul>
-<ol start="4">
-<li>注意事项</li>
-</ol>
-<ul>
-<li>数电中的组合逻辑设计部分差不多忘完了，但是没必要回过去看，现在的阶段是有个数电的概念就可以，等有时间了再回头来学。计组的核心不在于如何设计，而是在于理解为什么这么设计，考试的要求更不会要求这么高。</li>
-<li>目前在用Java做练习题，所以先看Java的数据结构书。C语言的数据结构书日后应试再用，或者等回顾了C语言的结构体和指针再看，重在提高效率。</li>
-</ul>
-<ol start="5">
-<li>new finding</li>
-</ol>
-<ul>
-<li>将html转成markdown格式: devtool.tech</li>
-<li>usaco题库 <a target="_blank" rel="noopener" href="https://train.usaco.org/">https://train.usaco.org/</a></li>
-<li>Question743 Dijtsra例题</li>
-<li>Leetcode53 Leetcode300，53题贪心O(n)复杂度,300题动态规划</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/8/">&gt;</a>
   </nav>
 
 
@@ -793,7 +633,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1051,6 +891,28 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
