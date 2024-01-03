@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/03/27/%E9%9A%8F%E7%AC%94/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/03/30/springboot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/03/27/%E9%9A%8F%E7%AC%94/" itemprop="url">随笔</a></h1>
+                <a class="post-title-link" href="/2021/03/30/springboot/" itemprop="url">springboot</a></h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-27T19:41:09+08:00">
-                2021-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-30T16:43:05+08:00">
+                2021-03-30
               </time>
             
 
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-27T21:21:22+08:00">
-                2023-02-27
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
               </time>
             
           </span>
@@ -342,34 +342,43 @@
       
         
           
-            <h1 id="记录一些操作手册性质的东西"><a href="#记录一些操作手册性质的东西" class="headerlink" title="记录一些操作手册性质的东西"></a>记录一些操作手册性质的东西</h1><ol start="53">
-<li>如何条件调试断点 例如停在循环的某一步 如何回到上一步? <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1869271">参考链接</a> </li>
-</ol>
-<ul>
-<li>调试中的drop frame作用：丢掉当前函数的栈帧，也就是回到上一步的调用，但是并不能回到本次循环的调用</li>
-</ul>
-<ol start="61">
-<li>电脑作主机，让手机连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  找到电脑热点主机ip 四 手机连接热点 手动代理，主机号和端口号分别设置为以上主机的ip和7890</li>
-<li></li>
-</ol>
-<ul>
-<li><code>1.17日git操作回忆</code>,gitee为例，.git文件中保存着本地仓库与remote仓库的连接，所以这个文件是关键，如果想要把自建工程上传到远程仓库，.git文件一定要处理好，可以用以下办法处理，git clone httpsx到本地,.git文件必须复制,其余的选择性复制.最后”git add .”,git commit -m “”,git push origin master.</li>
-<li>github中git clone https无法使用，可能是本地的权限更改，google解决不了。但是可以使用ssh git clone.</li>
-<li>无论是gitee还是github上传项目，都应该遵从第一点的办法，用官网提供的方法会报错。</li>
-<li>git pull的操作只会把远程分支最近的更新pull到本地，而不是像clone那样将全部项目的内容clone到本地。</li>
-</ul>
-<ol start="63">
-<li></li>
-</ol>
-<ul>
-<li>更改social link图标，next/config.yml中social links，查阅font awesome手册添加</li>
-<li><code>2.7日</code> 重装系统之后的博客更新，步骤如下<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.1 新建目录，安装hexo(之前先安装node和git,node版本号很重要,这里用的19.0.0,npm版本号用的是8.19.2), npm install -g hexo-cli,npm install -g hexo,git clone备份，进入博客目录，npm install.</span></span><br><span class="line"><span class="comment">// 1. 由于在备份之前的博客时，next主题样式是子模块，应当单独备份(最简单的方法),导致git clone下来的时候内容丢失，所以next主题的config.xml配置丢失</span></span><br><span class="line"><span class="comment">// 2. next版本号:5.1.3,不要更改这个版本号.</span></span><br><span class="line"><span class="comment">// 3. 更改config.xml中的scheme:pisces</span></span><br><span class="line"><span class="comment">// 4. 更改config.xml中的menu，注意去掉空格，否则会将空格编译为%20</span></span><br><span class="line"><span class="comment">// 5. 更改config.xml中的social</span></span><br><span class="line"><span class="comment">// 6. 备份博客一定要给next文件夹单独备份</span></span><br><span class="line"><span class="comment">// 7. 翻页箭头themes\next\layout\_partials\pagination.swig,</span></span><br><span class="line"><span class="comment">// 8. hexo在5.0之后删除了swig，需要自己安装 npm i hexo-renderer-swig</span></span><br><span class="line"><span class="comment">// 9. hexo d之后Deployer not found: ，安装deployer插件,npm install hexo-deployer-git --save</span></span><br></pre></td></tr></table></figure></li>
-<li>最终解决办法：npm install hexo-cli -g, hexo init blog, cd blog, npm install, hexo s,git clone之前的备份，node_module,.git文件可以不要，其他的原样复制.因为hexo deploy并不会完全覆盖之前的仓库，css会混淆，所以删除gitee对应的仓库，重建，若仓库名有变化，在hexo-config.yml中更改repo和url.若报错，查阅上述debug</li>
-<li>若首页中的日志按钮无法使用，在 Next 主题中，归档页面的默认 URL 地址为 /archives/，而不是 /archives||archive。更改即可。</li>
-<li>若直接使用备份的blog，可能出现以下报错，hexo g，hexo s之后<code>ERROR Database load failed. Deleting database.</code>,这时，回到上述最终解决办法中，重新hexo init blog新建立一个博客，之后将备份文件中的除了node_modules,.github,.delopy_git文件夹的其他文件夹拷贝，但是themes主题下的next主题最好只拷贝config.xml文件，因为有可能之前的next文件夹缺少相关依赖.</li>
-<li>更改next的config文件中的updatedtime设置文章更新日期.</li>
-<li>node:19.0.0  hexo:5.4.0(更改hexo版本号 npm i <a href="mailto:&#x68;&#x65;&#120;&#x6f;&#x40;&#x35;&#x2e;&#52;&#46;&#x30;">&#x68;&#x65;&#120;&#x6f;&#x40;&#x35;&#x2e;&#52;&#46;&#x30;</a>)  npm:8.19.2</li>
-</ul>
+            <h1 id="springboot的两个注解形式给属性赋值"><a href="#springboot的两个注解形式给属性赋值" class="headerlink" title="springboot的两个注解形式给属性赋值"></a>springboot的两个注解形式给属性赋值</h1><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="center">@ConfigurationProperties</th>
+<th align="center">@Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">注值方式</td>
+<td align="center">批量注入</td>
+<td align="center">单个</td>
+</tr>
+<tr>
+<td align="left">松散语法</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="left">SpEL</td>
+<td align="center">√</td>
+<td align="center">√</td>
+</tr>
+<tr>
+<td align="left">JSR303数据校验</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+<tr>
+<td align="left">注入复杂类型</td>
+<td align="center">√</td>
+<td align="center">×</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>松散语法即将驼峰式命名的属性拆解为-:  <code>public int HomeAddress</code>-&gt;<code>home-address</code><br>SpEL即： <code>@Value(&quot;$&#123;student.username&#125;)</code><br>JSR303即： 特殊的属性例如 <code>电子邮件</code>有专门的注解形式，若违反了该规定，则报错 <code>@Email</code><br>复杂类型：例如对象类型</p>
+</blockquote>
 
           
         
@@ -419,7 +428,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/03/27/%E9%9A%8F%E7%AC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -438,7 +447,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/" itemprop="url">二叉树</a></h1>
+                <a class="post-title-link" href="/2021/03/27/%E9%9A%8F%E7%AC%94/" itemprop="url">随笔</a></h1>
         
 
         <div class="post-meta">
@@ -450,8 +459,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-18T19:40:18+08:00">
-                2021-03-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-27T19:41:09+08:00">
+                2021-03-27
               </time>
             
 
@@ -466,34 +475,12 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2023-12-11T15:35:10+08:00">
+                2023-12-11
               </time>
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -524,7 +511,47 @@
       
         
           
-            
+            <h1 id="记录一些操作手册性质的东西"><a href="#记录一些操作手册性质的东西" class="headerlink" title="记录一些操作手册性质的东西"></a>记录一些操作手册性质的东西</h1><ol start="53">
+<li>如何条件调试断点 例如停在循环的某一步 如何回到上一步? <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1869271">参考链接</a> </li>
+</ol>
+<ul>
+<li>调试中的drop frame作用：丢掉当前函数的栈帧，也就是回到上一步的调用，但是并不能回到本次循环的调用</li>
+</ul>
+<ol start="61">
+<li><p>电脑作主机，让手机连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  找到电脑热点主机ip 四 手机连接热点 手动代理，主机号和端口号分别设置为以上主机的ip和7890.          让linux电脑连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  linux中Settings-&gt;Network-&gt;Network Proxy,主机号和端口号设置为以上的主机ip和端口号</p>
+</li>
+<li></li>
+</ol>
+<ul>
+<li><code>1.17日git操作回忆</code>,gitee为例，.git文件中保存着本地仓库与remote仓库的连接，所以这个文件是关键，如果想要把自建工程上传到远程仓库，.git文件一定要处理好，可以用以下办法处理，git clone httpsx到本地,.git文件必须复制,其余的选择性复制.最后”git add .”,git commit -m “”,git push origin master.</li>
+<li>github中git clone https无法使用，可能是本地的权限更改，google解决不了。但是可以使用ssh git clone.</li>
+<li>无论是gitee还是github上传项目，都应该遵从第一点的办法，用官网提供的方法会报错。</li>
+<li>git pull的操作只会把远程分支最近的更新pull到本地，而不是像clone那样将全部项目的内容clone到本地。</li>
+</ul>
+<ol start="63">
+<li></li>
+</ol>
+<ul>
+<li>更改social link图标，next/config.yml中social links，查阅font awesome手册添加</li>
+<li><code>2.7日</code> 重装系统之后的博客更新，步骤如下<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.1 新建目录，安装hexo(之前先安装node和git,node版本号很重要,这里用的19.0.0,npm版本号用的是8.19.2), npm install -g hexo-cli,npm install -g hexo,git clone备份，进入博客目录，npm install.</span></span><br><span class="line"><span class="comment">// 1. 由于在备份之前的博客时，next主题样式是子模块，应当单独备份(最简单的方法),导致git clone下来的时候内容丢失，所以next主题的config.xml配置丢失</span></span><br><span class="line"><span class="comment">// 2. next版本号:5.1.3,不要更改这个版本号.</span></span><br><span class="line"><span class="comment">// 3. 更改config.xml中的scheme:pisces</span></span><br><span class="line"><span class="comment">// 4. 更改config.xml中的menu，注意去掉空格，否则会将空格编译为%20</span></span><br><span class="line"><span class="comment">// 5. 更改config.xml中的social</span></span><br><span class="line"><span class="comment">// 6. 备份博客一定要给next文件夹单独备份</span></span><br><span class="line"><span class="comment">// 7. 翻页箭头themes\next\layout\_partials\pagination.swig,</span></span><br><span class="line"><span class="comment">// 8. hexo在5.0之后删除了swig，需要自己安装 npm i hexo-renderer-swig</span></span><br><span class="line"><span class="comment">// 9. hexo d之后Deployer not found: ，安装deployer插件,npm install hexo-deployer-git --save</span></span><br></pre></td></tr></table></figure></li>
+<li>最终解决办法：npm install hexo-cli -g, hexo init blog, cd blog, npm install, hexo s,git clone之前的备份，node_module,.git文件可以不要，其他的原样复制.因为hexo deploy并不会完全覆盖之前的仓库，css会混淆，所以删除gitee对应的仓库，重建，若仓库名有变化，在hexo-config.yml中更改repo和url.若报错，查阅上述debug</li>
+<li>若首页中的日志按钮无法使用，在 Next 主题中，归档页面的默认 URL 地址为 /archives/，而不是 /archives||archive。更改即可。</li>
+<li>若直接使用备份的blog，可能出现以下报错，hexo g，hexo s之后<code>ERROR Database load failed. Deleting database.</code>,这时，回到上述最终解决办法中，重新hexo init blog新建立一个博客，之后将备份文件中的除了node_modules,.github,.delopy_git文件夹的其他文件夹拷贝，但是themes主题下的next主题最好只拷贝config.xml文件，因为有可能之前的next文件夹缺少相关依赖.</li>
+<li>更改next的config文件中的updatedtime设置文章更新日期.</li>
+<li>node:19.0.0  hexo:5.4.0(更改hexo版本号 npm i <a href="mailto:&#104;&#x65;&#x78;&#x6f;&#x40;&#x35;&#46;&#52;&#x2e;&#x30;">&#104;&#x65;&#x78;&#x6f;&#x40;&#x35;&#46;&#52;&#x2e;&#x30;</a>)  npm:8.19.2</li>
+</ul>
+<ol start="64">
+<li>安装cuda和cudnn</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/AI_dataloads/article/details/133043869?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-3-133043869-blog-131220381.235%5Ev39%5Epc_relevant_3m_sort_dl_base2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-3-133043869-blog-131220381.235%5Ev39%5Epc_relevant_3m_sort_dl_base2&utm_relevant_index=6">cuda安装链接</a>,选择GPU对应的版本，这里Geforce MX150对应的是Cuda10.2,虽然Cuda10.2只有win10版本的，但是win11也可以用.</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jin1Yang/article/details/124754015?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-124754015-blog-115771647.235%5Ev39%5Epc_relevant_yljh&spm=1001.2101.3001.4242.1&utm_relevant_index=3">cudnn安装链接</a>，将解压之后的三个文件夹覆盖cuda对应的三个文件夹即可</li>
+<li>安装了cuda和cudnn之后torch.cuda.is_available()=false,解决办法，从pytorch官网进行下载,例如Cuda10.2,torch==1.10.1对应的命令行为pip install torch==1.10.1+cu102 torchvision==0.11.2+cu102 torchaudio==0.10.1 -f <a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/cu102/torch_stable.html">https://download.pytorch.org/whl/cu102/torch_stable.html</a>.</li>
+</ul>
+<ol start="65">
+<li>word图片选择嵌入式不能显示完全：给图片选择单倍行距</li>
+</ol>
+
           
         
       
@@ -610,7 +637,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -692,7 +719,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
-<div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

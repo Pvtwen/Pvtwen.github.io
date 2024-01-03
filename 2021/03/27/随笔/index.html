@@ -87,7 +87,7 @@
 <meta property="og:description" content="记录一些操作手册性质的东西 如何条件调试断点 例如停在循环的某一步 如何回到上一步? 参考链接    调试中的drop frame作用：丢掉当前函数的栈帧，也就是回到上一步的调用，但是并不能回到本次循环的调用   电脑作主机，让手机连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  找到电脑热点主机ip 四 手机连接热点 手动代理，主机号和端口号">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-03-27T11:41:09.000Z">
-<meta property="article:modified_time" content="2023-02-27T13:21:22.564Z">
+<meta property="article:modified_time" content="2023-12-11T07:35:10.244Z">
 <meta property="article:author" content="Pvtwen">
 <meta name="twitter:card" content="summary">
 
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-27T21:21:22+08:00">
-                2023-02-27
+              <time title="更新于" itemprop="dateModified" datetime="2023-12-11T15:35:10+08:00">
+                2023-12-11
               </time>
             
           </span>
@@ -353,7 +353,8 @@
 <li>调试中的drop frame作用：丢掉当前函数的栈帧，也就是回到上一步的调用，但是并不能回到本次循环的调用</li>
 </ul>
 <ol start="61">
-<li>电脑作主机，让手机连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  找到电脑热点主机ip 四 手机连接热点 手动代理，主机号和端口号分别设置为以上主机的ip和7890</li>
+<li><p>电脑作主机，让手机连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  找到电脑热点主机ip 四 手机连接热点 手动代理，主机号和端口号分别设置为以上主机的ip和7890.          让linux电脑连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  linux中Settings-&gt;Network-&gt;Network Proxy,主机号和端口号设置为以上的主机ip和端口号</p>
+</li>
 <li></li>
 </ol>
 <ul>
@@ -372,8 +373,19 @@
 <li>若首页中的日志按钮无法使用，在 Next 主题中，归档页面的默认 URL 地址为 /archives/，而不是 /archives||archive。更改即可。</li>
 <li>若直接使用备份的blog，可能出现以下报错，hexo g，hexo s之后<code>ERROR Database load failed. Deleting database.</code>,这时，回到上述最终解决办法中，重新hexo init blog新建立一个博客，之后将备份文件中的除了node_modules,.github,.delopy_git文件夹的其他文件夹拷贝，但是themes主题下的next主题最好只拷贝config.xml文件，因为有可能之前的next文件夹缺少相关依赖.</li>
 <li>更改next的config文件中的updatedtime设置文章更新日期.</li>
-<li>node:19.0.0  hexo:5.4.0(更改hexo版本号 npm i <a href="mailto:&#x68;&#x65;&#120;&#x6f;&#x40;&#x35;&#x2e;&#52;&#46;&#x30;">&#x68;&#x65;&#120;&#x6f;&#x40;&#x35;&#x2e;&#52;&#46;&#x30;</a>)  npm:8.19.2</li>
+<li>node:19.0.0  hexo:5.4.0(更改hexo版本号 npm i <a href="mailto:&#104;&#x65;&#x78;&#x6f;&#x40;&#x35;&#46;&#52;&#x2e;&#x30;">&#104;&#x65;&#x78;&#x6f;&#x40;&#x35;&#46;&#52;&#x2e;&#x30;</a>)  npm:8.19.2</li>
 </ul>
+<ol start="64">
+<li>安装cuda和cudnn</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/AI_dataloads/article/details/133043869?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-3-133043869-blog-131220381.235%5Ev39%5Epc_relevant_3m_sort_dl_base2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-3-133043869-blog-131220381.235%5Ev39%5Epc_relevant_3m_sort_dl_base2&utm_relevant_index=6">cuda安装链接</a>,选择GPU对应的版本，这里Geforce MX150对应的是Cuda10.2,虽然Cuda10.2只有win10版本的，但是win11也可以用.</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jin1Yang/article/details/124754015?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-124754015-blog-115771647.235%5Ev39%5Epc_relevant_yljh&spm=1001.2101.3001.4242.1&utm_relevant_index=3">cudnn安装链接</a>，将解压之后的三个文件夹覆盖cuda对应的三个文件夹即可</li>
+<li>安装了cuda和cudnn之后torch.cuda.is_available()=false,解决办法，从pytorch官网进行下载,例如Cuda10.2,torch==1.10.1对应的命令行为pip install torch==1.10.1+cu102 torchvision==0.11.2+cu102 torchaudio==0.10.1 -f <a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/cu102/torch_stable.html">https://download.pytorch.org/whl/cu102/torch_stable.html</a>.</li>
+</ul>
+<ol start="65">
+<li>word图片选择嵌入式不能显示完全：给图片选择单倍行距</li>
+</ol>
 
       
     </div>
@@ -486,7 +498,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -584,7 +596,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
-<div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -259,6 +259,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/12/05/%E4%BA%8C%E5%88%86%E4%B8%8E%E4%BA%8C%E8%BF%9B%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/12/05/%E4%BA%8C%E5%88%86%E4%B8%8E%E4%BA%8C%E8%BF%9B%E5%88%B6/" itemprop="url">二分与二进制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-05T16:05:04+08:00">
+                2021-12-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关于二进制优化"><a href="#关于二进制优化" class="headerlink" title="关于二进制优化"></a>关于二进制优化</h1><h2 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h2><ul>
+<li>在多重背包问题中，将问题简化为01背包问题时，如果采用朴素解法，时间复杂度为O(n),后续中，利用二进制优化，将复杂度降成O(logn)</li>
+<li>对于二进制优化，将一个很大的数拆分成若干个数，其中数的规律为1,2,4,8….，最后，不足的数填充即可。例如，数字10，将其拆分成1,2,4,3.四个包,对应的二进制为0000~1111，每个包有拿和不拿两种选择。</li>
+</ul>
+<h1 id="二进制优化和二分的关系-快速幂"><a href="#二进制优化和二分的关系-快速幂" class="headerlink" title="二进制优化和二分的关系(快速幂)"></a>二进制优化和二分的关系(快速幂)</h1><p><strong>牵涉到的题目</strong></p>
+<h2 id="372题超级次方"><a href="#372题超级次方" class="headerlink" title="372题超级次方"></a>372题超级次方</h2><ul>
+<li>该题中同样用到了优化的思想，刚开始以为二进制优化和二分可以等同，但是并不然，该题的思路是，将一个数不断二分，二分的条件是,如果数为偶数，二分，如果数为奇数，数减一。</li>
+<li>对于求解一个大数的幂，该思路可以可以将复杂度从O(n)降为O(logn),其中时间复杂度O(n)对应着朴素解法。</li>
+<li>同样是优化，二进制优化是为了方便从0~n任何一个数之间进行选取。而二分(快速幂)则是为了将一个很大的指数迅速拆分成一个很小的数，从而降低乘法的次数。</li>
+<li>其次，本题中的另外一思路为，先将一个很大的指数拆分成小于10的数，用的是高中数学，同底数幂运算和幂的乘方运算。<h3 id="取模公式"><a href="#取模公式" class="headerlink" title="取模公式"></a>取模公式</h3></li>
+<li>(a∗b)%MOD=((a%MOD)∗(b%MOD))%MOD<h1 id="二分最关键的一步"><a href="#二分最关键的一步" class="headerlink" title="二分最关键的一步"></a>二分最关键的一步</h1></li>
+<li><code>找到区间上的二段性</code></li>
+<li>目前遇到的两种类型的二分题目，一种是已知连续区间，找未知的值(475),另一种是在非连续单调递增区间内找已知的值</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/11/23/%E8%AE%A1%E5%88%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -575,168 +743,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/" itemprop="url">动态规划新</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-07T17:16:51+08:00">
-                2021-11-07
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li>心得:对于动态规划的题，最核心的思想就是找状态转移方程。</li>
-<li>例题：322,638两道题是硬币问题的典型例题  可以用递推，也可以用递归，但是638由于needs的可能性太多 递推方式首先舍去。递归递推具体区别详见:&lt;&lt;算法入门 经典&gt;&gt; P267</li>
-<li>例题：第266场leetcode周赛 第二题 统计字符串中的元音子字符串  由于dp[i]只依赖于dp[i-1],可将dp化成0维<h1 id="递归模板"><a href="#递归模板" class="headerlink" title="递归模板"></a>递归模板</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 首先需要设置状态变量 可以是哈希表 也可以是 一维数组 。目的就是存储递归过程中访问过的状态。方便剪枝</span></span><br><span class="line">HashMap&lt;Integer,Integer&gt; map=xxxxx;</span><br><span class="line"><span class="keyword">int</span>[] visit=<span class="keyword">new</span> <span class="keyword">int</span>[];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">quesiton</span><span class="params">(<span class="keyword">int</span>[],<span class="keyword">int</span> amount)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 写递归函数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dfs</span><span class="params">(xxx)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 剪枝  注意:map可以放list，但是不能放数组。数组可以利用Map.entry&lt;&gt;,详见水壶问题dfs</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// hashmap</span></span><br><span class="line">    <span class="keyword">if</span>(map.contains(x)) <span class="keyword">return</span> map.get(x);</span><br><span class="line">    <span class="comment">// visit</span></span><br><span class="line">    <span class="keyword">if</span>(visit[amount]&gt;=<span class="number">0</span>) <span class="keyword">return</span> dp[amount];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// map 设置返回值</span></span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">1</span>&gt;&gt;<span class="number">20</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> x:coins)&#123;</span><br><span class="line">        <span class="comment">// 条件限制 拿硬币问题举例</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// visit</span></span><br><span class="line">        <span class="keyword">if</span>(amount&gt;=x) dp[amount]=Math.min(dp[amount],dfs(xxx))</span><br><span class="line"></span><br><span class="line">        <span class="comment">// hashmap</span></span><br><span class="line">        <span class="keyword">if</span>(amount&gt;=x) ans=Math.min(ans,dfs+<span class="number">1</span>)</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="comment">//hashmap</span></span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">    <span class="comment">//visit</span></span><br><span class="line">    <span class="keyword">return</span> dp[amount]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -787,7 +793,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -869,7 +875,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
-<div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

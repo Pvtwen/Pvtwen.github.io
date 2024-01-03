@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="2023.8.8  卡尔曼滤波的估计值更新公式本质上还是通过最小二乘的目标函数对Xk求导得来的，所以所有的因都是最小二乘的目标函数，不管是后面的迭代最小二乘还是其他的类型。本质上两篇论文《Robust GM KF》和《on robust kalman filtering》都是通过写出线性回归的形式，然后写出其最优估计值来优化的。 源码和报告地址">
+<meta name="description" content="源码链接卡尔曼公式状态转移方程和观测方程 状态转移方程  A是状态转移方程，w是过程噪声$$x_k&#x3D;Ax_{k-1}+w_{k-1}$$   观测方程  B是观测矩阵，v是观测噪声$$y_k&#x3D;Bx_k+v_{k}$$预测公式   先验估计预测$$\hat x_{k|k-1} &#x3D; A\hat x_{k-1|k-1}$$  先验误差协方差矩阵预测$$P_{k|k-1} &#x3D; AP_{k-1|k-1}A’">
 <meta property="og:type" content="article">
 <meta property="og:title" content="卡尔曼和最小二乘">
 <meta property="og:url" content="https://pvtwen.gitee.io/2023/08/08/%E5%8D%A1%E5%B0%94%E6%9B%BC%E5%92%8C%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98/index.html">
 <meta property="og:site_name" content="PrivateWen">
-<meta property="og:description" content="2023.8.8  卡尔曼滤波的估计值更新公式本质上还是通过最小二乘的目标函数对Xk求导得来的，所以所有的因都是最小二乘的目标函数，不管是后面的迭代最小二乘还是其他的类型。本质上两篇论文《Robust GM KF》和《on robust kalman filtering》都是通过写出线性回归的形式，然后写出其最优估计值来优化的。 源码和报告地址">
+<meta property="og:description" content="源码链接卡尔曼公式状态转移方程和观测方程 状态转移方程  A是状态转移方程，w是过程噪声$$x_k&#x3D;Ax_{k-1}+w_{k-1}$$   观测方程  B是观测矩阵，v是观测噪声$$y_k&#x3D;Bx_k+v_{k}$$预测公式   先验估计预测$$\hat x_{k|k-1} &#x3D; A\hat x_{k-1|k-1}$$  先验误差协方差矩阵预测$$P_{k|k-1} &#x3D; AP_{k-1|k-1}A’">
 <meta property="og:locale">
 <meta property="article:published_time" content="2023-08-08T12:21:45.000Z">
-<meta property="article:modified_time" content="2023-08-09T02:07:23.141Z">
+<meta property="article:modified_time" content="2024-01-03T02:37:53.905Z">
 <meta property="article:author" content="Pvtwen">
 <meta name="twitter:card" content="summary">
 
@@ -307,8 +307,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-08-09T10:07:23+08:00">
-                2023-08-09
+              <time title="更新于" itemprop="dateModified" datetime="2024-01-03T10:37:53+08:00">
+                2024-01-03
               </time>
             
           </span>
@@ -346,11 +346,37 @@
       
 
       
-        <p><code>2023.8.8</code></p>
+        <h1 id="源码链接"><a href="#源码链接" class="headerlink" title="源码链接"></a><a target="_blank" rel="noopener" href="https://github.com/Pvtwen/kalmanAndLS">源码链接</a></h1><h1 id="卡尔曼公式"><a href="#卡尔曼公式" class="headerlink" title="卡尔曼公式"></a>卡尔曼公式</h1><h2 id="状态转移方程和观测方程"><a href="#状态转移方程和观测方程" class="headerlink" title="状态转移方程和观测方程"></a>状态转移方程和观测方程</h2><ol>
+<li><p>状态转移方程</p>
 <ul>
-<li>卡尔曼滤波的估计值更新公式本质上还是通过最小二乘的目标函数对Xk求导得来的，所以所有的因都是最小二乘的目标函数，不管是后面的迭代最小二乘还是其他的类型。本质上两篇论文《Robust GM KF》和《on robust kalman filtering》都是通过写出线性回归的形式，然后写出其最优估计值来优化的。</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/Pvtwen/kalmanAndLS">源码和报告地址</a></li>
+<li>A是状态转移方程，w是过程噪声<br>$$<br>x_k=Ax_{k-1}+w_{k-1}<br>$$</li>
 </ul>
+</li>
+<li><p>观测方程</p>
+<ul>
+<li>B是观测矩阵，v是观测噪声<br>$$<br>y_k=Bx_k+v_{k}<br>$$<h2 id="预测公式"><a href="#预测公式" class="headerlink" title="预测公式"></a>预测公式</h2></li>
+</ul>
+</li>
+<li><p>先验估计预测<br>$$<br>\hat x_{k|k-1} = A\hat x_{k-1|k-1}<br>$$</p>
+</li>
+<li><p>先验误差协方差矩阵预测<br>$$<br>P_{k|k-1} = AP_{k-1|k-1}A’ + Q<br>$$</p>
+<h2 id="更新公式"><a href="#更新公式" class="headerlink" title="更新公式"></a>更新公式</h2></li>
+<li><p>卡尔曼增益<br>$$<br>K_k=P_{k|k-1}H’(HP_{k|k-1}H’+R)<br>$$</p>
+</li>
+<li><p>更新估计值<br>$$<br>\hat x_{k|k}=\hat x_{k|k-1} + K_k(y_k-H \hat x_{k|k-1})<br>$$</p>
+</li>
+<li><p>更新误差协方差矩阵<br>$$<br>P_{k|k}=(I-K_kH)P_{k|k-1}<br>$$</p>
+</li>
+</ol>
+<h2 id="做1000次实验：比较每个时刻的样本方差和算法估算出来的方差"><a href="#做1000次实验：比较每个时刻的样本方差和算法估算出来的方差" class="headerlink" title="做1000次实验：比较每个时刻的样本方差和算法估算出来的方差"></a>做1000次实验：比较每个时刻的样本方差和算法估算出来的方差</h2><ol>
+<li>估计误差<br>$$<br>\delta_{k|k}=x_k-\hat x_{k|k}<br>$$</li>
+<li>样本方差<br>$$<br>\sigma^2 = \frac{\sum(\hat{\delta}_k-\overline{\delta})^2}{n}<br>$$<br>&emsp;&emsp;&emsp;其中<br>$$<br>\overline{\delta} = \frac{\sum \hat{\delta}_k}{n}<br>$$</li>
+</ol>
+<h1 id="最小二乘估计-L2范数-emsp"><a href="#最小二乘估计-L2范数-emsp" class="headerlink" title="最小二乘估计(L2范数) &emsp; "></a>最小二乘估计(L2范数) &emsp; <a href="/2024/01/03/L1%E4%BC%98%E5%8C%96/" title="L1优化">L1优化</a></h1><ol>
+<li><p>目标函数<br>$$<br>J = \frac{1}{2}||X_k-\hat{X}_{k|k-1}||^2<br>$$</p>
+</li>
+<li></li>
+</ol>
 
       
     </div>
@@ -384,6 +410,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2024/01/03/L1%E4%BC%98%E5%8C%96/" rel="prev" title="L1优化">
+                L1优化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -434,8 +464,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -450,7 +489,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -518,6 +557,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E9%93%BE%E6%8E%A5"><span class="nav-number">1.</span> <span class="nav-text">源码链接</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%A1%E5%B0%94%E6%9B%BC%E5%85%AC%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">卡尔曼公式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E7%A7%BB%E6%96%B9%E7%A8%8B%E5%92%8C%E8%A7%82%E6%B5%8B%E6%96%B9%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">状态转移方程和观测方程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E6%B5%8B%E5%85%AC%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">预测公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E5%85%AC%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">更新公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%81%9A1000%E6%AC%A1%E5%AE%9E%E9%AA%8C%EF%BC%9A%E6%AF%94%E8%BE%83%E6%AF%8F%E4%B8%AA%E6%97%B6%E5%88%BB%E7%9A%84%E6%A0%B7%E6%9C%AC%E6%96%B9%E5%B7%AE%E5%92%8C%E7%AE%97%E6%B3%95%E4%BC%B0%E7%AE%97%E5%87%BA%E6%9D%A5%E7%9A%84%E6%96%B9%E5%B7%AE"><span class="nav-number">2.4.</span> <span class="nav-text">做1000次实验：比较每个时刻的样本方差和算法估算出来的方差</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E4%BC%B0%E8%AE%A1-L2%E8%8C%83%E6%95%B0-emsp"><span class="nav-number">3.</span> <span class="nav-text">最小二乘估计(L2范数) &amp;emsp; L1优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -532,7 +587,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
-<div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
