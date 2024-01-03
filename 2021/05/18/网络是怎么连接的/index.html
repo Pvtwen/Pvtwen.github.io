@@ -346,10 +346,10 @@
       
 
       
-        <h1 id="DNS服务器之顺藤摸瓜"><a href="#DNS服务器之顺藤摸瓜" class="headerlink" title="DNS服务器之顺藤摸瓜"></a>DNS服务器之顺藤摸瓜</h1><p>拿 <a target="_blank" rel="noopener" href="http://www.google.com.来举例.其实可以类比为找朋友./">www.google.com.来举例。其实可以类比为找朋友。</a></p>
+        <h1 id="DNS服务器之顺藤摸瓜"><a href="#DNS服务器之顺藤摸瓜" class="headerlink" title="DNS服务器之顺藤摸瓜"></a>DNS服务器之顺藤摸瓜</h1><p>拿 www.google.com.来举例。其实可以类比为找朋友。</p>
 <ol>
-<li>首先本机通过自己设置的最近的DNS服务器去找寻根域名，本机问道根域名服务器，你认不认识<a target="_blank" rel="noopener" href="http://www.google.com,跟服务器答道我不认识,但是我认识com域名服务器/">www.google.com,跟服务器答道我不认识，但是我认识com域名服务器</a>.</li>
-<li>同理，问com域名服务器，你是否认识<a target="_blank" rel="noopener" href="http://www.google,com域名解析器答道,我认识存放google的域名解析器/">www.google,com域名解析器答道，我认识存放google的域名解析器</a>.</li>
+<li>首先本机通过自己设置的最近的DNS服务器去找寻根域名，本机问道根域名服务器，你认不认识www.google.com,跟服务器答道我不认识，但是我认识com域名服务器.</li>
+<li>同理，问com域名服务器，你是否认识www.google,com域名解析器答道，我认识存放google的域名解析器.</li>
 </ol>
 <h1 id="第一章和第二章的总结"><a href="#第一章和第二章的总结" class="headerlink" title="第一章和第二章的总结"></a>第一章和第二章的总结</h1><p><code>注意，双引号内的部分即还不确定的部分，待完善</code></p>
 <ul>
@@ -359,28 +359,19 @@
 <li>协议栈中的TCP/IP：IP只管发送包，IP头部信息含有接送方的IP地址。<h2 id="第一章和第二章中待回顾的问题"><a href="#第一章和第二章中待回顾的问题" class="headerlink" title="第一章和第二章中待回顾的问题"></a>第一章和第二章中待回顾的问题</h2></li>
 </ul>
 <ol>
-<li><p>表示网络包收件人的接收方IP地址是位于IP头部还是TCP头部？</p>
-</li>
-<li><p>端口号用来指定服务器程序的种类，他是位于TCP头部还是IP头部？</p>
-</li>
-<li><p>会对包是否正确送达进行确认的时TCP还是IP？</p>
-</li>
-<li><p>根据IP地址查询MAC地址的机制叫什么？</p>
-</li>
-<li><p>在收到ACK号之前继续发送下一个包的方式叫什么?</p>
-</li>
+<li>表示网络包收件人的接收方IP地址是位于IP头部还是TCP头部？</li>
+<li>端口号用来指定服务器程序的种类，他是位于TCP头部还是IP头部？</li>
+<li>会对包是否正确送达进行确认的时TCP还是IP？</li>
+<li>根据IP地址查询MAC地址的机制叫什么？</li>
+<li>在收到ACK号之前继续发送下一个包的方式叫什么?</li>
 <li><p>协议栈与操作系统的关系？以及协议栈与TCP/IP/UDP的关系?</p>
 </li>
 <li><p>表示网络包收件人的接收方IP地址位于IP头部，但是该信息并不是由IP产生，而是由应用程序生成，然后，应用程序交给TCP层，再由TCP层交给IP层，IP层再给数据包封装头部。</p>
 </li>
-<li><p>TCP头部</p>
-</li>
-<li><p><code>书2.3.3</code></p>
-</li>
-<li><p>ARP机制，拿一个子网来说，发送方在查询MAC地址时，首先通过广播的方式，向子网内的所有设备问：“谁的ip地址是xxxxx”,符合条件的设备答道:”我的ip地址符合，我的mac地址是xxxx”,不符合条件的设备即使收到了该条信息也不做回复。</p>
-</li>
-<li><p>滑动窗口方式，该方式是指接收方在没有收到发送方返回的ACK包之前，继续发送下一个数据包，这样可以提升通信的效率，但是发送两个数据包之间的间隔需要按规则来设定，不能过大也不能过小。</p>
-</li>
+<li>TCP头部</li>
+<li><code>书2.3.3</code></li>
+<li>ARP机制，拿一个子网来说，发送方在查询MAC地址时，首先通过广播的方式，向子网内的所有设备问：“谁的ip地址是xxxxx”,符合条件的设备答道:”我的ip地址符合，我的mac地址是xxxx”,不符合条件的设备即使收到了该条信息也不做回复。</li>
+<li>滑动窗口方式，该方式是指接收方在没有收到发送方返回的ACK包之前，继续发送下一个数据包，这样可以提升通信的效率，但是发送两个数据包之间的间隔需要按规则来设定，不能过大也不能过小。</li>
 </ol>
 <h1 id="自主探索ip"><a href="#自主探索ip" class="headerlink" title="自主探索ip"></a>自主探索ip</h1><ol>
 <li>当启用了代理服务器的时候去访问url，remote adrress:127.0.0.1：1080 代表的是本地代理端口，也就是本机从代理服务器获取数据的端口。</li>
@@ -499,7 +490,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

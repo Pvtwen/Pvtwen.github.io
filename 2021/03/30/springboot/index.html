@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="springboot的两个注解形式给属性赋值   类型 @ConfigurationProperties @Value    注值方式 批量注入 单个   松散语法 √ ×   SpEL √ √   JSR303数据校验 √ ×   注入复杂类型 √ ×    松散语法即将驼峰式命名的属性拆解为-:  public int HomeAddress-&gt;home-addressSpEL即： @V">
+<meta name="description" content="springboot的两个注解形式给属性赋值    类型 @ConfigurationProperties @Value     注值方式 批量注入 单个    松散语法 √ ×    SpEL √ √    JSR303数据校验 √ ×    注入复杂类型 √ ×       松散语法即将驼峰式命名的属性拆解为-:  public int HomeAddress-&gt;home-address">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springboot">
 <meta property="og:url" content="https://pvtwen.gitee.io/2021/03/30/springboot/index.html">
 <meta property="og:site_name" content="PrivateWen">
-<meta property="og:description" content="springboot的两个注解形式给属性赋值   类型 @ConfigurationProperties @Value    注值方式 批量注入 单个   松散语法 √ ×   SpEL √ √   JSR303数据校验 √ ×   注入复杂类型 √ ×    松散语法即将驼峰式命名的属性拆解为-:  public int HomeAddress-&gt;home-addressSpEL即： @V">
+<meta property="og:description" content="springboot的两个注解形式给属性赋值    类型 @ConfigurationProperties @Value     注值方式 批量注入 单个    松散语法 √ ×    SpEL √ √    JSR303数据校验 √ ×    注入复杂类型 √ ×       松散语法即将驼峰式命名的属性拆解为-:  public int HomeAddress-&gt;home-address">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-03-30T08:43:05.000Z">
 <meta property="article:modified_time" content="2023-02-06T06:19:26.000Z">
@@ -346,40 +346,49 @@
       
 
       
-        <h1 id="springboot的两个注解形式给属性赋值"><a href="#springboot的两个注解形式给属性赋值" class="headerlink" title="springboot的两个注解形式给属性赋值"></a>springboot的两个注解形式给属性赋值</h1><table>
+        <h1 id="springboot的两个注解形式给属性赋值"><a href="#springboot的两个注解形式给属性赋值" class="headerlink" title="springboot的两个注解形式给属性赋值"></a>springboot的两个注解形式给属性赋值</h1><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="left">类型</th>
-<th align="center">@ConfigurationProperties</th>
-<th align="center">@Value</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:center">@ConfigurationProperties</th>
+<th style="text-align:center">@Value</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left">注值方式</td>
-<td align="center">批量注入</td>
-<td align="center">单个</td>
+<tbody>
+<tr>
+<td style="text-align:left">注值方式</td>
+<td style="text-align:center">批量注入</td>
+<td style="text-align:center">单个</td>
+<td></td>
 </tr>
 <tr>
-<td align="left">松散语法</td>
-<td align="center">√</td>
-<td align="center">×</td>
+<td style="text-align:left">松散语法</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td></td>
 </tr>
 <tr>
-<td align="left">SpEL</td>
-<td align="center">√</td>
-<td align="center">√</td>
+<td style="text-align:left">SpEL</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td></td>
 </tr>
 <tr>
-<td align="left">JSR303数据校验</td>
-<td align="center">√</td>
-<td align="center">×</td>
+<td style="text-align:left">JSR303数据校验</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td></td>
 </tr>
 <tr>
-<td align="left">注入复杂类型</td>
-<td align="center">√</td>
-<td align="center">×</td>
+<td style="text-align:left">注入复杂类型</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p>松散语法即将驼峰式命名的属性拆解为-:  <code>public int HomeAddress</code>-&gt;<code>home-address</code><br>SpEL即： <code>@Value(&quot;$&#123;student.username&#125;)</code><br>JSR303即： 特殊的属性例如 <code>电子邮件</code>有专门的注解形式，若违反了该规定，则报错 <code>@Email</code><br>复杂类型：例如对象类型</p>
 </blockquote>
@@ -495,7 +504,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

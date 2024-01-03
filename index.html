@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2024/01/03/L1%E4%BC%98%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2024/01/03/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E4%BC%B0%E8%AE%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2024/01/03/L1%E4%BC%98%E5%8C%96/" itemprop="url">L1优化</a></h1>
+                <a class="post-title-link" href="/2024/01/03/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E4%BC%B0%E8%AE%A1/" itemprop="url">最小二乘估计</a></h1>
         
 
         <div class="post-meta">
@@ -290,7 +290,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-01-03T10:25:32+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-01-03T11:06:16+08:00">
                 2024-01-03
               </time>
             
@@ -306,7 +306,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2024-01-03T10:56:07+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2024-01-03T19:29:18+08:00">
                 2024-01-03
               </time>
             
@@ -342,20 +342,63 @@
       
         
           
-            <h1 id="参考论文"><a href="#参考论文" class="headerlink" title="参考论文"></a>参考论文</h1><pre><code>&quot;Iterative-recursive estimation of parameters of regression models with resistance to outliers on practical examples&quot;
-</code></pre>
-<h1 id="仿真结果"><a href="#仿真结果" class="headerlink" title="仿真结果"></a>仿真结果</h1></br>
+            <h1 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h1><script type="math/tex; mode=display">
+\begin{align}
+J=\frac{1}{2}
+\begin{Vmatrix}
+        X_{k}-\hat{X}_{k|k-1}
+\end{Vmatrix}^2 _{P^{-1} _{k|k-1}}+\frac{1}{2}||y _{k}-HX _{k}||^2 _{R^{-1} _k}
+\end{align}</script><p>&lt;/br&gt;</p>
+<pre><code>                        利用估计误差和观测误差两项一起作为最小二乘项
+</code></pre><p>&emsp;有以下定义，<br>&emsp;先验估计误差，</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+        \hat{\delta}_ {k|k-1}=X_{k}-\hat X_{k|k-1}
+\end{equation}</script><p>&emsp;观测方程误差，</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    v_ k=y_k-HX_k
+\end{align}</script><p>&emsp;根据以上定义写出线性回归形式,</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \begin{bmatrix}
+    \hat X_{k|k-1} \\ y_k
+\end{bmatrix}=\begin{bmatrix}
+    I \\ H
+\end{bmatrix}X_k+\begin{bmatrix}
+    -\hat\delta_ {k|k-1} \\ v_k
+\end{bmatrix}
+\end{align}</script><p>&emsp; 可以将上述回归形式看作,</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \tilde z_k=\tilde H_kx_k+\tilde e_k
+\end{align}</script><p>&emsp;其中，</p>
+<script type="math/tex; mode=display">
+\tilde z_k=\begin{bmatrix}
+    \hat X_{k|k-1} \\
+    y_k
+\end{bmatrix}，\tilde H=\begin{bmatrix}
+    I \\ H
+\end{bmatrix}，\begin{bmatrix}
+    -\tilde\delta_ {k|k-1} \\ v_k
+\end{bmatrix}</script><p>&emsp; 根据《最优状态估计》P60的推到，可以得到,  </p>
+<script type="math/tex; mode=display">
+    \begin{align}
+    \hat{X} = (H'R^{-1}_tH)^{-1}H'R^{-1}_ty
+    \end{align}</script><p>&emsp; 其中，</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    R_t=\begin{bmatrix}
+    P_{k|k-1} & 0\\
+    0 & R_k
+\end{bmatrix}
+\end{align}</script><p>&emsp; $R_t$是协方差矩阵，$P_{k|k-1}$是先验误差方差，$R_k$是观测误差方差。<br>&emsp; 对于公式(6)，得到了(6)之后，通过</p>
+<script type="math/tex; mode=display">\begin{equation}
+    \begin{align}
+    \hat{X}_{k+1|k}=A\hat{X}_{k|k}
 
-<h2 id="非批量"><a href="#非批量" class="headerlink" title="非批量"></a>非批量</h2><p><img src="LS%20LA%20estimation.png" alt="结果图"><br></br></p>
-<ul>
-<li>图中存在四个数据异常点，可以看出在异常点存在的情况下，la估计更加拟合实际曲线</li>
-</ul>
-</br>
-
-<h2 id="批量"><a href="#批量" class="headerlink" title="批量"></a>批量</h2><p><img src="chapter5&simulation.png" alt="结果图"><br></br></p>
-<ul>
-<li>图中的actual y是实际观测值，观测值由于受到传感器精度的影响，上限为1023，la批量估计更加拟合实际曲线</li>
-</ul>
+    \end{align}
+\end{equation}</script><p>公式(8)继续进行迭代。</p>
 
           
         
@@ -405,7 +448,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2023/08/08/%E5%8D%A1%E5%B0%94%E6%9B%BC%E5%92%8C%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2024/01/03/L1%E4%BC%98%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -424,7 +467,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2023/08/08/%E5%8D%A1%E5%B0%94%E6%9B%BC%E5%92%8C%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98/" itemprop="url">卡尔曼和最小二乘</a></h1>
+                <a class="post-title-link" href="/2024/01/03/L1%E4%BC%98%E5%8C%96/" itemprop="url">L1优化</a></h1>
         
 
         <div class="post-meta">
@@ -436,8 +479,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-08T20:21:45+08:00">
-                2023-08-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-01-03T10:25:32+08:00">
+                2024-01-03
               </time>
             
 
@@ -452,7 +495,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2024-01-03T10:37:53+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2024-01-03T20:01:01+08:00">
                 2024-01-03
               </time>
             
@@ -488,37 +531,65 @@
       
         
           
-            <h1 id="源码链接"><a href="#源码链接" class="headerlink" title="源码链接"></a><a target="_blank" rel="noopener" href="https://github.com/Pvtwen/kalmanAndLS">源码链接</a></h1><h1 id="卡尔曼公式"><a href="#卡尔曼公式" class="headerlink" title="卡尔曼公式"></a>卡尔曼公式</h1><h2 id="状态转移方程和观测方程"><a href="#状态转移方程和观测方程" class="headerlink" title="状态转移方程和观测方程"></a>状态转移方程和观测方程</h2><ol>
-<li><p>状态转移方程</p>
+            <h1 id="参考论文"><a href="#参考论文" class="headerlink" title="参考论文"></a>参考论文</h1><pre><code>&quot;Iterative-recursive estimation of parameters of regression models with resistance to outliers on practical examples&quot;
+</code></pre><h1 id="仿真"><a href="#仿真" class="headerlink" title="仿真"></a>仿真</h1><p><br></p>
+<h2 id="线性回归模型"><a href="#线性回归模型" class="headerlink" title="线性回归模型"></a>线性回归模型</h2><script type="math/tex; mode=display">
+\begin{align}
+    y(l)=\varphi(l)\theta+e(l)
+\end{align}</script><p>&emsp;其中，$\theta$是一个未知的比例因子，$y(l)$是一个过程输出，$\psi(l)$是一个标量输入，$\theta$的最优估计值可以通过已知数据$\begin{Bmatrix}<br>    \varphi(1)…\varphi(k)<br>\end{Bmatrix}$和$\begin{Bmatrix}<br>    y(1)…y(k)<br>\end{Bmatrix}$来获得。  </p>
+<h3 id="LS损失函数"><a href="#LS损失函数" class="headerlink" title="LS损失函数"></a>LS损失函数</h3><p>&emsp;已知LS的损失函数为，</p>
+<script type="math/tex; mode=display">
+\begin{align}
+        I(\theta)=\frac{1}{2}\sum_{l=1}^ke^2(l)=\frac{1}{2}\sum_{l=1}^k[y(l)-\varphi(l)\theta]^2
+\end{align}</script><p>&emsp;损失函数对$\theta$求导，然后令导函数为0可以得到,</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \frac{dI}{d\theta}=\frac{dI}{de}\frac{de}{d\theta}=-\sum_{l=1}^k\varphi(l)e(l)=-\sum_{l=1}^k\varphi(l)[y(l)-\varphi(l)\theta]=0
+\end{align}</script><p>&emsp;于是得到$\theta$的最优估计值为,</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    \hat{\theta}=\begin{bmatrix}
+        \sum_{l=1}^k\varphi^2(l)
+    \end{bmatrix}^{-1}\begin{bmatrix}
+        \sum_{l=1}^k\varphi(l)y(l)
+    \end{bmatrix}
+\end{align}</script><p>&emsp;导函数对$\theta$求二次导，有</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{d^2I}{d\theta^2}=\sum_{l=1}^k\varphi^2(l)>0
+\end{align}</script><p>&emsp;因为二次导大于0，所以求解出来的$\theta$是令损失函数最小的最优估计值</p>
+<h3 id="LA损失函数"><a href="#LA损失函数" class="headerlink" title="LA损失函数"></a>LA损失函数</h3><p>&emsp;已知LA损失函数为,</p>
+<script type="math/tex; mode=display">
+    \begin{align}
+    J(\theta)=\sum_{l=1}^k|e(l)|=\sum_{l=1}^k|y(l)-\varphi(l)\theta|
+
+    \end{align}</script><p>&emsp;通过令导函数为0，求解得到$\theta$的估计值为,</p>
+<script type="math/tex; mode=display">
+\begin{align}
+        \hat{\theta}=\bigg[\sum_{l=1}^k\frac{\varphi^2(l)}{\hat{e}(l)} \bigg]^{-1}\bigg[\sum_{l=1}^k\frac{\varphi(l)y(l)}{|\hat{e}(l)|} \bigg]
+
+\end{align}</script><p>&emsp;另一种提升公式(7)的估计性能的方法就是通过迭代来达到最优值。首先让公式(4)作为迭代的初始值$\hat{\theta}^{[0]}$,然后得到误差,</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+    \begin{aligned}
+            \hat{e}^{[r]}(l)=y(l)-\varphi(l)\hat{\theta}^{[r]}
+    \end{aligned}
+\end{equation}</script><p>&emsp;将公式(8)代入公式(7),之后有如下等价的迭代方程,</p>
+<script type="math/tex; mode=display">
+    \begin{equation}
+            \hat{\theta}^{[r+1]}=\hat{\theta}^{[r]}+R^{-1}(k)\psi(k)\\
+    R(k)=\sum_{l=1}^k\frac{\varphi^2(l)}{|\hat{e}^{[r]}(l)|}\\
+    \psi(k)=\sum_{l=1}^k\frac{\varphi(l)\hat{e}^{[r]}(l)}{|\hat{e}^{[r](l)}|}
+    \end{equation}</script><h2 id="非批量"><a href="#非批量" class="headerlink" title="非批量"></a>非批量</h2><p><img src="\../images/L1_reg/LS%20LA%20estimation.png" alt="结果图"><br><br></p>
 <ul>
-<li>A是状态转移方程，w是过程噪声<br>$$<br>x_k=Ax_{k-1}+w_{k-1}<br>$$</li>
+<li>图中存在四个数据异常点，可以看出在异常点存在的情况下，la估计更加拟合实际曲线</li>
 </ul>
-</li>
-<li><p>观测方程</p>
+<p><br></p>
+<h2 id="批量"><a href="#批量" class="headerlink" title="批量"></a>批量</h2><p><img src="\../images/L1_reg/chapter5&amp;simulation.png" alt="结果图">  </p>
+<p><br></p>
 <ul>
-<li>B是观测矩阵，v是观测噪声<br>$$<br>y_k=Bx_k+v_{k}<br>$$<h2 id="预测公式"><a href="#预测公式" class="headerlink" title="预测公式"></a>预测公式</h2></li>
+<li>图中的actual y是实际观测值，观测值由于受到传感器精度的影响，上限为1023，la批量估计更加拟合实际曲线</li>
 </ul>
-</li>
-<li><p>先验估计预测<br>$$<br>\hat x_{k|k-1} = A\hat x_{k-1|k-1}<br>$$</p>
-</li>
-<li><p>先验误差协方差矩阵预测<br>$$<br>P_{k|k-1} = AP_{k-1|k-1}A’ + Q<br>$$</p>
-<h2 id="更新公式"><a href="#更新公式" class="headerlink" title="更新公式"></a>更新公式</h2></li>
-<li><p>卡尔曼增益<br>$$<br>K_k=P_{k|k-1}H’(HP_{k|k-1}H’+R)<br>$$</p>
-</li>
-<li><p>更新估计值<br>$$<br>\hat x_{k|k}=\hat x_{k|k-1} + K_k(y_k-H \hat x_{k|k-1})<br>$$</p>
-</li>
-<li><p>更新误差协方差矩阵<br>$$<br>P_{k|k}=(I-K_kH)P_{k|k-1}<br>$$</p>
-</li>
-</ol>
-<h2 id="做1000次实验：比较每个时刻的样本方差和算法估算出来的方差"><a href="#做1000次实验：比较每个时刻的样本方差和算法估算出来的方差" class="headerlink" title="做1000次实验：比较每个时刻的样本方差和算法估算出来的方差"></a>做1000次实验：比较每个时刻的样本方差和算法估算出来的方差</h2><ol>
-<li>估计误差<br>$$<br>\delta_{k|k}=x_k-\hat x_{k|k}<br>$$</li>
-<li>样本方差<br>$$<br>\sigma^2 = \frac{\sum(\hat{\delta}_k-\overline{\delta})^2}{n}<br>$$<br>&emsp;&emsp;&emsp;其中<br>$$<br>\overline{\delta} = \frac{\sum \hat{\delta}_k}{n}<br>$$</li>
-</ol>
-<h1 id="最小二乘估计-L2范数-emsp"><a href="#最小二乘估计-L2范数-emsp" class="headerlink" title="最小二乘估计(L2范数) &emsp; "></a>最小二乘估计(L2范数) &emsp; <a href="/2024/01/03/L1%E4%BC%98%E5%8C%96/" title="L1优化">L1优化</a></h1><ol>
-<li><p>目标函数<br>$$<br>J = \frac{1}{2}||X_k-\hat{X}_{k|k-1}||^2<br>$$</p>
-</li>
-<li></li>
-</ol>
 
           
         
@@ -559,7 +630,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
   </nav>
 
 
@@ -605,7 +676,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

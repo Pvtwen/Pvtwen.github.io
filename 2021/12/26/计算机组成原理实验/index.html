@@ -91,7 +91,7 @@
 <meta property="og:image" content="https://pvtwen.gitee.io/2021/12/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/3.png">
 <meta property="og:image" content="https://pvtwen.gitee.io/2021/12/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/4.png">
 <meta property="article:published_time" content="2021-12-26T13:03:56.000Z">
-<meta property="article:modified_time" content="2023-02-06T06:19:26.000Z">
+<meta property="article:modified_time" content="2024-01-03T05:02:39.449Z">
 <meta property="article:author" content="Pvtwen">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://pvtwen.gitee.io/2021/12/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/1.png">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2024-01-03T13:02:39+08:00">
+                2024-01-03
               </time>
             
           </span>
@@ -354,7 +354,7 @@
         <h1 id="汉字编码实验"><a href="#汉字编码实验" class="headerlink" title="汉字编码实验"></a>汉字编码实验</h1><ul>
 <li>遇到的问题</li>
 </ul>
-<ol start="3">
+<ol>
 <li>ansi与gbk的关系 utf-8.为什么gb2312的文本格式要以ansi存盘</li>
 <li>-A0A0的补码dfe0</li>
 <li>gbk转十六进制代码 hexString</li>
@@ -375,7 +375,8 @@
 </ul>
 <ol>
 <li>回顾了一下解码器，通过真值表的最小项相或画电路图。</li>
-<li>想了一下，无论任何电路，增加一位总的奇/偶校验位，就可以验证总的编码是否出错.(该实验一是将偶校验用在了海明编码电路中p6,而是将偶校验用在了海明解码电路中G6)<span id="more"></span></li>
+<li>想了一下，无论任何电路，增加一位总的奇/偶校验位，就可以验证总的编码是否出错.(该实验一是将偶校验用在了海明编码电路中p6,而是将偶校验用在了海明解码电路中G6)<span id="more"></span>
+</li>
 </ol>
 <h1 id="crc编码实验"><a href="#crc编码实验" class="headerlink" title="crc编码实验"></a>crc编码实验</h1><p><img src="1.png" alt="电路"></p>
 <ul>
@@ -398,22 +399,21 @@
 <li>看法:</li>
 </ul>
 <ol>
-<li>对G*,P*的解读，在四位先行进位电路中，其输入引脚Gi和Pi分别是一位相加后生成的先行进位信号。同理，G星和P星就是四位一组的先行进位信号.</li>
+<li>对G<em>,P</em>的解读，在四位先行进位电路中，其输入引脚Gi和Pi分别是一位相加后生成的先行进位信号。同理，G星和P星就是四位一组的先行进位信号.</li>
 <li>对第一点的进一步解读，G和P的推导是由公式Ci=XiYi+(Xi^Yi)Ci-1得来的，其中G看成是XiYi,P看成是Xi^Yi,也就是说，就算要推导，也应当从进位公式得出。那么，再看C4=G4+P4G3…..,这就是四位一组的先行进位公式，将G※看作是….,P※看作是….</li>
 <li>对8位可控加减法的无符号加法和减法的溢出的检测。加法很明显，就是最高位进位，如果为1，那就是溢出。无符号减法的溢出在最高位进位加一个非门。因为无符号减法同样是对减数y(表达式x-y)取反再加一，可以随便找两个二进制数试一下，切记，y取反再加一之后，就变成了x+y^，这里的y^是改变过后的y.</li>
 </ol>
 <h1 id="四位快速加法器-gt-十六位快速加法器-gt-三十二位快速加法器"><a href="#四位快速加法器-gt-十六位快速加法器-gt-三十二位快速加法器" class="headerlink" title="四位快速加法器-&gt;十六位快速加法器-&gt;三十二位快速加法器"></a>四位快速加法器-&gt;十六位快速加法器-&gt;三十二位快速加法器</h1><blockquote>
 <p>四位<br><img src="2.png" alt="电路"><br>十六位<br><img src="3.png" alt="电路"><br>三十二位<br><img src="4.png" alt="电路"></p>
-</blockquote>
 <ul>
 <li>其中的CLA74182是先行进位电路，多次复用</li>
 <li>关于加法器还剩下移位乘和移位除，之后有时间再看。直接进入RAM设计<h2 id="纠正之前对用加法设计乘法的错误"><a href="#纠正之前对用加法设计乘法的错误" class="headerlink" title="纠正之前对用加法设计乘法的错误"></a>纠正之前对用加法设计乘法的错误</h2></li>
 <li>例如，1000*1000，一开始以为计算机是作1000次加法，让1000个1000相加。学了乘法器的主要两种设计方法的其中一种——阵列乘法器之后，发现其实是用手算的思路去实现的，首先根据输入的多位数，列乘法算式，可以提前计算出每一位，再将每一位用全加器相加(行位进位慢，斜位进位快)。</li>
 <li>其实反过来想，1000个1000相加，开销很大，利用阵列乘法器降低了存储开销。</li>
 </ul>
+</blockquote>
 <h1 id="RAM实验"><a href="#RAM实验" class="headerlink" title="RAM实验"></a>RAM实验</h1><blockquote>
 <p>记录</p>
-</blockquote>
 <h2 id="字库电路-字扩展"><a href="#字库电路-字扩展" class="headerlink" title="字库电路 字扩展"></a>字库电路 字扩展</h2><ul>
 <li>字扩展(容量扩展),地址线的高两位用来片选。</li>
 <li>下面七个ROM相当于是位扩展，各自提供各自的数据位，全部选通。上面的四个ROM相当于字扩展，同一时刻，只有一个ROM被选通。</li>
@@ -424,6 +424,7 @@
 <li>字节选通功能和位扩展又不大相似，位扩展是每一个ROM都提供各自的位，最后组成总的数据位。字节选通相当于又回到了字扩展，因为单位时间内只有一个ROM提供数据，至于是哪个ROM，经过片选决定。</li>
 <li>待解决问题:为什么RAM测试电路中没有时钟信号。</li>
 </ul>
+</blockquote>
 <h1 id="单周期MIPS-CPU实验"><a href="#单周期MIPS-CPU实验" class="headerlink" title="单周期MIPS CPU实验"></a>单周期MIPS CPU实验</h1><ul>
 <li>疑问：为什么需要一条指令执行过程中数据通路的任何资源不能被重复使用，必须设置多个。另外，取指和指令执行均需要用到存储器，存储器不可能设置多个，所以要分别设置指令存储器和数据存储器。<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1></li>
 </ul>
@@ -543,7 +544,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

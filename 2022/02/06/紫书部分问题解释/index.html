@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="P263底部 为什么只删除break语句不能求出完整解？ 画出解答树之后，可以看出递归完之后是从最后一层节点继续递归，而不是从头递归，所以需要定义一个数组存储路径。  P264顶部 为什么dp[i]定义为以节点i为终点的最长路径长度，可以求最大dp，却难以求出最优路径？ 因为是从终点递归(也就是矩形最大的开)，不好确定第一位是否是最小值，只有求出了完整的路径之后才能确定最优路径  P267 Uva">
+<meta name="description" content="P263底部 为什么只删除break语句不能求出完整解？ 画出解答树之后，可以看出递归完之后是从最后一层节点继续递归，而不是从头递归，所以需要定义一个数组存储路径。 P264顶部  为什么dp[i]定义为以节点i为终点的最长路径长度，可以求最大dp，却难以求出最优路径？ 因为是从终点递归(也就是矩形最大的开)，不好确定第一位是否是最小值，只有求出了完整的路径之后才能确定最优路径 P267 Uva1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="紫书部分问题解释">
 <meta property="og:url" content="https://pvtwen.gitee.io/2022/02/06/%E7%B4%AB%E4%B9%A6%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E9%87%8A/index.html">
 <meta property="og:site_name" content="PrivateWen">
-<meta property="og:description" content="P263底部 为什么只删除break语句不能求出完整解？ 画出解答树之后，可以看出递归完之后是从最后一层节点继续递归，而不是从头递归，所以需要定义一个数组存储路径。  P264顶部 为什么dp[i]定义为以节点i为终点的最长路径长度，可以求最大dp，却难以求出最优路径？ 因为是从终点递归(也就是矩形最大的开)，不好确定第一位是否是最小值，只有求出了完整的路径之后才能确定最优路径  P267 Uva">
+<meta property="og:description" content="P263底部 为什么只删除break语句不能求出完整解？ 画出解答树之后，可以看出递归完之后是从最后一层节点继续递归，而不是从头递归，所以需要定义一个数组存储路径。 P264顶部  为什么dp[i]定义为以节点i为终点的最长路径长度，可以求最大dp，却难以求出最优路径？ 因为是从终点递归(也就是矩形最大的开)，不好确定第一位是否是最小值，只有求出了完整的路径之后才能确定最优路径 P267 Uva1">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-02-06T08:43:47.000Z">
 <meta property="article:modified_time" content="2023-02-06T06:19:26.000Z">
@@ -349,12 +349,12 @@
         <h1 id="P263底部"><a href="#P263底部" class="headerlink" title="P263底部"></a>P263底部</h1><ul>
 <li>为什么只删除break语句不能求出完整解？<blockquote>
 <p>画出解答树之后，可以看出递归完之后是从最后一层节点继续递归，而不是从头递归，所以需要定义一个数组存储路径。</p>
-</blockquote>
-<h1 id="P264顶部"><a href="#P264顶部" class="headerlink" title="P264顶部"></a>P264顶部</h1></li>
+<h1 id="P264顶部"><a href="#P264顶部" class="headerlink" title="P264顶部"></a>P264顶部</h1></blockquote>
+</li>
 <li>为什么dp[i]定义为以节点i为终点的最长路径长度，可以求最大dp，却难以求出最优路径？<blockquote>
 <p>因为是从终点递归(也就是矩形最大的开)，不好确定第一位是否是最小值，只有求出了完整的路径之后才能确定最优路径</p>
-</blockquote>
-<h1 id="P267-Uva1025"><a href="#P267-Uva1025" class="headerlink" title="P267 Uva1025"></a>P267 Uva1025</h1></li>
+<h1 id="P267-Uva1025"><a href="#P267-Uva1025" class="headerlink" title="P267 Uva1025"></a>P267 Uva1025</h1></blockquote>
+</li>
 <li>dp的两种定义方式:当dp[i][j]定义为到达状态为<code>时刻i，站台j</code>时，所需要的最少时间。如果某个dp[i][j]=0，可能是搭乘的从0点出发的列车。<h1 id="P283-Uva1218"><a href="#P283-Uva1218" class="headerlink" title="P283 Uva1218"></a>P283 Uva1218</h1></li>
 <li>将dp[i][2]初始化为INF,也就意味着用INF代表该状态<code>非法</code>。其次，利用代换，将求dp[u][2]的时间复杂度降低为O(n):例如，当计算child节点时,dp[cur][2]=MIN(dp[child0][0]+dp[child1][2]+dp[child2][2])，对于每个child节点都要枚举k次，计算k次，所以原本时间复杂度为O(n^2).但是，一代换,dp[cur][2]=MIN(dp[cur][1]-dp[child0][2]+dp[child0][0]).</li>
 <li>其次，本题可以既可以递推也可以递归。如果利用递推，需要用栈将节点保存。<h1 id="Uva10003"><a href="#Uva10003" class="headerlink" title="Uva10003"></a>Uva10003</h1></li>
@@ -472,7 +472,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

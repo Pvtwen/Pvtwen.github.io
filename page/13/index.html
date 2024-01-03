@@ -259,6 +259,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/04/29/CORS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/29/CORS/" itemprop="url">CORS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-29T14:52:47+08:00">
+                2021-04-29
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a target="_blank" rel="noopener" href="https://ieftimov.com/post/deep-dive-cors-history-how-it-works-best-practices/#cross-origin-reads">原文链接</a></p>
+<h1 id="在F12中的console模式下看CORS"><a href="#在F12中的console模式下看CORS" class="headerlink" title="在F12中的console模式下看CORS"></a>在F12中的console模式下看CORS</h1><ul>
+<li><p>后端springboot代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@PostMapping(&quot;greet/&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>+name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&#123;&quot;greet&quot;,&quot;/&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Console中代码  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:8080/greet/yawen&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span> &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">).then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text()).then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+<p><img src="localhost.png" alt="图片1"><br><img src="goole.png" alt="图片2"></p>
+</li>
+</ul>
+<h1 id="preflight-request"><a href="#preflight-request" class="headerlink" title="preflight request"></a>preflight request</h1><p><img src="preflight.png" alt="图片3"><br><img src="prefilght2.png" alt="图片4"></p>
+<blockquote>
+<p>跨域请求中，浏览器会发出两个请求，一个是OPTION请求，另一个是POST请求。在OPTIONS请求中，状态码为200，但是请求依然不成功（报红)说明，浏览器没有拦截request请求，拦截的是response响应。</p>
+<h2 id="这是浏览器的预检请求"><a href="#这是浏览器的预检请求" class="headerlink" title="这是浏览器的预检请求"></a>这是浏览器的预检请求</h2><p>浏览器会对CORS认为复杂的请求执行预检请求，有如下标准:</p>
+<ol>
+<li>除了GET,POST,HEAD方法</li>
+<li>除了headers中的Accept,Accept-Language,Content-Language</li>
+<li>除了Content-Type: text/plain,multipart/form-data (application/json会执行OPTION预检)</li>
+</ol>
+</blockquote>
+<h2 id="如何避免预检"><a href="#如何避免预检" class="headerlink" title="如何避免预检"></a>如何避免预检</h2><ol>
+<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:4000/greet&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="string">&#x27;Ilija&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line">.then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text())</span><br><span class="line">.then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
+此方法可以不执行预检，但是依然避免不了post请求.通过如下操作可以继续避免post请求，从而实现跨域请求.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">options <span class="string">&quot;/greet&quot;</span> <span class="keyword">do</span> |env|</span><br><span class="line">  # Allow `POST /greet`...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>] = <span class="string">&quot;POST&quot;</span></span><br><span class="line">  # ...with `Content-type` header in the request...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>] = <span class="string">&quot;Content-type&quot;</span></span><br><span class="line">  # ...from https://www.google.com origin.</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>] = <span class="string">&quot;https://www.google.com&quot;</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h1 id="Best-Practice"><a href="#Best-Practice" class="headerlink" title="Best Practice"></a>Best Practice</h1><h2 id="仅仅只允许yourwebsite-com发送request"><a href="#仅仅只允许yourwebsite-com发送request" class="headerlink" title="仅仅只允许yourwebsite.com发送request"></a>仅仅只允许yourwebsite.com发送request</h2><p><img src="1.png" alt="图片"><br><img src="2.png" alt="图片"><br>在某些情况下，需要对网站进行分析，这时，就需要浏览器发送有关用户在该网站上的体验的数据给后台，但是，却又不希望所有的站点都能够通过该后台的API来发送无关的数据，此时，后台中的代码,<code>Access-Control-Allow-Origin:yourwebsite.com</code>，通过该设置就可以只获取该网站发送来的数据了.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/04/20/%E5%B0%9A%E7%A1%85%E8%B0%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -355,18 +513,18 @@
 <li>包</li>
 <li>数据库表名称</li>
 </ul>
-<ol start="8">
+<ol>
 <li>因为mapper文件夹下只有mapper的接口，而没有mapper的实现类（例如：service层中有@Service注解），所以需要@MapperScan</li>
 </ol>
 <hr>
-<ol start="10">
+<ol>
 <li>逻辑删除的两种方式：</li>
 </ol>
 <ul>
 <li>创建字段时：设置default 0,不要@TableField(fill=),在properties文件中配置<code>global-config</code></li>
 <li>不设置default 0,在mp自动填充中@TableFiled,并且在MetaHandler中setFiledname</li>
 </ul>
-<ol start="11">
+<ol>
 <li></li>
 </ol>
 <ul>
@@ -375,8 +533,9 @@
 <li>@RequestBody(required=false) 表示该对象可以没有值</li>
 <li>测试restful  查询-get   添加-post  修改 delete    删除</li>
 </ul>
-<ol start="12">
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(<span class="meta">@RequestBody</span> EduTeacher eduteacher)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<ol>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(<span class="meta">@RequestBody</span> EduTeacher eduteacher)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>npm下载依赖</p>
 </li>
 </ol>
@@ -384,20 +543,15 @@
 <li>通过 npm install jquery下载jquery依赖  可以@version</li>
 <li>通过 npm install 根据package.json下载文件</li>
 </ul>
-<ol start="14">
+<ol>
 <li>node.js无法实现es6的模块化代码 <code>module.exports</code></li>
 </ol>
 <ul>
-<li>es5实现模块化:</li>
-</ul>
-<p>01.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(a)+<span class="built_in">parseInt</span>(b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置方法可以被调用</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>02.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m=<span class="built_in">require</span>(<span class="string">&#x27;./01&#x27;</span>) <span class="comment">//引入js</span></span><br><span class="line"><span class="keyword">let</span> sum1=m.sum(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum1)</span><br></pre></td></tr></table></figure>
-<ul>
+<li>es5实现模块化:<br>01.js<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(a)+<span class="built_in">parseInt</span>(b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置方法可以被调用</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+02.js<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m=<span class="built_in">require</span>(<span class="string">&#x27;./01&#x27;</span>) <span class="comment">//引入js</span></span><br><span class="line"><span class="keyword">let</span> sum1=m.sum(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum1)</span><br></pre></td></tr></table></figure></li>
 <li>es6实现模块化 需要用babel转码</li>
 </ul>
-<ol start="15">
+<ol>
 <li>webpack-admin-template</li>
 </ol>
 <ul>
@@ -406,7 +560,7 @@
 <li>config/index.js中修改useEslint:false省去检查严格</li>
 <li>主要修改 src下的/api,/router,/views 即 接口，路由，视图</li>
 </ul>
-<ol start="16">
+<ol>
 <li><p>先点修改再点击左侧导航栏的添加按钮<br>多次路由跳转到同一个页面，在页面中created方法只会执行第一次，后面再进行跳转不会再次执行</p>
 </li>
 <li><p>nginx、阿里云oss、eazyexcel处理批量数据</p>
@@ -415,23 +569,25 @@
 </li>
 </ol>
 <ul>
-<li>axios不能上传文件  上传文件的代码:<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;讲师头像&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!-- 头衔缩略图 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">pan-thumb</span> <span class="attr">:image</span>=<span class="string">&quot;teacher.avatar&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 文件上传按钮 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-upload&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;imagecropperShow=true&quot;</span>&gt;</span>更换头像</span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">      v-show：是否显示上传组件</span></span><br><span class="line"><span class="comment">      :key：类似于id，如果一个页面多个图片上传控件，可以做区分</span></span><br><span class="line"><span class="comment">      :url：后台上传的url地址</span></span><br><span class="line"><span class="comment">      @close：关闭上传组件</span></span><br><span class="line"><span class="comment">      @crop-upload-success：上传成功后的回调 </span></span><br><span class="line"><span class="comment">        &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">          &lt;image-cropper</span><br><span class="line">                        v-show=&quot;imagecropperShow&quot;</span><br><span class="line">                        :width=&quot;300&quot;</span><br><span class="line">                        :height=&quot;300&quot;</span><br><span class="line">                        :key=&quot;imagecropperKey&quot;</span><br><span class="line">                        :url=&quot;BASE_API+&#x27;/eduoss/fileoss&#x27;&quot;</span><br><span class="line">                        field=&quot;file&quot;</span><br><span class="line">                        @close=&quot;close&quot;</span><br><span class="line">                        @crop-upload-success=&quot;cropSuccess&quot;/&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>axios不能上传文件  上传文件的代码:<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;讲师头像&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!-- 头衔缩略图 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">pan-thumb</span> <span class="attr">:image</span>=<span class="string">&quot;teacher.avatar&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 文件上传按钮 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-upload&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;imagecropperShow=true&quot;</span>&gt;</span>更换头像</span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">      v-show：是否显示上传组件</span></span><br><span class="line"><span class="comment">      :key：类似于id，如果一个页面多个图片上传控件，可以做区分</span></span><br><span class="line"><span class="comment">      :url：后台上传的url地址</span></span><br><span class="line"><span class="comment">      @close：关闭上传组件</span></span><br><span class="line"><span class="comment">      @crop-upload-success：上传成功后的回调 </span></span><br><span class="line"><span class="comment">        &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">          &lt;image-cropper</span><br><span class="line">                        v-show=&quot;imagecropperShow&quot;</span><br><span class="line">                        :width=&quot;300&quot;</span><br><span class="line">                        :height=&quot;300&quot;</span><br><span class="line">                        :key=&quot;imagecropperKey&quot;</span><br><span class="line">                        :url=&quot;BASE_API+&#x27;/eduoss/fileoss&#x27;&quot;</span><br><span class="line">                        field=&quot;file&quot;</span><br><span class="line">                        @close=&quot;close&quot;</span><br><span class="line">                        @crop-upload-success=&quot;cropSuccess&quot;/&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<ol start="19">
+<ol>
 <li>EasyExcel</li>
 </ol>
 <ul>
 <li>首先引入依赖<dependencies></dependencies></li>
-<li>其次看父工程中的pom.xml中&lt;poi.version&gt;&lt;/poi.version&gt;版本号为3.17</li>
+<li>其次看父工程中的pom.xml中<poi.version>&lt;/poi.version&gt;版本号为3.17</li>
 </ul>
-<ol start="20">
+<ol>
 <li>单一服务器模式 登录<br>(1) 使用session对象实现  一台服务器适用</li>
 </ol>
 <ul>
 <li>登录成功之后，把用户数据放到session</li>
-<li>判断是否登录，从session获取数据，可以获取到登录信息<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.setAttribute</span><br><span class="line">session.getAttribute</span><br></pre></td></tr></table></figure></li>
+<li>判断是否登录，从session获取数据，可以获取到登录信息<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.setAttribute</span><br><span class="line">session.getAttribute</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<ol start="21">
+<ol>
 <li>登录：如果配置了多台服务器，将一个项目中不同的子功能分摊到不同的服务器中去，但是此时session不能共享，也就是说，有多少服务器就要登陆多少次。解决这个问题的办法就是设置单点登录。单点登录的三种实现方法。</li>
 </ol>
 <ul>
@@ -442,14 +598,12 @@
 <hr>
 <blockquote>
 <p>redis:在key中生成唯一随机值(ip,用户id等等),在value存用户数据<br>cookie: 把redis里面生成地key放到cookie里面</p>
-</blockquote>
-<blockquote>
 <p>token： 在某个模块进行登陆之后，按照规则生成字符串，把登录之后用户包含到生成字符串里面，把字符串返回</p>
 <blockquote>
 <p>可以把字符串通过cookie返回<br>把字符串通过地址栏返回</p>
 </blockquote>
 </blockquote>
-<ol start="22">
+<ol>
 <li><p>认证与授权springsecurity的底层用到了许多拦截器（防止未登陆的用户直接访问后台数据信息</p>
 </li>
 <li><p><code>(有待考证）</code>：如果主键的字段类型为string，后台设置idtype=id_worker_str,创建数据库的时候不需要设置auto_increment；如果逐渐的字段类型为integer,后台设置idtype=id_worker_int,创建数据库的时候就需要设置auto_increment</p>
@@ -491,150 +645,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/" itemprop="url">学习springboot过程中的心得</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-10T16:14:03+08:00">
-                2021-04-10
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="springboot与servlet两者封装对象的方式"><a href="#springboot与servlet两者封装对象的方式" class="headerlink" title="springboot与servlet两者封装对象的方式"></a>springboot与servlet两者封装对象的方式</h1><h2 id="springboot的Controller层当中"><a href="#springboot的Controller层当中" class="headerlink" title="springboot的Controller层当中"></a>springboot的Controller层当中</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addSuccess</span><span class="params">(Employee employee)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;add--&gt;&quot;</span>+employee);</span><br><span class="line">    employeeDao.addNewEmployee(employee);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/emp&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>addSuccess方法中使用Employee对象作为入参,在前端html代码的form表单中</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/add&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>名字<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入名字&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>邮箱<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入邮箱&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span>&gt;</span>部门<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 因为department是一个对象，传参的时候不能传一个对象，故先传对象的id值，然后后端接受了id值后，通过id值来查询department，并将查询到的department赋值给employee --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">name</span>=<span class="string">&quot;department.id&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;department.getDepartmentName()&#125;&quot;</span> <span class="attr">th:each</span>=<span class="string">&quot;department:$&#123;departments&#125;&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;department.getId()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>日期<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入日期&quot;</span> <span class="attr">name</span>=<span class="string">&quot;birth&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-offset-2 col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default&quot;</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/14/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/14/">&gt;</a>
   </nav>
 
 
@@ -680,7 +695,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

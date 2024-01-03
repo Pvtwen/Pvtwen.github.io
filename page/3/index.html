@@ -259,6 +259,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2022/02/17/%E3%80%8Ax86%E3%80%8B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/02/17/%E3%80%8Ax86%E3%80%8B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" itemprop="url">《x86从实模式到保护模式》</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-17T17:32:41+08:00">
+                2022-02-17
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-03-09T19:53:18+08:00">
+                2023-03-09
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第一个程序"><a href="#第一个程序" class="headerlink" title="第一个程序"></a>第一个程序</h1><ul>
+<li>virtualbox创建虚拟机，虚拟一块.vhd硬盘，写一个asm程序，<code>nasm -f bin 4-2.asm -o 4-2.bin</code>，nasm将asm程序编译为bin二进制文件，可以通过hexView工具查看实际文件。有了vhd虚拟硬盘和bin文件，通过fixvhdwr工具将bin文件写入vhd硬盘的第一个扇区中，此时，启动虚拟机，出现asm字样.代码如下.<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mov</span> <span class="built_in">ax</span>,<span class="number">0xb800</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">ds</span>,<span class="built_in">ax</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="number">0x00</span>],<span class="string">&#x27;a&#x27;</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="number">0x02</span>],<span class="string">&#x27;s&#x27;</span></span><br><span class="line"><span class="keyword">mov</span> <span class="built_in">byte</span> [<span class="number">0x04</span>],<span class="string">&#x27;m&#x27;</span></span><br><span class="line"><span class="built_in">times</span> <span class="number">510</span> - ($-$$) <span class="built_in">db</span> <span class="number">0</span></span><br><span class="line"><span class="built_in">dw</span> <span class="number">0xaa55</span> <span class="comment">;引导扇区的结束符</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="8-1源码框架"><a href="#8-1源码框架" class="headerlink" title="8-1源码框架"></a>8-1源码框架</h1><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">app_start equ <span class="number">100</span>   <span class="comment">;声明常数，将要从app_start扇区读取用户程序</span></span><br><span class="line">SECTION mbr <span class="keyword">align</span><span class="operator">=</span><span class="number">16</span> vstart<span class="operator">=</span><span class="number">0x7c00</span>  <span class="comment">; 定义mbr段，16字节对齐，段起始位置0x7c00(绝对物理地址)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; 设置堆栈段</span></span><br><span class="line">xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">; 计算用于加载用户程序的逻辑段地址，计算结果为0x10000右移4位,将ds和es寄存器指向0x1000</span></span><br><span class="line">xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">; 读取程序的起始部分,di:si一共28位提供硬盘的0x1f3~0x1f6端口将要读取的起始扇区号,同时调用read_hard_disk_0函数。并将读取到的数据加载到ds:0x0000，其中ds已经通过计算得到结果为0x1000.</span></span><br><span class="line">xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">; 判断整个程序有多大。在用户程序的前四个字节中定义了程序的总长度，程序总长度是通过段尾字符获得的，获取了总的字节数之后，除以512字节，就可以得到程序占用了几个扇区，ax:dx为总长度，最终dx中存放的是除法之后的余数，ax中存放的是一共占用多少扇区，如果余数为0，说明刚好除尽，用ax-1即可得到结果。如果余数不为零，则进入@l函数，首先判断是否程序刚好只占用一个扇区(ax==0)，如果不是，读取剩余扇区，将cx中的值置为总的扇区数，进入@2函数循环，每次读取一个扇区.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">;realloc段，回填段基址,重复调用cac_segment_base,调用完realloc段之后，`jmp far [0x04]`跳转到[0x1000:0x04]内存地址所写的地址，也就是user.asm的start标号</span></span><br><span class="line"></span><br><span class="line">phy_base dd <span class="number">0x10000</span>  <span class="comment">;用户段被加载的物理起始地址 双字10000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; 填充0字</span></span><br><span class="line">xxx</span><br><span class="line"></span><br><span class="line">dd <span class="number">0x55aa</span></span><br></pre></td></tr></table></figure>
+<h1 id="8-2源码框架"><a href="#8-2源码框架" class="headerlink" title="8-2源码框架"></a>8-2源码框架</h1><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">;段重定位表 已经在mbr引导程序中将段表更新了，之后只需要直接调用段表名就可以得到每一个段的实际物理地址</span><br><span class="line"></span><br><span class="line"><span class="built_in">start</span>段</span><br><span class="line">; 重新设置ss，<span class="built_in">sp</span>，ds设置为用户自己的数据段，ds一定要保留到最后来设置，因为在设置ss，<span class="built_in">sp</span>时需要用到正确的ds=<span class="number">0</span>x1000.</span><br></pre></td></tr></table></figure>
+<h1 id="检测点"><a href="#检测点" class="headerlink" title="检测点"></a>检测点</h1><ul>
+<li>9.2中 <code>info ivt</code>;显示所有的中断程序的段基址和偏移地址，<code>info ivt [第几个中断向量]</code>,查看具体的中断程序的信息。也可以根据xp命令来计算某一个中断程序的入口地址，例如要查看0x70号中断的入口地址，其在中断向量表中的位置是0x1c0，<code>xp/10 0x1c0</code>可以查看70号中断的入口地址。查看之后，不用管低端和高端，直接读取。另一个不用管低端和高端的是u反汇编命令。<h2 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h2></li>
+<li>将8-1，8-2同时写入vhd硬盘时，用bochsdebug调试会出现ata0-0: could not open hard drive image file ‘.vhd’，删除vhd.lock文件即可运行.</li>
+</ul>
+<h1 id="15章源码框架"><a href="#15章源码框架" class="headerlink" title="15章源码框架"></a>15章源码框架</h1><h2 id="mbr"><a href="#mbr" class="headerlink" title="mbr"></a>mbr</h2><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; 计算gdt所在的段地址</span></span><br><span class="line"><span class="comment">; 分别定义四个段，将其写入gdt表</span></span><br><span class="line"><span class="comment">; 更改cr0的一号位，进入保护模式</span></span><br><span class="line"><span class="comment">; 加载core代码 通过read_hard_disk将其从磁盘写入内存</span></span><br><span class="line"><span class="comment">; 为core代码建立段描述符，尽管core代码在开头已经用不占内存空间的常量定义了，这里是防止以后在除了core代码以外的地方调用core代码。</span></span><br><span class="line"><span class="comment">; 定义构造段描述符的函数make_gdt_descriptor</span></span><br></pre></td></tr></table></figure>
+<h2 id="core"><a href="#core" class="headerlink" title="core"></a>core</h2><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; sys_routine例程段中包含着put_string字符串显示例程。</span></span><br><span class="line"><span class="comment">; allocate_memory函数定义了从一开始分配内存的起始地址，之后，随着用户程序分配内存，该起始地址一直在变化。</span></span><br><span class="line"><span class="comment">; make_gdt_segment函数构造段描述符，但是不实际写入gdt表，在setup_gdt_segment中实际写入gdt表</span></span><br><span class="line"><span class="comment">; load_relocate_program函数中定义了加载用户程序，同时为用户程序构造段描述符</span></span><br><span class="line"><span class="comment">; 所有的函数定义完之后，是首先进入内核程序就开始执行的start标号，最后一行jmp far [0x08]将控制权移交给用户程序，当用户程序执行完毕之后，return一开始执行，回到jmp far指令的下一个标号return_point处</span></span><br><span class="line"><span class="comment">; 实际上，上一点想要解释C语言中调用printf，return等命令之后发生了什么。简单来说，printf和return等命令已经被定义在了core代码中的salt表中，供用户例程调用，256字节用来描述符号名，4字节用来指定偏移量，2字节用来指定段选择子.</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2022/02/06/%E7%B4%AB%E4%B9%A6%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E9%87%8A/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -345,12 +488,12 @@
             <h1 id="P263底部"><a href="#P263底部" class="headerlink" title="P263底部"></a>P263底部</h1><ul>
 <li>为什么只删除break语句不能求出完整解？<blockquote>
 <p>画出解答树之后，可以看出递归完之后是从最后一层节点继续递归，而不是从头递归，所以需要定义一个数组存储路径。</p>
-</blockquote>
-<h1 id="P264顶部"><a href="#P264顶部" class="headerlink" title="P264顶部"></a>P264顶部</h1></li>
+<h1 id="P264顶部"><a href="#P264顶部" class="headerlink" title="P264顶部"></a>P264顶部</h1></blockquote>
+</li>
 <li>为什么dp[i]定义为以节点i为终点的最长路径长度，可以求最大dp，却难以求出最优路径？<blockquote>
 <p>因为是从终点递归(也就是矩形最大的开)，不好确定第一位是否是最小值，只有求出了完整的路径之后才能确定最优路径</p>
-</blockquote>
-<h1 id="P267-Uva1025"><a href="#P267-Uva1025" class="headerlink" title="P267 Uva1025"></a>P267 Uva1025</h1></li>
+<h1 id="P267-Uva1025"><a href="#P267-Uva1025" class="headerlink" title="P267 Uva1025"></a>P267 Uva1025</h1></blockquote>
+</li>
 <li>dp的两种定义方式:当dp[i][j]定义为到达状态为<code>时刻i，站台j</code>时，所需要的最少时间。如果某个dp[i][j]=0，可能是搭乘的从0点出发的列车。<h1 id="P283-Uva1218"><a href="#P283-Uva1218" class="headerlink" title="P283 Uva1218"></a>P283 Uva1218</h1></li>
 <li>将dp[i][2]初始化为INF,也就意味着用INF代表该状态<code>非法</code>。其次，利用代换，将求dp[u][2]的时间复杂度降低为O(n):例如，当计算child节点时,dp[cur][2]=MIN(dp[child0][0]+dp[child1][2]+dp[child2][2])，对于每个child节点都要枚举k次，计算k次，所以原本时间复杂度为O(n^2).但是，一代换,dp[cur][2]=MIN(dp[cur][1]-dp[child0][2]+dp[child0][0]).</li>
 <li>其次，本题可以既可以递推也可以递归。如果利用递推，需要用栈将节点保存。<h1 id="Uva10003"><a href="#Uva10003" class="headerlink" title="Uva10003"></a>Uva10003</h1></li>
@@ -392,157 +535,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2022/02/02/Greedy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/02/02/Greedy/" itemprop="url">Greedy</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-02T16:50:51+08:00">
-                2022-02-02
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h1><h2 id="选择不相交区间"><a href="#选择不相交区间" class="headerlink" title="选择不相交区间"></a>选择不相交区间</h2><h2 id="区间选点问题"><a href="#区间选点问题" class="headerlink" title="区间选点问题"></a>区间选点问题</h2><h2 id="区间覆盖问题-对end的判断一定要放在while循环内部-2022-2-2"><a href="#区间覆盖问题-对end的判断一定要放在while循环内部-2022-2-2" class="headerlink" title="区间覆盖问题(对end的判断一定要放在while循环内部!) 2022.2.2"></a>区间覆盖问题(对end的判断一定要放在while循环内部!) <code>2022.2.2</code></h2><ul>
-<li>当前轮次找到 否则又要轮到下一轮次的ret++<h1 id="编码应用"><a href="#编码应用" class="headerlink" title="编码应用"></a>编码应用</h1><h2 id="哈夫曼树"><a href="#哈夫曼树" class="headerlink" title="哈夫曼树"></a>哈夫曼树</h2></li>
-<li>贪心证明正确性:</li>
-<li><code>2022.2.4</code>:</li>
-</ul>
-<ol>
-<li>构造哈夫曼树</li>
-<li>非递归方式求编码的两种方式:从根节点顺向求，从叶子节点逆向求</li>
-<li>递归方式求编码的两种方式：从根节点顺向，从叶子节点逆向</li>
-<li>根据给定的编码，解码对应的字符，这里直接用权值代替字符</li>
-</ol>
-<ul>
-<li>总结：<code>对于非递归方式顺向求编码的方式</code>类似于后序遍历二叉树，设置一个状态变量flag来记录节点的子节点是否都访问过了，以便回溯，访问该节点的父节点。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&lt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/4/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&lt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/4/">&gt;</a>
   </nav>
 
 
@@ -588,7 +585,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

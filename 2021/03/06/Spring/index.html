@@ -358,9 +358,7 @@
 <li>Dao层：respository 相当于创建了一个对象<bean id=""></li>
 <li>Service层：service相当于创建了要给对象</li>
 </ul>
-<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>依赖注入中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;sqlSessionFactory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>name的值是根据属性的setter方法来进行命名的，例如，类中的属性为<code>public String who</code>,但是<code>setter</code>方法名为<code>public void setSomebody()</code>,那么,<code>&lt;property name=&quot;somebody&quot;&gt;&lt;/property&gt;</code>.应当根据JavaBean的命名规范来命名</p>
+<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>依赖注入中<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;sqlSessionFactory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure><br>name的值是根据属性的setter方法来进行命名的，例如，类中的属性为<code>public String who</code>,但是<code>setter</code>方法名为<code>public void setSomebody()</code>,那么,<code>&lt;property name=&quot;somebody&quot;&gt;&lt;/property&gt;</code>.应当根据JavaBean的命名规范来命名</p>
 
       
     </div>
@@ -479,7 +477,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -359,18 +359,18 @@
 <li>包</li>
 <li>数据库表名称</li>
 </ul>
-<ol start="8">
+<ol>
 <li>因为mapper文件夹下只有mapper的接口，而没有mapper的实现类（例如：service层中有@Service注解），所以需要@MapperScan</li>
 </ol>
 <hr>
-<ol start="10">
+<ol>
 <li>逻辑删除的两种方式：</li>
 </ol>
 <ul>
 <li>创建字段时：设置default 0,不要@TableField(fill=),在properties文件中配置<code>global-config</code></li>
 <li>不设置default 0,在mp自动填充中@TableFiled,并且在MetaHandler中setFiledname</li>
 </ul>
-<ol start="11">
+<ol>
 <li></li>
 </ol>
 <ul>
@@ -379,8 +379,9 @@
 <li>@RequestBody(required=false) 表示该对象可以没有值</li>
 <li>测试restful  查询-get   添加-post  修改 delete    删除</li>
 </ul>
-<ol start="12">
-<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(<span class="meta">@RequestBody</span> EduTeacher eduteacher)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<ol>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> R <span class="title">func</span><span class="params">(<span class="meta">@RequestBody</span> EduTeacher eduteacher)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>npm下载依赖</p>
 </li>
 </ol>
@@ -388,20 +389,15 @@
 <li>通过 npm install jquery下载jquery依赖  可以@version</li>
 <li>通过 npm install 根据package.json下载文件</li>
 </ul>
-<ol start="14">
+<ol>
 <li>node.js无法实现es6的模块化代码 <code>module.exports</code></li>
 </ol>
 <ul>
-<li>es5实现模块化:</li>
-</ul>
-<p>01.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(a)+<span class="built_in">parseInt</span>(b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置方法可以被调用</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>02.js</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m=<span class="built_in">require</span>(<span class="string">&#x27;./01&#x27;</span>) <span class="comment">//引入js</span></span><br><span class="line"><span class="keyword">let</span> sum1=m.sum(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum1)</span><br></pre></td></tr></table></figure>
-<ul>
+<li>es5实现模块化:<br>01.js<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sum=<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parseInt</span>(a)+<span class="built_in">parseInt</span>(b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置方法可以被调用</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+02.js<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> m=<span class="built_in">require</span>(<span class="string">&#x27;./01&#x27;</span>) <span class="comment">//引入js</span></span><br><span class="line"><span class="keyword">let</span> sum1=m.sum(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="built_in">console</span>.log(sum1)</span><br></pre></td></tr></table></figure></li>
 <li>es6实现模块化 需要用babel转码</li>
 </ul>
-<ol start="15">
+<ol>
 <li>webpack-admin-template</li>
 </ol>
 <ul>
@@ -410,7 +406,7 @@
 <li>config/index.js中修改useEslint:false省去检查严格</li>
 <li>主要修改 src下的/api,/router,/views 即 接口，路由，视图</li>
 </ul>
-<ol start="16">
+<ol>
 <li><p>先点修改再点击左侧导航栏的添加按钮<br>多次路由跳转到同一个页面，在页面中created方法只会执行第一次，后面再进行跳转不会再次执行</p>
 </li>
 <li><p>nginx、阿里云oss、eazyexcel处理批量数据</p>
@@ -419,23 +415,25 @@
 </li>
 </ol>
 <ul>
-<li>axios不能上传文件  上传文件的代码:<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;讲师头像&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!-- 头衔缩略图 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">pan-thumb</span> <span class="attr">:image</span>=<span class="string">&quot;teacher.avatar&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 文件上传按钮 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-upload&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;imagecropperShow=true&quot;</span>&gt;</span>更换头像</span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">      v-show：是否显示上传组件</span></span><br><span class="line"><span class="comment">      :key：类似于id，如果一个页面多个图片上传控件，可以做区分</span></span><br><span class="line"><span class="comment">      :url：后台上传的url地址</span></span><br><span class="line"><span class="comment">      @close：关闭上传组件</span></span><br><span class="line"><span class="comment">      @crop-upload-success：上传成功后的回调 </span></span><br><span class="line"><span class="comment">        &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">          &lt;image-cropper</span><br><span class="line">                        v-show=&quot;imagecropperShow&quot;</span><br><span class="line">                        :width=&quot;300&quot;</span><br><span class="line">                        :height=&quot;300&quot;</span><br><span class="line">                        :key=&quot;imagecropperKey&quot;</span><br><span class="line">                        :url=&quot;BASE_API+&#x27;/eduoss/fileoss&#x27;&quot;</span><br><span class="line">                        field=&quot;file&quot;</span><br><span class="line">                        @close=&quot;close&quot;</span><br><span class="line">                        @crop-upload-success=&quot;cropSuccess&quot;/&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>axios不能上传文件  上传文件的代码:<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">&quot;讲师头像&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!-- 头衔缩略图 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">pan-thumb</span> <span class="attr">:image</span>=<span class="string">&quot;teacher.avatar&quot;</span>/&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 文件上传按钮 --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">icon</span>=<span class="string">&quot;el-icon-upload&quot;</span> @<span class="attr">click</span>=<span class="string">&quot;imagecropperShow=true&quot;</span>&gt;</span>更换头像</span><br><span class="line">          <span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">      v-show：是否显示上传组件</span></span><br><span class="line"><span class="comment">      :key：类似于id，如果一个页面多个图片上传控件，可以做区分</span></span><br><span class="line"><span class="comment">      :url：后台上传的url地址</span></span><br><span class="line"><span class="comment">      @close：关闭上传组件</span></span><br><span class="line"><span class="comment">      @crop-upload-success：上传成功后的回调 </span></span><br><span class="line"><span class="comment">        &lt;input type=&quot;file&quot; name=&quot;file&quot;/&gt;</span></span><br><span class="line"><span class="comment">      --&gt;</span></span><br><span class="line">          &lt;image-cropper</span><br><span class="line">                        v-show=&quot;imagecropperShow&quot;</span><br><span class="line">                        :width=&quot;300&quot;</span><br><span class="line">                        :height=&quot;300&quot;</span><br><span class="line">                        :key=&quot;imagecropperKey&quot;</span><br><span class="line">                        :url=&quot;BASE_API+&#x27;/eduoss/fileoss&#x27;&quot;</span><br><span class="line">                        field=&quot;file&quot;</span><br><span class="line">                        @close=&quot;close&quot;</span><br><span class="line">                        @crop-upload-success=&quot;cropSuccess&quot;/&gt;</span><br><span class="line">      <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<ol start="19">
+<ol>
 <li>EasyExcel</li>
 </ol>
 <ul>
 <li>首先引入依赖<dependencies></dependencies></li>
-<li>其次看父工程中的pom.xml中&lt;poi.version&gt;&lt;/poi.version&gt;版本号为3.17</li>
+<li>其次看父工程中的pom.xml中<poi.version>&lt;/poi.version&gt;版本号为3.17</li>
 </ul>
-<ol start="20">
+<ol>
 <li>单一服务器模式 登录<br>(1) 使用session对象实现  一台服务器适用</li>
 </ol>
 <ul>
 <li>登录成功之后，把用户数据放到session</li>
-<li>判断是否登录，从session获取数据，可以获取到登录信息<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.setAttribute</span><br><span class="line">session.getAttribute</span><br></pre></td></tr></table></figure></li>
+<li>判断是否登录，从session获取数据，可以获取到登录信息<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">session.setAttribute</span><br><span class="line">session.getAttribute</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<ol start="21">
+<ol>
 <li>登录：如果配置了多台服务器，将一个项目中不同的子功能分摊到不同的服务器中去，但是此时session不能共享，也就是说，有多少服务器就要登陆多少次。解决这个问题的办法就是设置单点登录。单点登录的三种实现方法。</li>
 </ol>
 <ul>
@@ -446,14 +444,12 @@
 <hr>
 <blockquote>
 <p>redis:在key中生成唯一随机值(ip,用户id等等),在value存用户数据<br>cookie: 把redis里面生成地key放到cookie里面</p>
-</blockquote>
-<blockquote>
 <p>token： 在某个模块进行登陆之后，按照规则生成字符串，把登录之后用户包含到生成字符串里面，把字符串返回</p>
 <blockquote>
 <p>可以把字符串通过cookie返回<br>把字符串通过地址栏返回</p>
 </blockquote>
 </blockquote>
-<ol start="22">
+<ol>
 <li><p>认证与授权springsecurity的底层用到了许多拦截器（防止未登陆的用户直接访问后台数据信息</p>
 </li>
 <li><p><code>(有待考证）</code>：如果主键的字段类型为string，后台设置idtype=id_worker_str,创建数据库的时候不需要设置auto_increment；如果逐渐的字段类型为integer,后台设置idtype=id_worker_int,创建数据库的时候就需要设置auto_increment</p>
@@ -562,7 +558,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

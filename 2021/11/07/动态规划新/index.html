@@ -402,7 +402,8 @@
 <li><code>2021年12月18日更新</code>: 494题目标和，记忆化递归的新想法。一开始没有想到记忆化递归，是觉得每一个状态都是唯一的，不可能第二次碰到。看了看题解，说一说自己的想法。其实朴素递归相当于是后序遍历一颗二叉树，当画出了这棵二叉树之后，写出二叉树的每个节点，可以发现，该题的二叉树还是存在很多重复状态的(因为是自底向上),那么就可以自己定义一个map的key，key=idx+”_”+sum,这样一构造，就不会出现重复了，例如，都是同一个idx但是sum不同，或者，都是同一个sum，但是idx不同。这可能就是动态规划的阶段。</li>
 </ol>
 <ul>
-<li>再看大礼包这题的map的key的定义，可以很容易发现直接定义还有多少东西没买的list的就行，但由于这道题是数组中的每个元素都得遍历一遍，且每个元素都有+-两个状态，相当于是一颗边权为1二叉树，大礼包相当于是一个边权不为1的多叉树. <h2 id="375"><a href="#375" class="headerlink" title="375"></a>375</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span>[][] cache=<span class="keyword">new</span> <span class="keyword">int</span>[][];</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 遍历到最后一层条件，剪枝返回</span></span><br><span class="line">    <span class="keyword">if</span>() <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(!cache) <span class="keyword">return</span> cache;</span><br><span class="line">    <span class="keyword">int</span> ans=Integer.MAX_VALUE</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i;i;i)&#123;</span><br><span class="line">        <span class="keyword">int</span> ret=Math.max()+i;</span><br><span class="line">        ans=Math.min(ans,ret);</span><br><span class="line">    &#125;</span><br><span class="line">    cache[][]=ans;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>再看大礼包这题的map的key的定义，可以很容易发现直接定义还有多少东西没买的list的就行，但由于这道题是数组中的每个元素都得遍历一遍，且每个元素都有+-两个状态，相当于是一颗边权为1二叉树，大礼包相当于是一个边权不为1的多叉树. <h2 id="375"><a href="#375" class="headerlink" title="375"></a>375</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span>[][] cache=<span class="keyword">new</span> <span class="keyword">int</span>[][];</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 遍历到最后一层条件，剪枝返回</span></span><br><span class="line">    <span class="keyword">if</span>() <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(!cache) <span class="keyword">return</span> cache;</span><br><span class="line">    <span class="keyword">int</span> ans=Integer.MAX_VALUE</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i;i;i)&#123;</span><br><span class="line">        <span class="keyword">int</span> ret=Math.max()+i;</span><br><span class="line">        ans=Math.min(ans,ret);</span><br><span class="line">    &#125;</span><br><span class="line">    cache[][]=ans;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h1 id="多重背包问题心得"><a href="#多重背包问题心得" class="headerlink" title="多重背包问题心得"></a>多重背包问题心得</h1><ol>
 <li>多重背包其实可以拆分成完全背包和01背包问题，朴素的讲，就是如果一个物品如果全部装进背包会超载，那么就相当于一个完全背包问题，如果装不完，那就通过二进制优化将物品拆分成一个一个物品，从而转化为01背包问题。</li>
@@ -413,15 +414,15 @@
 <li>对于这类连续的题，dp[i]基本只与dp[i-1]有关，一次遍历可解<h2 id="413题-等差数列的划分"><a href="#413题-等差数列的划分" class="headerlink" title="413题 等差数列的划分"></a>413题 等差数列的划分</h2></li>
 <li>该题目中只是计算连续子数组属于等差数列的个数，因此状态转移方程为dp[i]=(condition)?:dp[i-1]+1:0<blockquote>
 <p>意思即为如果满足状态转移方程的条件，则是以上一个元素结尾的等差数列的个数加一.</p>
-</blockquote>
-<h2 id="2063题-所有子字符串中的元音"><a href="#2063题-所有子字符串中的元音" class="headerlink" title="2063题 所有子字符串中的元音"></a>2063题 所有子字符串中的元音</h2></li>
+<h2 id="2063题-所有子字符串中的元音"><a href="#2063题-所有子字符串中的元音" class="headerlink" title="2063题 所有子字符串中的元音"></a>2063题 所有子字符串中的元音</h2></blockquote>
+</li>
 <li>该题目中计算连续子序列中元音的个数，状态转移方程为dp[i]=(conditon)?dp[i-1]+i+1:dp[i-1]</li>
 <li>如果是要求计算含有元音的子序列的个数，则状态转移方程为dp[i]=(condition)?i+1:dp[i-1]<blockquote>
 <blockquote>
 <p>两题分别是连续子数组，连续子序列</p>
+<h2 id="设置状态变量-152题-122题"><a href="#设置状态变量-152题-122题" class="headerlink" title="设置状态变量 152题 122题"></a>设置状态变量 152题 122题</h2><h3 id="152题-乘积最大"><a href="#152题-乘积最大" class="headerlink" title="152题 乘积最大"></a>152题 乘积最大</h3></blockquote>
 </blockquote>
-</blockquote>
-<h2 id="设置状态变量-152题-122题"><a href="#设置状态变量-152题-122题" class="headerlink" title="设置状态变量 152题 122题"></a>设置状态变量 152题 122题</h2><h3 id="152题-乘积最大"><a href="#152题-乘积最大" class="headerlink" title="152题 乘积最大"></a>152题 乘积最大</h3></li>
+</li>
 <li>设置两个状态变量，一个是0，一个是1，负数最小值，正数最大值<h3 id="122题-买股票"><a href="#122题-买股票" class="headerlink" title="122题 买股票"></a>122题 买股票</h3></li>
 <li>设置两个状态变量，一个是0，一个是1，0代表不持股，1代表持股<h1 id="动态规划中对于非连续的总结"><a href="#动态规划中对于非连续的总结" class="headerlink" title="动态规划中对于非连续的总结"></a>动态规划中对于<code>非连续</code>的总结</h1></li>
 <li>对于这类非连续的题目，dp[i]需要两层遍历递推，如果是区间dp，则三层递推。<h2 id="368题-最大整除子集-Arraylist-dp"><a href="#368题-最大整除子集-Arraylist-dp" class="headerlink" title="368题 最大整除子集 Arraylist[] dp"></a>368题 最大整除子集 Arraylist[] dp</h2><h2 id="300题-最长递增子序列-int-dp"><a href="#300题-最长递增子序列-int-dp" class="headerlink" title="300题 最长递增子序列 int[] dp"></a>300题 最长递增子序列 int[] dp</h2><h1 id="亟待总结的题目-279题和322题-零钱兑换和完全平方数-背包问题-有向无环图-有明确的起点和终点"><a href="#亟待总结的题目-279题和322题-零钱兑换和完全平方数-背包问题-有向无环图-有明确的起点和终点" class="headerlink" title="亟待总结的题目 279题和322题 零钱兑换和完全平方数 (背包问题,有向无环图,有明确的起点和终点)"></a>亟待总结的题目 279题和322题 零钱兑换和完全平方数 (背包问题,有向无环图,有明确的起点和终点)</h1></li>
@@ -460,7 +461,7 @@
 <li>通过576.题，动态规划从矩阵边缘(也就是终点)开始往起点推，也就是逆推，记忆化递归也是逆推。恰好，这道题dp和记忆化递归都是逆推。但是，回顾<code>零钱兑换</code>，动态规划既可以逆推，也可以顺推，记忆化递归只能逆推.</li>
 </ul>
 <h1 id="2021-12-31-记忆化递归心得"><a href="#2021-12-31-记忆化递归心得" class="headerlink" title="2021/12/31 记忆化递归心得"></a>2021/12/31 记忆化递归心得</h1><ul>
-<li>650题记忆化递归，之后凡是看到dfs的参数有两个在变动，那么就说明一个状态至少需要两个变量来决定，就不能单纯的用HashMap&lt;Integer,Integer&gt;类似于这种只能表达一种参数的变量来存储状态</li>
+<li>650题记忆化递归，之后凡是看到dfs的参数有两个在变动，那么就说明一个状态至少需要两个变量来决定，就不能单纯的用HashMap<Integer,Integer>类似于这种只能表达一种参数的变量来存储状态</li>
 </ul>
 <h1 id="2022-1-17-正向动态规划横向比较"><a href="#2022-1-17-正向动态规划横向比较" class="headerlink" title="2022/1/17 正向动态规划横向比较"></a>2022/1/17 正向动态规划横向比较</h1><h2 id="Acm校赛问题G"><a href="#Acm校赛问题G" class="headerlink" title="Acm校赛问题G"></a>Acm校赛问题G</h2><ul>
 <li>抉择1，当前节点不走捷径，对下一个节点产生影响，<code>dp[i+1]=math.min(dp[i]+1,dp[i+1])</code></li>
@@ -598,7 +599,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

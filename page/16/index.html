@@ -259,6 +259,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url">计算机操作系统</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-16T18:02:58+08:00">
+                2021-03-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h1><ul>
+<li>教学资源</li>
+</ul>
+<ol>
+<li>网易云课堂—哈工大李志军老师的os。<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/115">配套的实验环境</a></li>
+<li>学堂在线清华OS课程练习题</li>
+<li>国内的xv6 lab-清华大学ucore OS <a target="_blank" rel="noopener" href="https://www.xuetangx.com/course/THU08091000267/5883104">链接</a></li>
+</ol>
+<ul>
+<li>书籍</li>
+</ul>
+<ol>
+<li>&lt;操作系统真相还原&gt;</li>
+</ol>
+<h1 id="疑难问题"><a href="#疑难问题" class="headerlink" title="疑难问题"></a>疑难问题</h1><ol>
+<li>进程互斥与同步的问题<ul>
+<li>读者-写者问题：可以多个进程同时读文件，但只能一个进程写文件。并且读文件的操作不会改变资源的值。</li>
+<li>火车进站出站问题：可以多个火车同向运行，但是不允许火车相向运行。<blockquote>
+<p>两个问题的区别在于写文件只能允许一个进程，而火车不管是同向还是相向，都可以多个进程同时运行.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>读者写者问题和多人过桥问题<br>对比读者写者问题，尽管可能同时运行在<code>wait(s)</code>，但由于两者本来就互斥，故有以下逻辑<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count1==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="/images/作业1.jpg" alt="图片"></p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><ol>
+<li>GCC编译器</li>
+<li>GDB调试器</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/03/14/MyBatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -352,8 +516,8 @@
 <li>测试类:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Reader reader = Resources.getResourceAsReader(<span class="string">&quot;conf.xml&quot;</span>);</span><br><span class="line">		SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">	</span><br><span class="line">		SqlSession session = sessionFactory.openSession();</span><br><span class="line">	    String statement = <span class="string">&quot;org.pvtwen.entity.personMapper.queryPersonById&quot;</span>;</span><br><span class="line">	    </span><br><span class="line">	    <span class="comment">//MyBatis底层通过动态代理将Object对象变成一个Person对象</span></span><br><span class="line">	    Person person = session.selectOne(statement, <span class="number">1</span>);</span><br><span class="line">		session.commit();</span><br><span class="line">		session.close();</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><font color="red" size="5">注意:</font> 因为transaction的代理模式为JDBC，所以在执行完毕后应该commit和close.</p>
-</blockquote>
-<h1 id="conf-xml文件中各种参数"><a href="#conf-xml文件中各种参数" class="headerlink" title="conf.xml文件中各种参数"></a>conf.xml文件中各种参数</h1></li>
+<h1 id="conf-xml文件中各种参数"><a href="#conf-xml文件中各种参数" class="headerlink" title="conf.xml文件中各种参数"></a>conf.xml文件中各种参数</h1></blockquote>
+</li>
 <li>dataSource数据源类型 ：</li>
 <li>POOLED：使用数据库连接池</li>
 <li>UNPOOLED：传统的JDBC模式</li>
@@ -369,10 +533,8 @@
 <li>如果是对象类型（例如Student）,则必须是对象的属性#{属性名}</li>
 </ul>
 <h1 id="多个参数的SQL语句"><a href="#多个参数的SQL语句" class="headerlink" title="多个参数的SQL语句"></a>多个参数的SQL语句</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">”addStudent”</span> <span class="attr">parameter</span>=<span class="string">”org.pvtwen.entity.Student”</span>&gt;</span></span><br><span class="line">		Insert into student(stuno,sname,sage) values(#&#123;stuNo&#125;,#&#123;stuName&#125;,#&#123;&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>mapper动态代理方式的crud(也叫mybatis开发)<br>原则: <code>约定优于配置</code></p>
-</blockquote>
 <ul>
 <li>动态代理的几种配置方式</li>
 </ul>
@@ -383,14 +545,14 @@
  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentMapper</span> </span>&#123;</span><br><span class="line">	<span class="function">Person <span class="title">queryPersonById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">	<span class="function">List&lt;Person&gt; <span class="title">queryAllPerson</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">updatePersonById</span><span class="params">(Person person)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">addPerson</span><span class="params">(Person person)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
  (d)    Mapper.xml文件中的namespace的值，就是接口的全类名(接口-mapper)<br> 一般将mapper配置文件和接口放在同一个包中</li>
 </ol>
+</blockquote>
 <h1 id="优化配置"><a href="#优化配置" class="headerlink" title="优化配置"></a>优化配置</h1><ul>
 <li>步骤</li>
 </ul>
 <ol>
 <li>创建属性文件：db.properties,用于保存数据库的信息</li>
 </ol>
-<h1 id="mybatis的全局参数"><a href="#mybatis的全局参数" class="headerlink" title="mybatis的全局参数"></a>mybatis的全局参数</h1><p>conf.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 开启日志，并指定使用的具体日志 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;LOG4J&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 开启延迟加载 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;lazyLoadingEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 关闭立即加载 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;aggressiveLazyLoading&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 开启二级缓存 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;cacheEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="mybatis的全局参数"><a href="#mybatis的全局参数" class="headerlink" title="mybatis的全局参数"></a>mybatis的全局参数</h1><p>conf.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 开启日志，并指定使用的具体日志 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;LOG4J&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 开启延迟加载 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;lazyLoadingEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 关闭立即加载 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;aggressiveLazyLoading&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 开启二级缓存 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;cacheEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2021/03/14/MyBatis/#more" rel="contents">
@@ -432,157 +594,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.gitee.io/2021/03/06/Spring/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/03/06/Spring/" itemprop="url">Spring</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-06T16:45:24+08:00">
-                2021-03-06
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1592029">Spring和XML注解的区别</a></p>
-<h1 id="通过property给bean对象赋值的两种方法"><a href="#通过property给bean对象赋值的两种方法" class="headerlink" title="通过property给bean对象赋值的两种方法"></a>通过property给bean对象赋值的两种方法</h1><ul>
-<li>通过set方法赋值</li>
-<li>通过构造器赋值 <constructor-arg value=""></constructor></li>
-<li>通过p命名空间注入 引入p命名空间.先再namespace中配置xmlns.其次，<bean p:></bean></li>
-<li>自动装配: byname条件:Course类的属性名=bean的id值</li>
-</ul>
-<h1 id="利用spring注解的形式依赖注入"><a href="#利用spring注解的形式依赖注入" class="headerlink" title="利用spring注解的形式依赖注入"></a>利用spring注解的形式依赖注入</h1><ul>
-<li>Dao层：respository 相当于创建了一个对象<bean id=""></li>
-<li>Service层：service相当于创建了要给对象</li>
-</ul>
-<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>依赖注入中</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;sqlSessionFactory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>name的值是根据属性的setter方法来进行命名的，例如，类中的属性为<code>public String who</code>,但是<code>setter</code>方法名为<code>public void setSomebody()</code>,那么,<code>&lt;property name=&quot;somebody&quot;&gt;&lt;/property&gt;</code>.应当根据JavaBean的命名规范来命名</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/17/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/15/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/17/">&gt;</a>
   </nav>
 
 
@@ -628,7 +644,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
