@@ -484,8 +484,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2024-01-03T20:23:26+08:00">
-                2024-01-03
+              <time title="更新于" itemprop="dateModified" datetime="2024-05-06T21:38:30+08:00">
+                2024-05-06
               </time>
             
           </span>
@@ -561,8 +561,38 @@
 <li>word图片选择嵌入式不能显示完全：给图片选择单倍行距</li>
 <li>mathjax公式中如果能写成\hat H就不要写成\hat{H},会出错,<a target="_blank" rel="noopener" href="https://blog.csdn.net/yexiaohhjk/article/details/82526604">解决renderer渲染问题</a></li>
 <li>现在使用的渲染引擎hexo-renderer-kramed不能识别\begin{align}公式编号，后期会考虑重新换一个博客引擎wordpress</li>
+<li>pycharm ssh连接学院gpu资源步骤：</li>
 </ol>
-
+<ul>
+<li>注意端口号不是22，在服务器上首先更改ssh配置</li>
+<li>vim /etc/ssh/sshd_config文件中的PermitRootLogin yes</li>
+<li>vim编辑器  i插入  编辑完成后esc  键入:wq保存退出</li>
+<li>config python interpreter in pycharm，配置的时候On SSH，报错不是IDE级的ssh，选择Move to 就可以了</li>
+<li>interpreter位于服务器/usr/bin/python3.6</li>
+<li>重启系统 service ssh restart</li>
+<li>pycharm start ssh session</li>
+<li>给服务器联网</li>
+<li>登录教师端，账号test1,密码123456</li>
+<li>登录之后火狐浏览器登陆自己的校园网</li>
+</ul>
+<ol>
+<li>68常见bug</li>
+</ol>
+<ul>
+<li>关于联网安装需要的库，GPU平台使用说明第8点是错误的，千万不能退出自己的账号，一旦退出，本地就会与服务器断开ssh连接，一定要在另外一个浏览器打开登陆网址，登陆教师端</li>
+</ul>
+<ol>
+<li>运行incubator</li>
+</ol>
+<ul>
+<li>docker</li>
+<li>激活虚拟环境</li>
+<li>python cli.xxxx</li>
+<li>dashboard-&gt;选择函数-&gt;submit</li>
+<li>Boards中查看运行函数后的结果</li>
+<li>set-Execution</li>
+</ul>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">假设样本x有N种可能的类别标记$<span class="symbol">\g</span>amma=&#123;c_1,c_2,<span class="symbol">\d</span>ots,c_N&#125;$，在该样本x上的conditional risk为<span class="keyword">$R</span>(c_&#123;i&#125;|x)=<span class="symbol">\d</span>isplaystyle <span class="symbol">\s</span>um_&#123;j=1&#125;^&#123;N&#125;<span class="symbol">\l</span>ambda_&#123;ij&#125;P(c_&#123;j&#125;|<span class="symbol">\b</span>f x)$，我们是要找到一个判定准则h: <span class="keyword">$x-&gt;\gamma$以最小化总体风险$R</span>(h)=E_&#123;x&#125;[R(h(<span class="symbol">\b</span>f x))|x]$, <span class="keyword">$h^&#123;*&#125;=\displaystyle \argmin_&#123;c\in \gamma&#125;R</span>(c|<span class="symbol">\b</span>f x)$，并且，只需在每个样本上选择那个能使条件风险<span class="keyword">$R</span>(c|x)$最小的类别标记，即<span class="keyword">$h^&#123;*&#125;=\displaystyle \argmax_&#123;c \in \gamma&#125;P</span>(c|x)$，其中$<span class="symbol">\l</span>ambda_&#123;ij&#125;=<span class="symbol">\b</span>egin&#123;cases&#125;</span><br><span class="line">    0, &amp; if &amp; i=j<span class="symbol">\\</span></span><br><span class="line">    1, &amp; otherwise</span><br><span class="line"><span class="symbol">\e</span>nd&#123;cases&#125;$ ，于是我们要最小化分类错误的贝叶斯最优分类器为<span class="keyword">$h^&#123;*&#125;=\displaystyle \argmax_&#123;c \in \gamma&#125;P</span>(c|x)$，根据贝叶斯公式，类条件概率写为<span class="keyword">$P</span>(c|x)=<span class="symbol">\f</span>rac&#123;P(c)*P(x|c)&#125;&#123;P(x)&#125;$，要估计类条件概率，我们假设类条件概率具有确定的形式并且被参数向量$<span class="symbol">\t</span>heta_c$唯一确定，那么我们的任务就是利用训练集D估计参数$<span class="symbol">\t</span>heta_c$，那么对于第c类样本的数据集D的似然则为<span class="keyword">$P</span>(D_c|<span class="symbol">\t</span>heta_c)=<span class="symbol">\d</span>isplaystyle <span class="symbol">\p</span>rod_&#123;x <span class="symbol">\i</span>n D_C&#125;P(x|<span class="symbol">\t</span>heta_c)$，取对数，得<span class="keyword">$LL</span>(<span class="symbol">\t</span>heta_c)=<span class="symbol">\d</span>isplaystyle <span class="symbol">\s</span>um_&#123;x <span class="symbol">\i</span>n D_c&#125;logP(x|<span class="symbol">\t</span>heta_c)$，此时参数$<span class="symbol">\t</span>heta_c$得极大似然估计为$<span class="symbol">\h</span>at&#123;<span class="symbol">\t</span>heta_c&#125;=<span class="symbol">\d</span>isplaystyle <span class="symbol">\a</span>rgmax_&#123;<span class="symbol">\t</span>heta_c&#125;LL(<span class="symbol">\t</span>heta_c)$，假设<span class="keyword">$p</span>(x|c)$服从正态分布<span class="keyword">$N</span>(<span class="symbol">\m</span>u_c,<span class="symbol">\s</span>igma_&#123;c&#125;^2)$，其中，$<span class="symbol">\h</span>at&#123;<span class="symbol">\m</span>u_c&#125;=<span class="symbol">\f</span>rac&#123;1&#125;&#123;|D_c|&#125;<span class="symbol">\d</span>isplaystyle<span class="symbol">\s</span>um_&#123;x <span class="symbol">\i</span>n D_c&#125;x$，$<span class="symbol">\h</span>at&#123;<span class="symbol">\s</span>igma_&#123;c&#125;^2&#125;=<span class="symbol">\f</span>rac&#123;1&#125;&#123;|D_c|&#125;<span class="symbol">\d</span>isplaystyle<span class="symbol">\s</span>um_&#123;x <span class="symbol">\i</span>n D_c&#125;(x-<span class="symbol">\h</span>at&#123;<span class="symbol">\m</span>u_c&#125;)(x-<span class="symbol">\h</span>at&#123;<span class="symbol">\m</span>u_c&#125;)^T$，编写一个python程序，自己编写一个数据集，然后求出</span><br><span class="line"></span><br><span class="line">$(<span class="symbol">\b</span>f X_1,Y_1),(X_2,Y_2),<span class="symbol">\d</span>ots (X_&#123;16&#125;,Y_&#123;16&#125;)$</span><br></pre></td></tr></table></figure>
           
         
       
