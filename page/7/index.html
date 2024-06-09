@@ -259,6 +259,174 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/12/05/%E4%BA%8C%E5%88%86%E4%B8%8E%E4%BA%8C%E8%BF%9B%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/12/05/%E4%BA%8C%E5%88%86%E4%B8%8E%E4%BA%8C%E8%BF%9B%E5%88%B6/" itemprop="url">二分与二进制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-05T16:05:04+08:00">
+                2021-12-05
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关于二进制优化"><a href="#关于二进制优化" class="headerlink" title="关于二进制优化"></a>关于二进制优化</h1><h2 id="多重背包问题"><a href="#多重背包问题" class="headerlink" title="多重背包问题"></a>多重背包问题</h2><ul>
+<li>在多重背包问题中，将问题简化为01背包问题时，如果采用朴素解法，时间复杂度为O(n),后续中，利用二进制优化，将复杂度降成O(logn)</li>
+<li>对于二进制优化，将一个很大的数拆分成若干个数，其中数的规律为1,2,4,8….，最后，不足的数填充即可。例如，数字10，将其拆分成1,2,4,3.四个包,对应的二进制为0000~1111，每个包有拿和不拿两种选择。</li>
+</ul>
+<h1 id="二进制优化和二分的关系-快速幂"><a href="#二进制优化和二分的关系-快速幂" class="headerlink" title="二进制优化和二分的关系(快速幂)"></a>二进制优化和二分的关系(快速幂)</h1><p><strong>牵涉到的题目</strong></p>
+<h2 id="372题超级次方"><a href="#372题超级次方" class="headerlink" title="372题超级次方"></a>372题超级次方</h2><ul>
+<li>该题中同样用到了优化的思想，刚开始以为二进制优化和二分可以等同，但是并不然，该题的思路是，将一个数不断二分，二分的条件是,如果数为偶数，二分，如果数为奇数，数减一。</li>
+<li>对于求解一个大数的幂，该思路可以可以将复杂度从O(n)降为O(logn),其中时间复杂度O(n)对应着朴素解法。</li>
+<li>同样是优化，二进制优化是为了方便从0~n任何一个数之间进行选取。而二分(快速幂)则是为了将一个很大的指数迅速拆分成一个很小的数，从而降低乘法的次数。</li>
+<li>其次，本题中的另外一思路为，先将一个很大的指数拆分成小于10的数，用的是高中数学，同底数幂运算和幂的乘方运算。<h3 id="取模公式"><a href="#取模公式" class="headerlink" title="取模公式"></a>取模公式</h3></li>
+<li>(a∗b)%MOD=((a%MOD)∗(b%MOD))%MOD<h1 id="二分最关键的一步"><a href="#二分最关键的一步" class="headerlink" title="二分最关键的一步"></a>二分最关键的一步</h1></li>
+<li><code>找到区间上的二段性</code></li>
+<li>目前遇到的两种类型的二分题目，一种是已知连续区间，找未知的值(475),另一种是在非连续单调递增区间内找已知的值</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/11/07/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -408,203 +576,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/09/19/%E5%89%8D%E7%BC%80%E4%B8%8E%E5%90%8E%E7%BC%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/09/19/%E5%89%8D%E7%BC%80%E4%B8%8E%E5%90%8E%E7%BC%80/" itemprop="url">前缀与后缀</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-19T16:13:28+08:00">
-                2021-09-19
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="259周赛"><a href="#259周赛" class="headerlink" title="259周赛"></a>259周赛</h1><h2 id="第二题"><a href="#第二题" class="headerlink" title="第二题"></a>第二题</h2><ul>
-<li>prefix-array  suffix-array 前缀数组保存当前下标之前的最大值  后缀数组保存当前下标之后的最小值</li>
-<li>答案<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfBeauties</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n=nums.length;</span><br><span class="line">    <span class="keyword">int</span>[] l_max=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    <span class="keyword">int</span>[] r_min=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    <span class="keyword">int</span> Lmax=nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">int</span> Rmin=nums[n-<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> beauty=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n-<span class="number">2</span>;i++)&#123;</span><br><span class="line">        Lmax=Math.max(nums[i-<span class="number">1</span>],Lmax);</span><br><span class="line">        l_max[i]=Lmax;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n-<span class="number">2</span>;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">        Rmin=Math.min(Rmin,nums[i+<span class="number">1</span>]);</span><br><span class="line">        r_min[i]=Rmin;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n-<span class="number">2</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i]&gt;l_max[i] &amp;&amp; nums[i]&lt;r_min[i]) beauty+=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>] &amp;&amp; nums[i]&lt;nums[i+<span class="number">1</span>]) beauty+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> beauty;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>超时<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfBeauties</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> tempF=<span class="number">0</span>,maxF=<span class="number">0</span>,minB=<span class="number">2</span>,tempB=<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> beauty=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> n=nums.length;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n-<span class="number">1</span>;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i-<span class="number">1</span>]&gt;nums[maxF]) maxF=i-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(minB==i)&#123;</span><br><span class="line">                    minB=i+<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=i+<span class="number">1</span>;k&lt;n;k++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(nums[minB]&gt;nums[k]) minB=k;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=tempB;k&lt;n;k++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(nums[minB]&gt;nums[k]) minB=k;</span><br><span class="line">                        tempB++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]&gt;nums[maxF] &amp;&amp; nums[i]&lt;nums[minB]) beauty+=<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(nums[i]&gt;nums[i-<span class="number">1</span>] &amp;&amp; nums[i]&lt;nums[i+<span class="number">1</span>]) beauty+=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> beauty;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>反思: </p>
-<blockquote>
-<p>代码中定义的变量过多，容易引起混淆<br>for循环的堆叠增加了时间复杂度<br>对前缀和的应用还不是很灵活，前缀数组既可以保存之和，也可以保存最大最小值<br>通过这道题，明白了有时候需要对数据进行预处理,用最少的变量，先理清思路再code.</p>
-</blockquote>
-</blockquote>
-</li>
-</ul>
-<h1 id="Question1-amp-amp-Question560"><a href="#Question1-amp-amp-Question560" class="headerlink" title="Question1 &amp;&amp; Question560"></a>Question1 &amp;&amp; Question560</h1><ul>
-<li>对于求子数组和的问题，先找关系式.Question1中的关系式为nums[i]+nums[j]=target</li>
-<li>Question560中的关系式为subArraySum[i]-subArraySum[j]=k</li>
-<li>基于关系式，定义关系变量diff.<h2 id="Question1"><a href="#Question1" class="headerlink" title="Question1"></a>Question1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="comment">// 此处也可以写成 int diff=target-nums[i];  map.put(nums[i],i);</span></span><br><span class="line">            <span class="keyword">int</span> diff=nums[i]-target;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(diff)) <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;map.get(diff),i&#125;;</span><br><span class="line">            map.put(-nums[i],i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Question560"><a href="#Question560" class="headerlink" title="Question560"></a>Question560</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraySum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n=nums.length;</span><br><span class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">        map.put(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="keyword">int</span> diff=sum-k;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(diff)) res+=map.get(diff);</span><br><span class="line">            map.put(sum,map.getOrDefault(sum,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Question974"><a href="#Question974" class="headerlink" title="Question974"></a>Question974</h2><ul>
-<li>思路：同余定理,(a-b)%k==0,则a%k=b%k. 特例，-1和9对5取余数。-1余数是-1，9的余数是4.但是(9+1)%5=0.</li>
-<li>所以本题需要避免为负数的情况 (sum%k+k)%k<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">subarraysDivByK</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n=nums.length;</span><br><span class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">        map.put(<span class="number">0</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="keyword">int</span> prefix=(sum%k+k)%k; <span class="comment">// 避免之和为负数的情况</span></span><br><span class="line">            res+=map.getOrDefault(prefix,<span class="number">0</span>);</span><br><span class="line">            map.put(prefix,map.getOrDefault(prefix,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Question525"><a href="#Question525" class="headerlink" title="Question525"></a>Question525</h2></li>
-<li>思路：0和1的数量相同转换为 1的数量减去0的数量为0  可以将数组中的0视为-1. 问题转换为求和为0的最长子数组、</li>
-<li>出发点：1的数量减去0的数量为0. 1的数量即为所有1之和. 0之和由于没有意义 将0转化为-1之和</li>
-<li>延申1：求1的数量比0的数量多n的问题。 也就是求和为n的问题。</li>
-<li>延申2：求1的数量比0的数量多n倍的问题？<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findMaxLength</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=nums.length;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxLen=Integer.MIN_VALUE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]==<span class="number">0</span>) nums[i]=-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> nums[i]=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        map.put(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(sum)) maxLen=Math.max(maxLen,i+<span class="number">1</span>-map.get(sum));</span><br><span class="line">            <span class="keyword">else</span> map.put(sum,i+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxLen==Integer.MIN_VALUE?<span class="number">0</span>:maxLen;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="前缀和-竞赛题5882"><a href="#前缀和-竞赛题5882" class="headerlink" title="前缀和 竞赛题5882"></a>前缀和 竞赛题5882</h1><ul>
-<li>我的思路：先找出机器A的最大值的所有路径，分别遍历所有路径，求出每个路径下的最大值，再求出所有最大值中的最小值</li>
-<li>反思点：<ol>
-<li>不要以为机器A拿到了最大值，就可以限制B拿到最大值</li>
-<li>数据格式限制 long型</li>
-<li>在遍历过程中，每次遍历求出B两条路的最大值，最后再将res与该最大值进行比较，res取其中的最小值。而不是res=Math.max(max,res);<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">gridGame</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="keyword">long</span>[] prefixArr1=<span class="keyword">new</span> <span class="keyword">long</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">long</span>[] prefixArr2=<span class="keyword">new</span> <span class="keyword">long</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">long</span> res=Long.MAX_VALUE;</span><br><span class="line">        <span class="keyword">long</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> sum1=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">            sum+=grid[<span class="number">0</span>][i-<span class="number">1</span>];</span><br><span class="line">            sum1+=grid[<span class="number">1</span>][i-<span class="number">1</span>];</span><br><span class="line">            prefixArr1[i]=sum;</span><br><span class="line">            prefixArr2[i]=sum1;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">long</span> sub1=prefixArr1[n]-prefixArr1[i];</span><br><span class="line">            <span class="keyword">long</span> sub2=prefixArr2[i-<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">long</span> max=Math.max(sub1,sub2);</span><br><span class="line">            res=Math.min(max,res);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/">&gt;</a>
   </nav>
 
 
@@ -650,7 +626,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

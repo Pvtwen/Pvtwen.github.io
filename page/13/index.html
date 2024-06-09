@@ -259,6 +259,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url">计算机操作系统</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-16T18:02:58+08:00">
+                2021-03-16
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h1><ul>
+<li>教学资源</li>
+</ul>
+<ol>
+<li>网易云课堂—哈工大李志军老师的os。<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/115">配套的实验环境</a></li>
+<li>学堂在线清华OS课程练习题</li>
+<li>国内的xv6 lab-清华大学ucore OS <a target="_blank" rel="noopener" href="https://www.xuetangx.com/course/THU08091000267/5883104">链接</a></li>
+</ol>
+<ul>
+<li>书籍</li>
+</ul>
+<ol>
+<li>&lt;操作系统真相还原&gt;</li>
+</ol>
+<h1 id="疑难问题"><a href="#疑难问题" class="headerlink" title="疑难问题"></a>疑难问题</h1><ol>
+<li>进程互斥与同步的问题<ul>
+<li>读者-写者问题：可以多个进程同时读文件，但只能一个进程写文件。并且读文件的操作不会改变资源的值。</li>
+<li>火车进站出站问题：可以多个火车同向运行，但是不允许火车相向运行。<blockquote>
+<p>两个问题的区别在于写文件只能允许一个进程，而火车不管是同向还是相向，都可以多个进程同时运行.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li>读者写者问题和多人过桥问题<br>对比读者写者问题，尽管可能同时运行在<code>wait(s)</code>，但由于两者本来就互斥，故有以下逻辑<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count1==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="/images/作业1.jpg" alt="图片"></p>
+<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><ol>
+<li>GCC编译器</li>
+<li>GDB调试器</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/14/MyBatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -430,155 +594,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/06/Spring/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/03/06/Spring/" itemprop="url">Spring</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-06T16:45:24+08:00">
-                2021-03-06
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1592029">Spring和XML注解的区别</a></p>
-<h1 id="通过property给bean对象赋值的两种方法"><a href="#通过property给bean对象赋值的两种方法" class="headerlink" title="通过property给bean对象赋值的两种方法"></a>通过property给bean对象赋值的两种方法</h1><ul>
-<li>通过set方法赋值</li>
-<li>通过构造器赋值 <constructor-arg value=""></constructor></li>
-<li>通过p命名空间注入 引入p命名空间.先再namespace中配置xmlns.其次，<bean p:></bean></li>
-<li>自动装配: byname条件:Course类的属性名=bean的id值</li>
-</ul>
-<h1 id="利用spring注解的形式依赖注入"><a href="#利用spring注解的形式依赖注入" class="headerlink" title="利用spring注解的形式依赖注入"></a>利用spring注解的形式依赖注入</h1><ul>
-<li>Dao层：respository 相当于创建了一个对象<bean id=""></li>
-<li>Service层：service相当于创建了要给对象</li>
-</ul>
-<h1 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h1><p>依赖注入中<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;sqlSessionFactory&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure><br>name的值是根据属性的setter方法来进行命名的，例如，类中的属性为<code>public String who</code>,但是<code>setter</code>方法名为<code>public void setSomebody()</code>,那么,<code>&lt;property name=&quot;somebody&quot;&gt;&lt;/property&gt;</code>.应当根据JavaBean的命名规范来命名</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">&gt;</a>
   </nav>
 
 
@@ -624,7 +644,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
