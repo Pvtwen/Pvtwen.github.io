@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2022/01/09/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2022/01/20/%E6%95%B0%E8%AE%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2022/01/09/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" itemprop="url">滑动窗口</a></h1>
+                <a class="post-title-link" href="/2022/01/20/%E6%95%B0%E8%AE%BA/" itemprop="url">数论</a></h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-09T14:11:19+08:00">
-                2022-01-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-20T15:57:27+08:00">
+                2022-01-20
               </time>
             
 
@@ -312,28 +312,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -364,14 +342,40 @@
       
         
           
-            <h1 id="周赛275-5977反思"><a href="#周赛275-5977反思" class="headerlink" title="周赛275 5977反思"></a>周赛275 5977反思</h1><ul>
-<li>知道应该用滑动窗口来解题，但是没有确切可行的思路。</li>
-<li>滑动窗口本质上还是找滑动窗口的初始大小，像本题，第一个关键点是以1的个数作为滑动窗口的大小，第二个关键点是求解窗口内0的个数即为交换次数，但由于是环状数组，所以我这里采用拼接数组。</li>
+            <h1 id="a-b的最小公倍数和最大公因数"><a href="#a-b的最小公倍数和最大公因数" class="headerlink" title="a,b的最小公倍数和最大公因数"></a>a,b的最小公倍数和最大公因数</h1><ul>
+<li>a*b=gcd(a,b)xlcm(a,b)<h1 id="素数筛"><a href="#素数筛" class="headerlink" title="素数筛"></a>素数筛</h1><h2 id="埃氏筛"><a href="#埃氏筛" class="headerlink" title="埃氏筛"></a>埃氏筛</h2></li>
+<li>几种优化</li>
 </ul>
-<h1 id="归纳-2024题-周赛275的5977题-P3741题"><a href="#归纳-2024题-周赛275的5977题-P3741题" class="headerlink" title="归纳 2024题+周赛275的5977题+P3741题"></a>归纳 2024题+周赛275的5977题+P3741题</h1><ul>
-<li>前两题的本质上还是找使得滑动窗口增大的变量，对于第一题，使得滑动窗口增大的变量就是T和F当中的最小个数大于k时，窗口增大。</li>
-<li>对于第二题，滑动窗口的大小即为1的大小，因为要把所有的1凑在一起，所以1的总量不变，滑动窗口大小不变。</li>
-<li>对于第三题，简单的模拟题，细节颇多，题干描述似乎也同2024题一样，但是由于不是找<code>连续</code>，所以，直接模拟。</li>
+<ol>
+<li>分块筛法，将要筛选的区间进行分块，对每个块进行处理，这样就不用一直保存整个范围的vis数组，利于cpu更好地处理缓存.</li>
+<li>减少内存的占用,采用<code>位级压缩</code>，但这种压缩方法会使这些位的操作复杂化。任何位上的读写操作都需要多次算术运算。这是一种以降低内存占用，从而降低执行效率的方法</li>
+<li>只筛选奇数.<h2 id="Euler筛"><a href="#Euler筛" class="headerlink" title="Euler筛"></a>Euler筛</h2><h1 id="扩展欧几里得定理"><a href="#扩展欧几里得定理" class="headerlink" title="扩展欧几里得定理"></a>扩展欧几里得定理</h1></li>
+</ol>
+<ul>
+<li>ax+by=gcd(a,b) 归纳法证明？</li>
+<li>二进制求最大公因数(校赛)</li>
+<li>倒水问题(贝祖定理)<h1 id="比赛数论例题"><a href="#比赛数论例题" class="headerlink" title="比赛数论例题"></a>比赛数论例题</h1><h2 id="洛谷100月赛-Q1"><a href="#洛谷100月赛-Q1" class="headerlink" title="洛谷100月赛 Q1"></a>洛谷100月赛 Q1</h2></li>
+<li>思路：如果一个数的因子有K个,那么使得这个数最小的方案是2^k,也就是全是2.首先想到两个特殊值4,9。</li>
+<li>先说4，可以因式分解为2x2.再说9，可以分解为3*3.</li>
+<li>归纳出，如果一个数的质因子大于5小于9，那么一定存在一个数小于他，并且因子大于他，因为大于5小于9的这个因子可以写成2x2.举个例子，14=2x7,一定存在一个数,2x2x2=8.</li>
+<li>如果一个数的质因子大于等于9，那么一定存在一个数小于他，并且因子数大于他，因为这个质因子肯定没有2x2x2这个因子数多。举个例子，18这个数可以写成3x3x2,3x3可以优化成2x2x2，那么这个数就是2x2x2x2=16.<h2 id="CodeForce-767-Q2"><a href="#CodeForce-767-Q2" class="headerlink" title="CodeForce 767 Q2"></a>CodeForce 767 Q2</h2></li>
+<li>[l,r]的连续整型数组，最多操作k次，每次将数组中两个数字相乘，问是否最终存在一个数组，整个数组的gcd大于1.</li>
+<li>思路：可以假设最终的数组的gcd是多少。经过找规律可以发现，如果最终的gcd是x，最终长度为N的数组剩下的数字的个数为N/x(素数筛的原理)，可以发现当最终数组的x=2时，可以使得数组剩下的数更多，需要的k更小。<h2 id="ACM校赛Q1"><a href="#ACM校赛Q1" class="headerlink" title="ACM校赛Q1"></a>ACM校赛Q1</h2></li>
+<li>思路：找素数的规律(素数的定义)<h2 id="AcM校赛QL"><a href="#AcM校赛QL" class="headerlink" title="AcM校赛QL"></a>AcM校赛QL</h2></li>
+<li>思路：根据题设条件变形，再根据a/gcd(a,b)+b/gcd(a,b)=2k，两个数为奇数，而且因子2的个数相同(否则不可能为奇数)。<h2 id="一道有意思的欧拉筛题-牛客KY7"><a href="#一道有意思的欧拉筛题-牛客KY7" class="headerlink" title="一道有意思的欧拉筛题 牛客KY7"></a>一道有意思的欧拉筛题 牛客KY7</h2></li>
+<li>尽管题设条件给的是[1,1e9],但是并不用将欧拉筛的取值范围设置为1e9,因为题设并没有要求我们找出1e9以内的所有质数，只用找出质因子的个数即可。</li>
+<li>那为什么是1e6呢？因为就算一个数存在两个质数1e6*1e6,已经超过了1e9的范围。例如，夸张一点假设，如果将primes[]数组大小改为1e1,此时就不成立了，存在一个数字有两个因子17x17=289，这样就筛不出正确的因子个数了。</li>
+<li>测试用例举例：799043235，分解因式3x5x5x29x1259x1459.如果此时将N设置为1e3,很明显会出错.</li>
+</ul>
+<h1 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h1><ul>
+<li>实现过程：在分解质因数的过程中求出欧拉函数</li>
+</ul>
+<h1 id="递推"><a href="#递推" class="headerlink" title="递推"></a>递推</h1><h2 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h2><ul>
+<li>通过两种思路得到的递推方式得到一个更为简洁的递推公式：f(n+1)=(4n-6)/f(n).<h2 id="组合数与杨辉三角"><a href="#组合数与杨辉三角" class="headerlink" title="组合数与杨辉三角"></a>组合数与杨辉三角</h2></li>
+<li>根据杨辉三角的性质得出递推式: C[i][j]=C[i-1][j]+C[i-1][j-1]</li>
+<li>凡是需要提前求出C(n,i)值，都可以利用杨辉三角<h2 id="UVa12034"><a href="#UVa12034" class="headerlink" title="UVa12034"></a>UVa12034</h2></li>
+<li>两种思路：第一种先确定第一名，依次第二名…第n名。</li>
+<li>第二种思路，dp[i][j]:i匹马，j个名次的所有方案=(dp[i-1][j-1]+dp[i-1][j])*j.也有点类似杨辉三角.i-1匹马形成j-1个名词，再来一匹马，与之前的马混用名次，j种方案。其次，i-1匹马形成j-1个名次，再来一匹马，新形成一个名次，也是j种方案。</li>
 </ul>
 
           
@@ -422,7 +426,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/12/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2022/01/14/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -441,7 +445,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/12/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/" itemprop="url">计算机组成原理实验</a></h1>
+                <a class="post-title-link" href="/2022/01/14/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95/" itemprop="url">图论算法</a></h1>
         
 
         <div class="post-meta">
@@ -453,8 +457,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-26T21:03:56+08:00">
-                2021-12-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-01-14T11:19:49+08:00">
+                2022-01-14
               </time>
             
 
@@ -469,8 +473,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2024-01-03T13:02:39+08:00">
-                2024-01-03
+              <time title="更新于" itemprop="dateModified" datetime="2023-03-17T20:28:51+08:00">
+                2023-03-17
               </time>
             
           </span>
@@ -504,38 +508,51 @@
 
       
         
-          <h1 id="汉字编码实验"><a href="#汉字编码实验" class="headerlink" title="汉字编码实验"></a>汉字编码实验</h1><ul>
-<li>遇到的问题</li>
+          
+            <h1 id="638题一题三解"><a href="#638题一题三解" class="headerlink" title="638题一题三解"></a>638题一题三解</h1><h4 id="解法一-记忆化dfs"><a href="#解法一-记忆化dfs" class="headerlink" title="解法一 记忆化dfs"></a>解法一 记忆化dfs</h4><ul>
+<li>不难看出，每一个needs就是一个状态。根据题干，本质上是一个有向无环图，按照记忆化写就行<h4 id="解法二-BFS广搜"><a href="#解法二-BFS广搜" class="headerlink" title="解法二 BFS广搜"></a>解法二 BFS广搜</h4></li>
+<li>暴搜思路正确，也不会超时，但是性能比dfs差，毕竟是广搜，搜到终点(也就是needs=000)时，还不能立即结束，因为还可能存在其他使得终点的价格更小的方案，所以还得遍历完所有的情况之后，逐一比较结果再返回。<h4 id="解法三-Dijtsra算法-2022-1-14更"><a href="#解法三-Dijtsra算法-2022-1-14更" class="headerlink" title="解法三 Dijtsra算法 2022.1.14更"></a>解法三 Dijtsra算法 2022.1.14更</h4></li>
+<li>Dijtsra其实本质上也是BFS+贪心，所以应用在本题的有向无环图，思路也是正确的，幸能比bfs好，比dfs差。</li>
+<li>优先队列存储每一个状态，设置两个变量，一个<code>HashSet&lt;List&lt;Integer&gt;&gt;</code>相当于<code>visited[]</code>，用来标记已经记录过最段路径的状态,一个<code>HashMap&lt;List&lt;Integer&gt;,Integer&gt;</code>相当于<code>distance[]</code>，用来记录当前状态的最短路径(还不一定是最短).</li>
 </ul>
-<ol>
-<li>ansi与gbk的关系 utf-8.为什么gb2312的文本格式要以ansi存盘</li>
-<li>-A0A0的补码dfe0</li>
-<li>gbk转十六进制代码 hexString</li>
+<h1 id="图总结"><a href="#图总结" class="headerlink" title="图总结"></a>图总结</h1><ul>
+<li>只要是有向无环图，并且要求出最优解，就可以通过BFS来求解，因为迪杰特斯拉算法本质上就是贪心+bfs，所以可以用bfs来求解的题一定可以用迪杰特斯拉算法。</li>
+<li>堆优化的迪杰特斯拉算法中状态的表示方法有两种，一种是用一维数组distance[]来表示，另一种是用哈希表存链表+距离表示，如果链表的表示过于复杂，可以用String存状态，可能会比较麻烦，应为可能涉及到下标的取值。<h1 id="图论算法存图的三种方法"><a href="#图论算法存图的三种方法" class="headerlink" title="图论算法存图的三种方法"></a>图论算法存图的三种方法</h1><h4 id="Uva1601-将点存为图"><a href="#Uva1601-将点存为图" class="headerlink" title="Uva1601 将点存为图"></a>Uva1601 将点存为图</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记录点的个数 和 存边的链式存图的idx类似</span></span><br><span class="line"><span class="keyword">int</span> cnt;</span><br><span class="line"><span class="comment">// 存第cnt个点的下标x,y</span></span><br><span class="line"><span class="keyword">int</span>[] x;<span class="keyword">int</span>[] y;    <span class="comment">// x[cnt] y[cnt]</span></span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">int</span>[][] id;  <span class="comment">//id[x][y]=cnt 存某个下标对应的是第几个点</span></span><br><span class="line"><span class="comment">// 将点与点建立联系</span></span><br><span class="line"><span class="keyword">int</span>[] deg=<span class="keyword">new</span> <span class="keyword">int</span>[cnt];  <span class="comment">//存第cnt个点周围有几个点  cnt&lt;=5 还有点本身 可以不移动</span></span><br><span class="line"><span class="keyword">int</span>[][] G=<span class="keyword">new</span> <span class="keyword">int</span>[cnt][<span class="number">5</span>]   <span class="comment">// G[cnt][idx]=cnt; 存某个点的idx方向上对应点的</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">char</span> c:maze)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> d:direction)&#123;</span><br><span class="line">        <span class="keyword">if</span>(d也是点) G[cnt][idx]=d; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="类edge"><a href="#类edge" class="headerlink" title="类edge"></a>类edge</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Edge</span></span>&#123;</span><br><span class="line">    <span class="comment">// v:起点 g:终点 w:权值</span></span><br><span class="line">    <span class="keyword">int</span> v,g,w</span><br><span class="line">    edge()&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="邻接表，链式星向存图"><a href="#邻接表，链式星向存图" class="headerlink" title="邻接表，链式星向存图"></a>邻接表，链式星向存图</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> N,M; <span class="comment">//N:点的个数 M:边个数</span></span><br><span class="line"><span class="keyword">int</span>[] he=<span class="keyword">new</span> <span class="keyword">int</span>[N];</span><br><span class="line"><span class="keyword">int</span>[] w=<span class="keyword">new</span> <span class="keyword">int</span>[M];</span><br><span class="line"><span class="keyword">int</span>[] ne=<span class="keyword">new</span> <span class="keyword">int</span>[M];</span><br><span class="line"><span class="keyword">int</span>[] e=<span class="keyword">new</span> <span class="keyword">int</span>[M];</span><br><span class="line"><span class="comment">// 记录边的个数</span></span><br><span class="line">idx=<span class="number">0</span>;</span><br><span class="line"><span class="comment">// 初始化所有的节点都没有边</span></span><br><span class="line">Arrays.fill(he,-<span class="number">1</span>)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    e[v]=w;</span><br><span class="line">    ne[v]=he[u];</span><br><span class="line">    he[u]=idx</span><br><span class="line">    w[idx]=w;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">iteration</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=he[w];i!=-<span class="number">1</span>;i=he[i])&#123;</span><br><span class="line">        <span class="comment">// 取边对应的终点</span></span><br><span class="line">        <span class="keyword">int</span> j=e[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h4><h1 id="图论算法模板"><a href="#图论算法模板" class="headerlink" title="图论算法模板"></a>图论算法模板</h1><blockquote>
+<ul>
+<li>floyd应用在图中存在边权为负值的情况的算法，dij是用在边权非负的情况下的算法。<h4 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span>[][] graph,<span class="keyword">int</span> n,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 设置path 记录两个节点中间节点 如果为-1 表示直达</span></span><br><span class="line">    <span class="keyword">int</span>[][] path=<span class="keyword">new</span> <span class="keyword">int</span>[][];</span><br><span class="line">    <span class="comment">// v为中间节点 i为起始节点 j为终点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> v=<span class="number">1</span>;v&lt;=n;v++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(distance[i][v]+distance[v][j]&lt;distance[i][j])&#123;</span><br><span class="line">                    path[i][j]=v;</span><br><span class="line">                    distance[i][j]=distance[i][v]+distance[v][j];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="bellman朴素算法伪代码"><a href="#bellman朴素算法伪代码" class="headerlink" title="bellman朴素算法伪代码"></a>bellman朴素算法伪代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Edge&gt; list;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n-<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span> (Edge edge : list) &#123;</span><br><span class="line">                <span class="keyword">int</span> u = edge.u;</span><br><span class="line">                <span class="keyword">int</span> v = edge.v;</span><br><span class="line">                <span class="keyword">int</span> w = edge.w;</span><br><span class="line">                <span class="keyword">if</span>(distance[u]+w&lt;distance[v])&#123;</span><br><span class="line">                    distance[v]=distance[u]+w;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 检查有无负权环</span></span><br><span class="line">        <span class="comment">// 有两种写法 一种再跑一遍bell，一种遍历一次边即可</span></span><br><span class="line">        <span class="comment">//1.</span></span><br><span class="line">        <span class="keyword">for</span>(Edge edge:list)&#123;&#125;</span><br><span class="line">        <span class="comment">//2.</span></span><br><span class="line">        <span class="keyword">for</span>()&#123;</span><br><span class="line">            <span class="keyword">for</span>(Edge edge:list)&#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="bellman算法队列优化伪代码"><a href="#bellman算法队列优化伪代码" class="headerlink" title="bellman算法队列优化伪代码"></a>bellman算法队列优化伪代码</h4></li>
+</ul>
+</blockquote>
+</li>
+<li>注意1：一个节点可能入队列多次，所以每次queue.poll之后都必须visited[node]=0;</li>
+<li>注意2：如果进入队列超过n次，false. 换句话说，如果一个节点入队列的次数小于等于n，都可以接受。不采用队列优化的测试次数。<code>但是，我觉得这里应该是cnt[node]&gt;=n,因为在朴素bellman中，最多遍历n-1次，n不接受</code>.</li>
+<li>注意3：一定要在更新了距离之后再将visited[j]=1.一个反例[1,2,1],[2,3,7],[1,3,4],[2,1,2].<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 链式星向存图 e he w ne</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span>[][] graph)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] distance;</span><br><span class="line">    <span class="comment">// 标记是否在队列</span></span><br><span class="line">    <span class="keyword">int</span>[] visited;</span><br><span class="line">    <span class="comment">// 记录一共入队列几次</span></span><br><span class="line">    <span class="keyword">int</span>[] cnt;</span><br><span class="line">    <span class="comment">// 起点的距离为0</span></span><br><span class="line">    Queue&lt;Integer&gt; queue=<span class="keyword">new</span> ArrayQueue&lt;&gt;();</span><br><span class="line">    queue.offer(k);</span><br><span class="line">    <span class="comment">// 初始化起点</span></span><br><span class="line">    visited[k]=<span class="number">1</span>;</span><br><span class="line">    distance[k]=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 一个起点可以入队列多次</span></span><br><span class="line">    <span class="keyword">while</span>(!queue.isnull())&#123;</span><br><span class="line">        node=queue.poll();</span><br><span class="line">        visited[node]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=he[node];i!=-<span class="number">1</span>;i=ne[i])&#123;</span><br><span class="line">            <span class="keyword">int</span> j=e[i];</span><br><span class="line">            <span class="keyword">if</span>(distance[j]&gt;distance[node]+w[i])&#123;</span><br><span class="line">                distance[j]=distance[node]+w[i];</span><br><span class="line">                <span class="comment">// 注意 这一行一定要放在更新距离之后</span></span><br><span class="line">                <span class="keyword">if</span>(visited[j]==<span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">                queue.offer(j);</span><br><span class="line">                visited[j]=<span class="number">1</span>;</span><br><span class="line">                cnt[j]++;</span><br><span class="line">                <span class="keyword">if</span>(cnt[j]&gt;n) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Dijtsra堆优化伪代码"><a href="#Dijtsra堆优化伪代码" class="headerlink" title="Dijtsra堆优化伪代码"></a>Dijtsra堆优化伪代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 设置两个变量</span></span><br><span class="line">    <span class="keyword">int</span>[] visited;</span><br><span class="line">    <span class="keyword">int</span>[] distance;</span><br><span class="line">    PriorityQueue&lt;<span class="keyword">int</span>[]&gt; queue;</span><br><span class="line">    <span class="keyword">while</span>()&#123;</span><br><span class="line">        poll();</span><br><span class="line">        <span class="comment">// 防止遍历过的点再次被遍历</span></span><br><span class="line">        <span class="keyword">if</span>(visited) <span class="keyword">continue</span>;</span><br><span class="line">        visited=<span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 遍历点</span></span><br><span class="line">        <span class="keyword">for</span>()&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Dijtsra伪代码"><a href="#Dijtsra伪代码" class="headerlink" title="Dijtsra伪代码"></a>Dijtsra伪代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 设置两个变量</span></span><br><span class="line">    <span class="keyword">int</span>[] visited;</span><br><span class="line">    <span class="keyword">int</span>[] distance;</span><br><span class="line">    <span class="comment">// 外层 遍历轮数</span></span><br><span class="line">    <span class="keyword">for</span>()&#123;</span><br><span class="line">        <span class="comment">// 用于记录当前已经有距离的最小距离以及对应的节点</span></span><br><span class="line">        <span class="keyword">int</span> minIdx=-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> minDis=Integer.MAX;</span><br><span class="line">        <span class="keyword">for</span>()&#123;</span><br><span class="line">            <span class="keyword">if</span>(&lt;)&#123;</span><br><span class="line">                minIdx=;</span><br><span class="line">                minDis=;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">if</span>(minIdx==-<span class="number">1</span>) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 用于更新与minIdx相连接的点的距离</span></span><br><span class="line">        <span class="keyword">for</span>()&#123;</span><br><span class="line">            <span class="keyword">int</span> s=minDis+graph[i][j]</span><br><span class="line">            <span class="keyword">if</span>(s&lt;distance[j]) distance[j]=s;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2022-2-17最小生成树"><a href="#2022-2-17最小生成树" class="headerlink" title="2022.2.17最小生成树"></a><code>2022.2.17</code>最小生成树</h1><h2 id="Prime算法"><a href="#Prime算法" class="headerlink" title="Prime算法"></a>Prime算法</h2></li>
+<li>适用于求边稠密的图，因为算法的时间复杂度与边的数量无关，而与顶点有关.O(n^2)，其中n为顶点的数量。</li>
+<li>从规定的顶点出发，按照dijtsra算法跑一遍，就可以找到具有最小边权值和的最小生成树。</li>
+<li>但是还是和dij算法存在细微差别，首先dij算法求的是某个顶点到其余各个顶点最短距离。其次，对于对于辅助数组的设置也不同，dij算法中利用distance[i]数组存储出发点到下标顶点的当前最短路径。而在prime算法中利用closedge[i]数组存储某个顶点具有的最小权值边，以及该最小权值边的另一端顶点。<h2 id="Kruscal算法"><a href="#Kruscal算法" class="headerlink" title="Kruscal算法"></a>Kruscal算法</h2></li>
+<li>利用MFset(并查集)和对边权值进行排序求最小生成树的算法。适用于求边稀疏图。O(nlogn)，其中n为边的数量</li>
+</ul>
+<h1 id="2022-2-21-找关节点-关键路径"><a href="#2022-2-21-找关节点-关键路径" class="headerlink" title="2022.2.21 找关节点+关键路径"></a>2022.2.21 找关节点+关键路径</h1><h2 id="关节点"><a href="#关节点" class="headerlink" title="关节点"></a>关节点</h2><ol>
+<li>如果根节点存在多颗子树，则该根节点是一个关节点</li>
+<li>如果某个节点的子节点没有和祖先节点相连，则该节点是一个关节点<h2 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h2><blockquote>
+<p>递推</p>
+</blockquote>
+</li>
 </ol>
 <ul>
-<li>以上问题有一个综合答案，为什么要半角转全角？因为国标转区位码电路是针对中文字符的电路，如果用半角的电路，在字库中找不到对应的字符，自然就显示不了当前字符。其他的细枝末节就不用关心了。例如，逗号句号的全角半角，这些都不重要。</li>
+<li>首先通过拓扑排序正序递推求每个结点的ee(最早开始时间)</li>
+<li>然后将每个结点的el全部赋值给ee.通过逆序拓扑求每个节点的el(el=Math.min(el,el[i+1]-dut(i,i+1)))</li>
+<li>上一步的逆序拓扑既可以通过正序拓扑设置一个辅助栈T来实现。也可以通过dfs来实现.</li>
 </ul>
-<h1 id="海明编码实验"><a href="#海明编码实验" class="headerlink" title="海明编码实验"></a>海明编码实验</h1><ul>
-<li>遇到的问题</li>
-</ul>
-<ol>
-<li>为什么p6要与所有的输入相异或</li>
-<li>g6的总偶校验实现原理是什么？</li>
-<li>p6和g6的关系是什么？(奇偶校验的原理)</li>
-</ol>
-<ul>
-<li>解决的问题：</li>
-</ul>
-<ol>
-<li>回顾了一下解码器，通过真值表的最小项相或画电路图。</li>
-<li>想了一下，无论任何电路，增加一位总的奇/偶校验位，就可以验证总的编码是否出错.(该实验一是将偶校验用在了海明编码电路中p6,而是将偶校验用在了海明解码电路中G6)
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/12/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+          
         
       
     </div>
@@ -574,7 +591,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/6/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/">&gt;</a>
   </nav>
 
 
@@ -620,7 +637,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

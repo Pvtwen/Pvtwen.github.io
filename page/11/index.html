@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/29/CORS/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/08/08/%E5%8F%8C%E6%8C%87%E9%92%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/04/29/CORS/" itemprop="url">CORS</a></h1>
+                <a class="post-title-link" href="/2021/08/08/%E5%8F%8C%E6%8C%87%E9%92%88/" itemprop="url">双指针</a></h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-29T14:52:47+08:00">
-                2021-04-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-08-08T15:50:57+08:00">
+                2021-08-08
               </time>
             
 
@@ -312,6 +312,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -342,32 +364,15 @@
       
         
           
-            <p><a target="_blank" rel="noopener" href="https://ieftimov.com/post/deep-dive-cors-history-how-it-works-best-practices/#cross-origin-reads">原文链接</a></p>
-<h1 id="在F12中的console模式下看CORS"><a href="#在F12中的console模式下看CORS" class="headerlink" title="在F12中的console模式下看CORS"></a>在F12中的console模式下看CORS</h1><ul>
-<li><p>后端springboot代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@PostMapping(&quot;greet/&#123;name&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">(<span class="meta">@PathVariable(&quot;name&quot;)</span> String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>+name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@GetMapping(&#123;&quot;greet&quot;,&quot;/&quot;&#125;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">delete</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Console中代码  </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:8080/greet/yawen&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123; <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span> &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">).then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text()).then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
-<p><img src="localhost.png" alt="图片1"><br><img src="goole.png" alt="图片2"></p>
-</li>
-</ul>
-<h1 id="preflight-request"><a href="#preflight-request" class="headerlink" title="preflight request"></a>preflight request</h1><p><img src="preflight.png" alt="图片3"><br><img src="prefilght2.png" alt="图片4"></p>
+            <h1 id="Question457-环形数组是否存在循环"><a href="#Question457-环形数组是否存在循环" class="headerlink" title="Question457 环形数组是否存在循环"></a>Question457 环形数组是否存在循环</h1><h2 id="双指针解法"><a href="#双指针解法" class="headerlink" title="双指针解法"></a>双指针解法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 双指针 快指针走两步 慢指针走一步</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">circularArrayLoop</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> slow, fast;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        slow = fast = i;</span><br><span class="line">        fast = next(nums, fast);</span><br><span class="line">        <span class="comment">// 反向或者是有0元素 则跳出循环</span></span><br><span class="line">        <span class="keyword">while</span> (nums[slow] * nums[fast] &gt; <span class="number">0</span> &amp;&amp; nums[fast] * nums[next(nums, fast)] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 快慢指针相遇 如果不是自身循环 则返回true；</span></span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                <span class="keyword">if</span> (slow != next(nums, slow)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            slow = next(nums, slow);</span><br><span class="line">            fast = next(nums, next(nums, fast));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果同方向遇到自身循环 将快慢指针经过的所有元素置为0</span></span><br><span class="line">        <span class="comment">// 如果遇到不同方向 则将快指针之前的所有元素(也有可能包含快指针对应的元素，看奇数个还是偶数个）置为0：</span></span><br><span class="line">        <span class="keyword">int</span> rep = i;</span><br><span class="line">        <span class="keyword">while</span> (nums[rep] * nums[next(nums, rep)] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = rep;</span><br><span class="line">            rep = next(nums, rep);</span><br><span class="line">            nums[temp] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        nums[rep]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回快指针所对应的下标</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">next</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> fast)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.length;</span><br><span class="line">    <span class="comment">// 此写法可以应对 正负两种情况</span></span><br><span class="line">    <span class="keyword">return</span> (nums[fast] + fast) % n + n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="图的遍历标记（使用新数组标记）"><a href="#图的遍历标记（使用新数组标记）" class="headerlink" title="图的遍历标记（使用新数组标记）"></a>图的遍历标记（使用新数组标记）</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">circularArrayLoop</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        <span class="comment">// 使用 vis 数组对每个下标进行标记</span></span><br><span class="line">        <span class="comment">// 如果下标为 i 的位置在第 idx 轮被标记，则有 vis[i] = idx</span></span><br><span class="line">        <span class="keyword">int</span>[] vis = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> start = <span class="number">0</span>, idx = <span class="number">1</span>; start &lt; n; start++, idx++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (vis[start] != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">int</span> cur = start;</span><br><span class="line">            <span class="keyword">boolean</span> flag = nums[cur] &gt; <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> next = ((cur + nums[cur]) % n + n) % n;</span><br><span class="line">                <span class="keyword">if</span> (next == cur) <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">if</span> (vis[next] != <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="comment">// 如果 next 点已经被标记过，并且不是在本轮被标记，那么往后的通路必然都被标记，且无环，跳出   </span></span><br><span class="line">                    <span class="keyword">if</span> (vis[next] != idx) <span class="keyword">break</span>;</span><br><span class="line">                    <span class="comment">// 如果 next 点已被标记，并且是本来被标记，说明找到了环</span></span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (flag &amp;&amp; nums[next] &lt; <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">if</span> (!flag &amp;&amp; nums[next] &gt; <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">                vis[next] = idx;</span><br><span class="line">                cur = next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Question11-双指针"><a href="#Question11-双指针" class="headerlink" title="Question11 双指针"></a>Question11 双指针</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=height.length-<span class="number">1</span>,mul,max=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i!=j)&#123;</span><br><span class="line">            <span class="comment">// 从两边开始比较 哪边的值小 哪边移动一个</span></span><br><span class="line">            <span class="comment">// 为什么小的可以移动：</span></span><br><span class="line">            <span class="comment">// 1.另一边如果下次移动过程当中遇到一个比该值大的元素，就算这两个元素相乘也比这次相乘要小（横轴距离变短，高度不变)</span></span><br><span class="line">            <span class="comment">// 2. 另一边如果下次移动过程当中遇到一个比该值小的元素，比该值小的这个元素与这个元素相乘也比那一次的乘积小（因为横轴小于等于这次横轴距离，且高度小于这次的高度）</span></span><br><span class="line">            <span class="keyword">if</span>(height[i]&lt;height[j])&#123;</span><br><span class="line">                mul=height[i]*(j-i);</span><br><span class="line">                max=mul&gt;max?mul:max;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                mul=height[j]*(j-i);</span><br><span class="line">                max=mul&gt;max?mul:max;</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>跨域请求中，浏览器会发出两个请求，一个是OPTION请求，另一个是POST请求。在OPTIONS请求中，状态码为200，但是请求依然不成功（报红)说明，浏览器没有拦截request请求，拦截的是response响应。</p>
-<h2 id="这是浏览器的预检请求"><a href="#这是浏览器的预检请求" class="headerlink" title="这是浏览器的预检请求"></a>这是浏览器的预检请求</h2><p>浏览器会对CORS认为复杂的请求执行预检请求，有如下标准:</p>
-<ol>
-<li>除了GET,POST,HEAD方法</li>
-<li>除了headers中的Accept,Accept-Language,Content-Language</li>
-<li>除了Content-Type: text/plain,multipart/form-data (application/json会执行OPTION预检)</li>
-</ol>
+<p>时间复杂度 </p>
+<blockquote>
+<p>O(N) 有数组长度决定时间<br>空间复杂度<br>O(1) 只用了常量个空间</p>
 </blockquote>
-<h2 id="如何避免预检"><a href="#如何避免预检" class="headerlink" title="如何避免预检"></a>如何避免预检</h2><ol>
-<li><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fetch(</span><br><span class="line">  <span class="string">&#x27;http://localhost:4000/greet&#x27;</span>,</span><br><span class="line">  &#123;</span><br><span class="line">    method: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    headers: &#123;</span><br><span class="line">      <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;text/plain&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    body: <span class="string">&#x27;Ilija&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">)</span><br><span class="line">.then(<span class="function"><span class="params">resp</span> =&gt;</span> resp.text())</span><br><span class="line">.then(<span class="built_in">console</span>.log)</span><br></pre></td></tr></table></figure>
-此方法可以不执行预检，但是依然避免不了post请求.通过如下操作可以继续避免post请求，从而实现跨域请求.</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">options <span class="string">&quot;/greet&quot;</span> <span class="keyword">do</span> |env|</span><br><span class="line">  # Allow `POST /greet`...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Methods&quot;</span>] = <span class="string">&quot;POST&quot;</span></span><br><span class="line">  # ...with `Content-type` header in the request...</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Headers&quot;</span>] = <span class="string">&quot;Content-type&quot;</span></span><br><span class="line">  # ...from https://www.google.com origin.</span><br><span class="line">  env.response.headers[<span class="string">&quot;Access-Control-Allow-Origin&quot;</span>] = <span class="string">&quot;https://www.google.com&quot;</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<h1 id="Best-Practice"><a href="#Best-Practice" class="headerlink" title="Best Practice"></a>Best Practice</h1><h2 id="仅仅只允许yourwebsite-com发送request"><a href="#仅仅只允许yourwebsite-com发送request" class="headerlink" title="仅仅只允许yourwebsite.com发送request"></a>仅仅只允许yourwebsite.com发送request</h2><p><img src="1.png" alt="图片"><br><img src="2.png" alt="图片"><br>在某些情况下，需要对网站进行分析，这时，就需要浏览器发送有关用户在该网站上的体验的数据给后台，但是，却又不希望所有的站点都能够通过该后台的API来发送无关的数据，此时，后台中的代码,<code>Access-Control-Allow-Origin:yourwebsite.com</code>，通过该设置就可以只获取该网站发送来的数据了.</p>
+</blockquote>
 
           
         
@@ -417,7 +422,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/05/18/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%9E%E6%8E%A5%E7%9A%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -436,7 +441,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/" itemprop="url">学习springboot过程中的心得</a></h1>
+                <a class="post-title-link" href="/2021/05/18/%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E4%B9%88%E8%BF%9E%E6%8E%A5%E7%9A%84/" itemprop="url">网络是怎么连接的</a></h1>
         
 
         <div class="post-meta">
@@ -448,8 +453,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-10T16:14:03+08:00">
-                2021-04-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-18T21:04:04+08:00">
+                2021-05-18
               </time>
             
 
@@ -499,15 +504,41 @@
 
       
         
-          <h1 id="springboot与servlet两者封装对象的方式"><a href="#springboot与servlet两者封装对象的方式" class="headerlink" title="springboot与servlet两者封装对象的方式"></a>springboot与servlet两者封装对象的方式</h1><h2 id="springboot的Controller层当中"><a href="#springboot的Controller层当中" class="headerlink" title="springboot的Controller层当中"></a>springboot的Controller层当中</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;/add&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addSuccess</span><span class="params">(Employee employee)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;add--&gt;&quot;</span>+employee);</span><br><span class="line">    employeeDao.addNewEmployee(employee);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect:/emp&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>addSuccess方法中使用Employee对象作为入参,在前端html代码的form表单中<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/add&#125;&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>名字<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入名字&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>邮箱<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入邮箱&quot;</span> <span class="attr">name</span>=<span class="string">&quot;email&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span>&gt;</span>部门<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="comment">&lt;!-- 因为department是一个对象，传参的时候不能传一个对象，故先传对象的id值，然后后端接受了id值后，通过id值来查询department，并将查询到的department赋值给employee --&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">select</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">name</span>=<span class="string">&quot;department.id&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">option</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;department.getDepartmentName()&#125;&quot;</span> <span class="attr">th:each</span>=<span class="string">&quot;department:$&#123;departments&#125;&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;$&#123;department.getId()&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-2 control-label&quot;</span>&gt;</span>日期<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">class</span>=<span class="string">&quot;form-control&quot;</span> <span class="attr">placeholder</span>=<span class="string">&quot;请输入日期&quot;</span> <span class="attr">name</span>=<span class="string">&quot;birth&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;form-group&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;col-sm-offset-2 col-sm-10&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn btn-default&quot;</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/04/10/springboot%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E5%BF%83%E5%BE%97/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="DNS服务器之顺藤摸瓜"><a href="#DNS服务器之顺藤摸瓜" class="headerlink" title="DNS服务器之顺藤摸瓜"></a>DNS服务器之顺藤摸瓜</h1><p>拿 www.google.com.来举例。其实可以类比为找朋友。</p>
+<ol>
+<li>首先本机通过自己设置的最近的DNS服务器去找寻根域名，本机问道根域名服务器，你认不认识www.google.com,跟服务器答道我不认识，但是我认识com域名服务器.</li>
+<li>同理，问com域名服务器，你是否认识www.google,com域名解析器答道，我认识存放google的域名解析器.</li>
+</ol>
+<h1 id="第一章和第二章的总结"><a href="#第一章和第二章的总结" class="headerlink" title="第一章和第二章的总结"></a>第一章和第二章的总结</h1><p><code>注意，双引号内的部分即还不确定的部分，待完善</code></p>
+<ul>
+<li>解析域名：从第一章节的浏览器解析url开始，浏览器将输入的url交由DNS服务器解析域名，拿到域名背后的ip地址。</li>
+<li>与服务器建立通信：分为connection,write,read,close四个阶段，建立通信的过程需要三次握手，以及通过查找服务器的对应端口号建立套接字。建立好了通信之后就可以进行下一个阶段-发数据包了。住：建立通信的阶段也在发包，只不过主要有IP头部，MAC头部等，但是发的包中没有数据。其实发包的种类也有很多，ACK包等。</li>
+<li>生成包，发包过程中各个硬件的相互协调：涉及到的软硬件有网卡，网卡驱动，协议栈。其中协议栈可以认为是操作系统的一个部分，<code>它掌管着TCP/IP/UDP</code>，发送的数据包需要经过他所掌管的这几个协议进行加工，也就是给数据包加入头部信息（数据信息、控制信息）。网卡有ROM，MAC，ROM中存放着网卡出场时设置的全世界唯一的MAC地址，MAC作为一种控制层。</li>
+<li>协议栈中的TCP/IP：IP只管发送包，IP头部信息含有接送方的IP地址。<h2 id="第一章和第二章中待回顾的问题"><a href="#第一章和第二章中待回顾的问题" class="headerlink" title="第一章和第二章中待回顾的问题"></a>第一章和第二章中待回顾的问题</h2></li>
+</ul>
+<ol>
+<li>表示网络包收件人的接收方IP地址是位于IP头部还是TCP头部？</li>
+<li>端口号用来指定服务器程序的种类，他是位于TCP头部还是IP头部？</li>
+<li>会对包是否正确送达进行确认的时TCP还是IP？</li>
+<li>根据IP地址查询MAC地址的机制叫什么？</li>
+<li>在收到ACK号之前继续发送下一个包的方式叫什么?</li>
+<li><p>协议栈与操作系统的关系？以及协议栈与TCP/IP/UDP的关系?</p>
+</li>
+<li><p>表示网络包收件人的接收方IP地址位于IP头部，但是该信息并不是由IP产生，而是由应用程序生成，然后，应用程序交给TCP层，再由TCP层交给IP层，IP层再给数据包封装头部。</p>
+</li>
+<li>TCP头部</li>
+<li><code>书2.3.3</code></li>
+<li>ARP机制，拿一个子网来说，发送方在查询MAC地址时，首先通过广播的方式，向子网内的所有设备问：“谁的ip地址是xxxxx”,符合条件的设备答道:”我的ip地址符合，我的mac地址是xxxx”,不符合条件的设备即使收到了该条信息也不做回复。</li>
+<li>滑动窗口方式，该方式是指接收方在没有收到发送方返回的ACK包之前，继续发送下一个数据包，这样可以提升通信的效率，但是发送两个数据包之间的间隔需要按规则来设定，不能过大也不能过小。</li>
+</ol>
+<h1 id="自主探索ip"><a href="#自主探索ip" class="headerlink" title="自主探索ip"></a>自主探索ip</h1><ol>
+<li>当启用了代理服务器的时候去访问url，remote adrress:127.0.0.1：1080 代表的是本地代理端口，也就是本机从代理服务器获取数据的端口。</li>
+<li>若不启用代理服务器，那么客户端会去访问真实的url</li>
+<li>无论是否使用了代理服务器，浏览器在加载一次页面之后，会将部分数据存入内存缓存，下次访问的时候会从内存中获取。</li>
+</ol>
+
+          
         
       
     </div>
@@ -546,7 +577,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/10/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/12/">&gt;</a>
   </nav>
 
 
@@ -592,7 +623,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

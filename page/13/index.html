@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/30/springboot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/" itemprop="url">二叉树</a></h1>
+                <a class="post-title-link" href="/2021/03/30/springboot/" itemprop="url">springboot</a></h1>
         
 
         <div class="post-meta">
@@ -290,8 +290,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-18T19:40:18+08:00">
-                2021-03-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-30T16:43:05+08:00">
+                2021-03-30
               </time>
             
 
@@ -312,28 +312,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -364,7 +342,53 @@
       
         
           
-            
+            <h1 id="springboot的两个注解形式给属性赋值"><a href="#springboot的两个注解形式给属性赋值" class="headerlink" title="springboot的两个注解形式给属性赋值"></a>springboot的两个注解形式给属性赋值</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:center">@ConfigurationProperties</th>
+<th style="text-align:center">@Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">注值方式</td>
+<td style="text-align:center">批量注入</td>
+<td style="text-align:center">单个</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">松散语法</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">SpEL</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">JSR303数据校验</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">注入复杂类型</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>松散语法即将驼峰式命名的属性拆解为-:  <code>public int HomeAddress</code>-&gt;<code>home-address</code><br>SpEL即： <code>@Value(&quot;$&#123;student.username&#125;)</code><br>JSR303即： 特殊的属性例如 <code>电子邮件</code>有专门的注解形式，若违反了该规定，则报错 <code>@Email</code><br>复杂类型：例如对象类型</p>
+</blockquote>
+
           
         
       
@@ -413,7 +437,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/27/%E9%9A%8F%E7%AC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -432,7 +456,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2021/03/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url">计算机操作系统</a></h1>
+                <a class="post-title-link" href="/2021/03/27/%E9%9A%8F%E7%AC%94/" itemprop="url">随笔</a></h1>
         
 
         <div class="post-meta">
@@ -444,8 +468,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-16T18:02:58+08:00">
-                2021-03-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-27T19:41:09+08:00">
+                2021-03-27
               </time>
             
 
@@ -460,8 +484,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2024-07-19T04:03:52+08:00">
+                2024-07-19
               </time>
             
           </span>
@@ -496,38 +520,106 @@
       
         
           
-            <h1 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h1><ul>
-<li>教学资源</li>
-</ul>
-<ol>
-<li>网易云课堂—哈工大李志军老师的os。<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/courses/115">配套的实验环境</a></li>
-<li>学堂在线清华OS课程练习题</li>
-<li>国内的xv6 lab-清华大学ucore OS <a target="_blank" rel="noopener" href="https://www.xuetangx.com/course/THU08091000267/5883104">链接</a></li>
+            <h1 id="记录一些操作手册性质的东西"><a href="#记录一些操作手册性质的东西" class="headerlink" title="记录一些操作手册性质的东西"></a>记录一些操作手册性质的东西</h1><ol>
+<li>如何条件调试断点 例如停在循环的某一步 如何回到上一步? <a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1869271">参考链接</a> </li>
 </ol>
 <ul>
-<li>书籍</li>
+<li>调试中的drop frame作用：丢掉当前函数的栈帧，也就是回到上一步的调用，但是并不能回到本次循环的调用</li>
 </ul>
 <ol>
-<li>&lt;操作系统真相还原&gt;</li>
-</ol>
-<h1 id="疑难问题"><a href="#疑难问题" class="headerlink" title="疑难问题"></a>疑难问题</h1><ol>
-<li>进程互斥与同步的问题<ul>
-<li>读者-写者问题：可以多个进程同时读文件，但只能一个进程写文件。并且读文件的操作不会改变资源的值。</li>
-<li>火车进站出站问题：可以多个火车同向运行，但是不允许火车相向运行。<blockquote>
-<p>两个问题的区别在于写文件只能允许一个进程，而火车不管是同向还是相向，都可以多个进程同时运行.</p>
-</blockquote>
+<li><p>电脑作主机，让手机连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  找到电脑热点主机ip 四 手机连接热点 手动代理，主机号和端口号分别设置为以上主机的ip和7890.          让linux电脑连接梯子操作：一 电脑热点 二 打开手动代理 ip设置为127.0.0.1 端口号设置为7890 三  linux中Settings-&gt;Network-&gt;Network Proxy,主机号和端口号设置为以上的主机ip和端口号</p>
 </li>
+<li></li>
+</ol>
+<ul>
+<li><code>1.17日git操作回忆</code>,gitee为例，.git文件中保存着本地仓库与remote仓库的连接，所以这个文件是关键，如果想要把自建工程上传到远程仓库，.git文件一定要处理好，可以用以下办法处理，git clone httpsx到本地,.git文件必须复制,其余的选择性复制.最后”git add .”,git commit -m “”,git push origin master.</li>
+<li>github中git clone https无法使用，可能是本地的权限更改，google解决不了。但是可以使用ssh git clone.</li>
+<li>无论是gitee还是github上传项目，都应该遵从第一点的办法，用官网提供的方法会报错。</li>
+<li>git pull的操作只会把远程分支最近的更新pull到本地，而不是像clone那样将全部项目的内容clone到本地。</li>
 </ul>
+<ol>
+<li></li>
+</ol>
+<ul>
+<li>更改social link图标，next/config.yml中social links，查阅font awesome手册添加</li>
+<li><code>2.7日</code> 重装系统之后的博客更新，步骤如下<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.1 新建目录，安装hexo(之前先安装node和git,node版本号很重要,这里用的19.0.0,npm版本号用的是8.19.2), npm install -g hexo-cli,npm install -g hexo,git clone备份，进入博客目录，npm install.</span></span><br><span class="line"><span class="comment">// 1. 由于在备份之前的博客时，next主题样式是子模块，应当单独备份(最简单的方法),导致git clone下来的时候内容丢失，所以next主题的config.xml配置丢失</span></span><br><span class="line"><span class="comment">// 2. next版本号:5.1.3,不要更改这个版本号.</span></span><br><span class="line"><span class="comment">// 3. 更改config.xml中的scheme:pisces</span></span><br><span class="line"><span class="comment">// 4. 更改config.xml中的menu，注意去掉空格，否则会将空格编译为%20</span></span><br><span class="line"><span class="comment">// 5. 更改config.xml中的social</span></span><br><span class="line"><span class="comment">// 6. 备份博客一定要给next文件夹单独备份</span></span><br><span class="line"><span class="comment">// 7. 翻页箭头themes\next\layout\_partials\pagination.swig,</span></span><br><span class="line"><span class="comment">// 8. hexo在5.0之后删除了swig，需要自己安装 npm i hexo-renderer-swig</span></span><br><span class="line"><span class="comment">// 9. hexo d之后Deployer not found: ，安装deployer插件,npm install hexo-deployer-git --save</span></span><br></pre></td></tr></table></figure></li>
+<li>最终解决办法：npm install hexo-cli -g, hexo init blog, cd blog, npm install, hexo s,git clone之前的备份，node_module,.git文件可以不要，其他的原样复制.因为hexo deploy并不会完全覆盖之前的仓库，css会混淆，所以删除gitee对应的仓库，重建，若仓库名有变化，在hexo-config.yml中更改repo和url.若报错，查阅上述debug</li>
+<li>若首页中的日志按钮无法使用，在 Next 主题中，归档页面的默认 URL 地址为 /archives/，而不是 /archives||archive。更改即可。</li>
+<li>若直接使用备份的blog，可能出现以下报错，hexo g，hexo s之后<code>ERROR Database load failed. Deleting database.</code>,这时，回到上述最终解决办法中，重新hexo init blog新建立一个博客，之后将备份文件中的除了node_modules,.github,.delopy_git文件夹的其他文件夹拷贝，但是themes主题下的next主题最好只拷贝config.xml文件，因为有可能之前的next文件夹缺少相关依赖.</li>
+<li>更改next的config文件中的updatedtime设置文章更新日期.</li>
+<li>node:19.0.0  hexo:5.4.0(更改hexo版本号 npm i hexo@5.4.0)  npm:8.19.2</li>
+</ul>
+<ol>
+<li>安装cuda和cudnn</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/AI_dataloads/article/details/133043869?spm=1001.2101.3001.6650.3&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-3-133043869-blog-131220381.235%5Ev39%5Epc_relevant_3m_sort_dl_base2&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-3-133043869-blog-131220381.235%5Ev39%5Epc_relevant_3m_sort_dl_base2&amp;utm_relevant_index=6">cuda安装链接</a>,选择GPU对应的版本，这里Geforce MX150对应的是Cuda10.2,虽然Cuda10.2只有win10版本的，但是win11也可以用.</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jin1Yang/article/details/124754015?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-124754015-blog-115771647.235^v39^pc_relevant_yljh&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3">cudnn安装链接</a>，将解压之后的三个文件夹覆盖cuda对应的三个文件夹即可</li>
+<li>安装了cuda和cudnn之后torch.cuda.is_available()=false,解决办法，从pytorch官网进行下载,例如Cuda10.2,torch==1.10.1对应的命令行为pip install torch==1.10.1+cu102 torchvision==0.11.2+cu102 torchaudio==0.10.1 -f <a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/cu102/torch_stable.html">https://download.pytorch.org/whl/cu102/torch_stable.html</a>.</li>
+</ul>
+<ol>
+<li><p>word图片选择嵌入式不能显示完全：给图片选择单倍行距</p>
 </li>
-<li>读者写者问题和多人过桥问题<br>对比读者写者问题，尽管可能同时运行在<code>wait(s)</code>，但由于两者本来就互斥，故有以下逻辑<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count1==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(count==<span class="number">1</span>)</span><br><span class="line">wait(s)</span><br></pre></td></tr></table></figure>
+<li><p>pycharm ssh连接学院gpu资源步骤：</p>
 </li>
 </ol>
-<p><img src="/images/作业1.jpg" alt="图片"></p>
-<h1 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h1><ol>
-<li>GCC编译器</li>
-<li>GDB调试器</li>
+<ul>
+<li>注意端口号不是22，在服务器上首先更改ssh配置</li>
+<li>vim /etc/ssh/sshd_config文件中的PermitRootLogin yes</li>
+<li>vim编辑器  i插入  编辑完成后esc  键入:wq保存退出</li>
+<li>config python interpreter in pycharm，配置的时候On SSH，报错不是IDE级的ssh，选择Move to 就可以了</li>
+<li>interpreter位于服务器/usr/bin/python3.6</li>
+<li>重启系统 service ssh restart</li>
+<li>pycharm start ssh session</li>
+<li>给服务器联网</li>
+<li>登录教师端，账号test1,密码123456</li>
+<li>登录之后火狐浏览器登陆自己的校园网 222.198.127.170</li>
+<li>注：不要同时创建多个容器，如果要创建其他容器，先在已经创建的容器中销毁再创键</li>
+</ul>
+<ol>
+<li>68常见bug</li>
 </ol>
+<ul>
+<li>关于联网安装需要的库，GPU平台使用说明第8点是错误的，千万不能退出自己的账号，一旦退出，本地就会与服务器断开ssh连接，一定要在另外一个浏览器打开登陆网址，登陆教师端</li>
+</ul>
+<ol>
+<li>运行incubator</li>
+</ol>
+<ul>
+<li>docker</li>
+<li>激活虚拟环境</li>
+<li>python cli.xxxx</li>
+<li>dashboard-&gt;选择函数-&gt;submit</li>
+<li>Boards中查看运行函数后的结果</li>
+<li>set-Execution</li>
+</ul>
+<ol>
+<li></li>
+</ol>
+<ul>
+<li>conda下python interpreter路径，D://miniconda/env/new-env/python.exe</li>
+<li>system interpreter的路径, D://pythonineterpreter/python.exe</li>
+</ul>
+<ol>
+<li></li>
+</ol>
+<ul>
+<li>配置anaconda系统环境，在系统变量Path中添加三行</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147602389">知乎链接</a></li>
+<li>在命令行激活anaconda环境，CALL conda.bat activate</li>
+</ul>
+<ol>
+<li>Milano记</li>
+</ol>
+<ul>
+<li>衣服，鞋子等生活用品消费水平按照1：1比例复刻国内的消费水平，国内一个水杯30人民币，那么这边就卖30欧左右，但是食材的价格比国内要低的多，一包意大利面卖2欧左右，鸡肉，牛排，油，果汁饮料价格都在3欧左右，超市购买三天的物资价格控制得当不会超过20欧。电车，地铁通勤2.2欧。护肤品平均价格50欧左右。大学食堂平均一餐价格在8欧左右，饭店平均消费在10-16欧不等。</li>
+<li>2024米兰就业率上升至62.1%，失业率下降至7.2%，（和米兰当地司机说的吻合），全国大学生毕业后就业率84.3%，高中毕业生就业率73.3%</li>
+<li>意大利每月平均工资在2475欧元，超市收银员月薪在1000-1500欧元，程序员在2500-3500欧元，计算机学生，拥有三年制学位的计算机科学毕业生平均收入超过 1,900 欧元，而如果拥有硕士学位，则收入超过 2,000欧元。在这里指刚开始工作的起薪。(参考glassdoor，更多人求职还是用的LinkIn)</li>
+<li>数字游民和wfh的工作方式，在国内生活，领欧元。</li>
+<li>对车各类性能要求不高的价格在3万欧元左右</li>
+<li>三阳台，双车库，地窖的二层小阁楼31万欧元。大型三居室公寓，93平方米，两个阳台，51万欧元(市中区).位于米兰一环边缘的酒店，标间，带厨房，两周800欧元，能在40分钟内通勤。一环边缘租房，两间客房，50平方米，阳台，厨房，楼中楼，每个月1000欧元(数据来自immobiliare)</li>
+<li>大部分的超市，门店在晚上九点之前全部关门，周末除了超市外的其他门店基本不开门</li>
+</ul>
 
           
         
@@ -568,7 +660,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/14/">&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&lt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/">&gt;</a>
   </nav>
 
 
@@ -614,7 +706,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
