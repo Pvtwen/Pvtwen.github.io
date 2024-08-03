@@ -259,6 +259,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/12/22/acm%E6%A0%A1%E8%B5%9B%E5%9B%9B%E9%A2%98%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/12/22/acm%E6%A0%A1%E8%B5%9B%E5%9B%9B%E9%A2%98%E6%80%BB%E7%BB%93/" itemprop="url">acm校赛四题总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-22T17:03:14+08:00">
+                2021-12-22
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="A-来自瑞思拜龙的善意-参照”工具人”的解答"><a href="#A-来自瑞思拜龙的善意-参照”工具人”的解答" class="headerlink" title="A. 来自瑞思拜龙的善意 (参照”工具人”的解答)"></a>A. 来自瑞思拜龙的善意 (参照”工具人”的解答)</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> i = sc.nextInt();</span><br><span class="line">        <span class="keyword">int</span>[] arr=<span class="keyword">new</span> <span class="keyword">int</span>[i];</span><br><span class="line">        <span class="keyword">int</span>[] ret=<span class="keyword">new</span> <span class="keyword">int</span>[i];</span><br><span class="line">        <span class="keyword">int</span> idx=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> i1 = sc.nextInt();</span><br><span class="line">            arr[idx]=i1;</span><br><span class="line">            idx++;</span><br><span class="line">            i--;</span><br><span class="line">        &#125;</span><br><span class="line">        idx=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i1 : arr) &#123;</span><br><span class="line">            <span class="keyword">if</span>(isPrime(i1+<span class="number">1</span>))&#123;</span><br><span class="line">                ret[idx]=i1+<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> ret[idx]=-<span class="number">1</span>;</span><br><span class="line">            idx++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i1 : ret) &#123;</span><br><span class="line">            System.out.println(i1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(x==<span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=Math.sqrt(x);i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(x%i==<span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="C-CUIT-WIFI咋又断啦！！！"><a href="#C-CUIT-WIFI咋又断啦！！！" class="headerlink" title="C. CUIT_WIFI咋又断啦！！！"></a>C. CUIT_WIFI咋又断啦！！！</h1><h2 id="二分-双指针"><a href="#二分-双指针" class="headerlink" title="二分+双指针"></a>二分+双指针</h2><ul>
+<li>思路：为什么可以二分？</li>
+<li>首先，一定存在一个x，使得如果路由器的覆盖范围小于x，那么就不能够覆盖所有机房，</li>
+<li>如果大于x，能够覆盖所有的机房</li>
+<li>综上，具有二段性，所以可以二分。</li>
+<li>check()函数：双指针，路由器能够覆盖一个机房的条件为: </li>
+</ul>
+<ol>
+<li>该路由器的位置+x&gt;=机房的位置</li>
+<li>该路由器的位置-x&lt;=机房的位置</li>
+</ol>
+<ul>
+<li>有了这两个条件值后，接下来</li>
+</ul>
+<ol>
+<li>先遍历机房，如果当前路由器能覆盖该机房，遍历下一个机房</li>
+<li>如果当前的路由器不能覆盖该机房，遍历下一个路由器</li>
+<li>如果所有的路由器遍历完之后，但凡有一个机房都不能被覆盖，说明该距离x不成立。重新改变二分的区间。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">questionC</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="comment">// 机房的数量</span></span><br><span class="line">        <span class="keyword">int</span> n = sc.nextInt();</span><br><span class="line">        <span class="comment">// 路由器的数量</span></span><br><span class="line">        <span class="keyword">int</span> m = sc.nextInt();</span><br><span class="line">        <span class="keyword">int</span>[] houses=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span>[] routers=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span> idx=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            houses[idx]=sc.nextInt();</span><br><span class="line">            n--;</span><br><span class="line">            idx++;</span><br><span class="line">        &#125;</span><br><span class="line">        idx=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(m&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            routers[idx]=sc.nextInt();</span><br><span class="line">            m--;</span><br><span class="line">            idx++;</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(routers);</span><br><span class="line">        Arrays.sort(houses);</span><br><span class="line">        <span class="comment">// 1. 划分二分区间</span></span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = (<span class="keyword">int</span>) <span class="number">1e9</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(check(houses,routers,mid)) r=mid;</span><br><span class="line">            <span class="keyword">else</span> l=mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(l);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 查看当前的距离x能否满足要求</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span>[] houses,<span class="keyword">int</span>[] routers,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = houses.length;</span><br><span class="line">        <span class="keyword">int</span> m = routers.length;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i&lt;n &amp;&amp; j&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(j&lt;m&amp;&amp;routers[j]+x&lt;houses[i]) j++;</span><br><span class="line">            <span class="keyword">if</span>(j&lt;m&amp;&amp;routers[j]+x&gt;=houses[i] &amp;&amp;routers[j]-x&lt;=houses[i]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="捎上二分查找的板子"><a href="#捎上二分查找的板子" class="headerlink" title="捎上二分查找的板子"></a>捎上二分查找的板子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">binarySearch</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 查找第一个大于等于元素的下标</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bsForFirstGT</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> find)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>,r=arr.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(l==r) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[mid]&lt;find) l=mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[mid]&gt;=find) r=mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(arr[l]&gt;find) System.out.println(<span class="string">&quot;找不到该元素,但是第一个大于等于该元素的下表为 &quot;</span>+l);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(arr[l]==find) System.out.println(<span class="string">&quot;该元素的下标&quot;</span>+l);</span><br><span class="line">        <span class="keyword">else</span> System.out.println(<span class="string">&quot;数组中的所有元素全部小于find&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 找第一个大于元素的下标</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bsForFirstG</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> find)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>,r=arr.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(l==r) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[mid]&lt;=find) l=mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[mid]&gt;find) r=mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(arr[l]&lt;=find) System.out.println(<span class="string">&quot;找不到第一个大于该元素的值&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> System.out.println(l);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 查找第一个小于等于元素的下标</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bsForLast</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> find)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>,r=arr.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(l==r || l==r-<span class="number">1</span>) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[mid]&lt;=find) l=mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(arr[mid]&gt;find) r=mid-<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(arr[r]&lt;=find) System.out.println(r);</span><br><span class="line">        <span class="keyword">else</span> System.out.println(l);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="G-忙碌的大学生活"><a href="#G-忙碌的大学生活" class="headerlink" title="G. 忙碌的大学生活"></a>G. 忙碌的大学生活</h1><blockquote>
+<ul>
+<li>这里提供三种解法<h2 id="1-哈希表-记忆化递归"><a href="#1-哈希表-记忆化递归" class="headerlink" title="1.哈希表+记忆化递归"></a>1.哈希表+记忆化递归</h2></li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li>如果使用暴力递归会超时</li>
+<li>这里的话，我是用哈希表<code>HashMap&lt;Integer,Integer&gt;</code>存每个节点的最短路径，防止节点重复访问。其次，还要建立一个逆向的邻接表,例如，题干给的是从2到5的捷径，如果直接利用题干给的数组去构建邻接表，求出来的就是每个节点到最后一个节点的最短路径，但是此题求的是从起始节点0到其余各点的最短路径，所以要建立一个逆向邻接表,这里我采用<code>ArrayList&lt;Integer&gt;[]</code>进行存储.</li>
+<li><p>如图，假如捷径为0到2，2到4。根据学过的，递归其实是从栈顶往栈底走，走到4，然后返回。</p>
+</li>
+<li><p>这里举个例子。如图,假如从0开始递归，先递归这样一条路径，0-&gt;2-&gt;4.当从栈顶4开始返回时，返回到2，因为2还有另外一条路径,也就是2-&gt;3-&gt;4,所以此时的思路也就是dfs这个函数里面的for循环，<code>step=Math.min(dfs())</code>.这个意思就是说会得到两条路径中的最小值，也就是比较2-&gt;3-&gt;4和2-&gt;4这两条路的最小值。毫无疑问，肯定是1.所以一旦遍历完了两条路径，就将2这个节点和它对应的路径放入哈希表，之后再访问到2时，就不用再去走这两条老路了.比如之后还有一条路径是0-&gt;1-&gt;2.当这条路径走到2时，直接返回1. 对应于代码中的 <code>if(map.contains()) return;</code><br><img src="https://pic.imgdb.cn/item/61c2d9e02ab3f51d91151c49.png" alt="参考图"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Scanner sc=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="keyword">int</span> n = sc.nextInt();</span><br><span class="line">    <span class="keyword">int</span> idx=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>[] arr=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    <span class="comment">// 初始化</span></span><br><span class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        arr[idx]=sc.nextInt();</span><br><span class="line">        idx++;</span><br><span class="line">        n--;</span><br><span class="line">    &#125;</span><br><span class="line">    n=arr.length;</span><br><span class="line">    ArrayList&lt;Integer&gt;[] lists=<span class="keyword">new</span> ArrayList[n+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        lists[i]=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// i+1代表当前节点</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n-<span class="number">1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i+<span class="number">1</span>==arr[i]||arr[i]==i+<span class="number">2</span>)&#123;</span><br><span class="line">            lists[i+<span class="number">1</span>].add(i);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        lists[i+<span class="number">1</span>].add(i);</span><br><span class="line">        lists[arr[i]].add(i+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span>[] dp=<span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 递归</span></span><br><span class="line">    dfs(n, lists);</span><br><span class="line">    <span class="keyword">for</span> (Map.Entry&lt;Integer, Integer&gt; entry : map.entrySet()) &#123;</span><br><span class="line">        Integer node = entry.getKey();</span><br><span class="line">        Integer dist = entry.getValue();</span><br><span class="line">        dp[node]=dist;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        System.out.print(dp[i]+<span class="string">&quot; &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.print(dp[n]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> curNode, ArrayList&lt;Integer&gt;[] lists)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 遍历到最后一个节点</span></span><br><span class="line">    <span class="keyword">if</span> (curNode == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果之前的哈希表已经</span></span><br><span class="line">    <span class="keyword">if</span>(map.containsKey(curNode)) <span class="keyword">return</span> map.get(curNode);</span><br><span class="line">    <span class="keyword">int</span> step=lists.length+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (Integer neigh : lists[curNode]) &#123;</span><br><span class="line">        step = Math.min(step, dfs(neigh, lists) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    map.put(curNode,step);</span><br><span class="line">    <span class="keyword">return</span> step;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-区间dp"><a href="#2-区间dp" class="headerlink" title="2. 区间dp"></a>2. 区间dp</h2></li>
+<li>dp[i][j]的定义:从i到j的最短距离</li>
+<li>思路:仿照Dijtsra算法(这里感谢”工具人”给我提供的帮助),外层len从2到n，len的意思如下,当len=2,求dp[0][2],dp[1][3]，当len=3,求dp[0][3],dp[1][4]以此类推。</li>
+<li>状态转移方程，这里先附上我之前写错的转移方程<code>dp[i][j]=Math.min(Math.min(dp[i+1][j]+1,dp[i][j-1]+1),dp[i][j])</code>,这里其实还少了一层for循环，因为dp[i][j]不单单只能由dp[i+1][j],dp[i][j-1]转移得来.还可能由dp[i][k]+dp[k][j]以及dp[i][m]+dp[m][j]等等转移得来，所以还需要加一层for循环.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();   <span class="comment">// k:节点 v:到达n的最短步数</span></span><br><span class="line">    <span class="keyword">static</span> HashMap&lt;Integer, List&lt;Integer&gt;&gt; distan = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="comment">// 区间dp</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> n = sc.nextInt();</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            arr[idx] = sc.nextInt();</span><br><span class="line">            idx++;</span><br><span class="line">            n--;</span><br><span class="line">        &#125;</span><br><span class="line">        n = arr.length;</span><br><span class="line">        <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> dest = arr[i];</span><br><span class="line">            dp[i][dest] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            dp[i][i + <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> len = <span class="number">2</span>; len &lt; n; len++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> l = <span class="number">0</span>; l + len &lt; n; l++) &#123;</span><br><span class="line">                <span class="keyword">int</span> r = l + len;</span><br><span class="line">                <span class="keyword">if</span> (dp[l][r] == <span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">                dp[l][r] = n + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> x = l + <span class="number">1</span>; x &lt; r; x++) &#123;</span><br><span class="line">                    dp[l][r] = Math.min(dp[l][x] + dp[x][r], dp[l][r]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n-<span class="number">1</span>;i++)&#123;</span><br><span class="line">            System.out.print(dp[<span class="number">0</span>][i] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.print(dp[<span class="number">0</span>][n-<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-一维dp-参照”工具人”的解答"><a href="#3-一维dp-参照”工具人”的解答" class="headerlink" title="3. 一维dp (参照”工具人”的解答)"></a>3. 一维dp (参照”工具人”的解答)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">     <span class="comment">//dp</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Scanner sc=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        <span class="keyword">int</span> n = sc.nextInt();</span><br><span class="line">        <span class="keyword">int</span> idx=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            arr[idx]=sc.nextInt();</span><br><span class="line">            idx++;</span><br><span class="line">            n--;</span><br><span class="line">        &#125;</span><br><span class="line">        n = arr.length;</span><br><span class="line">        <span class="keyword">int</span>[] dp=<span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        Arrays.fill(dp,n+<span class="number">1</span>);</span><br><span class="line">        dp[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">            dp[i] = Math.min(dp[i - <span class="number">1</span>] + <span class="number">1</span>, dp[i]);</span><br><span class="line">            dp[arr[i]]=Math.min(dp[i]+<span class="number">1</span>,dp[arr[i]]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">            System.out.println(dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="leetcode上与G题相似的题目"><a href="#leetcode上与G题相似的题目" class="headerlink" title="leetcode上与G题相似的题目"></a>leetcode上与G题相似的题目</h2><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/">375题猜数字大小</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/beautiful-arrangement/">526题优美的排列</a><br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/target-sum/">494题目标和</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/12/09/%E7%88%AC%E8%99%AB%E6%9D%BF%E5%AD%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -378,174 +551,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/12/05/%E6%A0%88%E4%B8%8E%E9%80%92%E5%BD%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/12/05/%E6%A0%88%E4%B8%8E%E9%80%92%E5%BD%92/" itemprop="url">栈与递归</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-05T16:23:11+08:00">
-                2021-12-05
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="栈与递归的关系"><a href="#栈与递归的关系" class="headerlink" title="栈与递归的关系"></a>栈与递归的关系</h1><ul>
-<li>递归的本质其实就是栈，这点没错。之前一直认为可以用递归解的题，那么一定存在一个循环的方法，从而降低存储开销。而且递归和循环这两种方法可以画等号。但是并不是这样。递归和循环有时可以近似地看作等同(斐波那契数列)，有时不能(372超级次方)。</li>
-<li>递归其实是操作系统已经做好了栈的封装，每一次递归的时候，将当时的运行环境备份入栈，也就是说，这些都是操作系统已经帮我们做好的了。<h2 id="372题-超级次方"><a href="#372题-超级次方" class="headerlink" title="372题 超级次方"></a>372题 超级次方</h2></li>
-<li>毫无疑问，这道题无论是递归还是循环都能做。但是两者的思路截然不同，递归是从顶层n深入到底层，直到指数为0，才从栈顶返回。</li>
-<li>循环的思路是，利用位运算(二进制),只有当二进制的末尾为1时，才需要更新结果。其余时刻，只需要计算当前的乘法的结果就行了。</li>
-<li>其次，斐波那契的递归同样是从顶层n深入到底层，当n=1||n==0返回。斐波那契的递推方法用到的思路是动态规划。</li>
-</ul>
-<h1 id="真正用栈去模拟实现递归"><a href="#真正用栈去模拟实现递归" class="headerlink" title="真正用栈去模拟实现递归"></a>真正用栈去模拟实现递归</h1><blockquote>
-<p>拿超级次方这道题来说。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">pow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    Stack&lt;Long&gt; stack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">//b为偶数</span></span><br><span class="line">        <span class="keyword">if</span> (b % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            stack.push(<span class="number">1L</span>);</span><br><span class="line">            b&gt;&gt;=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(b%<span class="number">2</span>==<span class="number">1</span>)&#123;</span><br><span class="line">            stack.push(a*<span class="number">1L</span>%MOD);</span><br><span class="line">            b-=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> base = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">        Long pop = stack.pop();</span><br><span class="line">        <span class="keyword">if</span>(pop==<span class="number">1</span>)&#123;</span><br><span class="line">            base=base*base%MOD;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            base=base*a%MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">int</span>) base;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>以上代码模拟了真实栈的出栈与入栈。虽然入栈的规则是自己定义的(真实环境中可能还会保存段基址和指令地址).</li>
-<li>同样，斐波那契数列的栈实现如下.<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        Stack&lt;FiboNode[]&gt; stack=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        FiboNode f1 = <span class="keyword">new</span> FiboNode(n - <span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">        FiboNode f2 = <span class="keyword">new</span> FiboNode(n - <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">        FiboNode[] arr=<span class="keyword">new</span> FiboNode[<span class="number">2</span>];</span><br><span class="line">        arr[<span class="number">0</span>]=f1;arr[<span class="number">1</span>]=f2;</span><br><span class="line">        stack.push(arr);</span><br><span class="line">        <span class="keyword">int</span> base=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">            FiboNode[] pop = stack.pop();</span><br><span class="line">            FiboNode n1 = pop[<span class="number">0</span>];</span><br><span class="line">            FiboNode n2 = pop[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> val = n1.val;</span><br><span class="line">            <span class="keyword">if</span>(!n1.visited)&#123;</span><br><span class="line">                stack.push(pop);</span><br><span class="line">                <span class="keyword">if</span> (val == <span class="number">0</span>) &#123;</span><br><span class="line">                    base += <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val == <span class="number">1</span>) base += <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 入栈</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    FiboNode[] array=<span class="keyword">new</span> FiboNode[<span class="number">2</span>];</span><br><span class="line">                    FiboNode fiboNode = <span class="keyword">new</span> FiboNode(val - <span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">                    FiboNode fiboNode1 = <span class="keyword">new</span> FiboNode(val - <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">                    array[<span class="number">0</span>]=fiboNode;</span><br><span class="line">                    array[<span class="number">1</span>]=fiboNode1;</span><br><span class="line">                    stack.push(array);</span><br><span class="line">                &#125;</span><br><span class="line">                n1.visited=<span class="keyword">true</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!n2.visited)&#123;</span><br><span class="line">                <span class="keyword">int</span> val1 = n2.val;</span><br><span class="line">                <span class="keyword">if</span> (val1 == <span class="number">0</span>) &#123;</span><br><span class="line">                    base += <span class="number">0</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (val1 == <span class="number">1</span>) base += <span class="number">1</span>;</span><br><span class="line">                <span class="comment">// 入栈</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    FiboNode[] array=<span class="keyword">new</span> FiboNode[<span class="number">2</span>];</span><br><span class="line">                    FiboNode fiboNode = <span class="keyword">new</span> FiboNode(val1 - <span class="number">1</span>, <span class="keyword">false</span>);</span><br><span class="line">                    FiboNode fiboNode1 = <span class="keyword">new</span> FiboNode(val1 - <span class="number">2</span>, <span class="keyword">false</span>);</span><br><span class="line">                    array[<span class="number">0</span>]=fiboNode;</span><br><span class="line">                    array[<span class="number">1</span>]=fiboNode1;</span><br><span class="line">                    stack.push(array);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> base;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FiboNode</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    <span class="keyword">boolean</span> visited;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -596,7 +601,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

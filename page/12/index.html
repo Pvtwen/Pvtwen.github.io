@@ -259,6 +259,184 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/30/springboot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/30/springboot/" itemprop="url">springboot</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-30T16:43:05+08:00">
+                2021-03-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="springboot的两个注解形式给属性赋值"><a href="#springboot的两个注解形式给属性赋值" class="headerlink" title="springboot的两个注解形式给属性赋值"></a>springboot的两个注解形式给属性赋值</h1><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:center">@ConfigurationProperties</th>
+<th style="text-align:center">@Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">注值方式</td>
+<td style="text-align:center">批量注入</td>
+<td style="text-align:center">单个</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">松散语法</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">SpEL</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">JSR303数据校验</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">注入复杂类型</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">×</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>松散语法即将驼峰式命名的属性拆解为-:  <code>public int HomeAddress</code>-&gt;<code>home-address</code><br>SpEL即： <code>@Value(&quot;$&#123;student.username&#125;)</code><br>JSR303即： 特殊的属性例如 <code>电子邮件</code>有专门的注解形式，若违反了该规定，则报错 <code>@Email</code><br>复杂类型：例如对象类型</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/27/%E9%9A%8F%E7%AC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -306,8 +484,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2024-06-08T17:18:36+08:00">
-                2024-06-08
+              <time title="更新于" itemprop="dateModified" datetime="2024-07-19T04:03:52+08:00">
+                2024-07-19
               </time>
             
           </span>
@@ -430,161 +608,19 @@
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/147602389">知乎链接</a></li>
 <li>在命令行激活anaconda环境，CALL conda.bat activate</li>
 </ul>
+<ol>
+<li>Milano记</li>
+</ol>
+<ul>
+<li>衣服，鞋子等生活用品消费水平按照1：1比例复刻国内的消费水平，国内一个水杯30人民币，那么这边就卖30欧左右，但是食材的价格比国内要低的多，一包意大利面卖2欧左右，鸡肉，牛排，油，果汁饮料价格都在3欧左右，超市购买三天的物资价格控制得当不会超过20欧。电车，地铁通勤2.2欧。护肤品平均价格50欧左右。大学食堂平均一餐价格在8欧左右，饭店平均消费在10-16欧不等。</li>
+<li>2024米兰就业率上升至62.1%，失业率下降至7.2%，（和米兰当地司机说的吻合），全国大学生毕业后就业率84.3%，高中毕业生就业率73.3%</li>
+<li>意大利每月平均工资在2475欧元，超市收银员月薪在1000-1500欧元，程序员在2500-3500欧元，计算机学生，拥有三年制学位的计算机科学毕业生平均收入超过 1,900 欧元，而如果拥有硕士学位，则收入超过 2,000欧元。在这里指刚开始工作的起薪。(参考glassdoor，更多人求职还是用的LinkIn)</li>
+<li>数字游民和wfh的工作方式，在国内生活，领欧元。</li>
+<li>对车各类性能要求不高的价格在3万欧元左右</li>
+<li>三阳台，双车库，地窖的二层小阁楼31万欧元。大型三居室公寓，93平方米，两个阳台，51万欧元(市中区).位于米兰一环边缘的酒店，标间，带厨房，两周800欧元，能在40分钟内通勤。一环边缘租房，两间客房，50平方米，阳台，厨房，楼中楼，每个月1000欧元(数据来自immobiliare)</li>
+<li>大部分的超市，门店在晚上九点之前全部关门，周末除了超市外的其他门店基本不开门</li>
+</ul>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/03/18/%E4%BA%8C%E5%8F%89%E6%A0%91/" itemprop="url">二叉树</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-18T19:40:18+08:00">
-                2021-03-18
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -670,7 +706,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

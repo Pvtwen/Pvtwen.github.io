@@ -259,6 +259,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/14/MyBatis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/14/MyBatis/" itemprop="url">MyBatis</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-14T20:54:02+08:00">
+                2021-03-14
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="MyBatis的作用"><a href="#MyBatis的作用" class="headerlink" title="MyBatis的作用"></a>MyBatis的作用</h1><p>可以简化JDBC操作，实现数据的持久化</p>
+<ul>
+<li>ORM: Object Relational Mapping</li>
+<li>MyBatis: 是ORM的一个实现（与之相同的还有Hibernate)</li>
+<li>ORM使得开发人员像操作对象一样操作数据库。<h1 id="MyBatis程序的步骤"><a href="#MyBatis程序的步骤" class="headerlink" title="MyBatis程序的步骤"></a>MyBatis程序的步骤</h1></li>
+<li>引入mybatis.jar 和 jdbc.jar</li>
+<li>配置: conf.xml文件配置数据库的信息和需要加载的映射文件<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta"> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta"> <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line"> 		<span class="comment">&lt;!-- 开发环境（自己的计算机） --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>/&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>/&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/football?serverTimezone=UTC&quot;</span>/&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;root&quot;</span>/&gt;</span></span><br><span class="line">			 <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;MyNewPass&quot;</span>/&gt;</span></span><br><span class="line">	 	<span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 放映射文件 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;org/pvtwen/entity/personMapper.xml&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>映射文件 xxMapper.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span></span></span><br><span class="line"><span class="meta"> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span></span></span><br><span class="line"><span class="meta"> <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;org.pvtwen.entity.personMapper&quot;</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryPersonById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">	 	select * from Person where id = #&#123;id&#125;</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>测试类:<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Reader reader = Resources.getResourceAsReader(<span class="string">&quot;conf.xml&quot;</span>);</span><br><span class="line">		SqlSessionFactory sessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(reader);</span><br><span class="line">	</span><br><span class="line">		SqlSession session = sessionFactory.openSession();</span><br><span class="line">	    String statement = <span class="string">&quot;org.pvtwen.entity.personMapper.queryPersonById&quot;</span>;</span><br><span class="line">	    </span><br><span class="line">	    <span class="comment">//MyBatis底层通过动态代理将Object对象变成一个Person对象</span></span><br><span class="line">	    Person person = session.selectOne(statement, <span class="number">1</span>);</span><br><span class="line">		session.commit();</span><br><span class="line">		session.close();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><font color="red" size="5">注意:</font> 因为transaction的代理模式为JDBC，所以在执行完毕后应该commit和close.</p>
+<h1 id="conf-xml文件中各种参数"><a href="#conf-xml文件中各种参数" class="headerlink" title="conf.xml文件中各种参数"></a>conf.xml文件中各种参数</h1></blockquote>
+</li>
+<li>dataSource数据源类型 ：</li>
+<li>POOLED：使用数据库连接池</li>
+<li>UNPOOLED：传统的JDBC模式</li>
+<li>JNDI：从tomcat中获取一个内置的数据库连接池（数据库连接池-数据源）</li>
+<li>transactionManager事务提交的方式</li>
+<li>type=”JDBC”: 利用JDBC方式处理事务（commit rollback close）</li>
+<li>type=”MANAGED”: 将事务交给其他组件去托管(Spring, jobss)</li>
+</ul>
+<h1 id="xxMapper-xml文件中各种参数"><a href="#xxMapper-xml文件中各种参数" class="headerlink" title="xxMapper.xml文件中各种参数"></a>xxMapper.xml文件中各种参数</h1><ul>
+<li>Namespace: 该mapper.xml映射文件的唯一标识符</li>
+<li>增删改查等标签当中 各参数的含义:<br>  parameterType: 输入参数的类型<br>  resultType: 查询返回结果的类型</li>
+<li>如果输入参数: 是简单类型 (8个基本类型+String) 可以使用任何占位符, #{xx}</li>
+<li>如果是对象类型（例如Student）,则必须是对象的属性#{属性名}</li>
+</ul>
+<h1 id="多个参数的SQL语句"><a href="#多个参数的SQL语句" class="headerlink" title="多个参数的SQL语句"></a>多个参数的SQL语句</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">”addStudent”</span> <span class="attr">parameter</span>=<span class="string">”org.pvtwen.entity.Student”</span>&gt;</span></span><br><span class="line">		Insert into student(stuno,sname,sage) values(#&#123;stuNo&#125;,#&#123;stuName&#125;,#&#123;&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>mapper动态代理方式的crud(也叫mybatis开发)<br>原则: <code>约定优于配置</code></p>
+<ul>
+<li>动态代理的几种配置方式</li>
+</ul>
+<ol>
+<li>配置方式(abc.xml)<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>myProject<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>硬编码方式(abc.java)<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Configuration conf=<span class="keyword">new</span> Configuration();</span><br><span class="line">Con.setName(“myProject”);</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>约定方式(默认值就是myProject)<br>具体实现步骤<br>一:基础环境：mybatis.jar/connector.jar、conf.xml、mapper.xml<br>二：不同之处：约定的目标：省略掉statement,根据定位,可以直接定位sql语句<br>三：定义接口：<br> (a)    方法名和mapper.xml中sql标签的id值相同<br> (b) 方法的输入参数和mapper.xml文件中标签的parameterType类型一致<br> (c) 方法的返回值和mapper.xml文件中标签的resultType类型一致 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;org.pvtwen.mapper.StudentMapper&quot;</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryPersonById&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;int&quot;</span>&gt;</span></span><br><span class="line">	 	select * from Person where id = #&#123;id&#125;</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">select</span>&gt;</span> </span><br><span class="line">	 </span><br><span class="line">	 <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">&quot;updatePersonById&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span>&gt;</span></span><br><span class="line">	 	update Person set pname=#&#123;pname&#125;,age=#&#123;age&#125; where id=#&#123;id&#125;</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br><span class="line">	 </span><br><span class="line">	 <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">&quot;addPerson&quot;</span> <span class="attr">parameterType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span>&gt;</span></span><br><span class="line">	 	insert into Person values(#&#123;id&#125;,#&#123;pname&#125;,#&#123;age&#125;)</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line">	 </span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;queryAllPerson&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;org.pvtwen.entity.Person&quot;</span>&gt;</span></span><br><span class="line">	 	select * from Person</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentMapper</span> </span>&#123;</span><br><span class="line">	<span class="function">Person <span class="title">queryPersonById</span><span class="params">(<span class="keyword">int</span> id)</span></span>;</span><br><span class="line">	<span class="function">List&lt;Person&gt; <span class="title">queryAllPerson</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">updatePersonById</span><span class="params">(Person person)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">addPerson</span><span class="params">(Person person)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+ (d)    Mapper.xml文件中的namespace的值，就是接口的全类名(接口-mapper)<br> 一般将mapper配置文件和接口放在同一个包中</li>
+</ol>
+</blockquote>
+<h1 id="优化配置"><a href="#优化配置" class="headerlink" title="优化配置"></a>优化配置</h1><ul>
+<li>步骤</li>
+</ul>
+<ol>
+<li>创建属性文件：db.properties,用于保存数据库的信息</li>
+</ol>
+<h1 id="mybatis的全局参数"><a href="#mybatis的全局参数" class="headerlink" title="mybatis的全局参数"></a>mybatis的全局参数</h1><p>conf.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 开启日志，并指定使用的具体日志 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;LOG4J&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 开启延迟加载 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;lazyLoadingEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 关闭立即加载 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;aggressiveLazyLoading&quot;</span> <span class="attr">value</span>=<span class="string">&quot;false&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">setting</span>&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- 开启二级缓存 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;cacheEnabled&quot;</span> <span class="attr">value</span>=<span class="string">&quot;true&quot;</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/03/14/MyBatis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/06/Spring/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -390,153 +574,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2021/03/05/Maven/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/03/05/Maven/" itemprop="url">Maven</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-05T11:21:38+08:00">
-                2021-03-05
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
-                2023-02-06
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="为什么要学习Maven"><a href="#为什么要学习Maven" class="headerlink" title="为什么要学习Maven"></a>为什么要学习Maven</h1><ul>
-<li>项目中的jar包杂乱，若要手动jar包，只能依靠jar命令去打包。</li>
-<li>jar包的版本管理困难<h1 id="Maven的作用"><a href="#Maven的作用" class="headerlink" title="Maven的作用"></a>Maven的作用</h1>Maven可以将一个大工程拆分成若干个子工程(子模块),并通过聚合将拆分的多个子工程结合起来,在总工程的pom.xml文件中配置如下:<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 一定要配置子工程pom.xml的相对路径 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">module</span>&gt;</span></span><br><span class="line">		../Maven1</span><br><span class="line">	<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">module</span>&gt;</span></span><br><span class="line">		../Maven2</span><br><span class="line">	<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="Maven常见的命令"><a href="#Maven常见的命令" class="headerlink" title="Maven常见的命令"></a>Maven常见的命令</h1></li>
-<li>mvn -compile 只编译main目录中的Java文件 </li>
-<li>mvn -test 编译test目录中的Java文件</li>
-<li>mvn -package 将项目打包成 jar/war包，存入target目录</li>
-<li>mvn -install 将开发的模块放入本地仓库，供其他模块使用</li>
-<li>mvn -clean 删除target目录（不删除仓库的目录)<br>PS: 运行mvn命令，需要在pom.xml文件所在的目录运行</li>
-</ul>
-<h1 id="Maven-Dependency-修改便捷方式"><a href="#Maven-Dependency-修改便捷方式" class="headerlink" title="Maven Dependency 修改便捷方式"></a>Maven Dependency 修改便捷方式</h1><p>先在properties中设置变量以及变量所对应的版本号,再在dependency的version中应用变量(类似于jstl表达式)<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">x</span>&gt;</span>4.0<span class="tag">&lt;/<span class="name">x</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groundId</span>&gt;</span><span class="tag">&lt;/<span class="name">groundId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span><span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;x&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/03/05/Maven/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -587,7 +624,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">30</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
