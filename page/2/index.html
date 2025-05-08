@@ -259,170 +259,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2023/01/06/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="PrivateWen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2023/01/06/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url">毕业设计</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-01-06T18:40:48+08:00">
-                2023-01-06
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2023-05-24T18:04:33+08:00">
-                2023-05-24
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h1><ol>
-<li>把项目托管到gitee，git push -u origin “master”报错。 解决办法：修改本地仓库的分支为master分支<code>git push -u origin &quot;master&quot;</code></li>
-<li>更改分支 git checkout “分支名”</li>
-<li>新建自己的工程：<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> usb开发者调试</span><br><span class="line"><span class="number">2.</span> 添加blockly除了demo以外的三个<span class="keyword">module</span></span><br><span class="line"><span class="number">3.</span> 出现com.xxx.xxx, 回到Project模式，分别删除引入的三个<span class="keyword">module</span>的build.gradle中的除了dependency和android标签以外的所有标签</span><br><span class="line"><span class="number">4.</span> 由于只是引入了，还没有与三个<span class="keyword">module</span>之间建立依赖，在project structure中的dependency中自己的blocklydemo中添加与vertical的连接</span><br><span class="line"><span class="number">5.</span> 出现bug,在vertical和core中删除flavor和sourceSets标签</span><br></pre></td></tr></table></figure>
-<h1 id="安卓开发"><a href="#安卓开发" class="headerlink" title="安卓开发"></a>安卓开发</h1><h2 id="activity跳转"><a href="#activity跳转" class="headerlink" title="activity跳转"></a>activity跳转</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. login案例中使用了register作为从某一个activity返回该activity传回的值</span></span><br><span class="line"><span class="keyword">register</span> = registerForActivityResult(<span class="keyword">new</span> ActivityResultContracts.StartActivityForResult(), <span class="keyword">new</span> ActivityResultCallback&lt;ActivityResult&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> onActivityResult(ActivityResult result) &#123;</span><br><span class="line">                Intent intent = result.getData();</span><br><span class="line">                <span class="keyword">if</span>(intent!=null &amp;&amp; result.getResultCode() == Activity.RESULT_OK)&#123;</span><br><span class="line">                    realPass=intent.getStringExtra(<span class="string">&quot;new_password&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"><span class="comment">// 2. register从该activity携带参数跳转到另一个activity</span></span><br><span class="line">Intent intent=<span class="keyword">new</span> Intent(<span class="keyword">this</span>,LoginForgetActivity.class);</span><br><span class="line">                        intent.putExtra(<span class="string">&quot;phone&quot;</span>,phone);</span><br><span class="line">                        <span class="keyword">register</span>.launch(intent);</span><br><span class="line"><span class="comment">// 3. startActivity()</span></span><br><span class="line">Intent intent =<span class="keyword">new</span> Intent(<span class="keyword">this</span>,xxx.class);</span><br><span class="line">intent.setFlags(Intent.FLAG_xxxx);      <span class="comment">// 避免多次跳转到同一个页面 清除栈中的本页面的顶部的所有的activity</span></span><br><span class="line">startActivity(intent);</span><br><span class="line"><span class="comment">//4. - activity中的 onResume重写可以实现重新打开该页面时(可以是重新启动该app,也可以是从某一个activity返回该activity)</span></span><br></pre></td></tr></table></figure>
-<h1 id="blockly"><a href="#blockly" class="headerlink" title="blockly"></a>blockly</h1></li>
-</ol>
-<ul>
-<li>在body中定义xml,category代表某一大类,block代表块<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span> <span class="attr">id</span>=<span class="string">&quot;toolbox&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: none&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">category</span> <span class="attr">name</span>=<span class="string">&quot;Text&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;controls_if&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;logic_compare&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;controls_repeat_ext&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;math_number&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;math_arithmetic&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;text_print&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;string_length&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;my_text&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">block</span> <span class="attr">type</span>=<span class="string">&quot;div_move&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">category</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li>自定义代码块json格式(JavaScript也可以)<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Blockly.Blocks[&#x27;div_move&#x27;] = &#123;</span><br><span class="line">  init: function() &#123;</span><br><span class="line">    this.jsonInit(&#123;</span><br><span class="line">      &quot;message0&quot;: &#x27;show_img&#x27;,</span><br><span class="line">      <span class="comment">// &quot;output&quot;: &quot;Number&quot;,</span></span><br><span class="line">      &quot;colour&quot;: 160,</span><br><span class="line">      &quot;nextStatement&quot;:null,</span><br><span class="line">      &quot;tooltip&quot;: &quot;Returns number of letters in the provided text.&quot;,</span><br><span class="line">      &quot;helpUrl&quot;: &quot;http://www.w3schools.com/jsref/jsref_length_string.asp&quot;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-<li>给自定义代码块添加函数,locations为自定义函数，点击事件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Blockly.JavaScript[<span class="string">&#x27;div_move&#x27;</span>] = <span class="function"><span class="keyword">function</span>(<span class="params">block</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// String or array length.</span></span><br><span class="line">  <span class="comment">// var str=block.getFieldValue(&#x27;TEXT&#x27;)</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;this.locations()&quot;</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-<li>给执行按钮添加监听事件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">runCode</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">window</span>.LoopTrap = <span class="number">1000</span>;</span><br><span class="line">      Blockly.JavaScript.INFINITE_LOOP_TRAP =</span><br><span class="line">          <span class="string">&#x27;if (--window.LoopTrap == 0) throw &quot;Infinite loop.&quot;;\n&#x27;</span>;</span><br><span class="line">      <span class="keyword">var</span> code = Blockly.JavaScript.workspaceToCode(demoWorkspace);</span><br><span class="line">      Blockly.JavaScript.INFINITE_LOOP_TRAP = <span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="built_in">eval</span>(code);</span><br><span class="line">      &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">        alert(e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-<li>将xml注入div标签中<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> demoWorkspace = Blockly.inject(<span class="string">&#x27;blocklyDiv&#x27;</span>,</span><br><span class="line">        &#123; <span class="attr">media</span>: <span class="string">&#x27;../../media/&#x27;</span>,</span><br><span class="line">          toolbox: <span class="built_in">document</span>.getElementById(<span class="string">&#x27;toolbox&#x27;</span>)&#125;</span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
-<h1 id="1-19日"><a href="#1-19日" class="headerlink" title="1.19日"></a>1.19日</h1></li>
-<li>python运行环境出错导致接下的环节进行不下去，重装系统</li>
-</ul>
-<h1 id="4-8日"><a href="#4-8日" class="headerlink" title="4.8日"></a>4.8日</h1><ul>
-<li>node.js建立websocket服务器，socket.on(‘messageName’,(data)=&gt;{logic}),其中第一个参数有message,close,第二个参数是传递的内容。若想从一端发送给另一端，用socket.emit(‘messageName’,{messageContent})<h3 id="服务器端的代码"><a href="#服务器端的代码" class="headerlink" title="服务器端的代码"></a>服务器端的代码</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建socket服务器</span></span><br><span class="line"><span class="keyword">let</span> Ws = <span class="built_in">require</span>(<span class="string">&quot;ws&quot;</span>).Server;</span><br><span class="line"><span class="keyword">let</span> wss = <span class="keyword">new</span> Ws(&#123;</span><br><span class="line">    port: <span class="number">8282</span></span><br><span class="line">&#125;)</span><br><span class="line">wss.on(<span class="string">&quot;connection&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ws</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;Server has a new connection&quot;</span>)</span><br><span class="line">    <span class="comment">//接收客户端接收的json数据</span></span><br><span class="line">    ws.on(<span class="string">&quot;message&quot;</span>, <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">//转成对象</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(res))</span><br><span class="line">        <span class="comment">//发送数据给客户端</span></span><br><span class="line">        ws.send(<span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">            data: <span class="string">&quot;serverData&quot;</span></span><br><span class="line">        &#125;));</span><br><span class="line">    &#125;)</span><br><span class="line">    ws.on(<span class="string">&quot;close&quot;</span>, <span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;Server is now closed&#x27;</span>);</span><br><span class="line">        <span class="comment">// ws.close();</span></span><br><span class="line">    &#125;)</span><br><span class="line">    ws.on(<span class="string">&#x27;error&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;Error occurred:&#x27;</span>, err.message);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="微信小程序端的代码init-js"><a href="#微信小程序端的代码init-js" class="headerlink" title="微信小程序端的代码init.js"></a>微信小程序端的代码init.js</h3><blockquote>
-<p>由于微信小程序只能同时存在一个websocket连接，所以这里只有在等待断开连接之后才能继续下一个连接<br>第一次建立连接用ws.onOpen(),之后想要继续发送数据用wx.onSocketMessage({data: JSON.stringify({})});<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pages/init/init.js</span></span><br><span class="line"><span class="keyword">let</span> ws;</span><br><span class="line">Page(&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 生命周期函数--监听页面加载</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="title">onLoad</span>(<span class="params">options</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;onLoad&#x27;</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 绑定按钮 &lt;button bindtap=&quot;socketButtonClick1&quot;&gt;发送数据&lt;/button&gt;</span></span><br><span class="line">  socketButtonClick1: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    ws = wx.connectSocket(&#123;</span><br><span class="line">      url: <span class="string">&#x27;ws://localhost:8282&#x27;</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;but1&#x27;</span>)</span><br><span class="line">    ws.onMessage(<span class="function"><span class="keyword">function</span> (<span class="params">res</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;onMessage&quot;</span>, res)</span><br><span class="line">    &#125;)</span><br><span class="line">    ws.onOpen(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 发送消息给服务器端</span></span><br><span class="line">      ws.send(&#123;</span><br><span class="line">        data: <span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">          data: <span class="string">&quot;clientData&quot;</span>,</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 断开连接的时间</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      ws.close()</span><br><span class="line">    &#125;, <span class="number">5000</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h1 id="4-10日"><a href="#4-10日" class="headerlink" title="4.10日"></a>4.10日</h1><blockquote>
-<p>学会查阅开发者文档，不要一个人揣摩函数的用途<br>开发者文档：nodejs端的socket.io文档以及微信小程序端的wx.connectSocket()函数</p>
-<h1 id="4-16日"><a href="#4-16日" class="headerlink" title="4.16日"></a>4.16日</h1><p>每个玩家输入各自的操作码，服务端负责接受操作码，然后广播。客户端拥有每个用户的操作码，然后为各自的用户执行操作。(有先后性,无法判断谁先完成动作或者后完成动作).</p>
-<h1 id="5-24日"><a href="#5-24日" class="headerlink" title="5.24日"></a>5.24日</h1><p>微信小程序的客户端和Javascript搭建的客户端的websocket发送json的区别</p>
-<ul>
-<li>mini Programme<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ws.send(&#123;</span><br><span class="line">        <span class="comment">// 外层data不能改变变量名</span></span><br><span class="line">        data: <span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">          name: inputName,</span><br><span class="line">          roomId: inputRoomId</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure></li>
-<li>普通的javascript<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> data=&#123;</span><br><span class="line">            name:ipt1,</span><br><span class="line">            roomNo:ipt2</span><br><span class="line">        &#125;</span><br><span class="line">    ws.send(<span class="built_in">JSON</span>.stringify(data))</span><br></pre></td></tr></table></figure></li>
-</ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2022/02/17/%E3%80%8Ax86%E3%80%8B%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -553,6 +389,152 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://pvtwen.github.io/2022/02/06/%E7%B4%AB%E4%B9%A6%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E9%87%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="PrivateWen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/02/06/%E7%B4%AB%E4%B9%A6%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E9%87%8A/" itemprop="url">紫书部分问题解释</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-06T16:43:47+08:00">
+                2022-02-06
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2023-02-06T14:19:26+08:00">
+                2023-02-06
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="P263底部"><a href="#P263底部" class="headerlink" title="P263底部"></a>P263底部</h1><ul>
+<li>为什么只删除break语句不能求出完整解？<blockquote>
+<p>画出解答树之后，可以看出递归完之后是从最后一层节点继续递归，而不是从头递归，所以需要定义一个数组存储路径。</p>
+<h1 id="P264顶部"><a href="#P264顶部" class="headerlink" title="P264顶部"></a>P264顶部</h1></blockquote>
+</li>
+<li>为什么dp[i]定义为以节点i为终点的最长路径长度，可以求最大dp，却难以求出最优路径？<blockquote>
+<p>因为是从终点递归(也就是矩形最大的开)，不好确定第一位是否是最小值，只有求出了完整的路径之后才能确定最优路径</p>
+<h1 id="P267-Uva1025"><a href="#P267-Uva1025" class="headerlink" title="P267 Uva1025"></a>P267 Uva1025</h1></blockquote>
+</li>
+<li>dp的两种定义方式:当dp[i][j]定义为到达状态为<code>时刻i，站台j</code>时，所需要的最少时间。如果某个dp[i][j]=0，可能是搭乘的从0点出发的列车。<h1 id="P283-Uva1218"><a href="#P283-Uva1218" class="headerlink" title="P283 Uva1218"></a>P283 Uva1218</h1></li>
+<li>将dp[i][2]初始化为INF,也就意味着用INF代表该状态<code>非法</code>。其次，利用代换，将求dp[u][2]的时间复杂度降低为O(n):例如，当计算child节点时,dp[cur][2]=MIN(dp[child0][0]+dp[child1][2]+dp[child2][2])，对于每个child节点都要枚举k次，计算k次，所以原本时间复杂度为O(n^2).但是，一代换,dp[cur][2]=MIN(dp[cur][1]-dp[child0][2]+dp[child0][0]).</li>
+<li>其次，本题可以既可以递推也可以递归。如果利用递推，需要用栈将节点保存。<h1 id="Uva10003"><a href="#Uva10003" class="headerlink" title="Uva10003"></a>Uva10003</h1></li>
+<li>Uva10003题，刚开始想的是将状态定义为d[i][j]:先切i，最后切j。这样定义状态导致后续状态转移困难。其次，最开始认为切三刀的最优解依赖于切两刀的最优解，这样看也能转化为最优子结构问题，但是如果这样做就会产生书上所说的一个问题，没有顺序规范化。即便是像参考代码一样考虑到了顺序规范化，将dp[i][j]定义为切割点a[i]~a[j]的最优解，也会产生很多细节问题(边界处理).</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -603,7 +585,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
